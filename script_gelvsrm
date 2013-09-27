@@ -3,15 +3,14 @@ create database gelvsrm_polaris;
 
 	create table vehiculo(
 		id_vehiculo char(16) NOT NULL,
-		id_cliente char(13),
-		id_contacto smallint unsigned,
+		id_cliente char(13) NOT NULL,
+		id_contacto smallint unsigned NOT NULL,
 		modelo varchar(45),
 		nro_motor varchar(25),
 		ingreso datetime COMMENT 'Fecha desde la entrega del vehiculo', 
 		encargado varchar(50),
 		ubicacion varchar(100),
 		notas text,
-		primary key(id_vehiculo)
 		)engine=innodb;
 
 	create table cliente(
