@@ -66,54 +66,54 @@ create table inventario_salida(
 		)engine=innodb;
 
 	create table tecnico(
-		id_tecnico varchar(10),
-		nombres varchar(200),
+		id_tecnico varchar(10) NOT NULL,
+		nombres varchar(200) NOT NULL,
 		telefono varchar(15),
 		celular  varchar(15),
 		email  varchar(100)
 		)engine=innodb;
 
 	create table reparacion(
-		id_reparacion smallint,
-		id_vehiculo char(16),
-		id_tecnico smallint,
-		fecha_entrada datetime,
+		id_reparacion smallint unsigned NOT NULL,
+		id_vehiculo char(16) NOT NULL,
+		id_tecnico smallint unsigned NOT NULL,
+		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime,
 		detalles text
 		)engine=innodb;
 
 	create table reparacion_detalle(
-		id_reparacion_detalle varchar(30),
-		item varchar(300),
-		estado varchar(30),
+		id_reparacion_detalle smallint unsigned NOT NULL,
+		item varchar(200),
+		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
 		observaciones varchar(600)
 		)engine=innodb;
 
 	create table mantenimiento(
-		id_manteminiento varchar(30),
-		id_tecnico smallint,
-		id_vehiculo char(16),
-		periodo smallint,
+		id_manteminiento smallint unsigned NOT NULL,
+		id_tecnico smallint unsigned NOT NULL,
+		id_vehiculo char(16) NOT NULL,
+		periodo smallint unsigned NOT NULL,
 		ubicacion varchar(100),
-		fecha datetime,
-		kilometros varchar(10),
+		fecha datetime NOT NULL,
+		kilometros varchar(10) NOT NULL,
 		observacion text
 		)engine=innodb;
 
 	create table mantenimiento_detalle(
-		id_manteminiento varchar(30),
-		item varchar(300),
-		estado varchar(30),
+		id_manteminiento smallint unsigned NOT NULL,
+		item varchar(200),
+		estado varchar(25) COMMENT 'cambio,reparacio,correccio',
 		observaciones varchar(600)
 		)engine=innodb;
 
 	create table factura(
-		id_factura smallint,
-		id_cliente char(13)
-		fecha datetime,
-		fecha_envio datetime,
-		estado boolean,
-			notas text
+		id_factura smallint unsigned NOT NULL,
+		id_cliente char(13) NOT NULL,
+		fecha datetime NOT NULL,
+		fecha_envio datetime NOT NULL,
+		estado boolean NOT NULL,
+		notas text
 		)engine=innodb;
 
 	create table factura_detalle(
