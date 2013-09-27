@@ -1,0 +1,141 @@
+create database gelvsrm_polaris;
+	use gelvsrm_polaris;
+
+	create table vehiculo(
+		id_vehiculo char(16),
+		id_cliente char(13)
+		id_contacto smallint unsigned,
+		modelo varchar(45),
+		nro_motor varchar(25),
+		ingreso datetime COMMENT 'Fecha desde la entrega del vehiculo', 
+		encargado varchar(50),
+		ubicacion varchar(100),
+		notas text
+		)engine=innodb;
+
+	create table cliente(
+		id_cliente char(13)
+		id_contacto smallint unsigned,
+		nombre varchar(200),
+		direccion varchar(600),
+		telefono varchar(15) COMMENT 'persona encargada del pago',
+		fax varchar(15),
+		fecha datetime,
+		mail varchar(100)
+		)engine=innodb;
+
+	create  table iventario(
+		id_inventario char(4) COMMENT 'codigos de los productos iniciando en el 1000',
+		id_proveedor varchar(13),
+		fecha datetime,
+		nombre varchar(100),
+		descpricion varchar(200),
+		stok_min smallint unsigned COMMENT "12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos",
+		marca varchar(45),
+		ubicacion varchar(100)
+		)engine=innodb COMMENT 'Todos los materiales están en litros y unidades';
+
+	create table inventario_entrada(
+		id_inventario_entrada smallint,
+		id_inventario char(4) COMMENT 'codigos de los productos iniciando en el 1000',
+		id_proveedor varchar(13),
+		nro_factura varchar(12),
+		fecha datetime,
+		costo decimal(5,2) COMMENT 'costo por unidad',
+		notas text
+		)engine=innodb;
+
+create table inventario_salida(
+		id_movimiento_inventario smallint,
+		id_inventario char(4) COMMENT 'codigos de los productos iniciando en el 1000',
+		id_manteminiento_detalle varchar(3),
+		id_reparacion varchar(4),
+		fecha datetime,
+			notas text
+		)engine=innodb;
+
+	create table proveedor(
+		id_proveedor varchar(13),
+		nombre varchar(150),
+		direccion varchar(500),
+		telefono varchar(15),
+		email varchar(30),
+		credito boolean,
+		notas text
+		)engine=innodb;
+
+	create table tecnico(
+		id_tecnico varchar(10),
+		nombres varchar(200),
+		telefono varchar(15),
+		celular  varchar(15),
+		email  varchar(100)
+		)engine=innodb;
+
+	create table reparacion(
+		id_reparacion smallint,
+		id_vehiculo char(16),
+		id_tecnico smallint,
+		fecha_entrada datetime,
+		fecha_salida datetime,
+		detalles text
+		)engine=innodb;
+
+	create table reparacion_detalle(
+		id_reparacion_detalle varchar(30),
+		item varchar(300),
+		estado varchar(30),
+		observaciones varchar(600)
+		)engine=innodb;
+
+	create table mantenimiento(
+		id_manteminiento varchar(30),
+		id_tecnico smallint,
+		id_vehiculo char(16),
+		periodo smallint,
+		ubicacion varchar(100),
+		fecha datetime,
+		kilometros varchar(10),
+		observacion text
+		)engine=innodb;
+
+	create table mantenimiento_detalle(
+		id_manteminiento varchar(30),
+		item varchar(300),
+		estado varchar(30),
+		observaciones varchar(600)
+		)engine=innodb;
+
+	create table factura(
+		id_factura smallint,
+		id_cliente char(13)
+		fecha datetime,
+		fecha_envio datetime,
+		estado boolean,
+			notas text
+		)engine=innodb;
+
+	create table factura_detalle(
+		id_manteminiento smallint,
+		id_factura smallint
+		)engine=innodb;
+
+	create table contacto(
+		id_contacto smallint unsigned,
+		nombre varchar(50),
+		telefono varchar(15),
+		celular varchar(15),
+		email varchar(100),
+		cuidad varchar(50),
+		provincia varchar(50)
+		)engine=innodb;
+
+	create table inspeccion(
+		id_inspeccion smallint,
+		id_vehiculo smallint,
+		id_tecnico smallint,
+		fecha datetime,
+		ubicacion varchar(100),
+		detalle text,
+		contacto varchar(45)
+		)engine=innodb;
