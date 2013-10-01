@@ -1,4 +1,3 @@
-
 create database gelvsrm_polaris;
 	use gelvsrm_polaris;
 	-- -------------------------------------------------------------------
@@ -14,8 +13,8 @@ create database gelvsrm_polaris;
 		cuidad varchar(50) DEFAULT NULL,
 		provincia varchar(50) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
-		primary key(id_contacto),
 		on update current_timestamp,
+		primary key(id_contacto)
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar los contactos de la base de datos
@@ -48,7 +47,7 @@ create database gelvsrm_polaris;
 		celular  varchar(15)DEFAULT NULL,
 		email  varchar(100)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
-		on update current_timestamp
+		on update current_timestamp,
 		primary key(id_tecnico)
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los tecnicos';
@@ -63,7 +62,7 @@ create database gelvsrm_polaris;
 		telefono varchar(15) NOT NULL,
 		fax varchar(15)DEFAULT NULL,
 		fecha datetime DEFAULT NULL,
-		mail varchar(100)DEFAULT NULL,,
+		mail varchar(100)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_cliente),
