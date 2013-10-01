@@ -1,4 +1,3 @@
-
 create database gelvsrm_polaris;
 	use gelvsrm_polaris;
 	-- -------------------------------------------------------------------
@@ -14,8 +13,8 @@ create database gelvsrm_polaris;
 		cuidad varchar(50) DEFAULT NULL,
 		provincia varchar(50) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
-		primary key(id_contacto),
 		on update current_timestamp,
+		primary key(id_contacto)
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar los contactos de la base de datos
@@ -63,7 +62,7 @@ create database gelvsrm_polaris;
 		telefono varchar(15) NOT NULL,
 		fax varchar(15)DEFAULT NULL,
 		fecha datetime DEFAULT NULL,
-		mail varchar(100)DEFAULT NULL,,
+		mail varchar(100)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_cliente),
@@ -79,7 +78,7 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad vehículo
 	-- -------------------------------------------------------------------
 	create table vehiculo(
-		id_vehiculo char(16) NOT NULL,
+		id_vehiculo char(17) NOT NULL,
 		id_cliente char(13) NOT NULL,
 		id_contacto smallint unsigned NOT NULL,
 		modelo varchar(45)DEFAULT NULL,
@@ -107,12 +106,12 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table inspeccion(
 		id_inspeccion smallint unsigned NOT NULL AUTO_INCREMENT,
-		id_vehiculo varchar(16) NOT NULL,
+		id_vehiculo varchar(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		id_contacto smallint unsigned NOT NULL,
 		fecha datetime NOT NULL,
 		ubicacion varchar(100)DEFAULT NULL,
-		detalle text,
+		detalle text DEFAULT NULL,
 		contacto varchar(45)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
@@ -137,7 +136,7 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table reparacion(
 		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
-		id_vehiculo char(16) NOT NULL,
+		id_vehiculo char(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime DEFAULT NULL,
@@ -181,10 +180,10 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table mantenimiento(
 		id_manteminiento smallint unsigned NOT NULL AUTO_INCREMENT,
-		id_vehiculo char(16) NOT NULL,
+		id_vehiculo char(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		periodo smallint unsigned NOT NULL,
-		ubicacion varchar(100),
+		ubicacion varchar(100) DEFAULT NULL,
 		fecha datetime NOT NULL,
 		kilometros varchar(10) NOT NULL,
 		observacion text DEFAULT NULL,
@@ -211,7 +210,7 @@ create database gelvsrm_polaris;
 		id_manteminiento smallint unsigned NOT NULL,
 		item varchar(200)DEFAULT NULL,
 		estado varchar(25) COMMENT 'cambio,reparacio,correccio',
-		observaciones varchar(600),
+		observaciones varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_manteminiento_detalle),
@@ -237,7 +236,7 @@ create database gelvsrm_polaris;
 		on update current_timestamp,
 		primary key(id_inventario)
 		)engine=innodb 
-	AUTO_INCREMENT = 1
+		AUTO_INCREMENT = 1000
 		COMMENT 'Entidad que lleva un detalle de los productos en bodega
 		Todos los materiales están en litros y unidades, se setablece un standar para los 
 		condigos del inventario, cada producto ingresado al inventario empieza con el mail
@@ -250,7 +249,7 @@ create database gelvsrm_polaris;
 		id_inventario smallint unsigned  NOT NULL,
 		id_proveedor varchar(13) NOT NULL ,
 		nro_factura varchar(12) NOT NULL ,
-		fecha datetime,
+		fecha datetime NOT NULL, 
 		cantidad smallint unsigned NOT NULL,
 		costo decimal(5,2) COMMENT 'costo por unidad',
 		notas text,
