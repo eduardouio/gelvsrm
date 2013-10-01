@@ -346,4 +346,4 @@ create table inventario_salida(
 		)engine=innodb
 		COMMENT 'Entidad que registra los detalles de la facturacio se entiende por detalle
 				los vehiculos a los que se le realizaron mantenimiento, un mantenimiento no
-				se factura más de una vez';
+				se factura más de una veza';
