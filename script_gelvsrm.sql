@@ -14,7 +14,8 @@ create database gelvsrm_polaris;
 		primary key(id_contacto)
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los contactos de la base de datos
-		Estos contactos son luego referenciados a las entidades que lo requieran';
+		Estos contactos son luego referenciados a las entidades que lo requieran,
+		debe tener un registro cero';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad proveedor
 	-- -------------------------------------------------------------------	
@@ -54,7 +55,11 @@ create database gelvsrm_polaris;
 		fax varchar(15),
 		fecha datetime,
 		mail varchar(100),
-		primary key(id_cliente)
+		primary key(id_cliente),
+		CONSTRAINT fk_cliente_contacto
+      	FOREIGN KEY (id_contacto)
+      	REFERENCES contacto(id_contacto)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar a los cliente
 				se sugiere que el telefono sea de la persona encargada 
@@ -91,6 +96,7 @@ create database gelvsrm_polaris;
 		id_inspeccion smallint unsigned NOT NULL,
 		id_vehiculo varchar(16) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
+		id_contacto smallint unsigned NOT NULL,
 		fecha datetime NOT NULL,
 		ubicacion varchar(100),
 		detalle text,
@@ -103,6 +109,10 @@ create database gelvsrm_polaris;
       	CONSTRAINT fk_inspeccion_tecnico
       	FOREIGN KEY (id_tecnico)
       	REFERENCES tecnico(id_tecnico)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_inspeccion_contacto
+      	FOREIGN KEY (id_contacto)
+      	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'De momento es solo un formulario de inspeccion';
