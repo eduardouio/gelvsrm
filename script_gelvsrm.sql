@@ -47,7 +47,7 @@ create database gelvsrm_polaris;
 		celular  varchar(15)DEFAULT NULL,
 		email  varchar(100)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
-		on update current_timestamp
+		on update current_timestamp,
 		primary key(id_tecnico)
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los tecnicos';
