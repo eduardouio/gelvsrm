@@ -4,7 +4,7 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad contacto
 	-- -------------------------------------------------------------------
 	create table contacto(
-		id_contacto smallint unsigned NOT NULL auto_increment,
+		id_contacto smallint unsigned NOT NULL AUTO_INCREMENT,
 		fecha datetime NOT NULL,
 		nombre varchar(50) NOT NULL,
 		telefono varchar(15) DEFAULT NULL,
@@ -16,7 +16,7 @@ create database gelvsrm_polaris;
 		primary key(id_contacto),
 		on update current_timestamp,
 		)engine=innodb
-		auto_increment = 1
+		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar los contactos de la base de datos
 		Estos contactos son luego referenciados a las entidades que lo requieran,
 		debe tener un registro cero';
