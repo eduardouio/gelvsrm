@@ -129,8 +129,30 @@ create database gelvsrm_polaris;
       	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
-	AUTO_INCREMENT = 1
+		AUTO_INCREMENT = 1
 		COMMENT 'De momento es solo un formulario de inspeccion';
+	-- -------------------------------------------------------------------
+	-- Estructura de la entidad inventario
+	-- -------------------------------------------------------------------
+	create  table inventario(
+		id_inventario smallint unsigned  NOT NULL AUTO_INCREMENT,
+		fecha datetime NOT NULL,
+		nombre varchar(100) NOT NULL,
+		descpricion varchar(200)DEFAULT NULL,
+		unidad varchar(25)DEFAULT NULL,
+		stok_min smallint unsigned NOT NULL COMMENT "12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos",
+		marca varchar(45)DEFAULT NULL,
+		ubicacion varchar(100) NOT NULL,
+		registro timestamp not null default current_timestamp 
+		on update current_timestamp,
+		primary key(id_inventario)
+		)engine=innodb 
+		AUTO_INCREMENT = 1000
+		COMMENT 'Entidad que lleva un detalle de los productos en bodega
+		Todos los materiales están en litros y unidades, se setablece un standar para los 
+		condigos del inventario, cada producto ingresado al inventario empieza con el mail
+		1000,1001,1002. la columna unidad debe contener, litros, unidades, galones, etc';
+
 	-- -------------------------------------------------------------------
 	-- Estructura de la reparación
 	-- -------------------------------------------------------------------
@@ -153,7 +175,7 @@ create database gelvsrm_polaris;
       	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
-	AUTO_INCREMENT = 1
+		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar las reparaciones realizadas a los vehiculos polaris,
 		cada reparacion al vehiculo se registra en reparacion_detalle';
 	-- -------------------------------------------------------------------
@@ -162,15 +184,21 @@ create database gelvsrm_polaris;
 	create table reparacion_detalle(
 		id_reparacion_detalle smallint unsigned NOT NULL,
 		id_reparacion smallint unsigned NOT NULL,
-		item varchar(200)DEFAULT NULL,
+		id_inventario smallint unsigned NOT NULL,
+		fecha datetime NOT NULL,
 		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
-		observaciones varchar(600)DEFAULT NULL,
+		cantidad smallint unsigned not null,		
+		observaciones varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_reparacion_detalle),
 		CONSTRAINT fk_reparacion_detalle_reparacion
       	FOREIGN KEY (id_reparacion)
       	REFERENCES reparacion(id_reparacion)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_reparacion_detalle_inventario
+      	FOREIGN KEY (id_inventario)
+      	REFERENCES inventario(id_inventario)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
@@ -199,7 +227,7 @@ create database gelvsrm_polaris;
       	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
-	AUTO_INCREMENT = 1
+		AUTO_INCREMENT = 1
 		COMMENT 'Registra los mantenimientos realizados aun vehiculo, los insumos usados para el mantenimiento
 				se registran en mantenimiento_detalle';
 	-- -------------------------------------------------------------------
@@ -208,8 +236,10 @@ create database gelvsrm_polaris;
 	create table mantenimiento_detalle(
 		id_manteminiento_detalle int unsigned NOT NULL,
 		id_manteminiento smallint unsigned NOT NULL,
-		item varchar(200)DEFAULT NULL,
-		estado varchar(25) COMMENT 'cambio,reparacio,correccio',
+		id_inventario smallint unsigned NOT NULL,
+		fecha datetime NOT NULL,
+		estado varchar(25) COMMENT 'cambio,reparacio,correccion',
+		cantidad decimal(4,4) unsigned not null,		
 		observaciones varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
@@ -217,30 +247,13 @@ create database gelvsrm_polaris;
 		CONSTRAINT fk_mantenimiento_detalle_mantenimiento
       	FOREIGN KEY (id_manteminiento)
       	REFERENCES mantenimiento(id_manteminiento)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+		CONSTRAINT fk_mantenimiento_detalle_inventario
+      	FOREIGN KEY (id_inventario)
+      	REFERENCES inventario(id_inventario)
       	ON DELETE RESTRICT ON UPDATE CASCADE
       	)engine=innodb
 		COMMENT 'Registra los detalles del mantenimiento y los costos de los insumos';
-	-- -------------------------------------------------------------------
-	-- Estructura de la entidad inventario
-	-- -------------------------------------------------------------------
-	create  table inventario(
-		id_inventario smallint unsigned  NOT NULL AUTO_INCREMENT,
-		fecha datetime NOT NULL,
-		nombre varchar(100) NOT NULL,
-		descpricion varchar(200)DEFAULT NULL,
-		unidad varchar(25)DEFAULT NULL,
-		stok_min smallint unsigned NOT NULL COMMENT "12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos",
-		marca varchar(45)DEFAULT NULL,
-		ubicacion varchar(100) NOT NULL,
-		registro timestamp not null default current_timestamp 
-		on update current_timestamp,
-		primary key(id_inventario)
-		)engine=innodb 
-		AUTO_INCREMENT = 1000
-		COMMENT 'Entidad que lleva un detalle de los productos en bodega
-		Todos los materiales están en litros y unidades, se setablece un standar para los 
-		condigos del inventario, cada producto ingresado al inventario empieza con el mail
-		1000,1001,1002. la columna unidad debe contener, litros, unidades, galones, etc';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad entradas de inventario
 	-- -------------------------------------------------------------------
@@ -267,38 +280,6 @@ create database gelvsrm_polaris;
 		)engine=innodb
 		COMMENT 'Entidad encargada de manejar la entrada de stock al inventario
 				las unidades de los productos son las mimas que el detalle del inventario';
-	-- -------------------------------------------------------------------
-	-- Estructura de la entidad salida de inventario
-	-- -------------------------------------------------------------------
-create table inventario_salida(
-		id_inventario_salida smallint unsigned NOT NULL ,
-		id_inventario smallint unsigned  NOT NULL,
-		id_manteminiento_detalle int unsigned NOT NULL,
-		id_reparacion_detalle smallint unsigned NOT NULL,
-		cantidad smallint unsigned NOT NULL,
-		fecha datetime DEFAULT NULL,
-		notas text DEFAULT NULL,
-		registro timestamp not null default current_timestamp 
-		on update current_timestamp,
-		primary key(id_inventario_salida),
-		CONSTRAINT fk_inventario_salida_inventario
-      	FOREIGN KEY (id_inventario)
-      	REFERENCES inventario(id_inventario)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_invetario_salida_mantenimiento_detalle
-      	FOREIGN KEY (id_manteminiento_detalle)
-      	REFERENCES mantenimiento_detalle(id_manteminiento_detalle)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_inventario_salida_reparacion_detalle
-      	FOREIGN KEY (id_reparacion_detalle)
-      	REFERENCES reparacion_detalle(id_reparacion_detalle)
-      	ON DELETE RESTRICT ON UPDATE CASCADE
-		)engine=innodb
-		COMMENT 'Entidad encargada de registrar las salidas del stok_min
-		del inventario, para el inventario de salida se crea dos relaciones
-		una con mantenimiento_detalle y otra con reparacion_detalle, en ambas entidades 
-		se debe crear un registro cero para que proceda a registrar un mantenimiento u una 
-		una reparacion';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad factura
 	-- -------------------------------------------------------------------
