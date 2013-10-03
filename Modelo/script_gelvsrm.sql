@@ -234,16 +234,17 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad detalle de mantenimiento
 	-- -------------------------------------------------------------------
 	create table mantenimiento_detalle(
-		id_manteminiento_detalle int unsigned NOT NULL,
+		id_manteminiento_detalle int unsigned NOT NULL AUTO_INCREMENT,
 		id_manteminiento smallint unsigned NOT NULL,
 		id_inventario smallint unsigned NOT NULL,
 		fecha datetime NOT NULL,
 		estado varchar(25) COMMENT 'cambio,reparacio,correccion',
-		cantidad decimal(4,4) unsigned not null,		
+		cantidad float unsigned not null,		
 		observaciones varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_manteminiento_detalle),
+		UNIQUE(id_manteminiento_detalle),
+		primary key(id_manteminiento, id_inventario),
 		CONSTRAINT fk_mantenimiento_detalle_mantenimiento
       	FOREIGN KEY (id_manteminiento)
       	REFERENCES mantenimiento(id_manteminiento)
@@ -253,6 +254,7 @@ create database gelvsrm_polaris;
       	REFERENCES inventario(id_inventario)
       	ON DELETE RESTRICT ON UPDATE CASCADE
       	)engine=innodb
+		AUTO_INCREMENT =1
 		COMMENT 'Registra los detalles del mantenimiento y los costos de los insumos';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad entradas de inventario
