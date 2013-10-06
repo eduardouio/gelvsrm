@@ -90,6 +90,7 @@ create database gelvsrm_polaris;
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_vehiculo),
+		INDEX idx_vehiculo(id_vehiculo ASC),
 		CONSTRAINT fk_vehiculo_cliente
       	FOREIGN KEY (id_cliente)
       	REFERENCES cliente(id_cliente)
