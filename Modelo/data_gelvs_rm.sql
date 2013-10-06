@@ -1,11 +1,14 @@
--- phpMyAdmin SQL Dump
--- version 4.0.4
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
+-- ----------------------------------------------------------------------------------------
+-- Modelo de base de datos Gelvsrm 
+-- ----------------------------------------------------------------------------------------
+-- autor <@eduardouio>
+-- copyrigth (c)gelvsrm.com 2013>
+-- version 1.0
+-- engine innodb
+-- content <estrcutura del modelo de base de datos>
 -- Tiempo de generación: 03-10-2013 a las 17:25:25
 -- Versión del servidor: 5.5.32-0ubuntu0.12.04.1
--- Versión de PHP: 5.3.10-1ubuntu3.8
+-- ----------------------------------------------------------------------------------------
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";

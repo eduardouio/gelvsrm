@@ -1,0 +1,12 @@
+-- ----------------------------------------------------------------------------------------
+-- Modelo de base de datos Gelvsrm 
+-- ----------------------------------------------------------------------------------------
+-- autor <@eduardouio>
+-- copyrigth (c)gelvsrm.com 2013>
+-- version 1.0
+-- engine innodb
+-- content <Logica de triggers y sps>
+-- Tiempo de generación: 03-10-2013 a las 17:25:25
+-- Versión del servidor: 5.5.32-0ubuntu0.12.04.1
+-- ----------------------------------------------------------------------------------------
+create trigger on inventario 

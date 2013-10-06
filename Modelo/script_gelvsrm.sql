@@ -1,3 +1,14 @@
+-- ----------------------------------------------------------------------------------------
+-- Modelo de base de datos Gelvsrm 
+-- ----------------------------------------------------------------------------------------
+-- autor <@eduardouio>
+-- copyrigth (c)gelvsrm.com 2013>
+-- version 1.0
+-- engine innodb
+-- content <estrcutura del modelo de base de datos>
+-- Versión del servidor: 5.5.32-0ubuntu0.12.04.1
+-- ----------------------------------------------------------------------------------------
+
 create database gelvsrm_polaris;
 	use gelvsrm_polaris;
 	-- -------------------------------------------------------------------
