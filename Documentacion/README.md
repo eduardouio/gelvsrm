@@ -1,16 +1,17 @@
-gelvsrm
-=======
-
-<h1>Proyecto mantenimiento polaris</h1>
-Proyecto de mantenimiento polaris desarrollado por 
-
-@eduardouio
-@galo
-
-<div class="body">
-	Inventario, queda pendiente revisar el la salida de otros consumibles como las grasas
-	o items que se usen en poprociones menores a la unidad de presentación del producto
-</div>
-
-Checar la cardinalidad de las tablas
-verificar la integridad de la informacion
+<h1>gelvsrm</h1><html>
+<p>
+	Directorio con la documentacion del sitio, este directorios contiene el modelo de la base de datos,
+	se presenta un listado de los ficheros en el sitio
+	<ul>
+		<li>Readme</li>
+		<li>Modelo Gelvsrm</li>
+		<li>Diagramas de clases</li>
+	</ul>
+</p>
+Árbol de directorios
+<p>
+├── Documentacion
+│   ├── gelvsr.mwb
+│   ├── gelvsr.mwb.bak
+│   └── README.md
+</p>
