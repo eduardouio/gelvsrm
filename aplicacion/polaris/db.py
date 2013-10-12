@@ -273,7 +273,6 @@ class Model(object):
 		conn = QtSql.QSqlDatabase.database()
 		conn.transaction()
 
-
 	def commitTransaction(self):
 		'''Confirma una transaccion'''
 		conn = QtSql.QSqlDatabase.database()

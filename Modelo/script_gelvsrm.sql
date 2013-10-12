@@ -216,10 +216,50 @@ create database gelvsrm_polaris;
 		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
 				contener una salida de inventario';
 	-- -------------------------------------------------------------------
+	-- Estructura de la entidad viaje
+	-- -------------------------------------------------------------------
+	create table viaje(
+		id_viaje smallint unsigned not null AUTO_INCREMENT,
+		fecha_salida datetime,
+		fecha_regreso datetime,
+		nro_vehiculos smallint unsigned not null COMMENT 'Cuantos veiculos se piensa reparar', 
+		provincias_destino  varchar(500) not null COMMENT 'Nmbre de las provincias que se quiere visitar, separadas por comas'
+		varlor_caja decimal(5,2),
+		informe text,
+		registro timestamp not null default current_timestamp 
+		UNIQUE (fecha_salida,fecha_regreso),
+		primary key(id_viaje)
+		)engine=innodb
+		AUTO_INCREMENT = 1
+		COMMENT 'Registra los viajes realizados por los técincos, los mantenimientos dependen de los 
+		viajes para existir, ya que los mantenimientos se los realiza con un viaje, se necesita
+		ingresar un viaje a Quito para los mantenimientos y reparaciones realizados en Quito';
+	-- -------------------------------------------------------------------
+	-- Estructura de la entidad gastos_viajes
+	-- -------------------------------------------------------------------
+	create table gastos_viaje(
+		id_viaje smallint unsigned not null,
+		nro_factura varchar(15) not null,
+		fecha date not null,
+		detalle varchar(300) not null,
+		valor decimal(4,2) not null,
+		registro timestamp not null default current_timestamp,
+		primary key(nro_factura,valor),
+		CONSTRAINT fk_gastos_viaje_viaje
+		FOREIGN KEY(id_viaje)
+		REFERENCES viaje(id_viaje)
+		ON UPDATE CASCADE ON DELETE RESTRICT
+		)engine=innodb 
+		AUTO_INCREMENT=1 
+		COMMENT 'Se registran los gastos de los viajes, en esta entidad se graban los 
+		gastos realizados para cada viaje, se registran los datos de las facturas de acuerdo
+		al formato que se tiene en gastos de viajes en la carpeta polaris de dropbox';
+	-- -------------------------------------------------------------------
 	-- Estructura de la entidad mantenimiento
 	-- -------------------------------------------------------------------
 	create table mantenimiento(
 		id_manteminiento smallint unsigned NOT NULL AUTO_INCREMENT,
+		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		periodo smallint unsigned NOT NULL,
@@ -237,7 +277,10 @@ create database gelvsrm_polaris;
       	CONSTRAINT fk_mantenimiento_tecnico
       	FOREIGN KEY (id_tecnico)
       	REFERENCES tecnico(id_tecnico)
-      	ON DELETE RESTRICT ON UPDATE CASCADE
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_mantenimiento_viaje
+      	FOREIGN KEY (id_viaje)
+      	REFERENCES viaje(id_viaje)
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Registra los mantenimientos realizados aun vehiculo, los insumos usados para el mantenimiento

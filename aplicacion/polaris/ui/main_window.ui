@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>856</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>856</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>&amp;Mantenimientos</string>
+    </property>
+    <addaction name="actionNuevo_Mantenimiento"/>
+    <addaction name="actionBuscar_Mantenimiento"/>
+    <addaction name="actionListar_Mantenimientos"/>
+   </widget>
+   <widget class="QMenu" name="menu_Inventario">
+    <property name="title">
+     <string>&amp;Inventario</string>
+    </property>
+    <addaction name="actionListar_Inventario"/>
+    <addaction name="actionStock_Inventario"/>
+    <addaction name="actionNuevo_Ingreso"/>
+    <addaction name="actionIng_reso_Compra"/>
+    <addaction name="actionSalidas_Inventario"/>
+    <addaction name="actionEntradas_Inventario"/>
+   </widget>
+   <widget class="QMenu" name="menuEmpleados">
+    <property name="title">
+     <string>&amp;Técnicos</string>
+    </property>
+    <addaction name="actionNuevo_Em_pleado"/>
+    <addaction name="actionBu_sucar_T_cnico"/>
+    <addaction name="actionBuscar_T_cnico"/>
+   </widget>
+   <widget class="QMenu" name="menuClientes">
+    <property name="title">
+     <string>&amp;Clientes</string>
+    </property>
+    <addaction name="actionNuvo_C_liente"/>
+    <addaction name="actionListar_Cli_entes"/>
+    <addaction name="actionBuscar_Cliente"/>
+   </widget>
+   <widget class="QMenu" name="menuVeh_culos">
+    <property name="title">
+     <string>Vehículos</string>
+    </property>
+    <addaction name="actionIngresar_Nuevo"/>
+    <addaction name="actionListar_Todos"/>
+    <addaction name="actionBuscar_Veh_culo"/>
+   </widget>
+   <widget class="QMenu" name="menuContactos">
+    <property name="title">
+     <string>Contactos</string>
+    </property>
+    <addaction name="actionNuevo_Contacto"/>
+    <addaction name="actionListar_Cont_ctos"/>
+    <addaction name="actionBuscar_Cont_cto"/>
+   </widget>
+   <widget class="QMenu" name="menuReparaci_n">
+    <property name="title">
+     <string>Reparación</string>
+    </property>
+    <addaction name="actionIngresar_Reparaci_n"/>
+    <addaction name="actionListar_Reparaciones"/>
+    <addaction name="actionBuscar_Reparaci_n"/>
+   </widget>
+   <widget class="QMenu" name="menuFacturas">
+    <property name="title">
+     <string>Facturas</string>
+    </property>
+    <addaction name="actionListado_Facturas"/>
+    <addaction name="actionCrear_Informe_Factura"/>
+    <addaction name="actionBuscar_Factura"/>
+   </widget>
+   <widget class="QMenu" name="menuInformes">
+    <property name="title">
+     <string>Informes</string>
+    </property>
+    <addaction name="actionCompras_Mensuales"/>
+    <addaction name="actionMantenimientos_Mensuales"/>
+    <addaction name="actionReparaciones"/>
+    <addaction name="actionVeh_culos"/>
+    <addaction name="actionFacturaci_n"/>
+    <addaction name="actionImventario"/>
+    <addaction name="actionClientes"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menu_Inventario"/>
+   <addaction name="menuEmpleados"/>
+   <addaction name="menuClientes"/>
+   <addaction name="menuVeh_culos"/>
+   <addaction name="menuContactos"/>
+   <addaction name="menuReparaci_n"/>
+   <addaction name="menuFacturas"/>
+   <addaction name="menuInformes"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNuevo_Mantenimiento">
+   <property name="text">
+    <string>&amp;Nuevo Mantenimiento</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Mantenimiento">
+   <property name="text">
+    <string>Listar Mantenimientos</string>
+   </property>
+  </action>
+  <action name="actionListar_Mantenimientos">
+   <property name="text">
+    <string>&amp;Buscar Mantenimientos</string>
+   </property>
+  </action>
+  <action name="actionListar_Inventario">
+   <property name="text">
+    <string>Nuevo Producto/Servicio</string>
+   </property>
+  </action>
+  <action name="actionStock_Inventario">
+   <property name="text">
+    <string>&amp;Stock Inventario</string>
+   </property>
+  </action>
+  <action name="actionNuevo_Ingreso">
+   <property name="text">
+    <string>Listado Inventario</string>
+   </property>
+  </action>
+  <action name="actionNuevo_Em_pleado">
+   <property name="text">
+    <string>Nuevo Técni&amp;co</string>
+   </property>
+  </action>
+  <action name="actionBu_sucar_T_cnico">
+   <property name="text">
+    <string>Listar Técnico</string>
+   </property>
+  </action>
+  <action name="actionNuvo_C_liente">
+   <property name="text">
+    <string>Nuevo C&amp;liente</string>
+   </property>
+  </action>
+  <action name="actionListar_Cli_entes">
+   <property name="text">
+    <string>Listar Cli&amp;entes</string>
+   </property>
+  </action>
+  <action name="actionBuscar_T_cnico">
+   <property name="text">
+    <string>Buscar Técnico</string>
+   </property>
+  </action>
+  <action name="actionIng_reso_Compra">
+   <property name="text">
+    <string>Ing&amp;reso Compra</string>
+   </property>
+  </action>
+  <action name="actionSalidas_Inventario">
+   <property name="text">
+    <string>Salidas Inventario</string>
+   </property>
+  </action>
+  <action name="actionEntradas_Inventario">
+   <property name="text">
+    <string>Entradas Inventario</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Cliente">
+   <property name="text">
+    <string>Buscar Cliente</string>
+   </property>
+  </action>
+  <action name="actionIngresar_Nuevo">
+   <property name="text">
+    <string>Ingresar Nuevo</string>
+   </property>
+  </action>
+  <action name="actionListar_Todos">
+   <property name="text">
+    <string>Listar Todos</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Veh_culo">
+   <property name="text">
+    <string>Buscar Vehículo</string>
+   </property>
+  </action>
+  <action name="actionNuevo_Contacto">
+   <property name="text">
+    <string>Nuevo Contacto</string>
+   </property>
+  </action>
+  <action name="actionListar_Cont_ctos">
+   <property name="text">
+    <string>Listar Contáctos</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Cont_cto">
+   <property name="text">
+    <string>Buscar Contácto</string>
+   </property>
+  </action>
+  <action name="actionIngresar_Reparaci_n">
+   <property name="text">
+    <string>Ingresar Reparación</string>
+   </property>
+  </action>
+  <action name="actionListar_Reparaciones">
+   <property name="text">
+    <string>Listar Reparaciones</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Reparaci_n">
+   <property name="text">
+    <string>Buscar Reparación</string>
+   </property>
+  </action>
+  <action name="actionListado_Facturas">
+   <property name="text">
+    <string>Listado Facturas</string>
+   </property>
+  </action>
+  <action name="actionCrear_Informe_Factura">
+   <property name="text">
+    <string>Crear Informe Factura</string>
+   </property>
+  </action>
+  <action name="actionBuscar_Factura">
+   <property name="text">
+    <string>Buscar Factura</string>
+   </property>
+  </action>
+  <action name="actionCompras_Mensuales">
+   <property name="text">
+    <string>Compras</string>
+   </property>
+  </action>
+  <action name="actionMantenimientos_Mensuales">
+   <property name="text">
+    <string>Mantenimientos</string>
+   </property>
+  </action>
+  <action name="actionReparaciones">
+   <property name="text">
+    <string>Reparaciones</string>
+   </property>
+  </action>
+  <action name="actionVeh_culos">
+   <property name="text">
+    <string>Vehículos</string>
+   </property>
+  </action>
+  <action name="actionFacturaci_n">
+   <property name="text">
+    <string>Facturación</string>
+   </property>
+  </action>
+  <action name="actionImventario">
+   <property name="text">
+    <string>Inventario</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
