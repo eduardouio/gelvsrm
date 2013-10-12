@@ -166,56 +166,6 @@ create database gelvsrm_polaris;
 		1000,1001,1002. la columna unidad debe contener, litros, unidades, galones, etc';
 
 	-- -------------------------------------------------------------------
-	-- Estructura de la reparación
-	-- -------------------------------------------------------------------
-	create table reparacion(
-		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
-		id_vehiculo char(17) NOT NULL,
-		id_tecnico varchar(10) NOT NULL,
-		fecha_entrada datetime NOT NULL,
-		fecha_salida datetime DEFAULT NULL,
-		detalles text DEFAULT NULL,
-		registro timestamp not null default current_timestamp 
-		on update current_timestamp,
-		primary key(id_reparacion),
-		CONSTRAINT fk_reparacion_vehiculo
-      	FOREIGN KEY (id_vehiculo)
-      	REFERENCES vehiculo(id_vehiculo)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_reparacion_tecnico
-      	FOREIGN KEY (id_tecnico)
-      	REFERENCES tecnico(id_tecnico)
-      	ON DELETE RESTRICT ON UPDATE CASCADE
-		)engine=innodb
-		AUTO_INCREMENT = 1
-		COMMENT 'Entidad encargada de registrar las reparaciones realizadas a los vehiculos polaris,
-		cada reparacion al vehiculo se registra en reparacion_detalle';
-	-- -------------------------------------------------------------------
-	-- Estructura de la entidad detalles de reparación
-	-- -------------------------------------------------------------------
-	create table reparacion_detalle(
-		id_reparacion_detalle smallint unsigned NOT NULL,
-		id_reparacion smallint unsigned NOT NULL,
-		id_inventario smallint unsigned NOT NULL,
-		fecha datetime NOT NULL,
-		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
-		cantidad smallint unsigned not null,		
-		observaciones varchar(600) DEFAULT NULL,
-		registro timestamp not null default current_timestamp 
-		on update current_timestamp,
-		primary key(id_reparacion_detalle),
-		CONSTRAINT fk_reparacion_detalle_reparacion
-      	FOREIGN KEY (id_reparacion)
-      	REFERENCES reparacion(id_reparacion)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_reparacion_detalle_inventario
-      	FOREIGN KEY (id_inventario)
-      	REFERENCES inventario(id_inventario)
-      	ON DELETE RESTRICT ON UPDATE CASCADE
-		)engine=innodb
-		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
-				contener una salida de inventario';
-	-- -------------------------------------------------------------------
 	-- Estructura de la entidad viaje
 	-- -------------------------------------------------------------------
 	create table viaje(
@@ -255,6 +205,61 @@ create database gelvsrm_polaris;
 		gastos realizados para cada viaje, se registran los datos de las facturas de acuerdo
 		al formato que se tiene en gastos de viajes en la carpeta polaris de dropbox';
 	-- -------------------------------------------------------------------
+	-- Estructura de la reparación
+	-- -------------------------------------------------------------------
+	create table reparacion(
+		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
+		id_viaje smallint unsigned not null,
+		id_vehiculo char(17) NOT NULL,
+		id_tecnico varchar(10) NOT NULL,
+		fecha_entrada datetime NOT NULL,
+		fecha_salida datetime DEFAULT NULL,
+		detalles text DEFAULT NULL,
+		registro timestamp not null default current_timestamp 
+		on update current_timestamp,
+		primary key(id_reparacion),
+		CONSTRAINT fk_reparacion_vehiculo
+      	FOREIGN KEY (id_vehiculo)
+      	REFERENCES vehiculo(id_vehiculo)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_reparacion_tecnico
+      	FOREIGN KEY (id_tecnico)
+      	REFERENCES tecnico(id_tecnico)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_reparacion_viaje
+      	FOREIGN KEY (id_viaje)
+      	REFERENCES viaje(id_viaje)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+		)engine=innodb
+		AUTO_INCREMENT = 1
+		COMMENT 'Entidad encargada de registrar las reparaciones realizadas a los vehiculos polaris,
+		cada reparacion al vehiculo se registra en reparacion_detalle';
+	-- -------------------------------------------------------------------
+	-- Estructura de la entidad detalles de reparación
+	-- -------------------------------------------------------------------
+	create table reparacion_detalle(
+		id_reparacion_detalle smallint unsigned NOT NULL,
+		id_reparacion smallint unsigned NOT NULL,
+		id_inventario smallint unsigned NOT NULL,
+		fecha datetime NOT NULL,
+		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
+		cantidad smallint unsigned not null,		
+		observaciones varchar(600) DEFAULT NULL,
+		registro timestamp not null default current_timestamp 
+		on update current_timestamp,
+		primary key(id_reparacion_detalle),
+		CONSTRAINT fk_reparacion_detalle_reparacion
+      	FOREIGN KEY (id_reparacion)
+      	REFERENCES reparacion(id_reparacion)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_reparacion_detalle_inventario
+      	FOREIGN KEY (id_inventario)
+      	REFERENCES inventario(id_inventario)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+		)engine=innodb
+		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
+				contener una salida de inventario';
+	-- -------------------------------------------------------------------
 	-- Estructura de la entidad mantenimiento
 	-- -------------------------------------------------------------------
 	create table mantenimiento(
@@ -281,6 +286,7 @@ create database gelvsrm_polaris;
       	CONSTRAINT fk_mantenimiento_viaje
       	FOREIGN KEY (id_viaje)
       	REFERENCES viaje(id_viaje)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Registra los mantenimientos realizados aun vehiculo, los insumos usados para el mantenimiento
