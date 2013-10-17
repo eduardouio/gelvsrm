@@ -173,10 +173,10 @@ create database gelvsrm_polaris;
 		fecha_salida datetime,
 		fecha_regreso datetime,
 		nro_vehiculos smallint unsigned not null COMMENT 'Cuantos veiculos se piensa reparar', 
-		provincias_destino  varchar(500) not null COMMENT 'Nmbre de las provincias que se quiere visitar, separadas por comas'
+		provincias_destino  varchar(500) not null COMMENT 'Nmbre de las provincias que se quiere visitar, separadas por comas',
 		varlor_caja decimal(5,2),
 		informe text,
-		registro timestamp not null default current_timestamp 
+		registro timestamp not null default current_timestamp,
 		UNIQUE (fecha_salida,fecha_regreso),
 		primary key(id_viaje)
 		)engine=innodb

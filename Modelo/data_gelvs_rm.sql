@@ -1,16 +1,13 @@
--- ----------------------------------------------------------------------------------------
--- Modelo de base de datos Gelvsrm 
--- ----------------------------------------------------------------------------------------
--- autor <@eduardouio>
--- copyrigth (c)gelvsrm.com 2013>
--- version 1.0
--- engine innodb
--- content <estrcutura del modelo de base de datos>
--- Tiempo de generación: 03-10-2013 a las 17:25:25
--- Versión del servidor: 5.5.32-0ubuntu0.12.04.1
--- ----------------------------------------------------------------------------------------
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 17-10-2013 a las 16:56:54
+-- Versión del servidor: 5.5.32
+-- Versión de PHP: 5.3.10-1ubuntu3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -22,1657 +19,1666 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gelvsrm_polaris`
 --
-CREATE DATABASE IF NOT EXISTS `gelvsrm_polaris` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `gelvsrm_polaris`;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` VALUES('0360015690001', 1, 'Dirección Provincial Agropecuaria del Caña', 'Andres f, cordoba sn y humberto rodrguez edf shopin Jerez 2do piso', '07-2842139', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:10:46');
-INSERT INTO `cliente` VALUES('0560022430001', 1, ' Director Tecnico Area de cotopaxi', 'Av Atahualpa y zamora', '03-2812808', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:07:11');
-INSERT INTO `cliente` VALUES('0660819660001', 1, 'Dirección Provincial Agropecuaria de Chimborazo', 'Av 9 de Octubre junto a la Quinta Macaji', '03-2610043', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:14:08');
-INSERT INTO `cliente` VALUES('160023480001', 1, 'Dirrecion Provincial Agropecuaria del Azuay', 'Vega muños 2-40 y tomas ordoñes - Cuenca', '07-2843550', '', '2013-10-01 00:00:00', '', '2013-10-01 16:50:52');
-INSERT INTO `cliente` VALUES('1865012760001', 1, 'Dirección Provincial Agropecuaria de Tunguragua\r\n', 'Centro Comercial Ambato Bloque nro 2 Av. 12 de Noviembre y Mariano Wgues', '03-2823900 / 03', NULL, NULL, NULL, '2013-10-01 18:22:12');
-INSERT INTO `cliente` VALUES('260004750001', 1, 'Direccion Provincial Agropecuaria de Bolivar', 'Guaranda, Av. Circunvalacion S/N y Ambato', '03-2981818', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:13:45');
+INSERT INTO `cliente` (`id_cliente`, `id_contacto`, `nombre`, `direccion`, `telefono`, `fax`, `fecha`, `mail`, `registro`) VALUES
+('0360015690001', 1, 'Dirección Provincial Agropecuaria del Caña', 'Andres f, cordoba sn y humberto rodrguez edf shopin Jerez 2do piso', '07-2842139', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:10:46'),
+('0560022430001', 1, ' Director Tecnico Area de cotopaxi', 'Av Atahualpa y zamora', '03-2812808', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:07:11'),
+('0660819660001', 1, 'Dirección Provincial Agropecuaria de Chimborazo', 'Av 9 de Octubre junto a la Quinta Macaji', '03-2610043', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:14:08'),
+('160023480001', 1, 'Dirrecion Provincial Agropecuaria del Azuay', 'Vega muños 2-40 y tomas ordoñes - Cuenca', '07-2843550', '', '2013-10-01 00:00:00', '', '2013-10-01 16:50:52'),
+('1865012760001', 1, 'Dirección Provincial Agropecuaria de Tunguragua\r\n', 'Centro Comercial Ambato Bloque nro 2 Av. 12 de Noviembre y Mariano Wgues', '03-2823900 / 03', NULL, NULL, NULL, '2013-10-01 18:22:12'),
+('260004750001', 1, 'Direccion Provincial Agropecuaria de Bolivar', 'Guaranda, Av. Circunvalacion S/N y Ambato', '03-2981818', NULL, '2013-10-01 00:00:00', NULL, '2013-10-01 17:13:45');
 
 --
 -- Volcado de datos para la tabla `contacto`
 --
 
-INSERT INTO `contacto` VALUES(1, '2013-10-02 00:00:00', 'Sin Nombre', NULL, NULL, NULL, NULL, NULL, '2013-10-01 16:31:48');
-INSERT INTO `contacto` VALUES(2, '2013-10-01 00:00:00', 'ING. LUIS RIVERA GUERRA', '03-2981818', '09-7455567', NULL, 'BOLIVAR', 'GURANDA', '2013-10-01 16:48:32');
-INSERT INTO `contacto` VALUES(3, '2013-10-01 00:00:00', 'ING.  FRANKLIN PILATASIG MOLINA', '03-2812986', '095883022', NULL, 'COTOPAXI', NULL, '2013-10-01 17:03:30');
+INSERT INTO `contacto` (`id_contacto`, `fecha`, `nombre`, `telefono`, `celular`, `email`, `cuidad`, `provincia`, `registro`) VALUES
+(1, '2013-10-02 00:00:00', 'Contacto Vacío', NULL, NULL, NULL, NULL, NULL, '2013-10-01 16:31:48'),
+(2, '2013-10-01 00:00:00', 'ING. LUIS RIVERA GUERRA', '03-2981818', '09-7455567', NULL, 'BOLIVAR', 'GURANDA', '2013-10-01 16:48:32'),
+(3, '2013-10-01 00:00:00', 'ING.  FRANKLIN PILATASIG MOLINA', '03-2812986', '095883022', NULL, 'COTOPAXI', NULL, '2013-10-01 17:03:30');
 
 --
 -- Volcado de datos para la tabla `inspeccion`
 --
 
-INSERT INTO `inspeccion` VALUES(1, '4XATH76A0D2293222', '1711938025', 1, '2013-08-27 00:00:00', 'Latacunga', 'Informe Inspección Vehículo\r\n\r\n\r\nLatacunga, 27 de Agosto del 2013\r\n\r\n\r\nSe procede a la inspección del vehículo con VIN 4XATH76A0D2293222 mismo que presenta lo siguiente:\r\n\r\n•	Muestra un golpe en la parte delantera derecha producido por un impacto, mismo que rompe el guarda fangos derecho, y una pequeña parte del guarda choques, el golpe afectó la posición del faro.\r\n  \r\n•	Tiene el parabrisas roto.\r\n \r\n•	Se revisa el sistema de aceleración, niveles de fluidos y el sistema eléctrico mismos que no presentan ninguna novedad.\r\n•	Motor funcionando correctamente.\r\n\r\n\r\n\r\nAtentamente:\r\n\r\n\r\n\r\nGalo Sinchiguano\r\n\r\n\r\n\r\n\r\n\r\n', NULL, '2013-10-01 20:06:54');
-INSERT INTO `inspeccion` VALUES(2, '4XATH76A4D2290761', '0803550466', 1, '2013-09-19 00:00:00', 'Cotopaxi, la Mana', '\r\nInforme Inspección Vehículo\r\n\r\nCotopaxi, La Mana, 19 de Septiembre de 2013\r\n\r\nSe procede con la inspección del vehículo con número de VIN  4XATH76A4D2290761,  a cargo del Ing. Henry Peñaherrera, mismo que presenta un golpe en la parte frontal derecha producto del golpe presenta el guarda choque doblado hacia dentro, se realiza una inspección completa de acuerdo al siguiente detalle:\r\n\r\nInspección	Observaciones\r\nCarrocería	Tiene roto el guarda fango derecho\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando correctamente\r\nEstructura Cabina	No presenta golpes\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nGuardachoque	Presenta doblamiento en la parte izquierda.\r\nBatería	Funcionando correctamente\r\nCableado eléctrico	Funcionando correctamente..\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Cambiado\r\nAceite Caja Posterior	Cambiado\r\nAceite Caja Delantera	Cambiado\r\nLiquido de Frenos	Llenado completo\r\nRefrigerante	Cambiado\r\nÁcido batería	Funcionando perfectamente\r\nFiltro aire	Funcionando correctamente\r\nFiltro Aceite	Cambiado\r\nImágenes vehículo:\r\n\r\n\r\n\r\n\r\n\r\nObservaciones:\r\n•	Presenta doblamiento en la parte izquierda del guarda choque.\r\n•	Presentar rotura en la parte superior izquierda de la mascarilla.\r\n•	Se derramo el líquido de freno en un 70% a 80% estimado quedándose con el porcentaje mínimo de liquido para ser frenado.\r\n\r\n\r\nNota: Se realiza el mantenimiento completo del vehículo.\r\n\r\n\r\nResponsabe zonal: Ing. Xavier Moya (03-2812 986), Dirección Provincial Agropecuaria de Cotopaxi Latacunga Av Atahualpa y zamora\r\n\r\n\r\n\r\n\r\n\r\nAtentamente:\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n\r\n\r\n', NULL, '2013-10-01 20:06:54');
-INSERT INTO `inspeccion` VALUES(3, '4XATH76AXD2290828', '1711938025', 1, '2013-09-18 00:00:00', 'Tunguragua, Quinchicoto', 'Informe Inspección Vehículo\r\nTungurahua, Quinchicoto 18 de septiembre del 2013\r\nEn la zona de Quinchicoto provincia de Tungurahua se procede con la inspección del vehículo con VIN  4XATH76AXD220828 a cargo del Ing. Luis Soliz, este vehículo presenta un sonido en la caja de cambios posterior, el sonido se produce, en el momento que se cambia de marcha, cuando inicia el recorrido,se realiza una inspección completa de acuerdo al siguiente detalle:\r\nInspección	Observaciones\r\nCarrocería	Funcionando correctamente.\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando correctamente\r\nEstructura Cabina	Funcionando correctamente.\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nGuardachoque	Funcionando correctamente.\r\nBatería	Funcionando correctamente\r\nCableado eléctrico	Funcionando correctamente..\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Completo\r\nAceite Caja Posterior	Completo\r\nAceite Caja Delantera	Completo\r\nLiquido de Frenos	Completo\r\nRefrigerante	Completo\r\nÁcido batería	Funcionando perfectamente\r\nFiltro aire	Funcionando correctamente\r\nFiltro Aceite	Completo\r\nNotas: Se realizó el chequeo respectivo  del vehículo , analizando las siguiente , piezas  que verificó , las cruceta , los ejes trasero , o algún tornillo flojos , estas piezas estaban bien, y el sonido seguía  presente en el vehículo\r\nEl vehículo apenas cumple 6 horas de trabajo motivo por el cual no se puede hacer el cambio de aceites respectivos.\r\nEl encargado zonal solicita de manera cordial se realice el traslado a Quito inmediatamente para el arreglo del vehículo.\r\nConclusión:  Desarmar la caja de cambio para revisar los engranajes.\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\nAtentamente:\r\n\r\nEduardo Villota\r\n172291972-5\r\n', 'Dr. Jorge Cifuentes Carrión  (03-2827383)', '2013-10-01 20:10:03');
-INSERT INTO `inspeccion` VALUES(4, '4XATH76A6D2291121', '0803550466', 1, '2013-08-01 00:00:00', 'Ambato', '\r\nInforme Vehículo Polaris Volcado\r\n\r\n\r\nAmbato, 01 de Agosto del 2013\r\n\r\n\r\nEl vehículo Polaris con numero de VIN 4XATH76A6D2291121 sufrió un volcamiento por la parte delantera izquierda, resultado de una posible perdida de pista, presenta un golpe en la parte superior izquierda del parabrisas provocando la ruptura del vidrio, la cabina se encuentra desviada hacia atrás en la dirección del golpe aproximadamente 3cm.\r\n\r\nGráfico del golpe visto desde la parte frontal de la cabina\r\n\r\n\r\nSe realizó un chequeo completo de los sistemas, encontrando las siguientes novedades:\r\n\r\nInspección	Observaciones\r\nCarrocería	Presenta golpes en el lugar del impacto, pero no presenta ningún daño\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando, presenta una torcedura en el mango derecho\r\nEstructura Cabina	Presenta una desviación en dirección al golpe de unos 3cm\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nWincha	Funcionando correctamente.\r\nBatería	Funcionando correctamente, presenta un baja en la carga por perdida de ácido.\r\nCableado eléctrico	Funcionando correctamente.\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Cambiar\r\nAceite Caja Posterior	Correcto\r\nAceite Caja Delantera	Correcto\r\nLiquido de Frenos	Vacío\r\nRefrigerante	Vacío\r\nÁcido batería	Por completar\r\nFiltro aire	Cambiar, se encuentra cubierto de aceite\r\nFiltro Aceite	Cambiar\r\n\r\n\r\nObservaciones Adicionales:\r\n\r\n1.	El aceite del motor se derramó en un 30% a 40 % encontrándose principalmente en los ductos de entrada de aire al motor.\r\n2.	Se chequea la alineación de las llantas sin encontrar ninguna novedad.\r\n\r\n\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\n\r\nAtentamente:\r\n\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n', 'Responsable Zonal: Dr. Jorge Cifuentes Carrió', '2013-10-01 20:15:09');
+INSERT INTO `inspeccion` (`id_inspeccion`, `id_vehiculo`, `id_tecnico`, `id_contacto`, `fecha`, `ubicacion`, `detalle`, `contacto`, `registro`) VALUES
+(1, '4XATH76A0D2293222', '1711938025', 1, '2013-08-27 00:00:00', 'Latacunga', 'Informe Inspección Vehículo\r\n\r\n\r\nLatacunga, 27 de Agosto del 2013\r\n\r\n\r\nSe procede a la inspección del vehículo con VIN 4XATH76A0D2293222 mismo que presenta lo siguiente:\r\n\r\n•	Muestra un golpe en la parte delantera derecha producido por un impacto, mismo que rompe el guarda fangos derecho, y una pequeña parte del guarda choques, el golpe afectó la posición del faro.\r\n  \r\n•	Tiene el parabrisas roto.\r\n \r\n•	Se revisa el sistema de aceleración, niveles de fluidos y el sistema eléctrico mismos que no presentan ninguna novedad.\r\n•	Motor funcionando correctamente.\r\n\r\n\r\n\r\nAtentamente:\r\n\r\n\r\n\r\nGalo Sinchiguano\r\n\r\n\r\n\r\n\r\n\r\n', NULL, '2013-10-01 20:06:54'),
+(2, '4XATH76A4D2290761', '0803550466', 1, '2013-09-19 00:00:00', 'Cotopaxi, la Mana', '\r\nInforme Inspección Vehículo\r\n\r\nCotopaxi, La Mana, 19 de Septiembre de 2013\r\n\r\nSe procede con la inspección del vehículo con número de VIN  4XATH76A4D2290761,  a cargo del Ing. Henry Peñaherrera, mismo que presenta un golpe en la parte frontal derecha producto del golpe presenta el guarda choque doblado hacia dentro, se realiza una inspección completa de acuerdo al siguiente detalle:\r\n\r\nInspección	Observaciones\r\nCarrocería	Tiene roto el guarda fango derecho\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando correctamente\r\nEstructura Cabina	No presenta golpes\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nGuardachoque	Presenta doblamiento en la parte izquierda.\r\nBatería	Funcionando correctamente\r\nCableado eléctrico	Funcionando correctamente..\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Cambiado\r\nAceite Caja Posterior	Cambiado\r\nAceite Caja Delantera	Cambiado\r\nLiquido de Frenos	Llenado completo\r\nRefrigerante	Cambiado\r\nÁcido batería	Funcionando perfectamente\r\nFiltro aire	Funcionando correctamente\r\nFiltro Aceite	Cambiado\r\nImágenes vehículo:\r\n\r\n\r\n\r\n\r\n\r\nObservaciones:\r\n•	Presenta doblamiento en la parte izquierda del guarda choque.\r\n•	Presentar rotura en la parte superior izquierda de la mascarilla.\r\n•	Se derramo el líquido de freno en un 70% a 80% estimado quedándose con el porcentaje mínimo de liquido para ser frenado.\r\n\r\n\r\nNota: Se realiza el mantenimiento completo del vehículo.\r\n\r\n\r\nResponsabe zonal: Ing. Xavier Moya (03-2812 986), Dirección Provincial Agropecuaria de Cotopaxi Latacunga Av Atahualpa y zamora\r\n\r\n\r\n\r\n\r\n\r\nAtentamente:\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n\r\n\r\n', NULL, '2013-10-01 20:06:54'),
+(3, '4XATH76AXD2290828', '1711938025', 1, '2013-09-18 00:00:00', 'Tunguragua, Quinchicoto', 'Informe Inspección Vehículo\r\nTungurahua, Quinchicoto 18 de septiembre del 2013\r\nEn la zona de Quinchicoto provincia de Tungurahua se procede con la inspección del vehículo con VIN  4XATH76AXD220828 a cargo del Ing. Luis Soliz, este vehículo presenta un sonido en la caja de cambios posterior, el sonido se produce, en el momento que se cambia de marcha, cuando inicia el recorrido,se realiza una inspección completa de acuerdo al siguiente detalle:\r\nInspección	Observaciones\r\nCarrocería	Funcionando correctamente.\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando correctamente\r\nEstructura Cabina	Funcionando correctamente.\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nGuardachoque	Funcionando correctamente.\r\nBatería	Funcionando correctamente\r\nCableado eléctrico	Funcionando correctamente..\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Completo\r\nAceite Caja Posterior	Completo\r\nAceite Caja Delantera	Completo\r\nLiquido de Frenos	Completo\r\nRefrigerante	Completo\r\nÁcido batería	Funcionando perfectamente\r\nFiltro aire	Funcionando correctamente\r\nFiltro Aceite	Completo\r\nNotas: Se realizó el chequeo respectivo  del vehículo , analizando las siguiente , piezas  que verificó , las cruceta , los ejes trasero , o algún tornillo flojos , estas piezas estaban bien, y el sonido seguía  presente en el vehículo\r\nEl vehículo apenas cumple 6 horas de trabajo motivo por el cual no se puede hacer el cambio de aceites respectivos.\r\nEl encargado zonal solicita de manera cordial se realice el traslado a Quito inmediatamente para el arreglo del vehículo.\r\nConclusión:  Desarmar la caja de cambio para revisar los engranajes.\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\nAtentamente:\r\n\r\nEduardo Villota\r\n172291972-5\r\n', 'Dr. Jorge Cifuentes Carrión  (03-2827383)', '2013-10-01 20:10:03'),
+(4, '4XATH76A6D2291121', '0803550466', 1, '2013-08-01 00:00:00', 'Ambato', '\r\nInforme Vehículo Polaris Volcado\r\n\r\n\r\nAmbato, 01 de Agosto del 2013\r\n\r\n\r\nEl vehículo Polaris con numero de VIN 4XATH76A6D2291121 sufrió un volcamiento por la parte delantera izquierda, resultado de una posible perdida de pista, presenta un golpe en la parte superior izquierda del parabrisas provocando la ruptura del vidrio, la cabina se encuentra desviada hacia atrás en la dirección del golpe aproximadamente 3cm.\r\n\r\nGráfico del golpe visto desde la parte frontal de la cabina\r\n\r\n\r\nSe realizó un chequeo completo de los sistemas, encontrando las siguientes novedades:\r\n\r\nInspección	Observaciones\r\nCarrocería	Presenta golpes en el lugar del impacto, pero no presenta ningún daño\r\nPuertas	Funcionando correctamente.\r\nCajón abatible	Funcionando, presenta una torcedura en el mango derecho\r\nEstructura Cabina	Presenta una desviación en dirección al golpe de unos 3cm\r\nTerminales Suspensión	Funcionando correctamente.\r\nAmortiguadores	Funcionando correctamente.\r\nTerminales de dirección	Funcionando correctamente.\r\nBrazos de Suspensión	Funcionando correctamente.\r\nWincha	Funcionando correctamente.\r\nBatería	Funcionando correctamente, presenta un baja en la carga por perdida de ácido.\r\nCableado eléctrico	Funcionando correctamente.\r\nLimpia-brizas	Funcionando correctamente.\r\nCaja engranaje delantera	Funcionando correctamente.\r\nCajas engranaje posterior	Funcionando correctamente.\r\nAceite Motor	Cambiar\r\nAceite Caja Posterior	Correcto\r\nAceite Caja Delantera	Correcto\r\nLiquido de Frenos	Vacío\r\nRefrigerante	Vacío\r\nÁcido batería	Por completar\r\nFiltro aire	Cambiar, se encuentra cubierto de aceite\r\nFiltro Aceite	Cambiar\r\n\r\n\r\nObservaciones Adicionales:\r\n\r\n1.	El aceite del motor se derramó en un 30% a 40 % encontrándose principalmente en los ductos de entrada de aire al motor.\r\n2.	Se chequea la alineación de las llantas sin encontrar ninguna novedad.\r\n\r\n\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\n\r\nAtentamente:\r\n\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n', 'Responsable Zonal: Dr. Jorge Cifuentes Carrió', '2013-10-01 20:15:09');
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` VALUES(1000, '2013-10-01 00:00:00', 'PS4', 'Aceite sintético para motor Polaris', 'Litros', 12, 'Polaris PS4', 'Bodega Oficina ', '2013-10-01 18:54:38');
-INSERT INTO `inventario` VALUES(1001, '0000-00-00 00:00:00', 'AGL Plus', 'Aceite de transmisión trasera', 'Litros', 12, 'Polaris AGL Plus', 'Bodega Oficina', '2013-10-01 18:56:03');
-INSERT INTO `inventario` VALUES(1002, '2013-10-01 00:00:00', 'Demand Fluid', 'Aceite para la caja delantera', 'Litros ', 5, 'Polaris Demend Fluid', 'Bodega Oficina', '2013-10-01 19:13:27');
-INSERT INTO `inventario` VALUES(1003, '2013-10-01 00:00:00', 'Filtro Aceite', 'Filtro de Aceite', 'Unidades', 12, 'Champion PH2867', 'Bodega Oficina ', '2013-10-01 19:13:27');
-INSERT INTO `inventario` VALUES(1004, '2013-10-01 00:00:00', 'Refrigerante', 'Liquito de refrigerante', 'Litros', 12, 'Lubristom', 'Bodega Oficina', '2013-10-01 19:13:27');
-INSERT INTO `inventario` VALUES(1005, '2013-10-01 00:00:00', 'Líquido de Frenos', 'Liquito de Frenos', 'Litros', 12, 'Wagner ', 'Bodega Oficina', '2013-10-01 19:13:27');
-INSERT INTO `inventario` VALUES(1006, '2013-10-01 00:00:00', 'Grasa', 'Grasa para engramajes', 'Unidades', 12, 'Abro', 'Bodega Oficina', '2013-10-01 19:16:03');
-INSERT INTO `inventario` VALUES(1007, '2013-10-01 00:00:00', 'Volante', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1008, '2013-10-01 00:00:00', 'Suspensión Delantera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1009, '2013-10-01 00:00:00', 'Suspensión  Trasera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1010, '2013-10-01 00:00:00', 'Llantas', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1011, '2013-10-01 00:00:00', 'Nivel de fluido de frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1012, '2013-10-01 00:00:00', 'Cable de pedal de freno', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1013, '2013-10-01 00:00:00', 'Sistema de frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1014, '2013-10-01 00:00:00', 'Tuercas de rueda 35 lb', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1015, '2013-10-01 00:00:00', 'Turca de marco', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1016, '2013-10-01 00:00:00', 'Filtro de aire de filtro', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1017, '2013-10-01 00:00:00', 'Filtro Aceite', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1018, '2013-10-01 00:00:00', 'Caja del tubo sedimentos aire', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1019, '2013-10-01 00:00:00', 'Filtro de aire elemento principal', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28');
-INSERT INTO `inventario` VALUES(1020, '2013-10-01 00:00:00', 'Refrigerante (si procede )', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1021, '2013-10-01 00:00:00', 'Líquido refrigerante', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1022, '2013-10-01 00:00:00', 'Lámpara de faro/de la cola', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1023, '2013-10-01 00:00:00', 'Desgastes de los frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1024, '2013-10-01 00:00:00', 'Batería', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1025, '2013-10-01 00:00:00', 'Liquido de batería', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1026, '2013-10-01 00:00:00', 'Cambio de aceite del motor', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1027, '2013-10-01 00:00:00', 'Aceite de la caja delantera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1028, '2013-10-01 00:00:00', 'Aceite de la transmisión', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1029, '2013-10-01 00:00:00', 'Tensión del cable de freno de parqueo', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
-INSERT INTO `inventario` VALUES(1030, '2013-10-01 00:00:00', 'Juntas', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
+INSERT INTO `inventario` (`id_inventario`, `fecha`, `nombre`, `descpricion`, `unidad`, `stok_min`, `marca`, `ubicacion`, `registro`) VALUES
+(1000, '2013-10-01 00:00:00', 'PS4', 'Aceite sintético para motor Polaris', 'Litros', 12, 'Polaris PS4', 'Bodega Oficina ', '2013-10-01 18:54:38'),
+(1001, '0000-00-00 00:00:00', 'AGL Plus', 'Aceite de transmisión trasera', 'Litros', 12, 'Polaris AGL Plus', 'Bodega Oficina', '2013-10-01 18:56:03'),
+(1002, '2013-10-01 00:00:00', 'Demand Fluid', 'Aceite para la caja delantera', 'Litros ', 5, 'Polaris Demend Fluid', 'Bodega Oficina', '2013-10-01 19:13:27'),
+(1003, '2013-10-01 00:00:00', 'Filtro Aceite', 'Filtro de Aceite', 'Unidades', 12, 'Champion PH2867', 'Bodega Oficina ', '2013-10-01 19:13:27'),
+(1004, '2013-10-01 00:00:00', 'Refrigerante', 'Liquito de refrigerante', 'Litros', 12, 'Lubristom', 'Bodega Oficina', '2013-10-01 19:13:27'),
+(1005, '2013-10-01 00:00:00', 'Líquido de Frenos', 'Liquito de Frenos', 'Litros', 12, 'Wagner ', 'Bodega Oficina', '2013-10-01 19:13:27'),
+(1006, '2013-10-01 00:00:00', 'Grasa', 'Grasa para engramajes', 'Unidades', 12, 'Abro', 'Bodega Oficina', '2013-10-01 19:16:03'),
+(1007, '2013-10-01 00:00:00', 'Volante', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1008, '2013-10-01 00:00:00', 'Suspensión Delantera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1009, '2013-10-01 00:00:00', 'Suspensión  Trasera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1010, '2013-10-01 00:00:00', 'Llantas', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1011, '2013-10-01 00:00:00', 'Nivel de fluido de frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1012, '2013-10-01 00:00:00', 'Cable de pedal de freno', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1013, '2013-10-01 00:00:00', 'Sistema de frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1014, '2013-10-01 00:00:00', 'Tuercas de rueda 35 lb', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1015, '2013-10-01 00:00:00', 'Turca de marco', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1016, '2013-10-01 00:00:00', 'Filtro de aire de filtro', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1017, '2013-10-01 00:00:00', 'Filtro Aceite', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1018, '2013-10-01 00:00:00', 'Caja del tubo sedimentos aire', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1019, '2013-10-01 00:00:00', 'Filtro de aire elemento principal', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:28'),
+(1020, '2013-10-01 00:00:00', 'Refrigerante (si procede )', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1021, '2013-10-01 00:00:00', 'Líquido refrigerante', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1022, '2013-10-01 00:00:00', 'Lámpara de faro/de la cola', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1023, '2013-10-01 00:00:00', 'Desgastes de los frenos', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1024, '2013-10-01 00:00:00', 'Batería', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1025, '2013-10-01 00:00:00', 'Liquido de batería', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1026, '2013-10-01 00:00:00', 'Cambio de aceite del motor', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1027, '2013-10-01 00:00:00', 'Aceite de la caja delantera', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1028, '2013-10-01 00:00:00', 'Aceite de la transmisión', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1029, '2013-10-01 00:00:00', 'Tensión del cable de freno de parqueo', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29'),
+(1030, '2013-10-01 00:00:00', 'Juntas', 'Revicion', 'Unidad', 0, 'Polaris', 'Servicio', '2013-10-01 19:48:29');
 
 --
 -- Volcado de datos para la tabla `mantenimiento`
 --
 
-INSERT INTO `mantenimiento` VALUES(2, '4XATH76A2D4315550', '0803550466', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:23:41');
-INSERT INTO `mantenimiento` VALUES(3, '4XATH76A9D4315562', '1711938025', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:25:07');
-INSERT INTO `mantenimiento` VALUES(4, '4XATH76A7D4315592', '0803550466', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:26:00');
-INSERT INTO `mantenimiento` VALUES(5, '4XATH76A2D4315598', '1711938025', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:26:33');
-INSERT INTO `mantenimiento` VALUES(6, '4XATH76A5D4315591', '1711938025', 50, 'Troncal', '2013-07-23 00:00:00', '0', 'Se remplaza la abrazadera del eje trasero', '2013-10-01 20:27:58');
-INSERT INTO `mantenimiento` VALUES(7, '4XATH76A7D4315575', '1711938025', 50, 'La Troncal', '2013-07-23 00:00:00', '0', NULL, '2013-10-01 20:29:27');
-INSERT INTO `mantenimiento` VALUES(8, '4XATH76A4D2290713', '0803550466', 62, 'Pijuli La Victoria', '2013-08-09 00:00:00', '0', NULL, '2013-10-01 21:37:29');
-INSERT INTO `mantenimiento` VALUES(9, '4XATH762AD4317220', '1711938025', 50, 'Guangaje', '2013-08-09 00:00:00', '0', NULL, '2013-10-01 20:38:01');
-INSERT INTO `mantenimiento` VALUES(10, '4XATH76A5D2293216', '1711938025', 30, 'Riobamba', '2013-08-21 00:00:00', '0', 'Se ajustado los dos tornillo de parte arriba del desfogue  del motor\r\n', '2013-10-01 21:37:57');
-INSERT INTO `mantenimiento` VALUES(11, '4XATH76A5D4317678', '0803550466', 50, 'Riobamba', '2013-10-21 00:00:00', '0', 'Se ajustado los dos tornillo de parte arriba del desfogue  del motor\r\n', '2013-10-01 20:40:59');
-INSERT INTO `mantenimiento` VALUES(12, '4XATH76A1D2290779', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros.\r\n', '2013-10-01 20:41:42');
-INSERT INTO `mantenimiento` VALUES(13, '4XATH76A9D2293199', '0803550466', 50, 'Guano', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 20:42:31');
-INSERT INTO `mantenimiento` VALUES(14, '4XATH76A0D2293253', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 20:43:57');
-INSERT INTO `mantenimiento` VALUES(15, '4XATH76A4D2291120', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros\r\n', '2013-10-01 20:44:35');
-INSERT INTO `mantenimiento` VALUES(16, '4XATH76A3D2290749', '0803550466', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros\r\n', '2013-10-01 20:45:20');
-INSERT INTO `mantenimiento` VALUES(17, '4XATH76A2D4317668', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:45:52');
-INSERT INTO `mantenimiento` VALUES(18, '4XATH76A6D2290745', '1711938025', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:46:25');
-INSERT INTO `mantenimiento` VALUES(19, '4XATH76A4D2290808', '1711938025', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:46:53');
-INSERT INTO `mantenimiento` VALUES(20, '4XATH76A1D2290751', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:47:31');
-INSERT INTO `mantenimiento` VALUES(21, '4XATH76A2D4317640', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:48:04');
-INSERT INTO `mantenimiento` VALUES(23, '4XATH76A4D2290825', '1711938025', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:50:07');
-INSERT INTO `mantenimiento` VALUES(24, '4XATH76A6D2290759', '0803550466', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:50:46');
-INSERT INTO `mantenimiento` VALUES(25, '4XATH76A9D2291114', '1711938025', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:51:29');
-INSERT INTO `mantenimiento` VALUES(26, '4XATH76A0D4317667', '0803550466', 50, 'Chunchi', '2013-08-23 00:00:00', '0', NULL, '2013-10-01 20:52:02');
-INSERT INTO `mantenimiento` VALUES(28, '4XATH76A7D2291063', '0803550466', 57, 'Lazo', '2013-08-23 00:00:00', '0', NULL, '2013-10-01 20:56:40');
-INSERT INTO `mantenimiento` VALUES(29, '4XATH76A0D2293205', '0803550466', 51, 'Sigchos', '2013-08-26 00:00:00', '0', 'Se le completo el Líquido de freno , líquido  refrigerante  , tuerca  trasera dañada.\r\n', '2013-10-01 20:58:01');
-INSERT INTO `mantenimiento` VALUES(30, '4XATH76AXD2291073', '0803550466', 52, 'Latacunga', '2013-08-27 00:00:00', '0', 'El vehículo  tiene  cambiado   dos  tuercas, de  la rueda trasera, y la válvula  de la rueda.\r\n', '2013-10-01 20:58:59');
-INSERT INTO `mantenimiento` VALUES(32, '4XATH76A6D4317687', '1711938025', 60, 'Tanicuchi', '2013-09-10 00:00:00', '900.6', 'Mantenimiento completo, El aro de la rueda derecha se encuentra doblada un poco en parte de abajo. Y se ajustó el tornillo del desfogue del motor.\r\n', '2013-10-01 21:13:38');
-INSERT INTO `mantenimiento` VALUES(33, '4XATH76A5D2292065', '0803550466', 61, 'Canchagua', '2013-09-10 00:00:00', '1232', 'Mantenimiento completo, El filtro tenía mucho polvo\r\n', '2013-10-01 21:14:33');
-INSERT INTO `mantenimiento` VALUES(34, '4XATH76A0D4317684', '0803550466', 52, 'La Esperanza', '2013-09-10 00:00:00', '998.8', 'Mantenimiento completo, Tenía cortados los cables que conectan con los sensores, del aceite, temperatura. \r\n', '2013-10-01 21:14:49');
-INSERT INTO `mantenimiento` VALUES(35, '4XATH76A9D2291033', '1711938025', 40, 'Pillaro', '2013-09-17 00:00:00', '786.4', NULL, '2013-10-01 21:15:09');
-INSERT INTO `mantenimiento` VALUES(36, '4XATH76A8D2290777', '0803550466', 51, 'Pillaro', '2013-09-17 00:00:00', '988', NULL, '2013-10-01 21:15:25');
-INSERT INTO `mantenimiento` VALUES(37, '4XATH76A0D2290773', '0803550466', 47, 'Pillaro', '2013-09-17 00:00:00', '794.2', NULL, '2013-10-01 21:15:35');
-INSERT INTO `mantenimiento` VALUES(38, '4XATH76A8D2290830', '1711938025', 50, 'Pelileo', '2013-09-18 00:00:00', '670', 'Tiene retro visores delanteros, y se recalendo el motor , sin liquido de refrigerante.\r\n', '2013-10-01 21:15:48');
-INSERT INTO `mantenimiento` VALUES(39, '4XATH76A5D2291045', '0803550466', 40, 'Pelileo', '2013-09-18 00:00:00', '440', NULL, '2013-10-01 21:15:58');
-INSERT INTO `mantenimiento` VALUES(40, '4XATH76A3D2290816', '1711938025', 50, 'Pelileo', '2013-09-18 00:00:00', '1055', 'En la parte izquierda le falta el plastico de la puerta .\r\n', '2013-10-01 21:16:08');
-INSERT INTO `mantenimiento` VALUES(41, '4XATH76A9D2290755', '1711938025', 52, 'Pilaguin', '2013-09-18 00:00:00', '1018.1', NULL, '2013-10-01 21:09:10');
-INSERT INTO `mantenimiento` VALUES(43, '4XATH76A9D2293204', '1711938025', 50, 'Yanayacu', '2013-09-18 00:00:00', '936.6', NULL, '2013-10-01 21:17:19');
-INSERT INTO `mantenimiento` VALUES(44, '4XATH76A0D2290790', '1711938025', 52, 'Quisapincha', '2013-09-18 00:00:00', '662.8', NULL, '2013-10-01 21:18:02');
-INSERT INTO `mantenimiento` VALUES(45, '4XATH76A4D2290775', '1711938025', 50, 'Cevallos', '2013-09-18 00:00:00', '657.6', NULL, '2013-10-01 21:18:51');
-INSERT INTO `mantenimiento` VALUES(47, '4XATH76A4D2290761', '0803550466', 54, 'La Mana', '2013-09-19 00:00:00', '2151', 'Tiene doblado el guarda choque delantero y  dañado la caroseria del vehiculo.\r\n', '2013-10-01 21:21:19');
-INSERT INTO `mantenimiento` VALUES(48, '4XATH76A7D2290818', '1711938025', 59, 'La Mana', '2013-09-19 00:00:00', '1530', 'Se arreglo la puerta izquierda porque estaba dura para abrir.\r\n', '2013-10-01 21:22:50');
-INSERT INTO `mantenimiento` VALUES(49, '4XATH76A7D2290771', '1711938025', 67, 'Moraspungo', '2013-09-20 00:00:00', '1912', NULL, '2013-10-01 21:28:45');
-INSERT INTO `mantenimiento` VALUES(50, '4XATH76A0D2291101', '1711938025', 40, 'El Corazon', '2013-09-20 00:00:00', '655', 'Cuando se enciende el vehiculo las luces trasera se quedan encenditas y no se apagan \r\n', '2013-10-01 21:31:37');
-INSERT INTO `mantenimiento` VALUES(51, '4XATH76A8D2290794', '1711938025', 47, 'El Corazon', '2013-09-20 00:00:00', '715', 'Se le coloco el aceite que se envio al la ING.  Para complentar  los 2 lts del motor .\r\n', '2013-10-01 21:32:50');
-INSERT INTO `mantenimiento` VALUES(52, '4XATH76A0D2290773', '0803550466', 58, 'El Corazon', '2013-09-20 00:00:00', '977', 'Se le ajusto el tormillo del desfloque del motor.\r\n', '2013-10-01 21:34:35');
-INSERT INTO `mantenimiento` VALUES(53, '4XATH76A6D2293208', '0803550466', 45, 'Chimborazo', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 21:43:20');
+INSERT INTO `mantenimiento` (`id_manteminiento`, `id_vehiculo`, `id_tecnico`, `periodo`, `ubicacion`, `fecha`, `kilometros`, `observacion`, `registro`) VALUES
+(2, '4XATH76A2D4315550', '0803550466', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:23:41'),
+(3, '4XATH76A9D4315562', '1711938025', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:25:07'),
+(4, '4XATH76A7D4315592', '0803550466', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:26:00'),
+(5, '4XATH76A2D4315598', '1711938025', 50, 'Cañar', '2013-07-22 00:00:00', '0', NULL, '2013-10-01 20:26:33'),
+(6, '4XATH76A5D4315591', '1711938025', 50, 'Troncal', '2013-07-23 00:00:00', '0', 'Se remplaza la abrazadera del eje trasero', '2013-10-01 20:27:58'),
+(7, '4XATH76A7D4315575', '1711938025', 50, 'La Troncal', '2013-07-23 00:00:00', '0', NULL, '2013-10-01 20:29:27'),
+(8, '4XATH76A4D2290713', '0803550466', 62, 'Pijuli La Victoria', '2013-08-09 00:00:00', '0', NULL, '2013-10-01 21:37:29'),
+(9, '4XATH762AD4317220', '1711938025', 50, 'Guangaje', '2013-08-09 00:00:00', '0', NULL, '2013-10-01 20:38:01'),
+(10, '4XATH76A5D2293216', '1711938025', 30, 'Riobamba', '2013-08-21 00:00:00', '0', 'Se ajustado los dos tornillo de parte arriba del desfogue  del motor\r\n', '2013-10-01 21:37:57'),
+(11, '4XATH76A5D4317678', '0803550466', 50, 'Riobamba', '2013-10-21 00:00:00', '0', 'Se ajustado los dos tornillo de parte arriba del desfogue  del motor\r\n', '2013-10-01 20:40:59'),
+(12, '4XATH76A1D2290779', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros.\r\n', '2013-10-01 20:41:42'),
+(13, '4XATH76A9D2293199', '0803550466', 50, 'Guano', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 20:42:31'),
+(14, '4XATH76A0D2293253', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 20:43:57'),
+(15, '4XATH76A4D2291120', '1711938025', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros\r\n', '2013-10-01 20:44:35'),
+(16, '4XATH76A3D2290749', '0803550466', 50, 'Guano', '2013-08-21 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros\r\n', '2013-10-01 20:45:20'),
+(17, '4XATH76A2D4317668', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:45:52'),
+(18, '4XATH76A6D2290745', '1711938025', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:46:25'),
+(19, '4XATH76A4D2290808', '1711938025', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:46:53'),
+(20, '4XATH76A1D2290751', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:47:31'),
+(21, '4XATH76A2D4317640', '0803550466', 50, 'Colta', '2013-08-22 00:00:00', '0', NULL, '2013-10-01 20:48:04'),
+(23, '4XATH76A4D2290825', '1711938025', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:50:07'),
+(24, '4XATH76A6D2290759', '0803550466', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:50:46'),
+(25, '4XATH76A9D2291114', '1711938025', 50, 'Alausi', '2013-08-22 00:00:00', '0', 'A este  vehículo le  adatado los siguientes   objetos. Pitos  retrovisores (delanteros y traseros) guías traseras  neblineros delanteros .\r\n', '2013-10-01 20:51:29'),
+(26, '4XATH76A0D4317667', '0803550466', 50, 'Chunchi', '2013-08-23 00:00:00', '0', NULL, '2013-10-01 20:52:02'),
+(28, '4XATH76A7D2291063', '0803550466', 57, 'Lazo', '2013-08-23 00:00:00', '0', NULL, '2013-10-01 20:56:40'),
+(29, '4XATH76A0D2293205', '0803550466', 51, 'Sigchos', '2013-08-26 00:00:00', '0', 'Se le completo el Líquido de freno , líquido  refrigerante  , tuerca  trasera dañada.\r\n', '2013-10-01 20:58:01'),
+(30, '4XATH76AXD2291073', '0803550466', 52, 'Latacunga', '2013-08-27 00:00:00', '0', 'El vehículo  tiene  cambiado   dos  tuercas, de  la rueda trasera, y la válvula  de la rueda.\r\n', '2013-10-01 20:58:59'),
+(32, '4XATH76A6D4317687', '1711938025', 60, 'Tanicuchi', '2013-09-10 00:00:00', '900.6', 'Mantenimiento completo, El aro de la rueda derecha se encuentra doblada un poco en parte de abajo. Y se ajustó el tornillo del desfogue del motor.\r\n', '2013-10-01 21:13:38'),
+(33, '4XATH76A5D2292065', '0803550466', 61, 'Canchagua', '2013-09-10 00:00:00', '1232', 'Mantenimiento completo, El filtro tenía mucho polvo\r\n', '2013-10-01 21:14:33'),
+(34, '4XATH76A0D4317684', '0803550466', 52, 'La Esperanza', '2013-09-10 00:00:00', '998.8', 'Mantenimiento completo, Tenía cortados los cables que conectan con los sensores, del aceite, temperatura. \r\n', '2013-10-01 21:14:49'),
+(35, '4XATH76A9D2291033', '1711938025', 40, 'Pillaro', '2013-09-17 00:00:00', '786.4', NULL, '2013-10-01 21:15:09'),
+(36, '4XATH76A8D2290777', '0803550466', 51, 'Pillaro', '2013-09-17 00:00:00', '988', NULL, '2013-10-01 21:15:25'),
+(37, '4XATH76A0D2290773', '0803550466', 47, 'Pillaro', '2013-09-17 00:00:00', '794.2', NULL, '2013-10-01 21:15:35'),
+(38, '4XATH76A8D2290830', '1711938025', 50, 'Pelileo', '2013-09-18 00:00:00', '670', 'Tiene retro visores delanteros, y se recalendo el motor , sin liquido de refrigerante.\r\n', '2013-10-01 21:15:48'),
+(39, '4XATH76A5D2291045', '0803550466', 40, 'Pelileo', '2013-09-18 00:00:00', '440', NULL, '2013-10-01 21:15:58'),
+(40, '4XATH76A3D2290816', '1711938025', 50, 'Pelileo', '2013-09-18 00:00:00', '1055', 'En la parte izquierda le falta el plastico de la puerta .\r\n', '2013-10-01 21:16:08'),
+(41, '4XATH76A9D2290755', '1711938025', 52, 'Pilaguin', '2013-09-18 00:00:00', '1018.1', NULL, '2013-10-01 21:09:10'),
+(43, '4XATH76A9D2293204', '1711938025', 50, 'Yanayacu', '2013-09-18 00:00:00', '936.6', NULL, '2013-10-01 21:17:19'),
+(44, '4XATH76A0D2290790', '1711938025', 52, 'Quisapincha', '2013-09-18 00:00:00', '662.8', NULL, '2013-10-01 21:18:02'),
+(45, '4XATH76A4D2290775', '1711938025', 50, 'Cevallos', '2013-09-18 00:00:00', '657.6', NULL, '2013-10-01 21:18:51'),
+(47, '4XATH76A4D2290761', '0803550466', 54, 'La Mana', '2013-09-19 00:00:00', '2151', 'Tiene doblado el guarda choque delantero y  dañado la caroseria del vehiculo.\r\n', '2013-10-01 21:21:19'),
+(48, '4XATH76A7D2290818', '1711938025', 59, 'La Mana', '2013-09-19 00:00:00', '1530', 'Se arreglo la puerta izquierda porque estaba dura para abrir.\r\n', '2013-10-01 21:22:50'),
+(49, '4XATH76A7D2290771', '1711938025', 67, 'Moraspungo', '2013-09-20 00:00:00', '1912', NULL, '2013-10-01 21:28:45'),
+(50, '4XATH76A0D2291101', '1711938025', 40, 'El Corazon', '2013-09-20 00:00:00', '655', 'Cuando se enciende el vehiculo las luces trasera se quedan encenditas y no se apagan \r\n', '2013-10-01 21:31:37'),
+(51, '4XATH76A8D2290794', '1711938025', 47, 'El Corazon', '2013-09-20 00:00:00', '715', 'Se le coloco el aceite que se envio al la ING.  Para complentar  los 2 lts del motor .\r\n', '2013-10-01 21:32:50'),
+(52, '4XATH76A0D2290773', '0803550466', 58, 'El Corazon', '2013-09-20 00:00:00', '977', 'Se le ajusto el tormillo del desfloque del motor.\r\n', '2013-10-01 21:34:35'),
+(53, '4XATH76A6D2293208', '0803550466', 45, 'Chimborazo', '2013-08-21 00:00:00', '0', NULL, '2013-10-01 21:43:20');
 
 --
 -- Volcado de datos para la tabla `mantenimiento_detalle`
 --
 
-INSERT INTO `mantenimiento_detalle` VALUES(1, 2, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(2, 2, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(3, 2, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(4, 2, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(5, 2, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(6, 2, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(7, 2, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(8, 2, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(9, 2, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(10, 2, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(11, 2, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(12, 2, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(13, 2, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(14, 2, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(15, 2, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(16, 2, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(17, 2, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(18, 2, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(19, 2, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(20, 2, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(21, 2, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(22, 2, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(23, 2, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(24, 2, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(25, 2, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(26, 2, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(27, 2, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(28, 2, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(29, 2, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(30, 2, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(31, 2, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(32, 3, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(33, 3, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(34, 3, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(35, 3, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(36, 3, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(37, 3, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(38, 3, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(39, 3, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(40, 3, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(41, 3, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(42, 3, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(43, 3, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(44, 3, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(45, 3, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(46, 3, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(47, 3, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(48, 3, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(49, 3, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(50, 3, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(51, 3, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(52, 3, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(53, 3, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(54, 3, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(55, 3, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(56, 3, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(57, 3, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(58, 3, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(59, 3, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(60, 3, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(61, 3, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(62, 3, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(63, 4, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(64, 4, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(65, 4, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(66, 4, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(67, 4, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(68, 4, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(69, 4, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(70, 4, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(71, 4, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(72, 4, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(73, 4, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(74, 4, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(75, 4, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(76, 4, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(77, 4, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(78, 4, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(79, 4, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(80, 4, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(81, 4, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(82, 4, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(83, 4, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(84, 4, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(85, 4, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(86, 4, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(87, 4, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(88, 4, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(89, 4, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(90, 4, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(91, 4, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(92, 4, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(93, 4, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(94, 5, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(95, 5, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(96, 5, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(97, 5, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(98, 5, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(99, 5, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(100, 5, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(101, 5, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(102, 5, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(103, 5, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(104, 5, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(105, 5, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(106, 5, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(107, 5, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(108, 5, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(109, 5, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(110, 5, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(111, 5, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(112, 5, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(113, 5, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(114, 5, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(115, 5, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(116, 5, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(117, 5, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(118, 5, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(119, 5, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(120, 5, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(121, 5, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(122, 5, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(123, 5, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(124, 5, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(125, 6, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(126, 6, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(127, 6, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(128, 6, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(129, 6, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(130, 6, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(131, 6, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(132, 6, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(133, 6, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(134, 6, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(135, 6, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(136, 6, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(137, 6, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(138, 6, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(139, 6, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(140, 6, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(141, 6, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(142, 6, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(143, 6, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(144, 6, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(145, 6, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(146, 6, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(147, 6, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(148, 6, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(149, 6, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(150, 6, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(151, 6, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(152, 6, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(153, 6, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(154, 6, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(155, 6, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(156, 7, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(157, 7, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(158, 7, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(159, 7, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(160, 7, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(161, 7, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(162, 7, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(163, 7, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(164, 7, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(165, 7, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(166, 7, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(167, 7, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(168, 7, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(169, 7, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(170, 7, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(171, 7, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(172, 7, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(173, 7, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(174, 7, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(175, 7, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(176, 7, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(177, 7, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(178, 7, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(179, 7, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(180, 7, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(181, 7, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(182, 7, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(183, 7, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(184, 7, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(185, 7, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(186, 7, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(187, 8, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(188, 8, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(189, 8, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(190, 8, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(191, 8, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(192, 8, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(193, 8, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(194, 8, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(195, 8, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(196, 8, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(197, 8, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(198, 8, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(199, 8, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(200, 8, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(201, 8, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(202, 8, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(203, 8, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(204, 8, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(205, 8, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(206, 8, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(207, 8, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(208, 8, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(209, 8, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(210, 8, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(211, 8, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(212, 8, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(213, 8, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(214, 8, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(215, 8, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(216, 8, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(217, 8, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(218, 9, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(219, 9, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(220, 9, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(221, 9, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(222, 9, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(223, 9, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(224, 9, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(225, 9, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(226, 9, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(227, 9, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(228, 9, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(229, 9, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(230, 9, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(231, 9, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(232, 9, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(233, 9, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(234, 9, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(235, 9, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(236, 9, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(237, 9, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(238, 9, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(239, 9, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(240, 9, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(241, 9, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(242, 9, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(243, 9, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(244, 9, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(245, 9, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(246, 9, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(247, 9, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(248, 9, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(249, 10, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(250, 10, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(251, 10, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(252, 10, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(253, 10, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(254, 10, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(255, 10, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(256, 10, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(257, 10, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(258, 10, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(259, 10, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(260, 10, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(261, 10, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(262, 10, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(263, 10, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(264, 10, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(265, 10, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(266, 10, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(267, 10, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(268, 10, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(269, 10, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(270, 10, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(271, 10, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(272, 10, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(273, 10, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(274, 10, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(275, 10, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(276, 10, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(277, 10, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(278, 10, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(279, 10, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(280, 11, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(281, 11, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(282, 11, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(283, 11, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(284, 11, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(285, 11, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(286, 11, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(287, 11, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(288, 11, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(289, 11, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(290, 11, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(291, 11, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(292, 11, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(293, 11, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(294, 11, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(295, 11, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(296, 11, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(297, 11, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(298, 11, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(299, 11, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(300, 11, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(301, 11, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(302, 11, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(303, 11, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(304, 11, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(305, 11, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(306, 11, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(307, 11, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(308, 11, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(309, 11, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(310, 11, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(311, 12, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(312, 12, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(313, 12, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(314, 12, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(315, 12, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(316, 12, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(317, 12, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(318, 12, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(319, 12, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(320, 12, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(321, 12, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(322, 12, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(323, 12, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(324, 12, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(325, 12, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(326, 12, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(327, 12, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(328, 12, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(329, 12, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(330, 12, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(331, 12, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(332, 12, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(333, 12, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(334, 12, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(335, 12, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(336, 12, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(337, 12, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(338, 12, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(339, 12, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(340, 12, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(341, 12, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(342, 13, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(343, 13, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(344, 13, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(345, 13, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(346, 13, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(347, 13, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(348, 13, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(349, 13, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(350, 13, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(351, 13, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(352, 13, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(353, 13, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(354, 13, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(355, 13, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(356, 13, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(357, 13, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(358, 13, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(359, 13, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(360, 13, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(361, 13, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(362, 13, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(363, 13, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(364, 13, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(365, 13, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(366, 13, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(367, 13, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(368, 13, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(369, 13, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(370, 13, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(371, 13, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(372, 13, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(373, 14, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(374, 14, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(375, 14, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(376, 14, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(377, 14, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(378, 14, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(379, 14, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(380, 14, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(381, 14, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(382, 14, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(383, 14, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(384, 14, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(385, 14, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(386, 14, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(387, 14, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(388, 14, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(389, 14, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(390, 14, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(391, 14, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(392, 14, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(393, 14, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(394, 14, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(395, 14, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(396, 14, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(397, 14, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(398, 14, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(399, 14, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(400, 14, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(401, 14, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(402, 14, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(403, 14, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(404, 15, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(405, 15, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(406, 15, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(407, 15, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(408, 15, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(409, 15, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(410, 15, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(411, 15, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(412, 15, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(413, 15, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(414, 15, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(415, 15, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(416, 15, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(417, 15, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(418, 15, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(419, 15, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(420, 15, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(421, 15, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(422, 15, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(423, 15, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(424, 15, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(425, 15, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(426, 15, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(427, 15, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(428, 15, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(429, 15, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(430, 15, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(431, 15, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(432, 15, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(433, 15, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(434, 15, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(435, 16, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(436, 16, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(437, 16, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(438, 16, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(439, 16, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(440, 16, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(441, 16, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(442, 16, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(443, 16, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(444, 16, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(445, 16, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(446, 16, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(447, 16, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(448, 16, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(449, 16, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(450, 16, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(451, 16, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(452, 16, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(453, 16, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(454, 16, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(455, 16, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(456, 16, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(457, 16, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(458, 16, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(459, 16, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(460, 16, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(461, 16, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(462, 16, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(463, 16, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(464, 16, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(465, 16, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(466, 17, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(467, 17, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(468, 17, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(469, 17, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(470, 17, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(471, 17, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(472, 17, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(473, 17, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(474, 17, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(475, 17, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(476, 17, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(477, 17, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(478, 17, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(479, 17, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(480, 17, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(481, 17, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(482, 17, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(483, 17, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(484, 17, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(485, 17, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(486, 17, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(487, 17, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(488, 17, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(489, 17, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(490, 17, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(491, 17, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(492, 17, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(493, 17, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(494, 17, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(495, 17, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(496, 17, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(497, 18, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(498, 18, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(499, 18, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(500, 18, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(501, 18, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(502, 18, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(503, 18, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(504, 18, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(505, 18, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(506, 18, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(507, 18, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(508, 18, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(509, 18, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(510, 18, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(511, 18, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(512, 18, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(513, 18, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(514, 18, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(515, 18, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(516, 18, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(517, 18, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(518, 18, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(519, 18, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(520, 18, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(521, 18, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(522, 18, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(523, 18, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(524, 18, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(525, 18, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(526, 18, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(527, 18, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(528, 19, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(529, 19, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(530, 19, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(531, 19, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(532, 19, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(533, 19, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(534, 19, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(535, 19, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(536, 19, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(537, 19, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(538, 19, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(539, 19, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(540, 19, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(541, 19, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(542, 19, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(543, 19, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(544, 19, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(545, 19, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(546, 19, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(547, 19, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(548, 19, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(549, 19, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(550, 19, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(551, 19, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(552, 19, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(553, 19, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(554, 19, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(555, 19, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(556, 19, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(557, 19, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(558, 19, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(559, 20, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(560, 20, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(561, 20, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(562, 20, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(563, 20, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(564, 20, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(565, 20, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(566, 20, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(567, 20, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(568, 20, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(569, 20, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(570, 20, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(571, 20, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(572, 20, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(573, 20, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(574, 20, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(575, 20, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(576, 20, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(577, 20, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(578, 20, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(579, 20, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(580, 20, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(581, 20, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(582, 20, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(583, 20, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(584, 20, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(585, 20, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(586, 20, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(587, 20, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(588, 20, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(589, 20, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(590, 21, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(591, 21, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(592, 21, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(593, 21, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(594, 21, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(595, 21, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(596, 21, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(597, 21, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(598, 21, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(599, 21, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(600, 21, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(601, 21, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(602, 21, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(603, 21, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(604, 21, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(605, 21, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(606, 21, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(607, 21, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(608, 21, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(609, 21, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(610, 21, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(611, 21, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(612, 21, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(613, 21, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(614, 21, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(615, 21, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(616, 21, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(617, 21, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(618, 21, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(619, 21, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(620, 21, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(652, 23, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(653, 23, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(654, 23, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(655, 23, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(656, 23, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(657, 23, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(658, 23, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(659, 23, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(660, 23, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(661, 23, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(662, 23, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(663, 23, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(664, 23, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(665, 23, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(666, 23, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(667, 23, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(668, 23, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(669, 23, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(670, 23, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(671, 23, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(672, 23, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(673, 23, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(674, 23, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(675, 23, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(676, 23, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(677, 23, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(678, 23, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(679, 23, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(680, 23, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(681, 23, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(682, 23, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(683, 24, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(684, 24, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(685, 24, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(686, 24, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(687, 24, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(688, 24, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(689, 24, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(690, 24, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(691, 24, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(692, 24, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(693, 24, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(694, 24, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(695, 24, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(696, 24, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(697, 24, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(698, 24, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(699, 24, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(700, 24, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(701, 24, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(702, 24, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(703, 24, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(704, 24, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(705, 24, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(706, 24, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(707, 24, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(708, 24, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(709, 24, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(710, 24, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(711, 24, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(712, 24, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(713, 24, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(714, 25, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(715, 25, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(716, 25, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(717, 25, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(718, 25, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(719, 25, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(720, 25, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(721, 25, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(722, 25, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(723, 25, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(724, 25, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(725, 25, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(726, 25, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(727, 25, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(728, 25, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(729, 25, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(730, 25, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(731, 25, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(732, 25, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(733, 25, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(734, 25, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(735, 25, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(736, 25, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(737, 25, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(738, 25, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(739, 25, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(740, 25, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(741, 25, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(742, 25, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(743, 25, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(744, 25, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(745, 26, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(746, 26, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(747, 26, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(748, 26, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(749, 26, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(750, 26, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(751, 26, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(752, 26, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(753, 26, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(754, 26, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(755, 26, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(756, 26, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(757, 26, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(758, 26, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(759, 26, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(760, 26, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(761, 26, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(762, 26, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(763, 26, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(764, 26, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(765, 26, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(766, 26, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(767, 26, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(768, 26, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(769, 26, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(770, 26, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(771, 26, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(772, 26, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(773, 26, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(774, 26, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(775, 26, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(807, 28, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(808, 28, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(809, 28, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(810, 28, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(811, 28, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(812, 28, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(813, 28, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(814, 28, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(815, 28, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(816, 28, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(817, 28, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(818, 28, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(819, 28, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(820, 28, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(821, 28, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(822, 28, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(823, 28, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(824, 28, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(825, 28, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(826, 28, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(827, 28, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(828, 28, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(829, 28, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(830, 28, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(831, 28, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(832, 28, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(833, 28, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(834, 28, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(835, 28, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(836, 28, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(837, 28, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(838, 29, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(839, 29, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(840, 29, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(841, 29, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(842, 29, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(843, 29, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(844, 29, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(845, 29, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(846, 29, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(847, 29, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(848, 29, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(849, 29, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(850, 29, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(851, 29, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(852, 29, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(853, 29, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(854, 29, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(855, 29, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(856, 29, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(857, 29, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(858, 29, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(859, 29, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(860, 29, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(861, 29, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(862, 29, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(863, 29, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(864, 29, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(865, 29, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(866, 29, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(867, 29, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(868, 29, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(869, 30, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(870, 30, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(871, 30, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(872, 30, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(873, 30, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(874, 30, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(875, 30, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(876, 30, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(877, 30, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(878, 30, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(879, 30, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(880, 30, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(881, 30, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(882, 30, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(883, 30, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(884, 30, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(885, 30, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(886, 30, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(887, 30, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(888, 30, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(889, 30, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(890, 30, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(891, 30, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(892, 30, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(893, 30, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(894, 30, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(895, 30, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(896, 30, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(897, 30, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(898, 30, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(899, 30, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(931, 32, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(932, 32, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(933, 32, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(934, 32, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(935, 32, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(936, 32, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(937, 32, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(938, 32, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(939, 32, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(940, 32, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(941, 32, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(942, 32, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(943, 32, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(944, 32, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(945, 32, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(946, 32, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(947, 32, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(948, 32, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(949, 32, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(950, 32, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(951, 32, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(952, 32, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(953, 32, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(954, 32, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(955, 32, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(956, 32, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(957, 32, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(958, 32, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(959, 32, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(960, 32, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(961, 32, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(962, 33, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(963, 33, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(964, 33, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(965, 33, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(966, 33, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(967, 33, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(968, 33, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(969, 33, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(970, 33, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(971, 33, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(972, 33, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(973, 33, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(974, 33, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(975, 33, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(976, 33, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(977, 33, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(978, 33, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(979, 33, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(980, 33, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(981, 33, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(982, 33, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(983, 33, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(984, 33, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(985, 33, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(986, 33, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(987, 33, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(988, 33, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(989, 33, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(990, 33, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(991, 33, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(992, 33, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(993, 34, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(994, 34, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(995, 34, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(996, 34, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(997, 34, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(998, 34, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(999, 34, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1000, 34, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1001, 34, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1002, 34, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1003, 34, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1004, 34, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1005, 34, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1006, 34, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1007, 34, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1008, 34, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1009, 34, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1010, 34, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1011, 34, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1012, 34, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1013, 34, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1014, 34, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1015, 34, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1016, 34, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1017, 34, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1018, 34, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1019, 34, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1020, 34, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1021, 34, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1022, 34, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1023, 34, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1024, 35, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1025, 35, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1026, 35, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1027, 35, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1028, 35, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1029, 35, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1030, 35, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1031, 35, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1032, 35, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1033, 35, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1034, 35, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1035, 35, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1036, 35, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1037, 35, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1038, 35, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1039, 35, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1040, 35, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1041, 35, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1042, 35, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1043, 35, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1044, 35, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1045, 35, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1046, 35, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1047, 35, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1048, 35, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1049, 35, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1050, 35, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1051, 35, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1052, 35, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1053, 35, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1054, 35, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1055, 36, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1056, 36, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1057, 36, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1058, 36, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1059, 36, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1060, 36, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1061, 36, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1062, 36, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1063, 36, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1064, 36, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1065, 36, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1066, 36, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1067, 36, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1068, 36, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1069, 36, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1070, 36, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1071, 36, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1072, 36, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1073, 36, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1074, 36, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1075, 36, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1076, 36, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1077, 36, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1078, 36, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1079, 36, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1080, 36, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1081, 36, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1082, 36, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1083, 36, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1084, 36, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1085, 36, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1086, 37, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1087, 37, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1088, 37, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1089, 37, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1090, 37, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1091, 37, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1092, 37, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1093, 37, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1094, 37, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1095, 37, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1096, 37, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1097, 37, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1098, 37, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1099, 37, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1100, 37, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1101, 37, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1102, 37, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1103, 37, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1104, 37, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1105, 37, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1106, 37, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1107, 37, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1108, 37, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1109, 37, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1110, 37, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1111, 37, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1112, 37, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1113, 37, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1114, 37, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1115, 37, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1116, 37, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1117, 38, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1118, 38, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1119, 38, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1120, 38, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1121, 38, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1122, 38, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1123, 38, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1124, 38, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1125, 38, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1126, 38, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1127, 38, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1128, 38, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1129, 38, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1130, 38, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1131, 38, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1132, 38, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1133, 38, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1134, 38, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1135, 38, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1136, 38, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1137, 38, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1138, 38, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1139, 38, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1140, 38, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1141, 38, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1142, 38, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1143, 38, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1144, 38, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1145, 38, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1146, 38, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1147, 38, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1148, 39, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1149, 39, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1150, 39, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1151, 39, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1152, 39, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1153, 39, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1154, 39, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1155, 39, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1156, 39, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1157, 39, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1158, 39, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1159, 39, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1160, 39, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1161, 39, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1162, 39, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1163, 39, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1164, 39, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1165, 39, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1166, 39, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1167, 39, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1168, 39, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1169, 39, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1170, 39, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1171, 39, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1172, 39, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1173, 39, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1174, 39, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1175, 39, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1176, 39, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1177, 39, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1178, 39, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1179, 40, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1180, 40, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1181, 40, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1182, 40, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1183, 40, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1184, 40, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1185, 40, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1186, 40, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1187, 40, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1188, 40, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1189, 40, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1190, 40, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1191, 40, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1192, 40, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1193, 40, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1194, 40, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1195, 40, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1196, 40, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1197, 40, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1198, 40, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1199, 40, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1200, 40, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1201, 40, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1202, 40, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1203, 40, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1204, 40, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1205, 40, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1206, 40, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1207, 40, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1208, 40, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1209, 40, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1210, 41, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1211, 41, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1212, 41, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1213, 41, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1214, 41, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1215, 41, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1216, 41, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1217, 41, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1218, 41, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1219, 41, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1220, 41, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1221, 41, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1222, 41, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1223, 41, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1224, 41, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1225, 41, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1226, 41, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1227, 41, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1228, 41, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1229, 41, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1230, 41, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1231, 41, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1232, 41, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1233, 41, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1234, 41, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1235, 41, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1236, 41, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1237, 41, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1238, 41, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1239, 41, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1240, 41, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1241, 43, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1242, 43, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1243, 43, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1244, 43, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1245, 43, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1246, 43, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1247, 43, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1248, 43, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1249, 43, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1250, 43, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1251, 43, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1252, 43, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1253, 43, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1254, 43, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1255, 43, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1256, 43, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1257, 43, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1258, 43, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1259, 43, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1260, 43, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1261, 43, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1262, 43, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1263, 43, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1264, 43, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1265, 43, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1266, 43, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1267, 43, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1268, 43, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1269, 43, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1270, 43, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1271, 43, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1272, 44, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1273, 44, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1274, 44, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1275, 44, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1276, 44, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1277, 44, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1278, 44, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1279, 44, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1280, 44, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1281, 44, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1282, 44, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1283, 44, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1284, 44, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1285, 44, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1286, 44, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1287, 44, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1288, 44, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1289, 44, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1290, 44, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1291, 44, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1292, 44, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1293, 44, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1294, 44, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1295, 44, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1296, 44, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1297, 44, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1298, 44, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1299, 44, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1300, 44, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1301, 44, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1302, 44, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1303, 45, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1304, 45, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1305, 45, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1306, 45, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1307, 45, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1308, 45, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1309, 45, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1310, 45, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1311, 45, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1312, 45, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1313, 45, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1314, 45, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1315, 45, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1316, 45, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1317, 45, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1318, 45, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1319, 45, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1320, 45, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1321, 45, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1322, 45, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1323, 45, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1324, 45, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1325, 45, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1326, 45, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1327, 45, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1328, 45, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1329, 45, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1330, 45, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1331, 45, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1332, 45, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1333, 45, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1365, 47, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1366, 47, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1367, 47, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1368, 47, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1369, 47, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1370, 47, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1371, 47, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1372, 47, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1373, 47, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1374, 47, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1375, 47, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1376, 47, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1377, 47, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1378, 47, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1379, 47, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1380, 47, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1381, 47, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1382, 47, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1383, 47, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1384, 47, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1385, 47, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1386, 47, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1387, 47, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1388, 47, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1389, 47, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1390, 47, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1391, 47, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1392, 47, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1393, 47, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1394, 47, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1395, 47, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1396, 48, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1397, 48, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1398, 48, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1399, 48, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1400, 48, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1401, 48, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1402, 48, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1403, 48, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1404, 48, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1405, 48, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1406, 48, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1407, 48, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1408, 48, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1409, 48, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1410, 48, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1411, 48, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1412, 48, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1413, 48, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1414, 48, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1415, 48, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1416, 48, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1417, 48, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1418, 48, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1419, 48, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1420, 48, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1421, 48, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1422, 48, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1423, 48, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1424, 48, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1425, 48, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1426, 48, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1427, 49, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1428, 49, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1429, 49, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1430, 49, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1431, 49, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1432, 49, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1433, 49, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1434, 49, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1435, 49, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1436, 49, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1437, 49, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1438, 49, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1439, 49, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1440, 49, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1441, 49, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1442, 49, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1443, 49, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1444, 49, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1445, 49, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1446, 49, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1447, 49, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1448, 49, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1449, 49, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1450, 49, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1451, 49, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1452, 49, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1453, 49, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1454, 49, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1455, 49, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1456, 49, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1457, 49, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1458, 50, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1459, 50, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1460, 50, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1461, 50, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1462, 50, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1463, 50, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1464, 50, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1465, 50, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1466, 50, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1467, 50, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1468, 50, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1469, 50, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1470, 50, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1471, 50, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1472, 50, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1473, 50, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1474, 50, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1475, 50, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1476, 50, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1477, 50, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1478, 50, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1479, 50, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1480, 50, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1481, 50, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1482, 50, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1483, 50, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1484, 50, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1485, 50, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1486, 50, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1487, 50, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1488, 50, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1489, 51, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1490, 51, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1491, 51, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1492, 51, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1493, 51, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1494, 51, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1495, 51, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1496, 51, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1497, 51, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1498, 51, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1499, 51, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1500, 51, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1501, 51, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1502, 51, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1503, 51, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1504, 51, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1505, 51, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1506, 51, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1507, 51, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1508, 51, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1509, 51, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1510, 51, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1511, 51, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1512, 51, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1513, 51, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1514, 51, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1515, 51, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1516, 51, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1517, 51, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1518, 51, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1519, 51, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1520, 52, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1521, 52, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1522, 52, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1523, 52, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1524, 52, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1525, 52, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1526, 52, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1527, 52, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1528, 52, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1529, 52, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1530, 52, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1531, 52, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1532, 52, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1533, 52, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1534, 52, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1535, 52, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1536, 52, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1537, 52, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1538, 52, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1539, 52, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1540, 52, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1541, 52, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1542, 52, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1543, 52, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1544, 52, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1545, 52, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1546, 52, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1547, 52, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1548, 52, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1549, 52, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1550, 52, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1551, 53, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1552, 53, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1553, 53, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1554, 53, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1555, 53, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1556, 53, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1557, 53, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1558, 53, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1559, 53, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1560, 53, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1561, 53, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1562, 53, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1563, 53, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1564, 53, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1565, 53, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1566, 53, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1567, 53, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1568, 53, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1569, 53, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1570, 53, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1571, 53, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1572, 53, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1573, 53, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1574, 53, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1575, 53, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1576, 53, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1577, 53, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1578, 53, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1579, 53, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1580, 53, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
-INSERT INTO `mantenimiento_detalle` VALUES(1581, 53, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
+INSERT INTO `mantenimiento_detalle` (`id_manteminiento_detalle`, `id_manteminiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `observaciones`, `registro`) VALUES
+(1, 2, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(2, 2, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(3, 2, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(4, 2, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(5, 2, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(6, 2, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(7, 2, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(8, 2, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(9, 2, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(10, 2, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(11, 2, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(12, 2, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(13, 2, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(14, 2, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(15, 2, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(16, 2, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(17, 2, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(18, 2, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(19, 2, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(20, 2, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(21, 2, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(22, 2, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(23, 2, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(24, 2, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(25, 2, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(26, 2, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(27, 2, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(28, 2, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(29, 2, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(30, 2, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(31, 2, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(32, 3, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(33, 3, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(34, 3, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(35, 3, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(36, 3, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(37, 3, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(38, 3, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(39, 3, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(40, 3, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(41, 3, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(42, 3, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(43, 3, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(44, 3, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(45, 3, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(46, 3, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(47, 3, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(48, 3, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(49, 3, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(50, 3, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(51, 3, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(52, 3, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(53, 3, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(54, 3, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(55, 3, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(56, 3, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(57, 3, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(58, 3, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(59, 3, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(60, 3, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(61, 3, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(62, 3, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(63, 4, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(64, 4, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(65, 4, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(66, 4, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(67, 4, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(68, 4, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(69, 4, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(70, 4, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(71, 4, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(72, 4, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(73, 4, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(74, 4, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(75, 4, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(76, 4, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(77, 4, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(78, 4, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(79, 4, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(80, 4, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(81, 4, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(82, 4, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(83, 4, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(84, 4, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(85, 4, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(86, 4, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(87, 4, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(88, 4, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(89, 4, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(90, 4, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(91, 4, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(92, 4, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(93, 4, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(94, 5, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(95, 5, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(96, 5, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(97, 5, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(98, 5, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(99, 5, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(100, 5, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(101, 5, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(102, 5, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(103, 5, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(104, 5, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(105, 5, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(106, 5, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(107, 5, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(108, 5, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(109, 5, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(110, 5, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(111, 5, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(112, 5, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(113, 5, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(114, 5, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(115, 5, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(116, 5, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(117, 5, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(118, 5, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(119, 5, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(120, 5, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(121, 5, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(122, 5, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(123, 5, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(124, 5, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(125, 6, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(126, 6, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(127, 6, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(128, 6, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(129, 6, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(130, 6, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(131, 6, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(132, 6, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(133, 6, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(134, 6, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(135, 6, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(136, 6, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(137, 6, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(138, 6, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(139, 6, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(140, 6, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(141, 6, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(142, 6, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(143, 6, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(144, 6, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(145, 6, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(146, 6, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(147, 6, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(148, 6, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(149, 6, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(150, 6, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(151, 6, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(152, 6, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(153, 6, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(154, 6, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(155, 6, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(156, 7, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(157, 7, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(158, 7, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(159, 7, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(160, 7, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(161, 7, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(162, 7, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(163, 7, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(164, 7, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(165, 7, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(166, 7, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(167, 7, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(168, 7, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(169, 7, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(170, 7, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(171, 7, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(172, 7, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(173, 7, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(174, 7, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(175, 7, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(176, 7, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(177, 7, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(178, 7, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(179, 7, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(180, 7, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(181, 7, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(182, 7, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(183, 7, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(184, 7, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(185, 7, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(186, 7, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(187, 8, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(188, 8, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(189, 8, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(190, 8, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(191, 8, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(192, 8, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(193, 8, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(194, 8, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(195, 8, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(196, 8, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(197, 8, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(198, 8, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(199, 8, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(200, 8, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(201, 8, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(202, 8, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(203, 8, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(204, 8, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(205, 8, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(206, 8, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(207, 8, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(208, 8, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(209, 8, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(210, 8, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(211, 8, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(212, 8, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(213, 8, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(214, 8, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(215, 8, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(216, 8, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(217, 8, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(218, 9, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(219, 9, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(220, 9, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(221, 9, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(222, 9, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(223, 9, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(224, 9, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(225, 9, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(226, 9, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(227, 9, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(228, 9, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(229, 9, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(230, 9, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(231, 9, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(232, 9, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(233, 9, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(234, 9, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(235, 9, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(236, 9, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(237, 9, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(238, 9, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(239, 9, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(240, 9, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(241, 9, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(242, 9, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(243, 9, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(244, 9, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(245, 9, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(246, 9, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(247, 9, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(248, 9, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(249, 10, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(250, 10, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(251, 10, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(252, 10, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(253, 10, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(254, 10, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(255, 10, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(256, 10, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(257, 10, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(258, 10, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(259, 10, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(260, 10, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(261, 10, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(262, 10, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(263, 10, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(264, 10, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(265, 10, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(266, 10, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(267, 10, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(268, 10, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(269, 10, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(270, 10, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(271, 10, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(272, 10, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(273, 10, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(274, 10, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(275, 10, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(276, 10, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(277, 10, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(278, 10, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(279, 10, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(280, 11, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(281, 11, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(282, 11, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(283, 11, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(284, 11, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(285, 11, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(286, 11, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(287, 11, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(288, 11, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(289, 11, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(290, 11, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(291, 11, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(292, 11, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(293, 11, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(294, 11, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(295, 11, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(296, 11, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(297, 11, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(298, 11, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(299, 11, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(300, 11, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(301, 11, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(302, 11, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(303, 11, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(304, 11, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(305, 11, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(306, 11, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(307, 11, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(308, 11, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(309, 11, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(310, 11, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(311, 12, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(312, 12, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(313, 12, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(314, 12, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(315, 12, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(316, 12, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(317, 12, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(318, 12, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(319, 12, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(320, 12, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(321, 12, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(322, 12, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(323, 12, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(324, 12, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(325, 12, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(326, 12, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(327, 12, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(328, 12, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(329, 12, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(330, 12, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(331, 12, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(332, 12, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(333, 12, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(334, 12, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(335, 12, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(336, 12, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(337, 12, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(338, 12, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(339, 12, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(340, 12, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(341, 12, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(342, 13, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(343, 13, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(344, 13, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(345, 13, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(346, 13, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(347, 13, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(348, 13, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(349, 13, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(350, 13, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(351, 13, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(352, 13, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(353, 13, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(354, 13, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(355, 13, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(356, 13, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(357, 13, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(358, 13, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(359, 13, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(360, 13, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(361, 13, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(362, 13, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(363, 13, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(364, 13, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(365, 13, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(366, 13, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(367, 13, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(368, 13, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(369, 13, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(370, 13, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(371, 13, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(372, 13, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(373, 14, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(374, 14, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(375, 14, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(376, 14, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(377, 14, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(378, 14, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(379, 14, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(380, 14, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(381, 14, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(382, 14, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(383, 14, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(384, 14, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(385, 14, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(386, 14, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(387, 14, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(388, 14, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(389, 14, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(390, 14, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(391, 14, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(392, 14, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(393, 14, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(394, 14, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(395, 14, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(396, 14, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(397, 14, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(398, 14, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(399, 14, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(400, 14, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(401, 14, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(402, 14, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(403, 14, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(404, 15, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(405, 15, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(406, 15, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(407, 15, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(408, 15, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(409, 15, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(410, 15, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(411, 15, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(412, 15, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(413, 15, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(414, 15, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(415, 15, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(416, 15, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(417, 15, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(418, 15, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(419, 15, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(420, 15, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(421, 15, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(422, 15, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(423, 15, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(424, 15, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(425, 15, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(426, 15, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(427, 15, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(428, 15, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(429, 15, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(430, 15, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(431, 15, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(432, 15, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(433, 15, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(434, 15, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(435, 16, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(436, 16, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(437, 16, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(438, 16, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(439, 16, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(440, 16, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(441, 16, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(442, 16, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(443, 16, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(444, 16, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(445, 16, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(446, 16, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(447, 16, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(448, 16, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(449, 16, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(450, 16, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(451, 16, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(452, 16, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(453, 16, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(454, 16, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(455, 16, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(456, 16, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(457, 16, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(458, 16, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(459, 16, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(460, 16, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(461, 16, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(462, 16, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(463, 16, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(464, 16, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(465, 16, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(466, 17, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(467, 17, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(468, 17, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(469, 17, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(470, 17, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(471, 17, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(472, 17, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(473, 17, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(474, 17, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(475, 17, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(476, 17, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(477, 17, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(478, 17, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(479, 17, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(480, 17, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(481, 17, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(482, 17, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(483, 17, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(484, 17, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(485, 17, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(486, 17, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(487, 17, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(488, 17, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(489, 17, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(490, 17, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(491, 17, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(492, 17, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(493, 17, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(494, 17, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(495, 17, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(496, 17, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(497, 18, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(498, 18, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(499, 18, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(500, 18, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(501, 18, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(502, 18, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(503, 18, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(504, 18, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(505, 18, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(506, 18, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(507, 18, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(508, 18, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(509, 18, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(510, 18, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(511, 18, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(512, 18, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(513, 18, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(514, 18, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(515, 18, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(516, 18, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(517, 18, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(518, 18, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(519, 18, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(520, 18, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(521, 18, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(522, 18, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(523, 18, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(524, 18, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(525, 18, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(526, 18, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(527, 18, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(528, 19, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(529, 19, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(530, 19, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(531, 19, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(532, 19, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(533, 19, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(534, 19, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(535, 19, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(536, 19, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(537, 19, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(538, 19, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(539, 19, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(540, 19, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(541, 19, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(542, 19, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(543, 19, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(544, 19, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(545, 19, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(546, 19, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(547, 19, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(548, 19, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(549, 19, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(550, 19, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(551, 19, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(552, 19, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(553, 19, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(554, 19, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(555, 19, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(556, 19, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(557, 19, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(558, 19, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(559, 20, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(560, 20, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(561, 20, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(562, 20, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(563, 20, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(564, 20, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(565, 20, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(566, 20, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(567, 20, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(568, 20, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(569, 20, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(570, 20, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(571, 20, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(572, 20, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(573, 20, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(574, 20, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(575, 20, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(576, 20, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(577, 20, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(578, 20, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(579, 20, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(580, 20, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(581, 20, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(582, 20, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(583, 20, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(584, 20, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(585, 20, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(586, 20, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(587, 20, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(588, 20, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(589, 20, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(590, 21, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(591, 21, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(592, 21, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(593, 21, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(594, 21, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(595, 21, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(596, 21, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(597, 21, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(598, 21, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(599, 21, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(600, 21, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(601, 21, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(602, 21, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(603, 21, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(604, 21, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(605, 21, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(606, 21, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(607, 21, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(608, 21, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(609, 21, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(610, 21, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(611, 21, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(612, 21, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(613, 21, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(614, 21, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(615, 21, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(616, 21, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(617, 21, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(618, 21, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(619, 21, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(620, 21, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(652, 23, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(653, 23, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(654, 23, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(655, 23, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(656, 23, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(657, 23, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(658, 23, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(659, 23, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(660, 23, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(661, 23, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(662, 23, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(663, 23, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(664, 23, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(665, 23, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(666, 23, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(667, 23, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(668, 23, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(669, 23, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(670, 23, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(671, 23, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(672, 23, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(673, 23, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(674, 23, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(675, 23, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(676, 23, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(677, 23, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(678, 23, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(679, 23, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(680, 23, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(681, 23, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(682, 23, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(683, 24, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(684, 24, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(685, 24, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(686, 24, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(687, 24, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(688, 24, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(689, 24, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(690, 24, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
+INSERT INTO `mantenimiento_detalle` (`id_manteminiento_detalle`, `id_manteminiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `observaciones`, `registro`) VALUES
+(691, 24, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(692, 24, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(693, 24, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(694, 24, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(695, 24, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(696, 24, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(697, 24, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(698, 24, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(699, 24, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(700, 24, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(701, 24, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(702, 24, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(703, 24, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(704, 24, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(705, 24, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(706, 24, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(707, 24, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(708, 24, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(709, 24, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(710, 24, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(711, 24, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(712, 24, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(713, 24, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(714, 25, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(715, 25, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(716, 25, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(717, 25, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(718, 25, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(719, 25, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(720, 25, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(721, 25, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(722, 25, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(723, 25, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(724, 25, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(725, 25, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(726, 25, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(727, 25, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(728, 25, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(729, 25, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(730, 25, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(731, 25, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(732, 25, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(733, 25, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(734, 25, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(735, 25, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(736, 25, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(737, 25, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(738, 25, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(739, 25, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(740, 25, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(741, 25, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(742, 25, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(743, 25, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(744, 25, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(745, 26, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(746, 26, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(747, 26, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(748, 26, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(749, 26, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(750, 26, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(751, 26, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(752, 26, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(753, 26, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(754, 26, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(755, 26, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(756, 26, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(757, 26, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(758, 26, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(759, 26, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(760, 26, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(761, 26, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(762, 26, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(763, 26, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(764, 26, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(765, 26, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(766, 26, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(767, 26, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(768, 26, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(769, 26, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(770, 26, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(771, 26, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(772, 26, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(773, 26, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(774, 26, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(775, 26, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(807, 28, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(808, 28, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(809, 28, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(810, 28, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(811, 28, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(812, 28, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(813, 28, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(814, 28, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(815, 28, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(816, 28, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(817, 28, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(818, 28, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(819, 28, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(820, 28, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(821, 28, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(822, 28, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(823, 28, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(824, 28, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(825, 28, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(826, 28, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(827, 28, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(828, 28, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(829, 28, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(830, 28, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(831, 28, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(832, 28, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(833, 28, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(834, 28, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(835, 28, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(836, 28, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(837, 28, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(838, 29, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(839, 29, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(840, 29, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(841, 29, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(842, 29, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(843, 29, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(844, 29, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(845, 29, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(846, 29, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(847, 29, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(848, 29, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(849, 29, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(850, 29, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(851, 29, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(852, 29, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(853, 29, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(854, 29, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(855, 29, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(856, 29, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(857, 29, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(858, 29, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(859, 29, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(860, 29, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(861, 29, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(862, 29, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(863, 29, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(864, 29, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(865, 29, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(866, 29, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(867, 29, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(868, 29, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(869, 30, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(870, 30, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(871, 30, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(872, 30, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(873, 30, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(874, 30, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(875, 30, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(876, 30, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(877, 30, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(878, 30, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(879, 30, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(880, 30, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(881, 30, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(882, 30, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(883, 30, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(884, 30, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(885, 30, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(886, 30, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(887, 30, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(888, 30, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(889, 30, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(890, 30, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(891, 30, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(892, 30, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(893, 30, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(894, 30, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(895, 30, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(896, 30, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(897, 30, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(898, 30, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(899, 30, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(931, 32, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(932, 32, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(933, 32, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(934, 32, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(935, 32, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(936, 32, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(937, 32, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(938, 32, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(939, 32, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(940, 32, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(941, 32, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(942, 32, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(943, 32, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(944, 32, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(945, 32, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(946, 32, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(947, 32, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(948, 32, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(949, 32, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(950, 32, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(951, 32, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(952, 32, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(953, 32, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(954, 32, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(955, 32, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(956, 32, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(957, 32, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(958, 32, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(959, 32, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(960, 32, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(961, 32, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(962, 33, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(963, 33, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(964, 33, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(965, 33, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(966, 33, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(967, 33, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(968, 33, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(969, 33, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(970, 33, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(971, 33, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(972, 33, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(973, 33, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(974, 33, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(975, 33, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(976, 33, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(977, 33, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(978, 33, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(979, 33, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(980, 33, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(981, 33, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(982, 33, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(983, 33, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(984, 33, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(985, 33, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(986, 33, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(987, 33, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(988, 33, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(989, 33, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(990, 33, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(991, 33, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(992, 33, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(993, 34, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(994, 34, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(995, 34, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(996, 34, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(997, 34, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(998, 34, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(999, 34, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1000, 34, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1001, 34, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1002, 34, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1003, 34, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1004, 34, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1005, 34, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1006, 34, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1007, 34, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1008, 34, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1009, 34, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1010, 34, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1011, 34, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1012, 34, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1013, 34, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1014, 34, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1015, 34, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1016, 34, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1017, 34, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1018, 34, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1019, 34, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1020, 34, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1021, 34, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1022, 34, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1023, 34, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1024, 35, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1025, 35, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1026, 35, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1027, 35, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1028, 35, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1029, 35, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1030, 35, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1031, 35, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1032, 35, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1033, 35, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1034, 35, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1035, 35, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1036, 35, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1037, 35, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1038, 35, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1039, 35, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1040, 35, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1041, 35, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1042, 35, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1043, 35, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1044, 35, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1045, 35, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1046, 35, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1047, 35, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1048, 35, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1049, 35, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1050, 35, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1051, 35, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1052, 35, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1053, 35, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1054, 35, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1055, 36, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1056, 36, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1057, 36, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1058, 36, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1059, 36, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1060, 36, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1061, 36, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1062, 36, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1063, 36, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1064, 36, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1065, 36, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1066, 36, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1067, 36, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1068, 36, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1069, 36, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1070, 36, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1071, 36, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1072, 36, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1073, 36, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1074, 36, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1075, 36, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1076, 36, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1077, 36, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1078, 36, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1079, 36, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1080, 36, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1081, 36, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1082, 36, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1083, 36, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1084, 36, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1085, 36, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1086, 37, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1087, 37, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1088, 37, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1089, 37, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1090, 37, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1091, 37, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1092, 37, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1093, 37, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1094, 37, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1095, 37, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1096, 37, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1097, 37, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1098, 37, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1099, 37, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1100, 37, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1101, 37, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1102, 37, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1103, 37, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1104, 37, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1105, 37, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1106, 37, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1107, 37, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1108, 37, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1109, 37, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1110, 37, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1111, 37, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1112, 37, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1113, 37, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1114, 37, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1115, 37, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1116, 37, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1117, 38, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1118, 38, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1119, 38, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1120, 38, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1121, 38, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1122, 38, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1123, 38, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1124, 38, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1125, 38, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1126, 38, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1127, 38, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1128, 38, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1129, 38, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1130, 38, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1131, 38, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1132, 38, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1133, 38, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1134, 38, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1135, 38, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1136, 38, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1137, 38, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1138, 38, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1139, 38, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1140, 38, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1141, 38, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1142, 38, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1143, 38, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1144, 38, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1145, 38, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1146, 38, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1147, 38, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1148, 39, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1149, 39, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1150, 39, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1151, 39, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1152, 39, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1153, 39, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1154, 39, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1155, 39, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1156, 39, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1157, 39, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1158, 39, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1159, 39, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1160, 39, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1161, 39, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1162, 39, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1163, 39, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1164, 39, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1165, 39, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1166, 39, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1167, 39, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1168, 39, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1169, 39, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1170, 39, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1171, 39, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1172, 39, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1173, 39, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1174, 39, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1175, 39, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1176, 39, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1177, 39, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1178, 39, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1179, 40, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1180, 40, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1181, 40, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1182, 40, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1183, 40, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1184, 40, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1185, 40, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1186, 40, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1187, 40, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1188, 40, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1189, 40, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1190, 40, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1191, 40, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1192, 40, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1193, 40, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1194, 40, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1195, 40, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1196, 40, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1197, 40, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1198, 40, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1199, 40, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1200, 40, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1201, 40, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1202, 40, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1203, 40, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1204, 40, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1205, 40, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1206, 40, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1207, 40, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1208, 40, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1209, 40, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1210, 41, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1211, 41, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1212, 41, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1213, 41, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1214, 41, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1215, 41, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1216, 41, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1217, 41, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1218, 41, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1219, 41, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1220, 41, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1221, 41, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1222, 41, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1223, 41, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1224, 41, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1225, 41, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1226, 41, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1227, 41, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1228, 41, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1229, 41, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1230, 41, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1231, 41, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1232, 41, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1233, 41, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1234, 41, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1235, 41, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1236, 41, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1237, 41, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1238, 41, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1239, 41, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1240, 41, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1241, 43, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1242, 43, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1243, 43, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1244, 43, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1245, 43, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1246, 43, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1247, 43, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1248, 43, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1249, 43, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1250, 43, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1251, 43, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1252, 43, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1253, 43, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1254, 43, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1255, 43, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1256, 43, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1257, 43, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1258, 43, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1259, 43, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1260, 43, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1261, 43, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1262, 43, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1263, 43, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1264, 43, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1265, 43, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1266, 43, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1267, 43, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1268, 43, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1269, 43, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1270, 43, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1271, 43, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1272, 44, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1273, 44, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1274, 44, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1275, 44, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1276, 44, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1277, 44, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1278, 44, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1279, 44, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1280, 44, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1281, 44, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1282, 44, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1283, 44, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1284, 44, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1285, 44, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1286, 44, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1287, 44, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1288, 44, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1289, 44, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1290, 44, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1291, 44, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1292, 44, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1293, 44, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1294, 44, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1295, 44, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1296, 44, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1297, 44, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1298, 44, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1299, 44, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1300, 44, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1301, 44, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1302, 44, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1303, 45, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1304, 45, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1305, 45, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1306, 45, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1307, 45, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1308, 45, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1309, 45, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1310, 45, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1311, 45, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1312, 45, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1313, 45, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1314, 45, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1315, 45, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1316, 45, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1317, 45, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1318, 45, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1319, 45, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1320, 45, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1321, 45, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1322, 45, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1323, 45, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1324, 45, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1325, 45, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1326, 45, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1327, 45, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1328, 45, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1329, 45, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1330, 45, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1331, 45, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1332, 45, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1333, 45, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1365, 47, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1366, 47, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1367, 47, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1368, 47, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1369, 47, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1370, 47, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1371, 47, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1372, 47, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1373, 47, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1374, 47, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1375, 47, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1376, 47, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1377, 47, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1378, 47, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1379, 47, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1380, 47, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1381, 47, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1382, 47, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1383, 47, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1384, 47, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1385, 47, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1386, 47, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1387, 47, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1388, 47, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1389, 47, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1390, 47, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1391, 47, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1392, 47, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1393, 47, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1394, 47, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1395, 47, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1396, 48, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1397, 48, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1398, 48, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1399, 48, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1400, 48, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1401, 48, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1402, 48, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1403, 48, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1404, 48, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1405, 48, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1406, 48, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1407, 48, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1408, 48, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1409, 48, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1410, 48, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1411, 48, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1412, 48, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1413, 48, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1414, 48, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1415, 48, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1416, 48, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1417, 48, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1418, 48, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1419, 48, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1420, 48, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1421, 48, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1422, 48, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1423, 48, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1424, 48, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1425, 48, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1426, 48, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1427, 49, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1428, 49, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1429, 49, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1430, 49, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1431, 49, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1432, 49, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
+INSERT INTO `mantenimiento_detalle` (`id_manteminiento_detalle`, `id_manteminiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `observaciones`, `registro`) VALUES
+(1433, 49, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1434, 49, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1435, 49, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1436, 49, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1437, 49, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1438, 49, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1439, 49, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1440, 49, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1441, 49, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1442, 49, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1443, 49, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1444, 49, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1445, 49, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1446, 49, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1447, 49, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1448, 49, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1449, 49, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1450, 49, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1451, 49, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1452, 49, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1453, 49, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1454, 49, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1455, 49, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1456, 49, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1457, 49, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1458, 50, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1459, 50, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1460, 50, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1461, 50, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1462, 50, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1463, 50, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1464, 50, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1465, 50, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1466, 50, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1467, 50, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1468, 50, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1469, 50, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1470, 50, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1471, 50, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1472, 50, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1473, 50, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1474, 50, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1475, 50, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1476, 50, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1477, 50, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1478, 50, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1479, 50, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1480, 50, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1481, 50, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1482, 50, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1483, 50, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1484, 50, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1485, 50, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1486, 50, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1487, 50, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1488, 50, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1489, 51, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1490, 51, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1491, 51, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1492, 51, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1493, 51, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1494, 51, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1495, 51, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1496, 51, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1497, 51, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1498, 51, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1499, 51, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1500, 51, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1501, 51, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1502, 51, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1503, 51, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1504, 51, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1505, 51, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1506, 51, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1507, 51, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1508, 51, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1509, 51, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1510, 51, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1511, 51, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1512, 51, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1513, 51, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1514, 51, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1515, 51, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1516, 51, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1517, 51, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1518, 51, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1519, 51, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1520, 52, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1521, 52, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1522, 52, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1523, 52, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1524, 52, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1525, 52, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1526, 52, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1527, 52, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1528, 52, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1529, 52, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1530, 52, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1531, 52, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1532, 52, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1533, 52, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1534, 52, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1535, 52, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1536, 52, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1537, 52, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1538, 52, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1539, 52, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1540, 52, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1541, 52, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1542, 52, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1543, 52, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1544, 52, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1545, 52, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1546, 52, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1547, 52, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1548, 52, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1549, 52, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1550, 52, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1551, 53, 1000, '2013-10-02 00:00:00', NULL, 2, NULL, '2013-10-03 21:31:37'),
+(1552, 53, 1001, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1553, 53, 1002, '2013-10-02 00:00:00', NULL, 0.275, NULL, '2013-10-03 21:31:37'),
+(1554, 53, 1003, '2013-10-02 00:00:00', NULL, 1, NULL, '2013-10-03 21:31:37'),
+(1555, 53, 1004, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1556, 53, 1005, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1557, 53, 1006, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1558, 53, 1007, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1559, 53, 1008, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1560, 53, 1009, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1561, 53, 1010, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1562, 53, 1011, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1563, 53, 1012, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1564, 53, 1013, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1565, 53, 1014, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1566, 53, 1015, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1567, 53, 1016, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1568, 53, 1017, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1569, 53, 1018, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1570, 53, 1019, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1571, 53, 1020, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1572, 53, 1021, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1573, 53, 1022, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1574, 53, 1023, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1575, 53, 1024, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1576, 53, 1025, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1577, 53, 1026, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1578, 53, 1027, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1579, 53, 1028, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1580, 53, 1029, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37'),
+(1581, 53, 1030, '2013-10-02 00:00:00', NULL, 0, NULL, '2013-10-03 21:31:37');
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` VALUES('099001865001', 'ConAuto', 'Av. 10 de Agosto N 4012 y Av. Gaspar de Villarroel', '2241555-2269208', NULL, NULL, 'Aceites 5W90', '2013-10-02 16:41:12');
-INSERT INTO `proveedor` VALUES('1790202321001', 'Erco Tires', 'Av.10 de Agosto y Rafael Bustamante', '6036205 - 2403-', 'pgavilanez@tire-experts.com.ec', NULL, 'Aceites 2W50 ', '2013-10-02 16:38:31');
+INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `direccion`, `telefono`, `email`, `credito`, `notas`, `registro`) VALUES
+('099001865001', 'ConAuto', 'Av. 10 de Agosto N 4012 y Av. Gaspar de Villarroel', '2241555-2269208', NULL, NULL, 'Aceites 5W90', '2013-10-02 16:41:12'),
+('1790202321001', 'Erco Tires', 'Av.10 de Agosto y Rafael Bustamante', '6036205 - 2403-', 'pgavilanez@tire-experts.com.ec', NULL, 'Aceites 2W50 ', '2013-10-02 16:38:31');
 
 --
 -- Volcado de datos para la tabla `tecnico`
 --
 
-INSERT INTO `tecnico` VALUES('0803550466', 'GALO SINCHIGUANO TAIPE ', NULL, '0981913856', 'galo.st10@hotmail.com', '2013-10-01 17:25:09');
-INSERT INTO `tecnico` VALUES('1711938025', 'MARCO LLUMIQUINGA', NULL, NULL, NULL, '2013-10-01 17:25:32');
+INSERT INTO `tecnico` (`id_tecnico`, `nombres`, `telefono`, `celular`, `email`, `registro`) VALUES
+('0803550466', 'GALO SINCHIGUANO TAIPE ', NULL, '0981913856', 'galo.st10@hotmail.com', '2013-10-01 17:25:09'),
+('1711938025', 'MARCO LLUMIQUINGA', NULL, NULL, NULL, '2013-10-01 17:25:32');
 
 --
 -- Volcado de datos para la tabla `vehiculo`
 --
 
-INSERT INTO `vehiculo` VALUES('4XATH762AD4317220', '0560022430001', 1, NULL, NULL, NULL, NULL, 'GUANGAJE', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2290773', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2290790', '1865012760001', 1, NULL, NULL, NULL, NULL, 'QUISAPINCHA', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2291101', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2293205', '0560022430001', 1, NULL, NULL, NULL, NULL, 'SIGCHOS', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2293222', '0560022430001', 1, NULL, NULL, NULL, NULL, 'PUJILI', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D2293253', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D4317667', '0660819660001', 1, NULL, NULL, NULL, NULL, 'CHUNCHI', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A0D4317684', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA ESPERANZA-TIN', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A1D2290751', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A1D2290779', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A2D4315550', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76A2D4315598', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76A2D4317640', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A2D4317668', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A3D2290749', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A3D2290816', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290713', '0560022430001', 1, NULL, NULL, NULL, NULL, 'PUJILI - LA VICTORIA', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290761', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA MANA', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290775', '1865012760001', 1, NULL, NULL, NULL, NULL, 'CEVALLOS', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290792', '0660819660001', 1, NULL, NULL, NULL, NULL, 'CHUNCHI', NULL, '2013-10-01 17:50:42');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290808', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2290825', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A4D2291120', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A5D2291045', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A5D2292065', '0560022430001', 1, NULL, NULL, NULL, NULL, 'CANCHAGUA', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A5D2293216', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A5D4315591', '0360015690001', 1, NULL, NULL, NULL, NULL, 'LA TRONCAL', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76A5D4317678', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A6D2290745', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A6D2290759', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A6D2291121', '1865012760001', 1, 'RANGER 800', NULL, '2013-10-01 00:00:00', 'ING. JOSÉ VALENCIA TAMAYO', 'Ambato', NULL, '2013-10-01 20:13:36');
-INSERT INTO `vehiculo` VALUES('4XATH76A6D2293208', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A6D4317687', '0560022430001', 1, NULL, NULL, NULL, NULL, 'TANICUCHI', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D2290771', '0560022430001', 1, NULL, NULL, NULL, NULL, 'MOROSPUNGO', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D2290818', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA MANA', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D2291063', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LASSO (TCS)', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D4315575', '0360015690001', 1, NULL, NULL, NULL, NULL, 'LA TRONCAL', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D4315592', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76A7D4317665', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A8D2290763', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A8D2290777', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A8D2290794', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27');
-INSERT INTO `vehiculo` VALUES('4XATH76A8D2290830', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D2290755', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILAHUIN', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D2291033', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D2291114', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D2293199', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D2293204', '1865012760001', 1, NULL, NULL, NULL, NULL, 'YANAYACU', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76A9D4315562', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55');
-INSERT INTO `vehiculo` VALUES('4XATH76AXD2290828', '1865012760001', 1, NULL, NULL, NULL, NULL, 'QUINCHICOTO', NULL, '2013-10-01 18:32:30');
-INSERT INTO `vehiculo` VALUES('4XATH76AXD2291073', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LATACUNGA', NULL, '2013-10-01 18:13:27');
+INSERT INTO `vehiculo` (`id_vehiculo`, `id_cliente`, `id_contacto`, `modelo`, `nro_motor`, `ingreso`, `encargado`, `ubicacion`, `notas`, `registro`) VALUES
+('4XATH762AD4317220', '0560022430001', 1, NULL, NULL, NULL, NULL, 'GUANGAJE', NULL, '2013-10-01 18:13:27'),
+('4XATH76A0D2290773', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A0D2290790', '1865012760001', 1, NULL, NULL, NULL, NULL, 'QUISAPINCHA', NULL, '2013-10-01 18:32:30'),
+('4XATH76A0D2291101', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27'),
+('4XATH76A0D2293205', '0560022430001', 1, NULL, NULL, NULL, NULL, 'SIGCHOS', NULL, '2013-10-01 18:13:27'),
+('4XATH76A0D2293222', '0560022430001', 1, NULL, NULL, NULL, NULL, 'PUJILI', NULL, '2013-10-01 18:13:27'),
+('4XATH76A0D2293253', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41'),
+('4XATH76A0D4317667', '0660819660001', 1, NULL, NULL, NULL, NULL, 'CHUNCHI', NULL, '2013-10-01 17:50:41'),
+('4XATH76A0D4317684', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA ESPERANZA-TIN', NULL, '2013-10-01 18:13:27'),
+('4XATH76A1D2290751', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A1D2290779', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41'),
+('4XATH76A2D4315550', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55'),
+('4XATH76A2D4315598', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55'),
+('4XATH76A2D4317640', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A2D4317668', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A3D2290749', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41'),
+('4XATH76A3D2290816', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A4D2290713', '0560022430001', 1, NULL, NULL, NULL, NULL, 'PUJILI - LA VICTORIA', NULL, '2013-10-01 18:13:27'),
+('4XATH76A4D2290761', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA MANA', NULL, '2013-10-01 18:13:27'),
+('4XATH76A4D2290775', '1865012760001', 1, NULL, NULL, NULL, NULL, 'CEVALLOS', NULL, '2013-10-01 18:32:30'),
+('4XATH76A4D2290792', '0660819660001', 1, NULL, NULL, NULL, NULL, 'CHUNCHI', NULL, '2013-10-01 17:50:42'),
+('4XATH76A4D2290808', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A4D2290825', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41'),
+('4XATH76A4D2291120', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41'),
+('4XATH76A5D2291045', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A5D2292065', '0560022430001', 1, NULL, NULL, NULL, NULL, 'CANCHAGUA', NULL, '2013-10-01 18:13:27'),
+('4XATH76A5D2293216', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A5D4315591', '0360015690001', 1, NULL, NULL, NULL, NULL, 'LA TRONCAL', NULL, '2013-10-01 18:00:55'),
+('4XATH76A5D4317678', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A6D2290745', '0660819660001', 1, NULL, NULL, NULL, NULL, 'COLTA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A6D2290759', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41'),
+('4XATH76A6D2291121', '1865012760001', 1, 'RANGER 800', NULL, '2013-10-01 00:00:00', 'ING. JOSÉ VALENCIA TAMAYO', 'Ambato', NULL, '2013-10-01 20:13:36'),
+('4XATH76A6D2293208', '0660819660001', 1, NULL, NULL, NULL, NULL, 'RIOBAMBA', NULL, '2013-10-01 17:50:41'),
+('4XATH76A6D4317687', '0560022430001', 1, NULL, NULL, NULL, NULL, 'TANICUCHI', NULL, '2013-10-01 18:13:27'),
+('4XATH76A7D2290771', '0560022430001', 1, NULL, NULL, NULL, NULL, 'MOROSPUNGO', NULL, '2013-10-01 18:13:27'),
+('4XATH76A7D2290818', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LA MANA', NULL, '2013-10-01 18:13:27'),
+('4XATH76A7D2291063', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LASSO (TCS)', NULL, '2013-10-01 18:13:27'),
+('4XATH76A7D4315575', '0360015690001', 1, NULL, NULL, NULL, NULL, 'LA TRONCAL', NULL, '2013-10-01 18:00:55'),
+('4XATH76A7D4315592', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55'),
+('4XATH76A7D4317665', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41'),
+('4XATH76A8D2290763', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27'),
+('4XATH76A8D2290777', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A8D2290794', '0560022430001', 1, NULL, NULL, NULL, NULL, 'EL CORAZON', NULL, '2013-10-01 18:13:27'),
+('4XATH76A8D2290830', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PELILEO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A9D2290755', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILAHUIN', NULL, '2013-10-01 18:32:30'),
+('4XATH76A9D2291033', '1865012760001', 1, NULL, NULL, NULL, NULL, 'PILLARO', NULL, '2013-10-01 18:32:30'),
+('4XATH76A9D2291114', '0660819660001', 1, NULL, NULL, NULL, NULL, 'ALAUSI', NULL, '2013-10-01 17:50:41'),
+('4XATH76A9D2293199', '0660819660001', 1, NULL, NULL, NULL, NULL, 'GUANO', NULL, '2013-10-01 17:50:41'),
+('4XATH76A9D2293204', '1865012760001', 1, NULL, NULL, NULL, NULL, 'YANAYACU', NULL, '2013-10-01 18:32:30'),
+('4XATH76A9D4315562', '0360015690001', 1, NULL, NULL, NULL, NULL, 'CAÑAR', NULL, '2013-10-01 18:00:55'),
+('4XATH76AXD2290828', '1865012760001', 1, NULL, NULL, NULL, NULL, 'QUINCHICOTO', NULL, '2013-10-01 18:32:30'),
+('4XATH76AXD2291073', '0560022430001', 1, NULL, NULL, NULL, NULL, 'LATACUNGA', NULL, '2013-10-01 18:13:27');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

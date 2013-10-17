@@ -4,7 +4,7 @@
 # Version		1.0
 # Autor			Eduardo Villota <eduardouio@hotmail.com> <@eduardouio>
 # Package		Conexion a la base de datos
-# File			DB.py
+# File			conn.py
 # Ubicacion		reporte/basedatos/DB.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 
