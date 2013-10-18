@@ -67,7 +67,7 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table cliente(
 		id_cliente char(13) NOT NULL,
-		id_contacto smallint unsigned NOT NULL,
+		id_contacto smallint unsigned DEFAULT NULL,
 		nombre varchar(200) NOT NULL,
 		direccion varchar(600) NOT NULL,
 		telefono varchar(15) NOT NULL,
@@ -91,7 +91,7 @@ create database gelvsrm_polaris;
 	create table vehiculo(
 		id_vehiculo char(17) NOT NULL,
 		id_cliente char(13) NOT NULL,
-		id_contacto smallint unsigned NOT NULL,
+		id_contacto smallint unsigned DEFAULT NULL,
 		modelo varchar(45)DEFAULT NULL,
 		nro_motor varchar(25)DEFAULT NULL,
 		ingreso datetime DEFAULT NULL, 
