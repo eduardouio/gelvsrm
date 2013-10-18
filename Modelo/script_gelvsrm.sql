@@ -23,6 +23,7 @@ create database gelvsrm_polaris;
 		email varchar(100) DEFAULT NULL,
 		cuidad varchar(50) DEFAULT NULL,
 		provincia varchar(50) DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_contacto)
@@ -41,7 +42,7 @@ create database gelvsrm_polaris;
 		telefono varchar(15) NOT NULL ,
 		email varchar(30) DEFAULT NULL,
 		credito boolean DEFAULT NULL,
-		notas text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_proveedor)
@@ -57,6 +58,7 @@ create database gelvsrm_polaris;
 		telefono varchar(15) DEFAULT NULL,
 		celular  varchar(15)DEFAULT NULL,
 		email  varchar(100)DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_tecnico)
@@ -74,6 +76,7 @@ create database gelvsrm_polaris;
 		fax varchar(15)DEFAULT NULL,
 		fecha datetime DEFAULT NULL,
 		mail varchar(100)DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_cliente),
@@ -97,7 +100,7 @@ create database gelvsrm_polaris;
 		ingreso datetime DEFAULT NULL, 
 		encargado varchar(50)DEFAULT NULL,
 		ubicacion varchar(100)DEFAULT NULL,
-		notas text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_vehiculo),
@@ -123,7 +126,7 @@ create database gelvsrm_polaris;
 		id_contacto smallint unsigned NOT NULL,
 		fecha datetime NOT NULL,
 		ubicacion varchar(100)DEFAULT NULL,
-		detalle text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		contacto varchar(45)DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
@@ -155,6 +158,7 @@ create database gelvsrm_polaris;
 		stok_min smallint unsigned NOT NULL COMMENT "12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos",
 		marca varchar(45)DEFAULT NULL,
 		ubicacion varchar(100) NOT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_inventario)
@@ -214,7 +218,7 @@ create database gelvsrm_polaris;
 		id_tecnico varchar(10) NOT NULL,
 		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime DEFAULT NULL,
-		detalles text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_reparacion),
@@ -244,7 +248,7 @@ create database gelvsrm_polaris;
 		fecha datetime NOT NULL,
 		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
 		cantidad smallint unsigned not null,		
-		observaciones varchar(600) DEFAULT NULL,
+		notas varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_reparacion_detalle),
@@ -271,7 +275,7 @@ create database gelvsrm_polaris;
 		ubicacion varchar(100) DEFAULT NULL,
 		fecha datetime NOT NULL,
 		kilometros varchar(10) NOT NULL,
-		observacion text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_manteminiento),
@@ -301,7 +305,7 @@ create database gelvsrm_polaris;
 		fecha datetime NOT NULL,
 		estado varchar(25) COMMENT 'cambio,reparacio,correccion',
 		cantidad float unsigned not null,		
-		observaciones varchar(600) DEFAULT NULL,
+		notas varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		UNIQUE(id_manteminiento_detalle),
@@ -328,7 +332,7 @@ create database gelvsrm_polaris;
 		fecha datetime NOT NULL, 
 		cantidad smallint unsigned NOT NULL,
 		costo decimal(5,2) COMMENT 'costo por unidad',
-		notas text,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_inventario_entrada),
@@ -353,7 +357,7 @@ create database gelvsrm_polaris;
 		fecha_envio datetime NOT NULL,
 		estado boolean NOT NULL,
 		archivo varchar(200)DEFAULT NULL,
-		notas text DEFAULT NULL,
+		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_factura),
