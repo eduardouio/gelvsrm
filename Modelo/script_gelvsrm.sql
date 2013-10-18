@@ -215,7 +215,6 @@ create database gelvsrm_polaris;
 		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
-		id_tecnico varchar(10) NOT NULL,
 		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
@@ -225,10 +224,6 @@ create database gelvsrm_polaris;
 		CONSTRAINT fk_reparacion_vehiculo
       	FOREIGN KEY (id_vehiculo)
       	REFERENCES vehiculo(id_vehiculo)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_reparacion_tecnico
-      	FOREIGN KEY (id_tecnico)
-      	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
       	CONSTRAINT fk_reparacion_viaje
       	FOREIGN KEY (id_viaje)
@@ -263,6 +258,24 @@ create database gelvsrm_polaris;
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
 				contener una salida de inventario';
+				-- -------------------------------------------------------------------
+	-- Estructura de la entidad tecnico_reparacion
+	-- -------------------------------------------------------------------
+	create table tecnico_reparacion(
+		id_tecnico varchar(10) NOT NULL,
+		id_reparacion smallint unsigned NOT NULL,
+		registro timestamp not null default current_timestamp,
+		PRIMARY KEY (id_tecnico,id_reparacion),
+		CONSTRAINT fk_tecnico_reparacion_tecnico
+      	FOREIGN KEY (id_tecnico)
+      	REFERENCES tecnico(id_tecnico)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_tecnico_reparacion_reparacion
+      	FOREIGN KEY (id_reparacion)
+      	REFERENCES reparacion(id_reparacion)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+		)engine=innodb
+		COMMENT 'Registra a los técnicos en los mantenimientos';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad mantenimiento
 	-- -------------------------------------------------------------------
@@ -270,7 +283,6 @@ create database gelvsrm_polaris;
 		id_manteminiento smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
-		id_tecnico varchar(10) NOT NULL,
 		periodo smallint unsigned NOT NULL,
 		ubicacion varchar(100) DEFAULT NULL,
 		fecha datetime NOT NULL,
@@ -282,10 +294,6 @@ create database gelvsrm_polaris;
 		CONSTRAINT fk_mantenimiento_vehiculo
       	FOREIGN KEY (id_vehiculo)
       	REFERENCES vehiculo(id_vehiculo)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_mantenimiento_tecnico
-      	FOREIGN KEY (id_tecnico)
-      	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
       	CONSTRAINT fk_mantenimiento_viaje
       	FOREIGN KEY (id_viaje)
@@ -321,6 +329,24 @@ create database gelvsrm_polaris;
       	)engine=innodb
 		AUTO_INCREMENT =1
 		COMMENT 'Registra los detalles del mantenimiento y los costos de los insumos';
+	-- -------------------------------------------------------------------
+	-- Estructura de la entidad tecnico_mantenimiento
+	-- -------------------------------------------------------------------
+	create table tecnico_mantenimiento(
+		id_tecnico varchar(10) NOT NULL,
+		id_manteminiento smallint unsigned NOT NULL,
+		registro timestamp not null default current_timestamp,
+		PRIMARY KEY (id_tecnico,id_manteminiento),
+		CONSTRAINT fk_tecnico_mantenimiento_tecnico
+      	FOREIGN KEY (id_tecnico)
+      	REFERENCES tecnico(id_tecnico)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+      	CONSTRAINT fk_tecnico_mantenimiento_mantenimiento
+      	FOREIGN KEY (id_manteminiento)
+      	REFERENCES mantenimiento(id_manteminiento)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+		)engine=innodb
+		COMMENT 'Registra a los técnicos en los mantenimientos';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad entradas de inventario
 	-- -------------------------------------------------------------------
