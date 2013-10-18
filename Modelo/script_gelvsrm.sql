@@ -369,12 +369,12 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad detalles de la factura
 	-- -------------------------------------------------------------------
 	create table factura_detalle(		
+		id_factura smallint unsigned NOT NULL,
 		id_manteminiento smallint unsigned NOT NULL,
 		id_reparacion smallint unsigned NOT NULL,
-		id_factura smallint unsigned NOT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_manteminiento, id_factura,id_reparacion),
+		primary key(id_factura,id_manteminiento,id_reparacion),
 		CONSTRAINT fk_factura_detalle_factura
       	FOREIGN KEY (id_factura)
       	REFERENCES factura(id_factura)
@@ -390,4 +390,6 @@ create database gelvsrm_polaris;
 		)engine=innodb
 		COMMENT 'Entidad que registra los detalles de la facturacio se entiende por detalle
 				los vehiculos a los que se le realizaron mantenimiento, un mantenimiento no
-				se factura más de una veza';
+				se factura más de una vez, para poder controlar esto se obliga a que un campo de la clave
+				primaria sea cero los dos campos no deben tener un valor diferente de cero los dos a la
+				vez ya que la restriccion registra un mantenimiento o una reparación';
