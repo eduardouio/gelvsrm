@@ -153,7 +153,7 @@ create database gelvsrm_polaris;
 		id_inventario smallint unsigned  NOT NULL AUTO_INCREMENT,
 		fecha datetime NOT NULL,
 		nombre varchar(100) NOT NULL,
-		descpricion varchar(200)DEFAULT NULL,
+		descripcion varchar(200)DEFAULT NULL,
 		unidad varchar(25)DEFAULT NULL,
 		stok_min smallint unsigned NOT NULL COMMENT "12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos",
 		marca varchar(45)DEFAULT NULL,
