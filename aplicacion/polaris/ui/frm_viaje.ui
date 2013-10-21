@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Viajes Mantenimientos</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="polaris.qrc">
+    <normaloff>:/Icons/icons/gear.png</normaloff>:/Icons/icons/gear.png</iconset>
+  </property>
   <property name="documentMode">
    <bool>false</bool>
   </property>
@@ -560,7 +564,7 @@ que realiza el viaje</string>
        <rect>
         <x>9</x>
         <y>50</y>
-        <width>250</width>
+        <width>251</width>
         <height>40</height>
        </rect>
       </property>
@@ -569,6 +573,70 @@ que realiza el viaje</string>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_detalle_gastos">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>50</y>
+        <width>151</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Detalle Gastos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="polaris.qrc">
+        <normaloff>:/Icons/icons/view_pim_tasks.png</normaloff>
+        <normalon>:/Icons/icons/view_pim_tasks.png</normalon>:/Icons/icons/view_pim_tasks.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_eliminar">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>440</y>
+        <width>111</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 0, 0);
+
+</string>
+      </property>
+      <property name="text">
+       <string>Eliminar</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/Icons/icons/button_cancel.png</normaloff>
+        <normalon>:/Icons/icons/user_trash.png</normalon>:/Icons/icons/button_cancel.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_mantenimientos">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>50</y>
+        <width>151</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mantenimientos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="polaris.qrc">
+        <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
       </property>
      </widget>
      <zorder>frame_2</zorder>
@@ -593,6 +661,9 @@ que realiza el viaje</string>
      <zorder>btn_siguiente</zorder>
      <zorder>btn_ultimo</zorder>
      <zorder>btn_recargar</zorder>
+     <zorder>btn_detalle_gastos</zorder>
+     <zorder>btn_eliminar</zorder>
+     <zorder>btn_mantenimientos</zorder>
     </widget>
     <widget class="QWidget" name="tab_search">
      <attribute name="icon">
