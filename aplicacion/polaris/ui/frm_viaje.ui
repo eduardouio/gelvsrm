@@ -275,7 +275,7 @@
        <string>Guardar</string>
       </property>
       <property name="icon">
-       <iconset resource="sln.qrc">
+       <iconset resource="polaris.qrc">
         <normaloff>:/Icons/icons/filesave.png</normaloff>:/Icons/icons/filesave.png</iconset>
       </property>
      </widget>
@@ -292,8 +292,9 @@
        <string>Cancelar</string>
       </property>
       <property name="icon">
-       <iconset resource="sln.qrc">
-        <normaloff>:/Icons/icons/button_cancel.png</normaloff>:/Icons/icons/button_cancel.png</iconset>
+       <iconset>
+        <normaloff>:/Icons/icons/button_cancel.png</normaloff>
+        <normalon>:/Icons/icons/mail_delete.png</normalon>:/Icons/icons/button_cancel.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_copiar">
@@ -309,8 +310,9 @@
        <string>Copiar</string>
       </property>
       <property name="icon">
-       <iconset resource="sln.qrc">
-        <normaloff>:/Icons/icons/document_multiple.png</normaloff>:/Icons/icons/document_multiple.png</iconset>
+       <iconset>
+        <normaloff>:/Icons/icons/document_multiple.png</normaloff>
+        <normalon>:/Icons/icons/editpaste.png</normalon>:/Icons/icons/document_multiple.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_nuevo">
@@ -327,7 +329,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normalon>:/Icons/icons/add.png</normalon>
+        <normalon>:/Icons/icons/filenew.png</normalon>
        </iconset>
       </property>
      </widget>
@@ -363,7 +365,7 @@ que realiza el viaje</string>
       </property>
       <property name="icon">
        <iconset>
-        <normalon>:/Icons/icons/gohome.png</normalon>
+        <normalon>:/Icons/icons/folder_home2.png</normalon>
        </iconset>
       </property>
       <property name="iconSize">
@@ -539,8 +541,8 @@ que realiza el viaje</string>
       </property>
       <property name="iconSize">
        <size>
-        <width>32</width>
-        <height>32</height>
+        <width>40</width>
+        <height>40</height>
        </size>
       </property>
       <property name="autoDefault">
@@ -737,7 +739,7 @@ que realiza el viaje</string>
        </iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_seleccionar">
+     <widget class="QPushButton" name="btn_monstrar">
       <property name="geometry">
        <rect>
         <x>533</x>
@@ -747,29 +749,11 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="text">
-       <string>Seleccionar</string>
+       <string>Mostrar</string>
       </property>
       <property name="icon">
        <iconset>
         <normalon>:/Icons/icons/apply.png</normalon>
-       </iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_cancelar_sekeccion">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>440</y>
-        <width>240</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Cancelar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/button_cancel.png</normalon>
        </iconset>
       </property>
      </widget>
@@ -817,12 +801,13 @@ que realiza el viaje</string>
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="actionNuevo"/>
    <addaction name="actionRecargar"/>
    <addaction name="action_Buscar"/>
    <addaction name="action_Volver"/>
+   <addaction name="separator"/>
    <addaction name="action_Salir"/>
   </widget>
   <action name="actionNuevo">
@@ -914,7 +899,7 @@ que realiza el viaje</string>
   <tabstop>cmb_presupuesto</tabstop>
  </tabstops>
  <resources>
-  <include location="sln.qrc"/>
+  <include location="polaris.qrc"/>
  </resources>
  <connections/>
 </ui>
