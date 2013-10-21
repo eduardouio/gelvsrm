@@ -39,6 +39,9 @@
     <property name="toolTip">
      <string notr="true"/>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="tabPosition">
      <enum>QTabWidget::West</enum>
     </property>
