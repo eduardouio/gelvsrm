@@ -102,6 +102,9 @@
          <height>31</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Identificador del Viaje</string>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#00007f;&quot;&gt;1091&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -128,6 +131,9 @@
          <height>20</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Fecha de Registro en el sistema</string>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -137,7 +143,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>110</y>
         <width>91</width>
         <height>17</height>
        </rect>
@@ -153,7 +159,7 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>120</y>
+        <y>110</y>
         <width>101</width>
         <height>17</height>
        </rect>
@@ -169,7 +175,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>140</y>
+        <y>130</y>
         <width>141</width>
         <height>27</height>
        </rect>
@@ -179,7 +185,7 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>140</y>
+        <y>130</y>
         <width>141</width>
         <height>27</height>
        </rect>
@@ -189,7 +195,7 @@
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>120</y>
+        <y>110</y>
         <width>171</width>
         <height>17</height>
        </rect>
@@ -205,7 +211,7 @@
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>140</y>
+        <y>130</y>
         <width>71</width>
         <height>27</height>
        </rect>
@@ -218,7 +224,7 @@
       <property name="geometry">
        <rect>
         <x>370</x>
-        <y>140</y>
+        <y>130</y>
         <width>91</width>
         <height>27</height>
        </rect>
@@ -231,7 +237,7 @@
       <property name="geometry">
        <rect>
         <x>370</x>
-        <y>120</y>
+        <y>110</y>
         <width>101</width>
         <height>17</height>
        </rect>
@@ -243,11 +249,11 @@
        <cstring>cmb_presupuesto</cstring>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="lbl_informea">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>184</y>
+        <y>170</y>
         <width>101</width>
         <height>17</height>
        </rect>
@@ -256,7 +262,7 @@
        <string>Informe</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_guardar_2">
+     <widget class="QPushButton" name="btn_guardar">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -290,7 +296,7 @@
         <normaloff>:/Icons/icons/button_cancel.png</normaloff>:/Icons/icons/button_cancel.png</iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_copiar_2">
+     <widget class="QPushButton" name="btn_copiar">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -307,7 +313,7 @@
         <normaloff>:/Icons/icons/document_multiple.png</normaloff>:/Icons/icons/document_multiple.png</iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_nuevo_2">
+     <widget class="QPushButton" name="btn_nuevo">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -329,13 +335,18 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>210</y>
+        <y>190</y>
         <width>760</width>
-        <height>220</height>
+        <height>240</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Contenido del Informe,
+elaborado por la persona 
+que realiza el viaje</string>
+      </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btn_home">
       <property name="geometry">
        <rect>
         <x>707</x>
@@ -343,6 +354,9 @@
         <width>70</width>
         <height>70</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Regreasar al Panel de Control</string>
       </property>
       <property name="text">
        <string/>
@@ -369,7 +383,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string comment="Primer Registro"/>
+       <string comment="Primer Registro">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Primer Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string/>
@@ -404,6 +418,9 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registro Anterior&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -436,6 +453,9 @@
         <width>41</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Siguiente Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string/>
@@ -470,6 +490,9 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Último Registro</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -502,6 +525,9 @@
         <width>41</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Recargar</string>
       </property>
       <property name="text">
        <string/>
@@ -553,13 +579,13 @@
      <zorder>cmb_vehiculos_planificados</zorder>
      <zorder>cmb_presupuesto</zorder>
      <zorder>lbl_presupuesto</zorder>
-     <zorder>label_6</zorder>
-     <zorder>btn_guardar_2</zorder>
+     <zorder>lbl_informea</zorder>
+     <zorder>btn_guardar</zorder>
      <zorder>btn_cancelar</zorder>
-     <zorder>btn_copiar_2</zorder>
-     <zorder>btn_nuevo_2</zorder>
+     <zorder>btn_copiar</zorder>
+     <zorder>btn_nuevo</zorder>
      <zorder>rtxt_informe</zorder>
-     <zorder>pushButton</zorder>
+     <zorder>btn_home</zorder>
      <zorder>btn_primero</zorder>
      <zorder>btn_anterior</zorder>
      <zorder>btn_siguiente</zorder>
@@ -575,7 +601,7 @@
      <attribute name="title">
       <string>Buscar</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableWidget" name="tbl_resultados">
       <property name="geometry">
        <rect>
         <x>7</x>
@@ -584,8 +610,11 @@
         <height>360</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Resultados Búsqueda</string>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="txt_criterio">
       <property name="geometry">
        <rect>
         <x>349</x>
@@ -594,8 +623,11 @@
         <height>27</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+      </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="cmb_columna">
       <property name="geometry">
        <rect>
         <x>7</x>
@@ -604,8 +636,11 @@
         <height>27</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Seleccione una columna por la que desea buscar</string>
+      </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_3">
+     <widget class="QComboBox" name="cmb_operador">
       <property name="geometry">
        <rect>
         <x>189</x>
@@ -684,7 +719,7 @@
        <string>Criterio:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_nuevo_4">
+     <widget class="QPushButton" name="btn_buscar">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -702,7 +737,7 @@
        </iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_nuevo_3">
+     <widget class="QPushButton" name="btn_seleccionar">
       <property name="geometry">
        <rect>
         <x>533</x>
@@ -720,7 +755,7 @@
        </iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_nuevo_5">
+     <widget class="QPushButton" name="btn_cancelar_sekeccion">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -800,7 +835,7 @@
     <string>&amp;Nuevo</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#0b781c;&quot;&gt;Crea Un Nuevo Registro Para Viajes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Nuevo</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -816,7 +851,7 @@
     <string>&amp;Salir</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#0b781c;&quot;&gt;Volver a la pantalla principal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Salir</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -832,7 +867,7 @@
     <string>&amp;Buscar</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#0b781c;&quot;&gt;Buscar un Viaje&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Buscar</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
@@ -848,7 +883,7 @@
     <string>&amp;Volver</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#0b781c;&quot;&gt;Retorna al panel de control&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Panel de Control</string>
    </property>
    <property name="shortcut">
     <string>F10</string>
@@ -864,7 +899,7 @@
     <string>&amp;Recargar</string>
    </property>
    <property name="toolTip">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#0b781c;&quot;&gt;Recarga los contenidos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>Recargar</string>
    </property>
    <property name="shortcut">
     <string>F5</string>
