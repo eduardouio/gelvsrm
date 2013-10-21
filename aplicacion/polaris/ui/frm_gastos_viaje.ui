@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>790</width>
-    <height>556</height>
+    <width>793</width>
+    <height>557</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -83,7 +83,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registroa">
+    <widget class="QLabel" name="lbl_mantenimiento_realizado1">
      <property name="geometry">
       <rect>
        <x>15</x>
@@ -96,7 +96,7 @@
       <string>Viaje Realizado A:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registrob">
+    <widget class="QLabel" name="lbl_mantenimiento_realizadob">
      <property name="geometry">
       <rect>
        <x>143</x>
@@ -106,13 +106,13 @@
       </rect>
      </property>
      <property name="toolTip">
-      <string>Fecha de Registro en el sistema</string>
+      <string>Lugares en lo que se realizó mantenimientos</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;Cañar, Azuay&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registrob_2">
+    <widget class="QLabel" name="lbl_fecha_salidab">
      <property name="geometry">
       <rect>
        <x>141</x>
@@ -122,13 +122,13 @@
       </rect>
      </property>
      <property name="toolTip">
-      <string>Fecha de Registro en el sistema</string>
+      <string>Fecha de inicio de viaje</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;10-10-2013&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registroa_2">
+    <widget class="QLabel" name="lbl_fecha_salidaa">
      <property name="geometry">
       <rect>
        <x>14</x>
@@ -141,12 +141,12 @@
       <string>Fecha Salida:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registroa_3">
+    <widget class="QLabel" name="lbl_fecha_llegadaa">
      <property name="geometry">
       <rect>
        <x>260</x>
        <y>40</y>
-       <width>131</width>
+       <width>101</width>
        <height>20</height>
       </rect>
      </property>
@@ -154,7 +154,7 @@
       <string>Fecha Llegada:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registrob_3">
+    <widget class="QLabel" name="lbl_fecha_llegadab">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -164,13 +164,13 @@
       </rect>
      </property>
      <property name="toolTip">
-      <string>Fecha de Registro en el sistema</string>
+      <string>FEcha de fin del viaje</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;10-10-2013&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_fecha_registroa_4">
+    <widget class="QLabel" name="lbl_dias_duraciona">
      <property name="geometry">
       <rect>
        <x>475</x>
@@ -183,7 +183,7 @@
       <string>Días De Duración:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lbl_id_viajeb_2">
+    <widget class="QLabel" name="lbl_dias_duracionb">
      <property name="geometry">
       <rect>
        <x>598</x>
@@ -193,7 +193,7 @@
       </rect>
      </property>
      <property name="toolTip">
-      <string>Identificador del Viaje</string>
+      <string>Días que duró el viaje</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#00007f;&quot;&gt;3
@@ -429,7 +429,7 @@
     <zorder>btn_ultimo</zorder>
     <zorder>btn_anterior</zorder>
    </widget>
-   <widget class="QTableWidget" name="tbl_resultados_2">
+   <widget class="QTableWidget" name="tbl_detalle_gastos">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -457,6 +457,9 @@
       <height>40</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Guardar</string>
+    </property>
     <property name="text">
      <string>Guardar</string>
     </property>
@@ -474,6 +477,9 @@
       <height>40</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Cancelar</string>
+    </property>
     <property name="text">
      <string>Cancelar</string>
     </property>
@@ -483,7 +489,7 @@
       <normalon>:/Icons/icons/mail_delete.png</normalon>:/Icons/icons/button_cancel.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_mantenimientos">
+   <widget class="QPushButton" name="btn_volver_viaje">
     <property name="geometry">
      <rect>
       <x>361</x>
@@ -491,6 +497,9 @@
       <width>180</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Volver a la ventana de viajes</string>
     </property>
     <property name="text">
      <string>Volver a Viaje</string>
@@ -506,7 +515,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_fecha_registroa_6">
+   <widget class="QLabel" name="lbl_total_gastoasa">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -538,7 +547,7 @@
      <string>Total Gastos:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_fecha_registroa_7">
+   <widget class="QLabel" name="lbl_total_gastosb">
     <property name="geometry">
      <rect>
       <x>677</x>
@@ -577,22 +586,22 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <zorder>tbl_resultados_2</zorder>
+   <zorder>tbl_detalle_gastos</zorder>
    <zorder>frame</zorder>
    <zorder>btn_home</zorder>
    <zorder>frame_2</zorder>
    <zorder>btn_guardar</zorder>
    <zorder>btn_cancelar</zorder>
-   <zorder>btn_mantenimientos</zorder>
-   <zorder>lbl_fecha_registroa_6</zorder>
-   <zorder>lbl_fecha_registroa_7</zorder>
+   <zorder>btn_volver_viaje</zorder>
+   <zorder>lbl_total_gastoasa</zorder>
+   <zorder>lbl_total_gastosb</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>790</width>
+     <width>793</width>
      <height>25</height>
     </rect>
    </property>
