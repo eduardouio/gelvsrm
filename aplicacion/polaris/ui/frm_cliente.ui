@@ -610,8 +610,8 @@ que realiza el viaje</string>
      <widget class="QPushButton" name="btn_detalle_gastos">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>330</y>
+        <x>570</x>
+        <y>200</y>
         <width>151</width>
         <height>40</height>
        </rect>
