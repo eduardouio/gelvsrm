@@ -39,6 +39,8 @@ create database gelvsrm_polaris;
 		id_proveedor varchar(13) NOT NULL ,
 		nombre varchar(150) NOT NULL ,
 		direccion varchar(500) NOT NULL,
+		cuidad varchar(50) DEFAULT NULL,
+		provincia varchar(50) DEFAULT NULL,
 		telefono varchar(15) NOT NULL ,
 		email varchar(30) DEFAULT NULL,
 		credito boolean DEFAULT NULL,
@@ -74,7 +76,9 @@ create database gelvsrm_polaris;
 		direccion varchar(600) NOT NULL,
 		telefono varchar(15) NOT NULL,
 		fax varchar(15)DEFAULT NULL,
-		fecha datetime DEFAULT NULL,
+		cuidad varchar(50) DEFAULT NULL,
+		provincia varchar(50) DEFAULT NULL,
+		cuidad varchar(200) NOT NULL,
 		mail varchar(100)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
@@ -98,7 +102,6 @@ create database gelvsrm_polaris;
 		modelo varchar(45)DEFAULT NULL,
 		nro_motor varchar(25)DEFAULT NULL,
 		ingreso datetime DEFAULT NULL, 
-		encargado varchar(50)DEFAULT NULL,
 		ubicacion varchar(100)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
