@@ -214,7 +214,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vin Polaris:</string>
+       <string>&amp;Vin Polaris:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_vin_polaris</cstring>
       </property>
      </widget>
      <widget class="QLabel" name="lbl_detalle_reparacion">
@@ -227,7 +230,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Detalle Reparación:</string>
+       <string>&amp;Detalle Reparación:</string>
+      </property>
+      <property name="buddy">
+       <cstring>tbl_detalle_reparacion</cstring>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_guardar">
@@ -604,7 +610,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Horas:</string>
+       <string>&amp;Horas:</string>
       </property>
       <property name="buddy">
        <cstring>cmb_horas</cstring>
@@ -633,7 +639,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Ubicación:</string>
+       <string>&amp;Ubicación:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_ubicacion</cstring>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_ubicacion">
@@ -669,7 +678,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Fecha:</string>
+       <string>&amp;Fecha:</string>
       </property>
       <property name="buddy">
        <cstring>cmb_fecha</cstring>
@@ -685,7 +694,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Kilometros:</string>
+       <string>&amp;Kilometros:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_kilometros</cstring>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_kilometros">
@@ -724,7 +736,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Observaciones:</string>
+       <string>&amp;Observaciones:</string>
+      </property>
+      <property name="buddy">
+       <cstring>rtxt_observaciones</cstring>
       </property>
      </widget>
      <widget class="QFrame" name="frame_3">
@@ -825,7 +840,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Técnicos:</string>
+       <string>&amp;Técnicos:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_tecnicos</cstring>
       </property>
      </widget>
      <widget class="QLabel" name="lbl_reparacion_nroa">
@@ -860,7 +878,7 @@
      <widget class="QLabel" name="lbl_reparacion">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>310</x>
         <y>50</y>
         <width>261</width>
         <height>31</height>
