@@ -43,7 +43,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -832,7 +832,7 @@
        <string>Kilometraje Recorrido:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_kilometraje_recorridoa_2">
+     <widget class="QLabel" name="lbl_kilometraje_recorridob">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -921,7 +921,7 @@
      <zorder>lbl_horas_de_trabajob</zorder>
      <zorder>lbl_horas_de_trabajoa</zorder>
      <zorder>lbl_kilometraje_recorridoa</zorder>
-     <zorder>lbl_kilometraje_recorridoa_2</zorder>
+     <zorder>lbl_kilometraje_recorridob</zorder>
      <zorder>btn_buscar_cliente</zorder>
      <zorder>btn_buscar_contacto</zorder>
     </widget>
@@ -1441,7 +1441,7 @@
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
