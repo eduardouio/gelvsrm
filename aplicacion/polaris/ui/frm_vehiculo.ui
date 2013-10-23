@@ -43,7 +43,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <property name="iconSize">
      <size>
@@ -210,7 +210,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vin Polaris:</string>
+       <string>&amp;Vin Polaris:</string>
       </property>
       <property name="buddy">
        <cstring>txt_vin_polaris</cstring>
@@ -324,7 +324,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string comment="Primer Registro">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Primer Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string comment="Primer Registro">Primer registro</string>
       </property>
       <property name="text">
        <string/>
@@ -360,7 +360,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registro Anterior&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Registro anterior</string>
       </property>
       <property name="text">
        <string/>
@@ -396,7 +396,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Siguiente Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Siguiente registro</string>
       </property>
       <property name="text">
        <string/>
@@ -432,7 +432,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>Último Registro</string>
+       <string>Ultimo registro</string>
       </property>
       <property name="text">
        <string/>
@@ -556,7 +556,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Ubicación:</string>
+       <string>&amp;Ubicación:</string>
       </property>
       <property name="buddy">
        <cstring>txt_ubicacion</cstring>
@@ -598,7 +598,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Fecha Compra:</string>
+       <string>&amp;Fecha Compra:</string>
       </property>
       <property name="buddy">
        <cstring>cmb_fecha_de_compra</cstring>
@@ -614,7 +614,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Nro Motor:</string>
+       <string>&amp;Nro Motor:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_nro_motor</cstring>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_nro_motor">
@@ -653,7 +656,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Observaciones:</string>
+       <string>&amp;Observaciones:</string>
+      </property>
+      <property name="buddy">
+       <cstring>rtxt_observaciones</cstring>
       </property>
      </widget>
      <widget class="QComboBox" name="cmb_cliente">
@@ -684,10 +690,13 @@
        </rect>
       </property>
       <property name="text">
-       <string>Cliente:</string>
+       <string>&amp;Cliente:</string>
+      </property>
+      <property name="buddy">
+       <cstring>cmb_cliente</cstring>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_vehicul_polaris">
+     <widget class="QLabel" name="lbl_vehiculo_polaris">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -721,7 +730,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="lbl_cliente_2">
+     <widget class="QLabel" name="lbl_contacto">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -744,7 +753,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Modelo:</string>
+       <string>&amp;Modelo:</string>
+      </property>
+      <property name="buddy">
+       <cstring>cmb_modelo</cstring>
       </property>
      </widget>
      <widget class="QComboBox" name="cmb_modelo">
@@ -913,9 +925,9 @@
      <zorder>lbl_observaciones</zorder>
      <zorder>cmb_cliente</zorder>
      <zorder>lbl_cliente</zorder>
-     <zorder>lbl_vehicul_polaris</zorder>
+     <zorder>lbl_vehiculo_polaris</zorder>
      <zorder>cmb_contacto</zorder>
-     <zorder>lbl_cliente_2</zorder>
+     <zorder>lbl_contacto</zorder>
      <zorder>lbl_modelo</zorder>
      <zorder>cmb_modelo</zorder>
      <zorder>lbl_horas_de_trabajob</zorder>
@@ -943,7 +955,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>Resultados Búsqueda</string>
+       <string/>
       </property>
      </widget>
      <widget class="QFrame" name="frame_3">
@@ -961,7 +973,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_mantenimientoa_2">
+      <widget class="QLabel" name="lbl_mantenimientosa">
        <property name="geometry">
         <rect>
          <x>290</x>
@@ -984,7 +996,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Último Mantenim:</string>
+        <string>Último Mantenimiento:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lbl_ultimo_mantenimientob">
@@ -1003,7 +1015,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_mantenimientob_2">
+      <widget class="QLabel" name="lbl_mantenimientosb">
        <property name="geometry">
         <rect>
          <x>400</x>
@@ -1013,13 +1025,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Numero de mantenimientos</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_horas_de_trabajob_2">
+      <widget class="QLabel" name="lbl_horas_de_trabajo_mantenimientob">
        <property name="geometry">
         <rect>
          <x>550</x>
@@ -1029,13 +1041,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Horas de trabajo del vehiculo</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_horas_de_trabajoa_2">
+      <widget class="QLabel" name="lbl_horas_de_trabajo_mantenimientoa">
        <property name="geometry">
         <rect>
          <x>450</x>
@@ -1058,7 +1070,7 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Kilometraje recorrido del vehiculo</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1078,7 +1090,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="btn_monstrar_2">
+     <widget class="QPushButton" name="btn_mostrar_mantenimientos">
       <property name="geometry">
        <rect>
         <x>582</x>
@@ -1120,7 +1132,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_reparaciona">
+      <widget class="QLabel" name="lbl_reparacionsa">
        <property name="geometry">
         <rect>
          <x>290</x>
@@ -1162,7 +1174,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_reparacionb">
+      <widget class="QLabel" name="lbl_reparacionsb">
        <property name="geometry">
         <rect>
          <x>400</x>
@@ -1172,13 +1184,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Numero de reparaciones</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_horas_de_trabajob_3">
+      <widget class="QLabel" name="lbl_horas_de_trabajo_reparacionb">
        <property name="geometry">
         <rect>
          <x>570</x>
@@ -1188,13 +1200,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Horas de trabajo del vehiculo</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_horas_de_trabajoa_3">
+      <widget class="QLabel" name="lbl_horas_de_trabajo_reparaciona">
        <property name="geometry">
         <rect>
          <x>450</x>
@@ -1207,7 +1219,7 @@
         <string>Horas de Trabajo:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_kilometrosb_2">
+      <widget class="QLabel" name="lbl_kilometros_reparacionb">
        <property name="geometry">
         <rect>
          <x>730</x>
@@ -1217,13 +1229,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Kilometraje recorrido del vehiculo</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_kilometrosa_2">
+      <widget class="QLabel" name="lbl_kilometros_reparaciona">
        <property name="geometry">
         <rect>
          <x>640</x>
@@ -1247,7 +1259,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>Resultados Búsqueda</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_monstrar_5">
@@ -1288,7 +1300,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>Resultados Búsqueda</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_criterio">
@@ -1325,6 +1337,9 @@
         <width>149</width>
         <height>27</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Seleccione una columna por la que desea buscar</string>
       </property>
       <item>
        <property name="text">
@@ -1393,7 +1408,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Criterio:</string>
+       <string>&amp;Criterio:</string>
+      </property>
+      <property name="buddy">
+       <cstring>txt_criterio</cstring>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_buscar">
@@ -1441,7 +1459,7 @@
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
