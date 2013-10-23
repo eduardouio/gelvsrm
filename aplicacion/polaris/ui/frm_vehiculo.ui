@@ -43,7 +43,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -996,7 +996,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Último Mantenimiento:</string>
+        <string>Último Mantenim:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lbl_ultimo_mantenimientob">
@@ -1459,7 +1459,7 @@
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
