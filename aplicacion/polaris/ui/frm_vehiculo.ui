@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
-    <height>555</height>
+    <width>869</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -43,7 +43,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -1434,13 +1434,26 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>470</y>
+      <width>118</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>870</width>
+     <width>869</width>
      <height>25</height>
     </rect>
    </property>
@@ -1572,5 +1585,22 @@
  <resources>
   <include location="polaris.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>action_Salir</sender>
+   <signal>activated()</signal>
+   <receiver>frmViaje</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

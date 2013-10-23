@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>963</width>
-    <height>581</height>
+    <width>975</width>
+    <height>492</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -32,8 +32,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>960</width>
-      <height>440</height>
+      <width>971</width>
+      <height>401</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -46,7 +46,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -77,7 +77,7 @@
        <rect>
         <x>9</x>
         <y>1</y>
-        <width>831</width>
+        <width>841</width>
         <height>41</height>
        </rect>
       </property>
@@ -90,7 +90,7 @@
       <widget class="QLabel" name="lbl_id_viajea">
        <property name="geometry">
         <rect>
-         <x>300</x>
+         <x>280</x>
          <y>10</y>
          <width>40</width>
          <height>20</height>
@@ -132,7 +132,7 @@
       <widget class="QLabel" name="lbl_fecha_registrob_2">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>320</x>
          <y>10</y>
          <width>120</width>
          <height>20</height>
@@ -148,9 +148,9 @@
       <widget class="QLabel" name="lbl_fecha_registrob_16">
        <property name="geometry">
         <rect>
-         <x>560</x>
+         <x>514</x>
          <y>9</y>
-         <width>40</width>
+         <width>30</width>
          <height>20</height>
         </rect>
        </property>
@@ -164,7 +164,7 @@
       <widget class="QLabel" name="lbl_id_viajea_10">
        <property name="geometry">
         <rect>
-         <x>480</x>
+         <x>440</x>
          <y>9</y>
          <width>80</width>
          <height>20</height>
@@ -177,7 +177,7 @@
       <widget class="QLabel" name="lbl_id_viajea_11">
        <property name="geometry">
         <rect>
-         <x>630</x>
+         <x>550</x>
          <y>10</y>
          <width>80</width>
          <height>20</height>
@@ -190,9 +190,9 @@
       <widget class="QLabel" name="lbl_fecha_registrob_17">
        <property name="geometry">
         <rect>
-         <x>710</x>
+         <x>617</x>
          <y>10</y>
-         <width>40</width>
+         <width>30</width>
          <height>20</height>
         </rect>
        </property>
@@ -203,12 +203,41 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+      <widget class="QLabel" name="lbl_id_viajea_12">
+       <property name="geometry">
+        <rect>
+         <x>660</x>
+         <y>10</y>
+         <width>80</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Contacto:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_fecha_registrob_18">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>10</y>
+         <width>91</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Fecha de Registro en el sistema</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;09-92936569&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QLabel" name="lbl_informea">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>260</y>
+        <y>250</y>
         <width>111</width>
         <height>17</height>
        </rect>
@@ -221,7 +250,7 @@
       <property name="geometry">
        <rect>
         <x>370</x>
-        <y>380</y>
+        <y>350</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -238,7 +267,7 @@
       <property name="geometry">
        <rect>
         <x>250</x>
-        <y>380</y>
+        <y>350</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -256,7 +285,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>380</y>
+        <y>350</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -274,7 +303,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>380</y>
+        <y>350</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -292,9 +321,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>280</y>
-        <width>631</width>
-        <height>90</height>
+        <y>270</y>
+        <width>671</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -306,8 +335,8 @@ que realiza el viaje</string>
      <widget class="QPushButton" name="btn_home">
       <property name="geometry">
        <rect>
-        <x>850</x>
-        <y>2</y>
+        <x>860</x>
+        <y>0</y>
         <width>70</width>
         <height>70</height>
        </rect>
@@ -529,8 +558,8 @@ que realiza el viaje</string>
      <widget class="QPushButton" name="btn_eliminar">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>380</y>
+        <x>820</x>
+        <y>350</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -567,7 +596,7 @@ que realiza el viaje</string>
        <rect>
         <x>180</x>
         <y>120</y>
-        <width>460</width>
+        <width>500</width>
         <height>27</height>
        </rect>
       </property>
@@ -604,23 +633,23 @@ que realiza el viaje</string>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>650</x>
-        <y>100</y>
+        <x>690</x>
+        <y>150</y>
         <width>101</width>
-        <height>17</height>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Teléfono:</string>
+       <string>Email:</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_criterio_4">
       <property name="geometry">
        <rect>
-        <x>650</x>
-        <y>120</y>
-        <width>160</width>
-        <height>27</height>
+        <x>690</x>
+        <y>170</y>
+        <width>191</width>
+        <height>26</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -630,10 +659,10 @@ que realiza el viaje</string>
      <widget class="QLineEdit" name="txt_criterio_5">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>10</x>
         <y>170</y>
-        <width>630</width>
-        <height>27</height>
+        <width>671</width>
+        <height>26</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -643,10 +672,10 @@ que realiza el viaje</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>181</x>
+        <x>11</x>
         <y>150</y>
         <width>101</width>
-        <height>17</height>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
@@ -657,104 +686,26 @@ que realiza el viaje</string>
       <property name="geometry">
        <rect>
         <x>12</x>
-        <y>150</y>
+        <y>200</y>
         <width>101</width>
-        <height>17</height>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Fax:</string>
+       <string>Teléfono:</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_criterio_6">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>170</y>
-        <width>160</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_17">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>200</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Provincia:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txt_criterio_7">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
+        <x>9</x>
         <y>220</y>
-        <width>160</width>
-        <height>27</height>
+        <width>163</width>
+        <height>26</height>
        </rect>
       </property>
       <property name="toolTip">
        <string>Ingrese un criterio de búsqueda basado en el operador</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_18">
-      <property name="geometry">
-       <rect>
-        <x>181</x>
-        <y>200</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ciudad:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txt_criterio_8">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>220</y>
-        <width>141</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txt_criterio_9">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>220</y>
-        <width>311</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_19">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>200</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Email:</string>
       </property>
      </widget>
      <widget class="QLabel" name="lbl_vehicul_polaris">
@@ -776,8 +727,8 @@ que realiza el viaje</string>
      <widget class="QComboBox" name="cmb_contacto">
       <property name="geometry">
        <rect>
-        <x>659</x>
-        <y>220</y>
+        <x>689</x>
+        <y>121</y>
         <width>190</width>
         <height>27</height>
        </rect>
@@ -794,8 +745,8 @@ que realiza el viaje</string>
      <widget class="QLabel" name="lbl_cliente_2">
       <property name="geometry">
        <rect>
-        <x>659</x>
-        <y>200</y>
+        <x>689</x>
+        <y>101</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -807,8 +758,8 @@ que realiza el viaje</string>
      <widget class="QPushButton" name="btn_buscar_contacto">
       <property name="geometry">
        <rect>
-        <x>850</x>
-        <y>220</y>
+        <x>880</x>
+        <y>121</y>
         <width>51</width>
         <height>27</height>
        </rect>
@@ -822,6 +773,181 @@ que realiza el viaje</string>
       <property name="icon">
        <iconset resource="polaris.qrc">
         <normaloff>:/Icons/icons/edit_find.png</normaloff>:/Icons/icons/edit_find.png</iconset>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>1380</x>
+        <y>450</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Email:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>183</x>
+        <y>200</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fax:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txt_criterio_10">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>220</y>
+        <width>163</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_cliente_3">
+      <property name="geometry">
+       <rect>
+        <x>354</x>
+        <y>200</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Provincia:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmb_contacto_2">
+      <property name="geometry">
+       <rect>
+        <x>354</x>
+        <y>220</y>
+        <width>160</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Contactos</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Bolivar</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cañar</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Chimborazo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cotopaxi</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Guayas</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Loja</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Pichincha</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Santo Domingo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tungurahua</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLineEdit" name="txt_criterio_7">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>220</y>
+        <width>163</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>522</x>
+        <y>200</y>
+        <width>104</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ciudad:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_mantenimientos_3">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>220</y>
+        <width>111</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Ver mantenimientos realizados</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="polaris.qrc">
+        <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>200</y>
+        <width>140</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Asignar Vehículos:</string>
       </property>
      </widget>
      <zorder>frame_2</zorder>
@@ -849,16 +975,19 @@ que realiza el viaje</string>
      <zorder>label_15</zorder>
      <zorder>label_16</zorder>
      <zorder>txt_criterio_6</zorder>
-     <zorder>label_17</zorder>
-     <zorder>txt_criterio_7</zorder>
-     <zorder>label_18</zorder>
-     <zorder>txt_criterio_8</zorder>
-     <zorder>txt_criterio_9</zorder>
-     <zorder>label_19</zorder>
      <zorder>lbl_vehicul_polaris</zorder>
      <zorder>cmb_contacto</zorder>
      <zorder>lbl_cliente_2</zorder>
      <zorder>btn_buscar_contacto</zorder>
+     <zorder>label_20</zorder>
+     <zorder>label_21</zorder>
+     <zorder>txt_criterio_10</zorder>
+     <zorder>lbl_cliente_3</zorder>
+     <zorder>cmb_contacto_2</zorder>
+     <zorder>txt_criterio_7</zorder>
+     <zorder>label_17</zorder>
+     <zorder>btn_mantenimientos_3</zorder>
+     <zorder>label_18</zorder>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -867,8 +996,8 @@ que realiza el viaje</string>
      <widget class="QPushButton" name="btn_monstrar_2">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>390</y>
+        <x>690</x>
+        <y>350</y>
         <width>240</width>
         <height>40</height>
        </rect>
@@ -885,10 +1014,10 @@ que realiza el viaje</string>
      <widget class="QTableWidget" name="tbl_resultados_2">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>1</x>
         <y>45</y>
-        <width>821</width>
-        <height>330</height>
+        <width>928</width>
+        <height>301</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -898,9 +1027,9 @@ que realiza el viaje</string>
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>1</x>
         <y>0</y>
-        <width>820</width>
+        <width>927</width>
         <height>41</height>
        </rect>
       </property>
@@ -968,12 +1097,25 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_15">
+      <widget class="QLabel" name="lbl_id_viajea_3">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>430</x>
          <y>10</y>
-         <width>61</width>
+         <width>140</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Vehículos Asignados:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_fecha_registrob_7">
+       <property name="geometry">
+        <rect>
+         <x>575</x>
+         <y>10</y>
+         <width>40</width>
          <height>20</height>
         </rect>
        </property>
@@ -981,28 +1123,15 @@ que realiza el viaje</string>
         <string>Fecha de Registro en el sistema</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lbl_id_viajea_9">
-       <property name="geometry">
-        <rect>
-         <x>450</x>
-         <y>10</y>
-         <width>120</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Horas de Trabajo:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
      <widget class="QPushButton" name="btn_mantenimientos_2">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>390</y>
+        <x>480</x>
+        <y>350</y>
         <width>201</width>
         <height>41</height>
        </rect>
@@ -1201,7 +1330,7 @@ que realiza el viaje</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>963</width>
+     <width>975</width>
      <height>25</height>
     </rect>
    </property>
