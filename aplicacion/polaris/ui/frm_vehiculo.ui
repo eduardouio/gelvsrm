@@ -43,7 +43,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -687,7 +687,7 @@
        <string>Cliente:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_vehicul_polaris">
+     <widget class="QLabel" name="lbl_vehiculo_polaris">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -721,7 +721,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="lbl_cliente_2">
+     <widget class="QLabel" name="lbl_contacto">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -913,9 +913,9 @@
      <zorder>lbl_observaciones</zorder>
      <zorder>cmb_cliente</zorder>
      <zorder>lbl_cliente</zorder>
-     <zorder>lbl_vehicul_polaris</zorder>
+     <zorder>lbl_vehiculo_polaris</zorder>
      <zorder>cmb_contacto</zorder>
-     <zorder>lbl_cliente_2</zorder>
+     <zorder>lbl_contacto</zorder>
      <zorder>lbl_modelo</zorder>
      <zorder>cmb_modelo</zorder>
      <zorder>lbl_horas_de_trabajob</zorder>
@@ -961,7 +961,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_mantenimientoa_2">
+      <widget class="QLabel" name="lbl_mantenimientosa">
        <property name="geometry">
         <rect>
          <x>290</x>
@@ -1003,7 +1003,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_mantenimientob_2">
+      <widget class="QLabel" name="lbl_mantenimientosb">
        <property name="geometry">
         <rect>
          <x>400</x>
@@ -1441,7 +1441,7 @@
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
