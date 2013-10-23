@@ -382,9 +382,10 @@ create database gelvsrm_polaris;
 	create table factura(
 		id_factura smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_cliente char(13) NOT NULL,
+		num_factura int not null DEFAULT 0,
 		fecha datetime NOT NULL,
 		fecha_envio datetime NOT NULL,
-		estado boolean NOT NULL,
+		estado varchar(50) NOT NULL,
 		archivo varchar(200)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
