@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>frmViaje</class>
- <widget class="QMainWindow" name="frmViaje">
+ <class>frmCliente</class>
+ <widget class="QMainWindow" name="frmCliente">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Viajes Mantenimientos</string>
+   <string>Clientes</string>
   </property>
   <property name="windowIcon">
    <iconset resource="polaris.qrc">
@@ -33,7 +33,7 @@
       <x>0</x>
       <y>0</y>
       <width>971</width>
-      <height>400</height>
+      <height>401</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -81,16 +81,19 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(218, 218, 218);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_id_viajea">
+      <widget class="QLabel" name="lbl_ruca">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>290</x>
          <y>10</y>
          <width>40</width>
          <height>20</height>
@@ -129,7 +132,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_2">
+      <widget class="QLabel" name="lbl_rucb">
        <property name="geometry">
         <rect>
          <x>320</x>
@@ -139,13 +142,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Ruc del cliente</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1722919725001&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_16">
+      <widget class="QLabel" name="lbl_vehiculosa_2">
        <property name="geometry">
         <rect>
          <x>514</x>
@@ -155,13 +158,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Numero de vehiculos del cliente</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_10">
+      <widget class="QLabel" name="lbl_vehiculosa">
        <property name="geometry">
         <rect>
          <x>440</x>
@@ -174,7 +177,7 @@
         <string>Vehículos:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_11">
+      <widget class="QLabel" name="lbl_facturasa">
        <property name="geometry">
         <rect>
          <x>550</x>
@@ -187,7 +190,7 @@
         <string>Facturas:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_17">
+      <widget class="QLabel" name="lbl_facturasa_2">
        <property name="geometry">
         <rect>
          <x>617</x>
@@ -197,13 +200,13 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Numero de facturas del cliente</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_12">
+      <widget class="QLabel" name="lbl_contactoa">
        <property name="geometry">
         <rect>
          <x>660</x>
@@ -216,7 +219,7 @@
         <string>Contacto:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_18">
+      <widget class="QLabel" name="lbl_contactob">
        <property name="geometry">
         <rect>
          <x>740</x>
@@ -226,14 +229,14 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
+        <string>Numero de contacto del cliente</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;09-92936569&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QLabel" name="lbl_informea">
+     <widget class="QLabel" name="lbl_observaciones">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -317,7 +320,7 @@
        </iconset>
       </property>
      </widget>
-     <widget class="QTextEdit" name="rtxt_informe">
+     <widget class="QTextEdit" name="rtxt_observaciones">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -327,9 +330,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>Contenido del Informe,
-elaborado por la persona 
-que realiza el viaje</string>
+       <string>Sirve para especificar fecha de entrega de factura entre otras</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_home">
@@ -369,7 +370,7 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string comment="Primer Registro">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Primer Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string comment="Primer Registro">Primer registro</string>
       </property>
       <property name="text">
        <string/>
@@ -405,7 +406,7 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registro Anterior&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Registro anterior</string>
       </property>
       <property name="text">
        <string/>
@@ -441,7 +442,7 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Siguiente Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Siguiente registro</string>
       </property>
       <property name="text">
        <string/>
@@ -548,6 +549,9 @@ que realiza el viaje</string>
         <height>40</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(218, 218, 218);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -578,7 +582,7 @@ que realiza el viaje</string>
         <normalon>:/Icons/icons/user_trash.png</normalon>:/Icons/icons/button_cancel.png</iconset>
       </property>
      </widget>
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="lbl_nombre">
       <property name="geometry">
        <rect>
         <x>181</x>
@@ -591,7 +595,7 @@ que realiza el viaje</string>
        <string>Nombre:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_2">
+     <widget class="QLineEdit" name="txt_nombre">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -601,10 +605,10 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese el nombre del cliente</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="lbl_ruc">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -617,7 +621,7 @@ que realiza el viaje</string>
        <string>Ruc:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_3">
+     <widget class="QLineEdit" name="txt_ruc">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -627,10 +631,13 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese numero de ruc del cliente</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(224, 234, 255);</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_14">
+     <widget class="QLabel" name="lbl_email">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -643,7 +650,7 @@ que realiza el viaje</string>
        <string>Email:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_4">
+     <widget class="QLineEdit" name="txt_email">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -653,10 +660,10 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese email del cliente</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_5">
+     <widget class="QLineEdit" name="txt_direccion">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -666,10 +673,10 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese direccion del cliente</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_15">
+     <widget class="QLabel" name="lbl_direccion">
       <property name="geometry">
        <rect>
         <x>11</x>
@@ -682,7 +689,7 @@ que realiza el viaje</string>
        <string>Dirección:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_16">
+     <widget class="QLabel" name="lbl_telefono">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -695,7 +702,7 @@ que realiza el viaje</string>
        <string>Teléfono:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_6">
+     <widget class="QLineEdit" name="txt_telefono">
       <property name="geometry">
        <rect>
         <x>9</x>
@@ -705,13 +712,13 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese numero del cliente</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_vehicul_polaris">
+     <widget class="QLabel" name="lbl_clientes_gelvs">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>360</x>
         <y>50</y>
         <width>191</width>
         <height>31</height>
@@ -742,7 +749,7 @@ que realiza el viaje</string>
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="lbl_cliente_2">
+     <widget class="QLabel" name="lbl_contacto">
       <property name="geometry">
        <rect>
         <x>689</x>
@@ -788,7 +795,7 @@ que realiza el viaje</string>
        <string>Email:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_21">
+     <widget class="QLabel" name="lbl_fax">
       <property name="geometry">
        <rect>
         <x>183</x>
@@ -801,7 +808,7 @@ que realiza el viaje</string>
        <string>Fax:</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_10">
+     <widget class="QLineEdit" name="txt_fax">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -811,10 +818,10 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingrese el fax del cliente</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_cliente_3">
+     <widget class="QLabel" name="lbl_provincia">
       <property name="geometry">
        <rect>
         <x>354</x>
@@ -827,7 +834,7 @@ que realiza el viaje</string>
        <string>Provincia:</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="cmb_contacto_2">
+     <widget class="QComboBox" name="cmb_provincia">
       <property name="geometry">
        <rect>
         <x>354</x>
@@ -837,7 +844,7 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Contactos</string>
+       <string>Provincias</string>
       </property>
       <item>
        <property name="text">
@@ -885,7 +892,7 @@ que realiza el viaje</string>
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="txt_criterio_7">
+     <widget class="QLineEdit" name="txt_cuidad">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -895,10 +902,10 @@ que realiza el viaje</string>
        </rect>
       </property>
       <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
+       <string>Ingresar cuidad </string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
+     <widget class="QLabel" name="lbl_cuidad">
       <property name="geometry">
        <rect>
         <x>522</x>
@@ -911,7 +918,7 @@ que realiza el viaje</string>
        <string>Ciudad:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_mantenimientos_3">
+     <widget class="QPushButton" name="btn_asignar_vehiculo">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -937,7 +944,7 @@ que realiza el viaje</string>
        </size>
       </property>
      </widget>
-     <widget class="QLabel" name="label_18">
+     <widget class="QLabel" name="label_asignar_vehiculos">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -951,43 +958,44 @@ que realiza el viaje</string>
       </property>
      </widget>
      <zorder>frame_2</zorder>
+     <zorder>btn_siguiente</zorder>
+     <zorder>btn_recargar</zorder>
+     <zorder>btn_primero</zorder>
+     <zorder>btn_anterior</zorder>
+     <zorder>btn_ultimo</zorder>
      <zorder>frame</zorder>
-     <zorder>lbl_informea</zorder>
+     <zorder>lbl_observaciones</zorder>
      <zorder>btn_guardar</zorder>
      <zorder>btn_cancelar</zorder>
      <zorder>btn_copiar</zorder>
      <zorder>btn_nuevo</zorder>
-     <zorder>rtxt_informe</zorder>
+     <zorder>rtxt_observaciones</zorder>
      <zorder>btn_home</zorder>
-     <zorder>btn_primero</zorder>
-     <zorder>btn_anterior</zorder>
-     <zorder>btn_siguiente</zorder>
-     <zorder>btn_ultimo</zorder>
-     <zorder>btn_recargar</zorder>
      <zorder>btn_eliminar</zorder>
-     <zorder>label_12</zorder>
-     <zorder>txt_criterio_2</zorder>
-     <zorder>label_13</zorder>
-     <zorder>txt_criterio_3</zorder>
-     <zorder>label_14</zorder>
-     <zorder>txt_criterio_4</zorder>
-     <zorder>txt_criterio_5</zorder>
-     <zorder>label_15</zorder>
-     <zorder>label_16</zorder>
-     <zorder>txt_criterio_6</zorder>
-     <zorder>lbl_vehicul_polaris</zorder>
+     <zorder>lbl_nombre</zorder>
+     <zorder>txt_nombre</zorder>
+     <zorder>lbl_ruc</zorder>
+     <zorder>txt_ruc</zorder>
+     <zorder>lbl_email</zorder>
+     <zorder>txt_email</zorder>
+     <zorder>txt_direccion</zorder>
+     <zorder>lbl_direccion</zorder>
+     <zorder>lbl_telefono</zorder>
+     <zorder>txt_telefono</zorder>
+     <zorder>lbl_clientes_gelvs</zorder>
      <zorder>cmb_contacto</zorder>
-     <zorder>lbl_cliente_2</zorder>
+     <zorder>lbl_contacto</zorder>
      <zorder>btn_buscar_contacto</zorder>
      <zorder>label_20</zorder>
-     <zorder>label_21</zorder>
-     <zorder>txt_criterio_10</zorder>
-     <zorder>lbl_cliente_3</zorder>
-     <zorder>cmb_contacto_2</zorder>
-     <zorder>txt_criterio_7</zorder>
-     <zorder>label_17</zorder>
-     <zorder>btn_mantenimientos_3</zorder>
-     <zorder>label_18</zorder>
+     <zorder>lbl_fax</zorder>
+     <zorder>txt_fax</zorder>
+     <zorder>lbl_provincia</zorder>
+     <zorder>cmb_provincia</zorder>
+     <zorder>txt_cuidad</zorder>
+     <zorder>lbl_cuidad</zorder>
+     <zorder>btn_asignar_vehiculo</zorder>
+     <zorder>label_asignar_vehiculos</zorder>
+     <zorder>lbl_contactob</zorder>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="icon">
@@ -998,7 +1006,7 @@ que realiza el viaje</string>
      <attribute name="title">
       <string>Vehículos</string>
      </attribute>
-     <widget class="QPushButton" name="btn_monstrar_2">
+     <widget class="QPushButton" name="btn_monstrar_seleccionados">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -1016,11 +1024,11 @@ que realiza el viaje</string>
        </iconset>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tbl_resultados_2">
+     <widget class="QTableWidget" name="tbl_vehiculos">
       <property name="geometry">
        <rect>
-        <x>1</x>
-        <y>46</y>
+        <x>0</x>
+        <y>40</y>
         <width>928</width>
         <height>301</height>
        </rect>
@@ -1038,13 +1046,16 @@ que realiza el viaje</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(218, 218, 218);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_fecha_registroa_2">
+      <widget class="QLabel" name="lbl_ultimo_mantenimientoa">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1054,10 +1065,10 @@ que realiza el viaje</string>
         </rect>
        </property>
        <property name="text">
-        <string>Último Mantenim:</string>
+        <string>Último Mantenimiento:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_3">
+      <widget class="QLabel" name="lbl_ultimo_mantenimientob">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1073,7 +1084,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_3">
+      <widget class="QLabel" name="lbl_vehiculos_asignadosa">
        <property name="geometry">
         <rect>
          <x>285</x>
@@ -1086,7 +1097,7 @@ que realiza el viaje</string>
         <string>Vehículos Asignados:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_7">
+      <widget class="QLabel" name="lbl_vehiculos_asignadosb">
        <property name="geometry">
         <rect>
          <x>430</x>
@@ -1102,7 +1113,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_6">
+      <widget class="QLabel" name="lbl_mantenimientosb">
        <property name="geometry">
         <rect>
          <x>570</x>
@@ -1118,7 +1129,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_2">
+      <widget class="QLabel" name="lbl_mantenimientosa">
        <property name="geometry">
         <rect>
          <x>460</x>
@@ -1131,7 +1142,7 @@ que realiza el viaje</string>
         <string>Matenimientos:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_8">
+      <widget class="QLabel" name="lbl_reparacionesb">
        <property name="geometry">
         <rect>
          <x>710</x>
@@ -1147,7 +1158,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_4">
+      <widget class="QLabel" name="lbl_reparacionesa">
        <property name="geometry">
         <rect>
          <x>600</x>
@@ -1161,7 +1172,7 @@ que realiza el viaje</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="btn_mantenimientos_2">
+     <widget class="QPushButton" name="btn_asignar_vehiculos">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -1224,13 +1235,16 @@ que realiza el viaje</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(218, 218, 218);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="lbl_fecha_registroa_3">
+      <widget class="QLabel" name="lbl_ultima_facturaa">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1243,7 +1257,7 @@ que realiza el viaje</string>
         <string>Última Factura:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_4">
+      <widget class="QLabel" name="lbl_ultima_facturab">
        <property name="geometry">
         <rect>
          <x>120</x>
@@ -1259,7 +1273,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_5">
+      <widget class="QLabel" name="lbl_facturas_emitidasa">
        <property name="geometry">
         <rect>
          <x>265</x>
@@ -1272,7 +1286,7 @@ que realiza el viaje</string>
         <string>Facturas Emitidas:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_9">
+      <widget class="QLabel" name="lbl_facturas_emitidasb">
        <property name="geometry">
         <rect>
          <x>400</x>
@@ -1288,7 +1302,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_11">
+      <widget class="QLabel" name="lbl_contactoob">
        <property name="geometry">
         <rect>
          <x>500</x>
@@ -1304,7 +1318,7 @@ que realiza el viaje</string>
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;Eduardo Villota&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_7">
+      <widget class="QLabel" name="lbl_contactooa">
        <property name="geometry">
         <rect>
          <x>430</x>
@@ -1317,7 +1331,7 @@ que realiza el viaje</string>
         <string>Contacto:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_id_viajea_8">
+      <widget class="QLabel" name="lbl_telefonoa">
        <property name="geometry">
         <rect>
          <x>620</x>
@@ -1330,7 +1344,7 @@ que realiza el viaje</string>
         <string>Teléfono:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob_12">
+      <widget class="QLabel" name="lbl_telefonob">
        <property name="geometry">
         <rect>
          <x>690</x>
@@ -1373,7 +1387,7 @@ que realiza el viaje</string>
        </size>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tbl_resultados_3">
+     <widget class="QTableWidget" name="tbl_facturas">
       <property name="geometry">
        <rect>
         <x>1</x>
@@ -1396,7 +1410,7 @@ que realiza el viaje</string>
      <attribute name="title">
       <string>Buscar</string>
      </attribute>
-     <widget class="QTableWidget" name="tbl_resultados">
+     <widget class="QTableWidget" name="tbl_buscar">
       <property name="geometry">
        <rect>
         <x>7</x>
@@ -1475,7 +1489,7 @@ que realiza el viaje</string>
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="lbl_columna">
       <property name="geometry">
        <rect>
         <x>8</x>
@@ -1488,7 +1502,7 @@ que realiza el viaje</string>
        <string>Columna:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="lbl_operador">
       <property name="geometry">
        <rect>
         <x>191</x>
@@ -1501,7 +1515,7 @@ que realiza el viaje</string>
        <string>Operador:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="lbl_criterio">
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -1532,7 +1546,7 @@ que realiza el viaje</string>
        </iconset>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_monstrar">
+     <widget class="QPushButton" name="btn_mostrar">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -1559,7 +1573,7 @@ que realiza el viaje</string>
      <x>0</x>
      <y>0</y>
      <width>972</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
