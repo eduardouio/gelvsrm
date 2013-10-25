@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>972</width>
-    <height>492</height>
+    <width>977</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -33,7 +33,7 @@
       <x>0</x>
       <y>0</y>
       <width>971</width>
-      <height>401</height>
+      <height>581</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -46,7 +46,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -1421,7 +1421,7 @@ background-color: rgb(173, 173, 173);</string>
         <x>7</x>
         <y>60</y>
         <width>921</width>
-        <height>281</height>
+        <height>461</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -1555,7 +1555,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>350</y>
+        <y>530</y>
         <width>240</width>
         <height>40</height>
        </rect>
@@ -1577,7 +1577,7 @@ background-color: rgb(173, 173, 173);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>972</width>
+     <width>977</width>
      <height>25</height>
     </rect>
    </property>
