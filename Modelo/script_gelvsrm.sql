@@ -196,12 +196,12 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table gastos_viaje(
 		id_viaje smallint unsigned not null,
-		nro_factura varchar(15) not null,
+		nro_factura varchar(20) not null,
 		fecha date not null,
 		detalle varchar(300) not null,
 		valor decimal(4,2) not null,
 		registro timestamp not null default current_timestamp,
-		primary key(nro_factura,valor),
+		primary key(id_viaje,nro_factura,valor),
 		CONSTRAINT fk_gastos_viaje_viaje
 		FOREIGN KEY(id_viaje)
 		REFERENCES viaje(id_viaje)

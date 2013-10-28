@@ -27,7 +27,7 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tab_viaje">
+   <widget class="QTabWidget" name="tab_inventario">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -46,7 +46,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -258,7 +258,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>370</x>
-        <y>350</y>
+        <y>530</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -275,7 +275,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>250</x>
-        <y>350</y>
+        <y>530</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -293,7 +293,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>350</y>
+        <y>530</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -311,7 +311,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>350</y>
+        <y>530</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -571,7 +571,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>820</x>
-        <y>350</y>
+        <y>530</y>
         <width>111</width>
         <height>40</height>
        </rect>
@@ -600,15 +600,15 @@ background-color: rgb(173, 173, 173);</string>
        </rect>
       </property>
       <property name="text">
-       <string>Nombre:</string>
+       <string>Descripcion</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_nombre">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>130</x>
         <y>120</y>
-        <width>500</width>
+        <width>550</width>
         <height>27</height>
        </rect>
       </property>
@@ -619,14 +619,14 @@ background-color: rgb(173, 173, 173);</string>
      <widget class="QLabel" name="lbl_ruc">
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>10</x>
         <y>100</y>
         <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Ruc:</string>
+       <string>Código</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="txt_ruc">
@@ -634,7 +634,7 @@ background-color: rgb(173, 173, 173);</string>
        <rect>
         <x>10</x>
         <y>120</y>
-        <width>160</width>
+        <width>110</width>
         <height>27</height>
        </rect>
       </property>
@@ -736,7 +736,7 @@ background-color: rgb(173, 173, 173);</string>
        <string/>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#005500;&quot;&gt;Clientes GELVS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#005500;&quot;&gt;Inventario&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QComboBox" name="cmb_contacto">
@@ -926,32 +926,6 @@ background-color: rgb(173, 173, 173);</string>
        <string>Ciudad:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_asignar_vehiculo">
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>220</y>
-        <width>111</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ver mantenimientos realizados</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="polaris.qrc">
-        <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>60</width>
-        <height>60</height>
-       </size>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_asignar_vehiculos">
       <property name="geometry">
        <rect>
@@ -1001,7 +975,6 @@ background-color: rgb(173, 173, 173);</string>
      <zorder>cmb_provincia</zorder>
      <zorder>txt_cuidad</zorder>
      <zorder>lbl_cuidad</zorder>
-     <zorder>btn_asignar_vehiculo</zorder>
      <zorder>label_asignar_vehiculos</zorder>
     </widget>
     <widget class="QWidget" name="tab">
@@ -1016,7 +989,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>690</x>
-        <y>351</y>
+        <y>530</y>
         <width>240</width>
         <height>40</height>
        </rect>
@@ -1036,7 +1009,7 @@ background-color: rgb(173, 173, 173);</string>
         <x>0</x>
         <y>40</y>
         <width>928</width>
-        <height>301</height>
+        <height>481</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -1182,7 +1155,7 @@ background-color: rgb(173, 173, 173);</string>
       <property name="geometry">
        <rect>
         <x>480</x>
-        <y>351</y>
+        <y>530</y>
         <width>201</width>
         <height>41</height>
        </rect>
@@ -1204,6 +1177,10 @@ background-color: rgb(173, 173, 173);</string>
        </size>
       </property>
      </widget>
+     <zorder>tbl_vehiculos</zorder>
+     <zorder>frame_3</zorder>
+     <zorder>btn_asignar_vehiculos</zorder>
+     <zorder>btn_monstrar_seleccionados</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="icon">
@@ -1721,7 +1698,7 @@ background-color: rgb(173, 173, 173);</string>
   </action>
  </widget>
  <tabstops>
-  <tabstop>tab_viaje</tabstop>
+  <tabstop>tab_inventario</tabstop>
  </tabstops>
  <resources>
   <include location="polaris.qrc"/>
