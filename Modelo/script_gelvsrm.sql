@@ -380,11 +380,12 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad factura
 	-- -------------------------------------------------------------------
 	create table factura(
-		id_factura smallint unsigned NOT NULL AUTO_INCREMENT,
+		id_factura int not null,
 		id_cliente char(13) NOT NULL,
-		num_factura int not null DEFAULT 0,
-		fecha datetime NOT NULL,
-		fecha_envio datetime NOT NULL,
+		fecha date NOT NULL,
+		fecha_envio date NOT NULL,
+		guia_envio varchar(50),
+		servicio_envio varchar(80) NOT NULL,
 		estado varchar(50) NOT NULL,
 		archivo varchar(200)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
@@ -401,9 +402,10 @@ create database gelvsrm_polaris;
 		al archivo del escaneado de la factura';	
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad detalles de la factura
+	-- 0360015690001
 	-- -------------------------------------------------------------------
 	create table factura_detalle(		
-		id_factura smallint unsigned NOT NULL,
+		id_factura int not null,
 		id_manteminiento smallint unsigned NOT NULL,
 		id_reparacion smallint unsigned NOT NULL,
 		registro timestamp not null default current_timestamp 
