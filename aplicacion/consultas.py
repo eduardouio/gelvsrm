@@ -7,6 +7,3 @@
 # File			db.py
 # Ubicacion		reporte/basedatos/DB.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
-from DB import Db
-
-print(dir(Db))

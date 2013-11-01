@@ -1,31 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 # Version		1.0
 # Autor			Eduardo Villota <eduardouio@hotmail.com> <@eduardouio>
 # Package		Conexion a la base de datos
-# File			db.py
-# Ubicacion		reporte/basedatos/DB.py
+# File			Modelo.py
+# Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 
 from PyQt4 import QtCore, QtSql
 import conn
 
-class Db(object):
+class Modelo(object):
 	''' Modelo de datos, lo errores ocurridos en la capa son mostrados por lastError()
 	si un metodo no puede efectuar una accion retorna falso.
 	Los tipos de error a soportar son errores de conexión y errores en consultas sql'''
 
 	def __init__(self):
 		'''Inicia la conexión al servidor'''
-
-		self.Conn = conn.conectar()		
-		
+		self.Conn = conn.conectar()				
 
 	def __consultDb(self,sql):
 		'''Ejecuta una consulta en la base de datos, las consultas son preparadas por el metodo
-		que invoca a este metodo'''				
-
+		que invoca a este metodo'''
 		if (self.Conn):			
 			sql.exec_()
 			if not sql.isActive():
@@ -35,33 +31,25 @@ class Db(object):
 									'El servidor dice... \n' + sql.lastError().databaseText() + 
 									'\n\nSi el problema continúa comuníquese con eduardouio7@gmail.com' + str(sql.lastQuery())),					
 					QtGui.QMessageBox.Ok)		
-				return False
-
+				return Falseq
 			return sql
 
 	def listTables(self):
 		'''	Lista todas las tablas de la base de datos '''		
-		sql = QtSql.QSqlQuery()	
-		
+		sql = QtSql.QSqlQuery()			
 		sql.prepare('SHOW TABLES FROM gelvsrm_polaris;')
 		result = self.__consultDb(sql)
-
 		if not result:			
 			return False
-
 		return result
-
 
 	def listColumns(self,tabla):
 		''' Lista las columnas de una tabla	'''
-		sql = QtSql.QSqlQuery()					
-		
+		sql = QtSql.QSqlQuery()		
 		sql.prepare("SHOW COLUMNS FROM " + tabla + " ;")
 		result = self.__consultDb(sql)
-
 		if not result:			
 			return False
-
 		return result
 
 	def getQueryModel(self,columns,table):
@@ -69,32 +57,25 @@ class Db(object):
 		se especifica las columnas con un diccionario, para 
 		no escribir las cabeceras del model si la consulta tiene un error consultar 
 		QSqlQueryModel.lastError()'''
-
 		query = 'SELECT '
 		#desde
 		i = 1
 		#hasta
 		x = len(columns)
-
 		#armamos la consulta
 		for item in columns:
 			if ( i < x ):
 				query = query + item + ' AS ' + columns[item] + ','
-
 			if ( i == x ):
 				query = query + item + ' AS ' + columns[item] + ' FROM ' + table
-
 			i += 1
-
 		modelo = QtSql.QSqlQueryModel()
 		modelo.setQuery(query)
-
 		return modelo
 
 	def getTableModel(self, table, condition):
 		'''Retorna un modelo editable de una tabla, la condicion string sql
-		lo errores estan en lastError() '''
-		
+		lo errores estan en lastError() '''		
 		modelo = QtSql.QSqlTableModel()		
 		modelo.setTable(table)
 		#los cambios al modelo se almacenan en cache y se reguistran 
@@ -102,12 +83,10 @@ class Db(object):
 		modelo.setEditStrategy(QtSql.QSqlTableModel.OnManualSubmit)
 		modelo.setFilter(condition)
 		modelo.select()
-
 		return modelo
 
 	def selectQuery(self, table, columns ,condition, like, limit):
 		'''Ejecuta una consulta tipo SELECT en la BD
-
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Columnas a mostrar
 		(str)	condition 	=> 	condicion si no existe "1=1"
@@ -161,13 +140,9 @@ class Db(object):
 		'''Ejecuta una consulta tipo INSERT en la BD, si se manda una columna sin valor se reemplaza por NULL
 		(str) table 	=>	nombre de la tabla 
 		(dic) values 	=>  diccionario clave valor 
-
 		INSERT INTO table (values[columns]) 
-		VALUES( values[value]);
-		'''
-		
+		VALUES( values[value]);'''		
 		query = 'INSERT INTO ' + table +'('
-
 		i = 1
 		x = len(values)
 		for item in values:
@@ -176,9 +151,7 @@ class Db(object):
 			if i==x:
 				query = query + item + ')'
 			i+=1
-
 		query = query + 'VALUES('
-
 		i = 1
 		for item in values:
 			if values[item] == '':
@@ -186,38 +159,27 @@ class Db(object):
 				values[item] = 'NULL'
 			if i < x:
 				query = query + values[item] + ','
-
 			if i == x:
 				query = query + values[item] + ');'
 			i +=1
-
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
-
 		result = self.__consultDb(sql)
-
 		if not result:
 			return False
-
 		return result
-
 
 	def updateQuery(self,table,values,condition):
 		'''Ejecuta una Sentencia tipo update en la BD
-
 		(str)	table 	=> nombre de la tabla 
 		(dic)	values 	=> diccionario clave valor para update
 		(srt)	condition => condicion SQL
-
 		UPDATE table 
 		SET
-		values[columns] = values[value]
-		'''
-
+		values[columns] = values[value]'''
 		query = 'UPDATE ' + table + ' SET '
 		i = 1
 		x = len(values)
-
 		#armamos la consulta
 		for item in values:
 			if values[item] == '':
@@ -228,35 +190,25 @@ class Db(object):
 			if i == x :
 				query = query + item + ' = ' + values[item]
 		query = query  + ' ' + condition + ';'
-
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
 		result = self.__consultDb(sql)
-
 		if not result:
 			return False
-
 		return result
-
 
 	def deleteQuery(self, table, condition ):
 		'''Metodo encargad de ejecutar una Sentencia tipo DELETE en la BD
 		(str)	table 	=> nombre de la tabla
 		(str)	condition => condicion para el borrado
-
 		DELETE FOM table
-		WHERE condition
-		'''
+		WHERE condition'''
 		sql = QtSql.QSqlQuery()		
 		sql.prepare('DELETE FROM ' + table + ' WHERE ' + condition + ';')
-
 		result = sefl.__consultDb(sql)
-
 		if not result:
 			return False
-
 		return result
-
 
 	def lastInsertId(self):
 		'''Ultimo Id ingresado en la BD'''
@@ -284,8 +236,5 @@ class Db(object):
 		conn.rollback()
 
 	def lastError(self):
-		'''Retorna en ultimo error producido en la base de datos
-		ojo *** '''
-		return conn.lastError()
-a = Db()
-print(dir(a))
+		'''Retorna en ultimo error producido en la base de datos'''
+		return conn.lastError()		
