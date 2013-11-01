@@ -7,7 +7,6 @@
 # File			viajes.py
 # Ubicacion		reporte/controlador/viajes.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
-
 from PyQt4 import QtSql, QtCore, QtDebug
 import Modelo
 
@@ -16,5 +15,6 @@ class Viaje(Object):
 	
 	def __init__(self):
 		'''Método init de la clase'''
+
 		
 
