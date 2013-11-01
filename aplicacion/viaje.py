@@ -15,6 +15,4 @@ class Viaje(Object):
 	
 	def __init__(self):
 		'''Método init de la clase'''
-
 		
-

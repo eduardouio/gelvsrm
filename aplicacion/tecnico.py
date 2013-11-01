@@ -7,10 +7,10 @@
 # File			técnico.py
 # Ubicacion		reporte/controlador/tecnico.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
-from PyQt4 import QtSql, QtCore, QtDebug
+from PyQt4 import QtSql, QtCore, QtGui
 import Modelo
 
-class Tecnico(Object):
+class Tecnico(object):
 	'''Representa un técnico de la base de datos'''
 
 	def __init__(self):
@@ -19,7 +19,6 @@ class Tecnico(Object):
 
 	def listarTecnicos(self):
 		'''Lista los técnicos de la tabla'''
-		
-
-
-
+		pass
+a = Modelo.listTables()
+print(dir(a))

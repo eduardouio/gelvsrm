@@ -288,7 +288,7 @@ create database gelvsrm_polaris;
 		id_vehiculo char(17) NOT NULL,
 		periodo smallint unsigned NOT NULL,
 		ubicacion varchar(100) DEFAULT NULL,
-		fecha datetime NOT NULL,
+		fecha date NOT NULL,
 		kilometros varchar(10) NOT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
