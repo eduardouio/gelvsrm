@@ -14,3 +14,5 @@ Factura semacar
 llenar papeles de la fae
 INNEN
 llantas chimborazo
+cambiar los tecnicos en viaje
+añadir provincia a los mantenimientos
