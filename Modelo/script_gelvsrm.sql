@@ -264,24 +264,6 @@ create database gelvsrm_polaris;
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
 				contener una salida de inventario';
-				-- -------------------------------------------------------------------
-	-- Estructura de la entidad tecnico_reparacion
-	-- -------------------------------------------------------------------
-	create table tecnico_reparacion(
-		id_tecnico varchar(10) NOT NULL,
-		id_reparacion smallint unsigned NOT NULL,
-		registro timestamp not null default current_timestamp,
-		PRIMARY KEY (id_tecnico,id_reparacion),
-		CONSTRAINT fk_tecnico_reparacion_tecnico
-      	FOREIGN KEY (id_tecnico)
-      	REFERENCES tecnico(id_tecnico)
-      	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_tecnico_reparacion_reparacion
-      	FOREIGN KEY (id_reparacion)
-      	REFERENCES reparacion(id_reparacion)
-      	ON DELETE RESTRICT ON UPDATE CASCADE
-		)engine=innodb
-		COMMENT 'Registra a los técnicos en los mantenimientos';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad mantenimiento
 	-- -------------------------------------------------------------------
@@ -337,20 +319,20 @@ create database gelvsrm_polaris;
 		AUTO_INCREMENT =1
 		COMMENT 'Registra los detalles del mantenimiento y los costos de los insumos';
 	-- -------------------------------------------------------------------
-	-- Estructura de la entidad tecnico_mantenimiento
+	-- Estructura de la entidad tecnico_mantenimiento_viaje
 	-- -------------------------------------------------------------------
-	create table tecnico_mantenimiento(
+	create table tecnico_viaje(
 		id_tecnico varchar(10) NOT NULL,
-		id_manteminiento smallint unsigned NOT NULL,
+		id_viaje smallint unsigned not null,
 		registro timestamp not null default current_timestamp,
-		PRIMARY KEY (id_tecnico,id_manteminiento),
-		CONSTRAINT fk_tecnico_mantenimiento_tecnico
+		PRIMARY KEY (id_tecnico,id_viaje),
+		CONSTRAINT fk_tecnico_viaje_tecnico
       	FOREIGN KEY (id_tecnico)
       	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_tecnico_mantenimiento_mantenimiento
-      	FOREIGN KEY (id_manteminiento)
-      	REFERENCES mantenimiento(id_manteminiento)
+      	CONSTRAINT fk_tecnico_mantenimiento_viaje
+      	FOREIGN KEY (id_viaje)
+      	REFERENCES viaje(id_viaje)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Registra a los técnicos en los mantenimientos';
