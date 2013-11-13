@@ -23,12 +23,12 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad ciudad
 	-- -------------------------------------------------------------------
-	create table cuidad(
-		id_cuidad smallint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	create table ciudad(
+		id_ciudad smallint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		id_provincia smallint unsigned NOT NULL,
 		nombre varchar(100),
 
-		CONSTRAINT fk_cuidad_provincia
+		CONSTRAINT fk_ciudad_provincia
       	FOREIGN KEY (id_provincia)
       	REFERENCES provincia(id_provincia)
       	ON DELETE RESTRICT ON UPDATE CASCADE
@@ -43,7 +43,7 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table contacto(
 		id_contacto smallint unsigned NOT NULL AUTO_INCREMENT,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		nombre varchar(50) NOT NULL,
 		telefono varchar(15) DEFAULT NULL,
 		celular varchar(15) DEFAULT NULL,
@@ -54,8 +54,8 @@ create database gelvsrm_polaris;
 		primary key(id_contacto),
 
 		CONSTRAINT fk_contacto_ciudad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES ciudad(id_cuidad)
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
@@ -68,7 +68,7 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------	
 	create table proveedor(
 		id_proveedor varchar(13) NOT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		id_contacto smallint unsigned DEFAULT NULL,
 		nombre varchar(150) NOT NULL ,
 		direccion varchar(500) NOT NULL,
@@ -86,8 +86,8 @@ create database gelvsrm_polaris;
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
       	CONSTRAINT fk_proveedor_ciudad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
@@ -114,7 +114,7 @@ create database gelvsrm_polaris;
 	create table cliente(
 		id_cliente char(13) NOT NULL,
 		id_contacto smallint unsigned DEFAULT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		nombre varchar(200) NOT NULL,
 		direccion varchar(600) NOT NULL,
 		telefono varchar(15) NOT NULL,
@@ -130,9 +130,9 @@ create database gelvsrm_polaris;
       	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
-      	CONSTRAINT fk_cliente_cuidad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	CONSTRAINT fk_cliente_ciudad
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar a los cliente
@@ -145,7 +145,7 @@ create database gelvsrm_polaris;
 		id_vehiculo char(17) NOT NULL,
 		id_cliente char(13) NOT NULL,
 		id_contacto smallint unsigned DEFAULT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		modelo varchar(45)DEFAULT NULL,
 		nro_motor varchar(25)DEFAULT NULL,
 		ingreso datetime DEFAULT NULL, 
@@ -165,9 +165,9 @@ create database gelvsrm_polaris;
       	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
-      	CONSTRAINT fk_vehiculo_cuidad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	CONSTRAINT fk_vehiculo_ciudad
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los vehículos el ingreso es la fecha
@@ -180,7 +180,7 @@ create database gelvsrm_polaris;
 		id_vehiculo varchar(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		id_contacto smallint unsigned NOT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		periodo smallint unsigned NOT NULL,
 		fecha date NOT NULL,		
 		notas TEXT DEFAULT NULL,
@@ -203,9 +203,9 @@ create database gelvsrm_polaris;
       	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
-      	CONSTRAINT fk_inspeccion_cuidad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	CONSTRAINT fk_inspeccion_ciudad
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
@@ -282,7 +282,7 @@ create database gelvsrm_polaris;
 		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		periodo smallint unsigned NOT NULL,
 		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime DEFAULT NULL,
@@ -301,9 +301,9 @@ create database gelvsrm_polaris;
       	REFERENCES viaje(id_viaje)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
-      	CONSTRAINT fk_reparacion_cuidad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	CONSTRAINT fk_reparacion_ciudad
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
@@ -345,7 +345,7 @@ create database gelvsrm_polaris;
 		id_mantenimiento smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
-		id_cuidad smallint unsigned DEFAULT NULL,
+		id_ciudad smallint unsigned DEFAULT NULL,
 		periodo smallint unsigned NOT NULL,
 		fecha date NOT NULL,
 		kilometros varchar(10) NOT NULL,
@@ -364,9 +364,9 @@ create database gelvsrm_polaris;
       	REFERENCES viaje(id_viaje)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
 
-      	CONSTRAINT fk_mantenimiento_cuidad
-      	FOREIGN KEY (id_cuidad)
-      	REFERENCES cuidad(id_cuidad)
+      	CONSTRAINT fk_mantenimiento_ciudad
+      	FOREIGN KEY (id_ciudad)
+      	REFERENCES ciudad(id_ciudad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
