@@ -12,21 +12,52 @@
 create database gelvsrm_polaris;
 	use gelvsrm_polaris;
 	-- -------------------------------------------------------------------
+	-- Estructura de la entidad provincia
+	-- -------------------------------------------------------------------
+	create table provincia(
+		id_provincia smallint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		nombre varchar(100)
+		)engine=innodb
+		AUTO_INCREMENT = 1
+		COMMENT 'Entidad encargada de registrar, las provincias del Ecuador';
+	-- -------------------------------------------------------------------
+	-- Estructura de la entidad ciudad
+	-- -------------------------------------------------------------------
+	create table cuidad(
+		id_cuidad smallint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		id_provincia smallint unsigned NOT NULL,
+		nombre varchar(100),
+
+		CONSTRAINT fk_cuidad_provincia
+      	FOREIGN KEY (id_provincia)
+      	REFERENCES provincia(id_provincia)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+
+		)engine=innodb
+		AUTO_INCREMENT = 1
+		COMMENT 'Entidad encargada de registrar, ciudades del Ecuador guarda una relacion 
+		con la provincia a la que corresponde, en caso de no tener una ciudad en
+		la lista de ciudades, se crea una nueva permitiendole al usuario ingresarla';
+	-- -------------------------------------------------------------------
 	-- Estructura de la entidad contacto
 	-- -------------------------------------------------------------------
 	create table contacto(
 		id_contacto smallint unsigned NOT NULL AUTO_INCREMENT,
-		fecha datetime NOT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
 		nombre varchar(50) NOT NULL,
 		telefono varchar(15) DEFAULT NULL,
 		celular varchar(15) DEFAULT NULL,
 		email varchar(100) DEFAULT NULL,
-		cuidad varchar(50) DEFAULT NULL,
-		provincia varchar(50) DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_contacto)
+		primary key(id_contacto),
+
+		CONSTRAINT fk_contacto_ciudad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES ciudad(id_cuidad)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar los contactos de la base de datos
@@ -36,18 +67,29 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad proveedor
 	-- -------------------------------------------------------------------	
 	create table proveedor(
-		id_proveedor varchar(13) NOT NULL ,
+		id_proveedor varchar(13) NOT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
+		id_contacto smallint unsigned DEFAULT NULL,
 		nombre varchar(150) NOT NULL ,
 		direccion varchar(500) NOT NULL,
-		cuidad varchar(50) DEFAULT NULL,
-		provincia varchar(50) DEFAULT NULL,
 		telefono varchar(15) NOT NULL ,
 		email varchar(30) DEFAULT NULL,
 		credito boolean DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_proveedor)
+		primary key(id_proveedor),
+
+		CONSTRAINT fk_proveedor_contacto
+      	FOREIGN KEY (id_contacto)
+      	REFERENCES contacto(id_contacto)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_proveedor_ciudad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los datos básicos de proeedor de materiales 
 		y repuestos de vehículos';
@@ -72,21 +114,25 @@ create database gelvsrm_polaris;
 	create table cliente(
 		id_cliente char(13) NOT NULL,
 		id_contacto smallint unsigned DEFAULT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
 		nombre varchar(200) NOT NULL,
 		direccion varchar(600) NOT NULL,
 		telefono varchar(15) NOT NULL,
 		fax varchar(15)DEFAULT NULL,
-		cuidad varchar(50) DEFAULT NULL,
-		provincia varchar(50) DEFAULT NULL,
-		cuidad varchar(200) NOT NULL,
 		mail varchar(100)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_cliente),
+
 		CONSTRAINT fk_cliente_contacto
       	FOREIGN KEY (id_contacto)
       	REFERENCES contacto(id_contacto)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_cliente_cuidad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar a los cliente
@@ -99,23 +145,30 @@ create database gelvsrm_polaris;
 		id_vehiculo char(17) NOT NULL,
 		id_cliente char(13) NOT NULL,
 		id_contacto smallint unsigned DEFAULT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
 		modelo varchar(45)DEFAULT NULL,
 		nro_motor varchar(25)DEFAULT NULL,
 		ingreso datetime DEFAULT NULL, 
-		ubicacion varchar(100)DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_vehiculo),
 		INDEX idx_vehiculo(id_vehiculo ASC),
+
 		CONSTRAINT fk_vehiculo_cliente
       	FOREIGN KEY (id_cliente)
       	REFERENCES cliente(id_cliente)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_vehiculo_contacto
       	FOREIGN KEY (id_contacto)
       	REFERENCES contacto(id_contacto)
-      	ON DELETE RESTRICT ON UPDATE CASCADE      	
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_vehiculo_cuidad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los vehículos el ingreso es la fecha
 				en la que el vehiculo fue entregado al MAGAP';
@@ -127,25 +180,34 @@ create database gelvsrm_polaris;
 		id_vehiculo varchar(17) NOT NULL,
 		id_tecnico varchar(10) NOT NULL,
 		id_contacto smallint unsigned NOT NULL,
-		fecha datetime NOT NULL,
-		ubicacion varchar(100)DEFAULT NULL,
-		notas MEDIUMTEXT DEFAULT NULL,
-		contacto varchar(45)DEFAULT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
+		periodo smallint unsigned NOT NULL,
+		fecha date NOT NULL,		
+		notas TEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_inspeccion),
+
 		CONSTRAINT fk_inspeccion_vehiculo
       	FOREIGN KEY (id_vehiculo)
       	REFERENCES vehiculo(id_vehiculo)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_inspeccion_tecnico
       	FOREIGN KEY (id_tecnico)
       	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_inspeccion_contacto
       	FOREIGN KEY (id_contacto)
       	REFERENCES contacto(id_contacto)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_inspeccion_cuidad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'De momento es solo un formulario de inspeccion';
@@ -177,8 +239,8 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table viaje(
 		id_viaje smallint unsigned not null AUTO_INCREMENT,
-		fecha_salida datetime,
-		fecha_regreso datetime,
+		fecha_salida date,
+		fecha_regreso date,
 		nro_vehiculos smallint unsigned not null COMMENT 'Cuantos veiculos se piensa reparar', 
 		provincias_destino  varchar(500) not null COMMENT 'Nmbre de las provincias que se quiere visitar, separadas por comas',
 		varlor_caja decimal(5,2),
@@ -202,10 +264,12 @@ create database gelvsrm_polaris;
 		valor decimal(4,2) not null,
 		registro timestamp not null default current_timestamp,
 		primary key(id_viaje,nro_factura,valor),
+
 		CONSTRAINT fk_gastos_viaje_viaje
 		FOREIGN KEY(id_viaje)
 		REFERENCES viaje(id_viaje)
 		ON UPDATE CASCADE ON DELETE RESTRICT
+
 		)engine=innodb 
 		AUTO_INCREMENT=1 
 		COMMENT 'Se registran los gastos de los viajes, en esta entidad se graban los 
@@ -218,23 +282,30 @@ create database gelvsrm_polaris;
 		id_reparacion smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
 		periodo smallint unsigned NOT NULL,
-		ubicacion varchar(100) DEFAULT NULL,
-		provincia varchar(100) NOT NULL,
 		fecha_entrada datetime NOT NULL,
 		fecha_salida datetime DEFAULT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_reparacion),
+
 		CONSTRAINT fk_reparacion_vehiculo
       	FOREIGN KEY (id_vehiculo)
       	REFERENCES vehiculo(id_vehiculo)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_reparacion_viaje
       	FOREIGN KEY (id_viaje)
       	REFERENCES viaje(id_viaje)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_reparacion_cuidad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar las reparaciones realizadas a los vehiculos polaris,
@@ -246,21 +317,24 @@ create database gelvsrm_polaris;
 		id_reparacion_detalle smallint unsigned NOT NULL,
 		id_reparacion smallint unsigned NOT NULL,
 		id_inventario smallint unsigned NOT NULL,
-		fecha datetime NOT NULL,
+		fecha time NOT NULL,
 		estado varchar(25) COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
 		cantidad smallint unsigned not null,		
 		notas varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_reparacion_detalle),
+
 		CONSTRAINT fk_reparacion_detalle_reparacion
       	FOREIGN KEY (id_reparacion)
       	REFERENCES reparacion(id_reparacion)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_reparacion_detalle_inventario
       	FOREIGN KEY (id_inventario)
       	REFERENCES inventario(id_inventario)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		COMMENT 'Entidad encargada de registrar los detalles de las reparaciones cada detalle puede 
 				contener una salida de inventario';
@@ -268,26 +342,33 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad mantenimiento
 	-- -------------------------------------------------------------------
 	create table mantenimiento(
-		id_manteminiento smallint unsigned NOT NULL AUTO_INCREMENT,
+		id_mantenimiento smallint unsigned NOT NULL AUTO_INCREMENT,
 		id_viaje smallint unsigned not null,
 		id_vehiculo char(17) NOT NULL,
+		id_cuidad smallint unsigned DEFAULT NULL,
 		periodo smallint unsigned NOT NULL,
-		ubicacion varchar(100) DEFAULT NULL,
-		provincia varchar(100) NOT NULL,
 		fecha date NOT NULL,
 		kilometros varchar(10) NOT NULL,
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_manteminiento),
+		primary key(id_mantenimiento),
+
 		CONSTRAINT fk_mantenimiento_vehiculo
       	FOREIGN KEY (id_vehiculo)
       	REFERENCES vehiculo(id_vehiculo)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_mantenimiento_viaje
       	FOREIGN KEY (id_viaje)
       	REFERENCES viaje(id_viaje)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_mantenimiento_cuidad
+      	FOREIGN KEY (id_cuidad)
+      	REFERENCES cuidad(id_cuidad)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		AUTO_INCREMENT = 1
 		COMMENT 'Registra los mantenimientos realizados aun vehiculo, los insumos usados para el mantenimiento
@@ -296,21 +377,23 @@ create database gelvsrm_polaris;
 	-- Estructura de la entidad detalle de mantenimiento
 	-- -------------------------------------------------------------------
 	create table mantenimiento_detalle(
-		id_manteminiento_detalle int unsigned NOT NULL AUTO_INCREMENT,
-		id_manteminiento smallint unsigned NOT NULL,
+		id_mantenimiento_detalle int unsigned NOT NULL AUTO_INCREMENT,
+		id_mantenimiento smallint unsigned NOT NULL,
 		id_inventario smallint unsigned NOT NULL,
-		fecha datetime NOT NULL,
+		fecha time NOT NULL,
 		estado varchar(25) COMMENT 'cambio,reparacio,correccion',
 		cantidad float unsigned not null,		
 		notas varchar(600) DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		UNIQUE(id_manteminiento_detalle),
-		primary key(id_manteminiento, id_inventario),
+		UNIQUE(id_mantenimiento_detalle),
+		primary key(id_mantenimiento, id_inventario),
+
 		CONSTRAINT fk_mantenimiento_detalle_mantenimiento
-      	FOREIGN KEY (id_manteminiento)
-      	REFERENCES mantenimiento(id_manteminiento)
+      	FOREIGN KEY (id_mantenimiento)
+      	REFERENCES mantenimiento(id_mantenimiento)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
 		CONSTRAINT fk_mantenimiento_detalle_inventario
       	FOREIGN KEY (id_inventario)
       	REFERENCES inventario(id_inventario)
@@ -326,21 +409,24 @@ create database gelvsrm_polaris;
 		id_viaje smallint unsigned not null,
 		registro timestamp not null default current_timestamp,
 		PRIMARY KEY (id_tecnico,id_viaje),
+
 		CONSTRAINT fk_tecnico_viaje_tecnico
       	FOREIGN KEY (id_tecnico)
       	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
-      	CONSTRAINT fk_tecnico_mantenimiento_viaje
+
+      	CONSTRAINT fk_tecnico_viaje
       	FOREIGN KEY (id_viaje)
       	REFERENCES viaje(id_viaje)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
-		COMMENT 'Registra a los técnicos en los mantenimientos';
+		COMMENT 'Registra a los técnicos en los mantenimientos para cada viaje';
 	-- -------------------------------------------------------------------
 	-- Estructura de la entidad entradas de inventario
 	-- -------------------------------------------------------------------
-	create table inventario_entrada(
-		id_inventario_entrada smallint unsigned NOT NULL, 
+	create table compra(
+		id_compra smallint unsigned NOT NULL, 
 		id_inventario smallint unsigned  NOT NULL,
 		id_proveedor varchar(13) NOT NULL ,
 		nro_factura varchar(12) NOT NULL ,
@@ -350,15 +436,18 @@ create database gelvsrm_polaris;
 		notas MEDIUMTEXT DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_inventario_entrada),
-		CONSTRAINT fk_inventario_entrada_inventario
+		primary key(id_compra),
+
+		CONSTRAINT fk_compra_inventario
       	FOREIGN KEY (id_inventario)
       	REFERENCES inventario(id_inventario)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
-		CONSTRAINT fk_inventario_entrada_proveedor
+
+		CONSTRAINT fk_compra_proveedor
       	FOREIGN KEY (id_proveedor)
       	REFERENCES proveedor(id_proveedor)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 		COMMENT 'Entidad encargada de manejar la entrada de stock al inventario
 				las unidades de los productos son las mimas que el detalle del inventario';
@@ -368,6 +457,7 @@ create database gelvsrm_polaris;
 	create table factura(
 		id_factura int not null,
 		id_cliente char(13) NOT NULL,
+		id_contacto smallint unsigned DEFAULT NULL,
 		fecha date NOT NULL,
 		fecha_envio date NOT NULL,
 		guia_envio varchar(50),
@@ -378,10 +468,17 @@ create database gelvsrm_polaris;
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_factura),
+
 		CONSTRAINT fk_factura_cliente
       	FOREIGN KEY (id_cliente)
       	REFERENCES cliente(id_cliente)
+      	ON DELETE RESTRICT ON UPDATE CASCADE,
+
+      	CONSTRAINT fk_factura_contacto
+      	FOREIGN KEY (id_contacto)
+      	REFERENCES contacto(id_contacto)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+
 		)engine=innodb
 	AUTO_INCREMENT = 1
 		COMMENT 'Entidad encargada de registrar las facturación, se implementa una ruta
@@ -392,23 +489,27 @@ create database gelvsrm_polaris;
 	-- -------------------------------------------------------------------
 	create table factura_detalle(		
 		id_factura int not null,
-		id_manteminiento smallint unsigned NOT NULL,
-		id_reparacion smallint unsigned NOT NULL,
+		id_mantenimiento smallint unsigned DEFAULT NULL,
+		id_reparacion smallint unsigned DEFAULT NULL,
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
-		primary key(id_factura,id_manteminiento,id_reparacion),
+		primary key(id_factura,id_mantenimiento,id_reparacion),
+
 		CONSTRAINT fk_factura_detalle_factura
       	FOREIGN KEY (id_factura)
       	REFERENCES factura(id_factura)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_factura_detalle_mantenimiento
-      	FOREIGN KEY (id_manteminiento)
-      	REFERENCES mantenimiento(id_manteminiento)
+      	FOREIGN KEY (id_mantenimiento)
+      	REFERENCES mantenimiento(id_mantenimiento)
       	ON DELETE RESTRICT ON UPDATE CASCADE,
+
       	CONSTRAINT fk_factura_detalle_reparacion
       	FOREIGN KEY (id_reparacion)
       	REFERENCES reparacion(id_reparacion)
       	ON DELETE RESTRICT ON UPDATE CASCADE
+      	
 		)engine=innodb
 		COMMENT 'Entidad que registra los detalles de la facturacio se entiende por detalle
 				los vehiculos a los que se le realizaron mantenimiento, un mantenimiento no
