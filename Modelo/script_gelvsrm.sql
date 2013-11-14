@@ -262,6 +262,7 @@ create database gelvsrm_polaris;
 		fecha date not null,
 		detalle varchar(300) not null,
 		valor decimal(4,2) not null,
+		tipo varchar(45) defaul NULL,
 		registro timestamp not null default current_timestamp,
 		primary key(id_viaje,nro_factura,valor),
 
