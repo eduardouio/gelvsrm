@@ -15,7 +15,7 @@ from plantillas import polaris_rc
 class Viaje(QtGui.QMainWindow):
 		def __init__(self): 
 			QtGui.QMainWindow.__init__(self)
-			ventana = uic.loadUi('plantillas/frm_viaje.ui',self)
+			ventana = uic.loadUi('plantillas/frm_contacto.ui',self)
 			ventana.show()
 
 if __name__ == '__main__':

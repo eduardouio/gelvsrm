@@ -3830,3 +3830,12 @@ INSERT INTO `viaje` (`id_viaje`, `fecha_salida`, `fecha_regreso`, `nro_vehiculos
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Consulta de consumibles
+--
+select a.id_inventario, b.nombre, sum(a.cantidad)
+from mantenimiento_detalle as a
+    join inventario as b using(id_inventario)
+    where id_inventario < 1006 
+    group by a.id_inventario
+    limit 5000;
