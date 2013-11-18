@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>579</height>
+    <width>795</width>
+    <height>653</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -27,873 +27,872 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tab_inspeccion">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>819</width>
-      <height>490</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string notr="true"/>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::West</enum>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="documentMode">
-     <bool>false</bool>
-    </property>
-    <property name="tabsClosable">
-     <bool>false</bool>
-    </property>
-    <property name="movable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="tab_formulario">
-     <attribute name="icon">
-      <iconset resource="polaris.qrc">
-       <normaloff>:/Icons/icons/view_pim_tasks.png</normaloff>:/Icons/icons/view_pim_tasks.png</iconset>
-     </attribute>
-     <attribute name="title">
-      <string>Inspección</string>
-     </attribute>
-     <widget class="QFrame" name="frame">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>1</y>
-        <width>692</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="lbl_vin_vehiculoa">
-       <property name="geometry">
-        <rect>
-         <x>290</x>
-         <y>10</y>
-         <width>101</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>VIN Vehículo:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lbl_vin_vehiculob">
-       <property name="geometry">
-        <rect>
-         <x>390</x>
-         <y>5</y>
-         <width>181</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Numero de vin del vehiculo</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00007f;&quot;&gt;1091&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lbl_fecha_registroa">
-       <property name="geometry">
-        <rect>
-         <x>15</x>
-         <y>10</y>
-         <width>131</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fecha de Registro:</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lbl_fecha_registrob">
-       <property name="geometry">
-        <rect>
-         <x>140</x>
-         <y>10</y>
-         <width>151</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Fecha de Registro en el sistema</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QLabel" name="lbl_informe">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>210</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Informe:</string>
-      </property>
-      <property name="buddy">
-       <cstring>rtxt_informe</cstring>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_guardar">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>440</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Guardar</string>
-      </property>
-      <property name="icon">
-       <iconset resource="polaris.qrc">
-        <normaloff>:/Icons/icons/filesave.png</normaloff>:/Icons/icons/filesave.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_cancelar">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>440</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Cancelar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>:/Icons/icons/button_cancel.png</normaloff>
-        <normalon>:/Icons/icons/mail_delete.png</normalon>:/Icons/icons/button_cancel.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_copiar">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>440</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Copiar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>:/Icons/icons/document_multiple.png</normaloff>
-        <normalon>:/Icons/icons/editpaste.png</normalon>:/Icons/icons/document_multiple.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_nuevo">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>440</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Nuevo</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/filenew.png</normalon>
-       </iconset>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="rtxt_informe">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>760</width>
-        <height>200</height>
-       </rect>
-      </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QTabWidget" name="tab_inspeccion">
       <property name="toolTip">
-       <string>Espacio para poder redactar el informe del vehiculo revisado</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_home">
-      <property name="geometry">
-       <rect>
-        <x>707</x>
-        <y>2</y>
-        <width>70</width>
-        <height>70</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Regreasar al Panel de Control</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/folder_home2.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>56</width>
-        <height>56</height>
-       </size>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_primero">
-      <property name="geometry">
-       <rect>
-        <x>17</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string comment="Primer Registro">Primer registro</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/start.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_anterior">
-      <property name="geometry">
-       <rect>
-        <x>67</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Registro anterior</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/previous.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_siguiente">
-      <property name="geometry">
-       <rect>
-        <x>157</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Siguiente registro</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/forward.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_ultimo">
-      <property name="geometry">
-       <rect>
-        <x>207</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ultimo registro</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/finish.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>32</width>
-        <height>32</height>
-       </size>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_recargar">
-      <property name="geometry">
-       <rect>
-        <x>117</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Recargar</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/reload.png</normalon>
-       </iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>40</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="autoDefault">
-       <bool>false</bool>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frame_2">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>50</y>
-        <width>251</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_eliminar">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>440</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
+       <string notr="true"/>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 0, 0);
-
-</string>
+       <string notr="true"/>
       </property>
-      <property name="text">
-       <string>Eliminar</string>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>:/Icons/icons/button_cancel.png</normaloff>
-        <normalon>:/Icons/icons/user_trash.png</normalon>:/Icons/icons/button_cancel.png</iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_mantenimientos">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>160</y>
-        <width>221</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ver mantenimientos realizados</string>
-      </property>
-      <property name="text">
-       <string>Vehículo</string>
-      </property>
-      <property name="icon">
-       <iconset resource="polaris.qrc">
-        <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
-        <width>20</width>
-        <height>20</height>
+        <width>16</width>
+        <height>16</height>
        </size>
       </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab_formulario">
+       <attribute name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/view_pim_tasks.png</normaloff>:/Icons/icons/view_pim_tasks.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Inspección</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                 <item>
+                  <widget class="QLabel" name="lbl_fecha_registroa">
+                   <property name="text">
+                    <string>Fecha de Registro:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lbl_fecha_registrob">
+                   <property name="toolTip">
+                    <string>Fecha de Registro en el sistema</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00007f;&quot;&gt;1987-07-01 12:12:12&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lbl_vin_vehiculoa">
+                   <property name="text">
+                    <string>VIN Vehículo:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lbl_vin_vehiculob">
+                   <property name="toolTip">
+                    <string>Numero de vin del vehiculo</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; color:#00007f;&quot;&gt;4XATH73847291283&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_home">
+              <property name="toolTip">
+               <string>Regreasar al Panel de Control</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/folder_home2.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>56</width>
+                <height>56</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QPushButton" name="btn_primero">
+              <property name="toolTip">
+               <string comment="Primer Registro">Primer registro</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/start.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_anterior">
+              <property name="toolTip">
+               <string>Registro anterior</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/previous.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_recargar">
+              <property name="toolTip">
+               <string>Recargar</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/reload.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_siguiente">
+              <property name="toolTip">
+               <string>Siguiente registro</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/forward.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_ultimo">
+              <property name="toolTip">
+               <string>Ultimo registro</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/finish.png</normalon>
+               </iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbl_inspeccion_polaris">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#005500;&quot;&gt;Inspección Polaris&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>138</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lbl_tecnico">
+              <property name="text">
+               <string>&amp;Técnico:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_tecnico</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="lbl_contacto">
+              <property name="text">
+               <string>&amp;Contacto:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_contacto</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Maximum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>3</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="cmb_contacto">
+              <property name="minimumSize">
+               <size>
+                <width>180</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Nombres de los contactos existentes</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>Eduardo Villota</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="btn_buscar_contacto">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ver o buscar un contacto</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="polaris.qrc">
+                <normaloff>:/Icons/icons/edit_find.png</normaloff>:/Icons/icons/edit_find.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="cmb_tecnico">
+              <property name="minimumSize">
+               <size>
+                <width>180</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Nombres de los tecnicos existentes</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>Eduardo Villota</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLabel" name="lbl_fecha">
+              <property name="text">
+               <string>&amp;Fecha:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_fecha</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lbl_ubicacion">
+              <property name="text">
+               <string>&amp;Ubicación:</string>
+              </property>
+              <property name="buddy">
+               <cstring>txt_ubicacion</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="4">
+             <widget class="QDateEdit" name="cmb_fecha">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ingresar fecha de inspeccion</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="5">
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="2" rowspan="2">
+             <widget class="QPushButton" name="btn_mantenimientos">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ver mantenimientos realizados</string>
+              </property>
+              <property name="text">
+               <string>Vehículo</string>
+              </property>
+              <property name="icon">
+               <iconset resource="polaris.qrc">
+                <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>13</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLineEdit" name="txt_ubicacion">
+              <property name="maximumSize">
+               <size>
+                <width>220</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ingresar ubicacion de la inspeccion</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QLabel" name="lbl_informe">
+              <property name="text">
+               <string>&amp;Informe:</string>
+              </property>
+              <property name="buddy">
+               <cstring>rtxt_informe</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="rtxt_informe">
+              <property name="toolTip">
+               <string>Espacio para poder redactar el informe del vehiculo revisado</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QPushButton" name="btn_nuevo">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Nuevo</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/filenew.png</normalon>
+               </iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_copiar">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Copiar</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>:/Icons/icons/document_multiple.png</normaloff>
+                <normalon>:/Icons/icons/editpaste.png</normalon>:/Icons/icons/document_multiple.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_cancelar">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Cancelar</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>:/Icons/icons/button_cancel.png</normaloff>
+                <normalon>:/Icons/icons/mail_delete.png</normalon>:/Icons/icons/button_cancel.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_guardar">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Guardar</string>
+              </property>
+              <property name="icon">
+               <iconset resource="polaris.qrc">
+                <normaloff>:/Icons/icons/filesave.png</normaloff>:/Icons/icons/filesave.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_eliminar">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 0);
+
+</string>
+              </property>
+              <property name="text">
+               <string>Eliminar</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>:/Icons/icons/button_cancel.png</normaloff>
+                <normalon>:/Icons/icons/user_trash.png</normalon>:/Icons/icons/button_cancel.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_buscar">
+       <attribute name="icon">
+        <iconset>
+         <normalon>:/Icons/icons/find.png</normalon>
+        </iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Buscar</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lbl_columna">
+              <property name="text">
+               <string>&amp;Columna:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_columna</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="lbl_operador">
+              <property name="text">
+               <string>&amp;Operador:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_operador</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="lbl_criterio">
+              <property name="text">
+               <string>Cri&amp;terio:</string>
+              </property>
+              <property name="buddy">
+               <cstring>txt_criterio</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3" rowspan="2" colspan="2">
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="5" rowspan="2">
+             <widget class="QPushButton" name="btn_buscar">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Buscar criterio</string>
+              </property>
+              <property name="text">
+               <string>Buscar</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/kfind.png</normalon>
+               </iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="cmb_columna">
+              <property name="toolTip">
+               <string>Seleccione una columna por la que desea buscar</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="cmb_operador">
+              <property name="toolTip">
+               <string>Seleccione una columna por la que desea buscar</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>Es Igual a...</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Contiene...</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Empieza Con...</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Termina en...</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>No tiene...</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Diferente de...</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="txt_criterio">
+              <property name="toolTip">
+               <string>Ingrese un criterio de búsqueda basado en el operador</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="tbl_resultados_inspeccion">
+            <property name="toolTip">
+             <string>Resultados Búsqueda</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_monstrar">
+              <property name="minimumSize">
+               <size>
+                <width>220</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Mostrar</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normalon>:/Icons/icons/apply.png</normalon>
+               </iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
-     <widget class="QLabel" name="lbl_tecnico">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>100</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Técnico:</string>
-      </property>
-      <property name="buddy">
-       <cstring>cmb_tecnico</cstring>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmb_tecnico">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>120</y>
-        <width>190</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Nombres de los tecnicos existentes</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Eduardo Villota</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QPushButton" name="btn_buscar_contacto">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>120</y>
-        <width>51</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ver o buscar un contacto</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="polaris.qrc">
-        <normaloff>:/Icons/icons/edit_find.png</normaloff>:/Icons/icons/edit_find.png</iconset>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_contacto">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>100</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Contacto:</string>
-      </property>
-      <property name="buddy">
-       <cstring>cmb_contacto</cstring>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmb_contacto">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>120</y>
-        <width>190</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Nombres de los contactos existentes</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Eduardo Villota</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="lbl_fecha">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>100</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Fecha:</string>
-      </property>
-      <property name="buddy">
-       <cstring>cmb_fecha</cstring>
-      </property>
-     </widget>
-     <widget class="QDateEdit" name="cmb_fecha">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>120</y>
-        <width>171</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingresar fecha de inspeccion</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_ubicacion">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>156</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Ubicación:</string>
-      </property>
-      <property name="buddy">
-       <cstring>txt_ubicacion</cstring>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txt_ubicacion">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>176</y>
-        <width>381</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingresar ubicacion de la inspeccion</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_inspeccion_polaris">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>50</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string/>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#005500;&quot;&gt;Inspección Polaris&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <zorder>frame_2</zorder>
-     <zorder>frame</zorder>
-     <zorder>lbl_informe</zorder>
-     <zorder>btn_guardar</zorder>
-     <zorder>btn_cancelar</zorder>
-     <zorder>btn_copiar</zorder>
-     <zorder>btn_nuevo</zorder>
-     <zorder>rtxt_informe</zorder>
-     <zorder>btn_home</zorder>
-     <zorder>btn_primero</zorder>
-     <zorder>btn_anterior</zorder>
-     <zorder>btn_siguiente</zorder>
-     <zorder>btn_ultimo</zorder>
-     <zorder>btn_recargar</zorder>
-     <zorder>btn_eliminar</zorder>
-     <zorder>btn_mantenimientos</zorder>
-     <zorder>lbl_tecnico</zorder>
-     <zorder>cmb_tecnico</zorder>
-     <zorder>btn_buscar_contacto</zorder>
-     <zorder>lbl_contacto</zorder>
-     <zorder>cmb_contacto</zorder>
-     <zorder>lbl_fecha</zorder>
-     <zorder>cmb_fecha</zorder>
-     <zorder>lbl_ubicacion</zorder>
-     <zorder>txt_ubicacion</zorder>
-     <zorder>lbl_inspeccion_polaris</zorder>
-    </widget>
-    <widget class="QWidget" name="tab_buscar">
-     <attribute name="icon">
-      <iconset>
-       <normalon>:/Icons/icons/find.png</normalon>
-      </iconset>
-     </attribute>
-     <attribute name="title">
-      <string>Buscar</string>
-     </attribute>
-     <widget class="QTableWidget" name="tbl_resultados_inspeccion">
-      <property name="geometry">
-       <rect>
-        <x>7</x>
-        <y>70</y>
-        <width>767</width>
-        <height>360</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Resultados Búsqueda</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txt_criterio">
-      <property name="geometry">
-       <rect>
-        <x>349</x>
-        <y>30</y>
-        <width>301</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Ingrese un criterio de búsqueda basado en el operador</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmb_columna">
-      <property name="geometry">
-       <rect>
-        <x>7</x>
-        <y>30</y>
-        <width>171</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Seleccione una columna por la que desea buscar</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmb_operador">
-      <property name="geometry">
-       <rect>
-        <x>189</x>
-        <y>30</y>
-        <width>149</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Seleccione una columna por la que desea buscar</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>Es Igual a...</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Contiene...</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Empieza Con...</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Termina en...</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>No tiene...</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Diferente de...</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="lbl_columna">
-      <property name="geometry">
-       <rect>
-        <x>9</x>
-        <y>10</y>
-        <width>93</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Columna:</string>
-      </property>
-      <property name="buddy">
-       <cstring>cmb_columna</cstring>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_operador">
-      <property name="geometry">
-       <rect>
-        <x>192</x>
-        <y>10</y>
-        <width>79</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&amp;Operador:</string>
-      </property>
-      <property name="buddy">
-       <cstring>cmb_operador</cstring>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_criterio">
-      <property name="geometry">
-       <rect>
-        <x>351</x>
-        <y>10</y>
-        <width>101</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Cri&amp;terio:</string>
-      </property>
-      <property name="buddy">
-       <cstring>txt_criterio</cstring>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_buscar">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>20</y>
-        <width>111</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Buscar criterio</string>
-      </property>
-      <property name="text">
-       <string>Buscar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/kfind.png</normalon>
-       </iconset>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_monstrar">
-      <property name="geometry">
-       <rect>
-        <x>533</x>
-        <y>440</y>
-        <width>240</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Mostrar</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normalon>:/Icons/icons/apply.png</normalon>
-       </iconset>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>819</width>
-     <height>21</height>
+     <width>795</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
