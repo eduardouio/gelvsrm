@@ -10,15 +10,20 @@
 import sys
 sys.path.append('..')
 from PyQt4 import QtGui, QtCore, uic
+import viaje
 from plantillas import polaris_rc
 
-class Viaje(QtGui.QMainWindow):
-		def __init__(self): 
-			QtGui.QMainWindow.__init__(self)
-			ventana = uic.loadUi('plantillas/main_window.ui',self)
-			ventana.show()
+class Main(QtGui.QMainWindow):
+	'''Clase principal de la aplicacion GELVS
+	Ventana encargada de gestionar todas las ventanas
+	y widgets de la aplicacion '''
+	def __init__(self): 
+		QtGui.QMainWindow.__init__(self)
+		ventana = uic.loadUi('plantillas/main_window.ui',self)
+		ventana.show()
+
 
 if __name__ == '__main__':
 	app = QtGui.QApplication(sys.argv)
-	window = Viaje()
+	window = Main()
 	sys.exit(app.exec_())

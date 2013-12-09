@@ -1,25 +1,1065 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>frm_Main</class>
+ <widget class="QMainWindow" name="frm_Main">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>856</width>
-    <height>589</height>
+    <width>759</width>
+    <height>526</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="windowTitle">
+   <string>Mantenimientos Polaris</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="polaris.qrc">
+    <normaloff>:/Icons/icons/amarok.png</normaloff>:/Icons/icons/amarok.png</iconset>
+  </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ffffff;&quot;&gt;Bienvenido al Panel de control de GELVS sistema integrado de control de mantenimiento y reparacion de vehículos utilitarios Polaris Ranger 800&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border: none;
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 3,
+stop: 0 #a6a6a6, stop: 0.08 #7f7f7f,
+stop: 0.39999 #717171, stop: 0.4 #626262,
+stop: 0.9 #4c4c4c, stop: 1 #333333);</string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>511</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Abyssinica SIL</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color: #009a3e;
+background: qradialgradient(cx: 0.3, cy: -0.1,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 15;
+padding: 0px;
+}
+
+QLabel:hover {
+color: #e30;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>GELVS Mantenimiento Vehívulos Utilitarios Polaris</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>65</x>
+      <y>81</y>
+      <width>626</width>
+      <height>352</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Vehículos</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_4">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Mantenimientos</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" colspan="2">
+      <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Reparaciones</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4" colspan="2">
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Técnicos</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <widget class="QLabel" name="label_10">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Viajes</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btn_vehiculos">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="btn_mantenimientos">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/aceite.png</normaloff>:/Icons/icons/aceite.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" colspan="2">
+      <widget class="QPushButton" name="btn_reparaciones">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/configure.png</normaloff>:/Icons/icons/configure.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4" colspan="2">
+      <widget class="QPushButton" name="btn_tecnicos">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/applications_engineering.png</normaloff>:/Icons/icons/applications_engineering.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="6">
+      <widget class="QPushButton" name="btn_viajes">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/kgeography.png</normaloff>:/Icons/icons/kgeography.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Clientes</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_6">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Inventario</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_7">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Facturas</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="QLabel" name="label_8">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Informes</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="btn_clientes">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/kdmconfig.png</normaloff>:/Icons/icons/kdmconfig.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QPushButton" name="btn_invemtario">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/view_pim_tasks.png</normaloff>:/Icons/icons/view_pim_tasks.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3" colspan="2">
+      <widget class="QPushButton" name="btn_facturas">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/klipper.png</normaloff>:/Icons/icons/klipper.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="5">
+      <widget class="QPushButton" name="btn_informes">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/kchart.png</normaloff>:/Icons/icons/kchart.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="6">
+      <widget class="QPushButton" name="btn_viajes_2">
+       <property name="minimumSize">
+        <size>
+         <width>94</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+color: #333;
+border: 2px solid #555;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #888);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="polaris.qrc">
+         <normaloff>:/Icons/icons/applications_internet.png</normaloff>:/Icons/icons/applications_internet.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="6">
+      <widget class="QLabel" name="label_11">
+       <property name="minimumSize">
+        <size>
+         <width>112</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: white;
+background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #88d, stop: 0.1 #99e, stop: 0.49 #77c, stop: 0.5 #66b, stop: 1 #77c);
+border-width: 1px;
+border-color: #339;
+border-style: solid;
+border-radius: 10;
+padding: 0px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 100px;
+max-width: 100px;
+min-height: 30px;
+max-height: 30px;
+}
+
+QLabel:hover {
+color: #99d;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string>Web</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>856</width>
+     <width>759</width>
      <height>25</height>
     </rect>
    </property>
@@ -28,17 +1068,17 @@
      <string>&amp;Mantenimientos</string>
     </property>
     <addaction name="actionNuevo_Mantenimiento"/>
-    <addaction name="actionBuscar_Mantenimiento"/>
-    <addaction name="actionListar_Mantenimientos"/>
+    <addaction name="actionListar_Mantenimiento"/>
+    <addaction name="actionBuscar_Mantenimientos"/>
    </widget>
    <widget class="QMenu" name="menu_Inventario">
     <property name="title">
      <string>&amp;Inventario</string>
     </property>
-    <addaction name="actionListar_Inventario"/>
+    <addaction name="actionCrear_Inventario"/>
     <addaction name="actionStock_Inventario"/>
-    <addaction name="actionNuevo_Ingreso"/>
-    <addaction name="actionIng_reso_Compra"/>
+    <addaction name="actionListar_inventario"/>
+    <addaction name="actionIngreso_compra"/>
     <addaction name="actionSalidas_Inventario"/>
     <addaction name="actionEntradas_Inventario"/>
    </widget>
@@ -46,16 +1086,16 @@
     <property name="title">
      <string>&amp;Técnicos</string>
     </property>
-    <addaction name="actionNuevo_Em_pleado"/>
-    <addaction name="actionBu_sucar_T_cnico"/>
-    <addaction name="actionBuscar_T_cnico"/>
+    <addaction name="actionNuevo_Tecnico"/>
+    <addaction name="actionListar_tecnico"/>
+    <addaction name="actionBuscar_tecnico"/>
    </widget>
    <widget class="QMenu" name="menuClientes">
     <property name="title">
      <string>&amp;Clientes</string>
     </property>
-    <addaction name="actionNuvo_C_liente"/>
-    <addaction name="actionListar_Cli_entes"/>
+    <addaction name="actionCrear_cliente"/>
+    <addaction name="actionListar_clientes"/>
     <addaction name="actionBuscar_Cliente"/>
    </widget>
    <widget class="QMenu" name="menuVeh_culos">
@@ -113,69 +1153,173 @@
    <addaction name="menuInformes"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNuevo_Mantenimiento"/>
+   <addaction name="actionNuevo_Tecnico"/>
+  </widget>
   <action name="actionNuevo_Mantenimiento">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/filenew.png</normaloff>:/Icons/icons/filenew.png</iconset>
+   </property>
    <property name="text">
-    <string>&amp;Nuevo Mantenimiento</string>
+    <string>Nuevo &amp;Mantenimiento</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
    </property>
   </action>
-  <action name="actionBuscar_Mantenimiento">
+  <action name="actionListar_Mantenimiento">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/format_list_ordered.png</normaloff>:/Icons/icons/format_list_ordered.png</iconset>
+   </property>
    <property name="text">
-    <string>Listar Mantenimientos</string>
+    <string>Listar Man&amp;tenimientos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+M</string>
    </property>
   </action>
-  <action name="actionListar_Mantenimientos">
+  <action name="actionBuscar_Mantenimientos">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/find.png</normaloff>:/Icons/icons/find.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Buscar Mantenimientos</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+M</string>
+   </property>
   </action>
-  <action name="actionListar_Inventario">
+  <action name="actionCrear_Inventario">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/filenew.png</normaloff>:/Icons/icons/filenew.png</iconset>
+   </property>
    <property name="text">
     <string>Nuevo Producto/Servicio</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionStock_Inventario">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/view_pim_tasks.png</normaloff>:/Icons/icons/view_pim_tasks.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Stock Inventario</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
   </action>
-  <action name="actionNuevo_Ingreso">
+  <action name="actionListar_inventario">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/format_list_ordered.png</normaloff>:/Icons/icons/format_list_ordered.png</iconset>
+   </property>
    <property name="text">
     <string>Listado Inventario</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
+   </property>
   </action>
-  <action name="actionNuevo_Em_pleado">
+  <action name="actionNuevo_Tecnico">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/applications_engineering.png</normaloff>:/Icons/icons/applications_engineering.png</iconset>
+   </property>
    <property name="text">
     <string>Nuevo Técni&amp;co</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
   </action>
-  <action name="actionBu_sucar_T_cnico">
+  <action name="actionListar_tecnico">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/kdmconfig.png</normaloff>:/Icons/icons/kdmconfig.png</iconset>
+   </property>
    <property name="text">
     <string>Listar Técnico</string>
    </property>
-  </action>
-  <action name="actionNuvo_C_liente">
-   <property name="text">
-    <string>Nuevo C&amp;liente</string>
+   <property name="shortcut">
+    <string>Ctrl+Shift+T</string>
    </property>
   </action>
-  <action name="actionListar_Cli_entes">
+  <action name="actionCrear_cliente">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/personal.png</normaloff>:/Icons/icons/personal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Crear C&amp;liente</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionListar_clientes">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/format_list_ordered.png</normaloff>:/Icons/icons/format_list_ordered.png</iconset>
+   </property>
    <property name="text">
     <string>Listar Cli&amp;entes</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
   </action>
-  <action name="actionBuscar_T_cnico">
+  <action name="actionBuscar_tecnico">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/find.png</normaloff>:/Icons/icons/find.png</iconset>
+   </property>
    <property name="text">
     <string>Buscar Técnico</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+T</string>
+   </property>
   </action>
-  <action name="actionIng_reso_Compra">
+  <action name="actionIngreso_compra">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/compras.png</normaloff>:/Icons/icons/compras.png</iconset>
+   </property>
    <property name="text">
     <string>Ing&amp;reso Compra</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
   </action>
   <action name="actionSalidas_Inventario">
+   <property name="icon">
+    <iconset resource="polaris.qrc">
+     <normaloff>:/Icons/icons/stock.png</normaloff>:/Icons/icons/stock.png</iconset>
+   </property>
    <property name="text">
     <string>Salidas Inventario</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Shift+S</string>
    </property>
   </action>
   <action name="actionEntradas_Inventario">
@@ -284,6 +1428,21 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>btn_vehiculos</tabstop>
+  <tabstop>btn_mantenimientos</tabstop>
+  <tabstop>btn_reparaciones</tabstop>
+  <tabstop>btn_tecnicos</tabstop>
+  <tabstop>btn_clientes</tabstop>
+  <tabstop>btn_invemtario</tabstop>
+  <tabstop>btn_facturas</tabstop>
+  <tabstop>btn_informes</tabstop>
+ </tabstops>
+ <resources>
+  <include location="polaris.qrc"/>
+ </resources>
  <connections/>
+ <slots>
+  <slot>abrir_viajes()</slot>
+ </slots>
 </ui>

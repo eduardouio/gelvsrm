@@ -7,6 +7,8 @@
 # Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 
+import sys
+sys.path.append('..')
 from PyQt4 import QtCore, QtSql
 import conn
 
@@ -31,7 +33,7 @@ class Modelo(object):
 									'El servidor dice... \n' + sql.lastError().databaseText() + 
 									'\n\nSi el problema continúa comuníquese con eduardouio7@gmail.com' + str(sql.lastQuery())),					
 					QtGui.QMessageBox.Ok)		
-				return Falseq
+				return False
 			return sql
 
 	def listTables(self):

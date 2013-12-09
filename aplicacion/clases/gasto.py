@@ -19,3 +19,4 @@ class gasto(object):
 	def listarGastos(self,id_viaje=0):
 		'''Lista los gastos de un id_viaje
 		@param id_viaje => identificador del viaje'''
+		

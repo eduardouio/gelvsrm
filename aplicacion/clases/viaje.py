@@ -15,4 +15,10 @@ class Viaje(Object):
 	
 	def __init__(self):
 		'''Método init de la clase'''
+		self.DB = Modelo()
+
+	def listarViajes(self):
+		'''Lista todos los  viajes'''
+		viajes = DB.
+
 		

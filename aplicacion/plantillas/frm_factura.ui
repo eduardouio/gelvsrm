@@ -509,7 +509,7 @@
                <x>0</x>
                <y>0</y>
                <width>853</width>
-               <height>360</height>
+               <height>432</height>
               </rect>
              </property>
              <widget class="QLabel" name="lbl_observaciones">
@@ -525,7 +525,7 @@
                <string>Observaciones:</string>
               </property>
              </widget>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <property name="geometry">
                <rect>
                 <x>0</x>
@@ -816,46 +816,8 @@
           </item>
          </layout>
         </item>
-        <item>
-         <widget class="QScrollBar" name="verticalScrollBar">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
-       <zorder>scrollArea</zorder>
-       <zorder>frame</zorder>
-       <zorder>btn_guardar</zorder>
-       <zorder>btn_cancelar</zorder>
-       <zorder>btn_copiar</zorder>
-       <zorder>btn_nuevo</zorder>
-       <zorder>btn_home</zorder>
-       <zorder>btn_primero</zorder>
-       <zorder>btn_anterior</zorder>
-       <zorder>btn_siguiente</zorder>
-       <zorder>btn_ultimo</zorder>
-       <zorder>btn_recargar</zorder>
-       <zorder>btn_eliminar</zorder>
-       <zorder>cmb_fecha_de_compra</zorder>
-       <zorder>lbl_fecha_de_compra</zorder>
-       <zorder>lbl_nro_motor</zorder>
-       <zorder>txt_nro_motor</zorder>
-       <zorder>cmb_cliente</zorder>
-       <zorder>lbl_cliente</zorder>
-       <zorder>lbl_vehicul_polaris</zorder>
-       <zorder>cmb_contacto</zorder>
-       <zorder>lbl_cliente_2</zorder>
-       <zorder>btn_buscar_cliente</zorder>
-       <zorder>lbl_nro_motor_3</zorder>
-       <zorder>txt_nro_motor_3</zorder>
-       <zorder>btn_monstrar_14</zorder>
-       <zorder>btn_monstrar_15</zorder>
-       <zorder>horizontalSpacer_3</zorder>
-       <zorder>horizontalSpacer_4</zorder>
        <zorder></zorder>
-       <zorder></zorder>
-       <zorder>verticalScrollBar</zorder>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="icon">

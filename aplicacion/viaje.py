@@ -13,8 +13,8 @@ from PyQt4 import QtGui, QtCore, uic
 from plantillas import polaris_rc
 
 class Viaje(QtGui.QMainWindow):
-		def __init__(self): 
-			QtGui.QMainWindow.__init__(self)
+		def __init__(self,parent): 
+			QtGui.QMainWindow.__init__(self,parent)
 			ventana = uic.loadUi('plantillas/frm_viaje.ui',self)
 			ventana.show()
 

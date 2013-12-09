@@ -12,13 +12,17 @@ sys.path.append('..')
 from PyQt4 import QtGui, QtCore, uic
 from plantillas import polaris_rc
 
-class Viaje(QtGui.QMainWindow):
+class Inventario(QtGui.QMainWindow):
 		def __init__(self): 
 			QtGui.QMainWindow.__init__(self)
 			ventana = uic.loadUi('plantillas/frm_inventario.ui',self)
 			ventana.show()
 
-if __name__ == '__main__':
+def main():
+	print('Hola munfio')
 	app = QtGui.QApplication(sys.argv)
-	window = Viaje()
+	window = Inventario()
 	sys.exit(app.exec_())
+	
+if __name__ == '__main__':
+	main()

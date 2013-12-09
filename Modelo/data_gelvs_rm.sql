@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1deb1
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2013 at 10:26 AM
+-- Generation Time: Dec 02, 2013 at 01:11 PM
 -- Server version: 5.5.34-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2.3
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `gelvsrm_polaris`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ciudad`
+--
+
+CREATE TABLE IF NOT EXISTS `ciudad` (
+  `id_ciudad` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_provincia` smallint(5) unsigned NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_ciudad`),
+  KEY `fk_ciudad_provincia` (`id_provincia`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar, ciudades del Ecuador guarda una relacion \n		con la provincia a la que corresponde, en caso de no tener una ciudad en\n		la lista de ciudades, se crea una nueva permitiendole al usuario ingresarla' AUTO_INCREMENT=230 ;
 
 --
 -- Dumping data for table `ciudad`
@@ -246,7 +260,45 @@ INSERT INTO `ciudad` (`id_ciudad`, `id_provincia`, `nombre`) VALUES
 (219, 3, 'Parroquia Gualletoro'),
 (220, 3, 'Picalpato'),
 (221, 3, 'Suscal'),
-(222, 2, 'Salinas');
+(222, 2, 'Salinas'),
+(223, 23, 'Montalvo Tungurahua'),
+(224, 6, 'Alaquez'),
+(225, 6, 'Pilalo'),
+(226, 6, 'Belizario Quevedo'),
+(227, 6, 'Angamarca'),
+(228, 6, 'La Victoria'),
+(229, 5, 'Tixan');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `ciudades`
+--
+CREATE TABLE IF NOT EXISTS `ciudades` (
+`Cuidad` varchar(100)
+,`Provincia` varchar(100)
+);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cliente`
+--
+
+CREATE TABLE IF NOT EXISTS `cliente` (
+  `id_cliente` char(13) NOT NULL,
+  `id_contacto` smallint(5) unsigned DEFAULT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `nombre` varchar(200) NOT NULL,
+  `direccion` varchar(600) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `fax` varchar(15) DEFAULT NULL,
+  `mail` varchar(100) DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_cliente`),
+  KEY `fk_cliente_contacto` (`id_contacto`),
+  KEY `fk_cliente_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar a los cliente\n				se sugiere que el telefono sea de la persona encargada \n				de la facturacio';
 
 --
 -- Dumping data for table `cliente`
@@ -260,6 +312,46 @@ INSERT INTO `cliente` (`id_cliente`, `id_contacto`, `id_ciudad`, `nombre`, `dire
 ('1865012760001', NULL, 92, 'Dirección Provincial Agropecuaria De TunguraguaRN', 'Centro Comercial Ambato Bloque Nro 2 Av. 12 De Noviembre Y Mariano Wgues', '03-2823900 / 03', NULL, NULL, NULL, '2013-10-02 04:22:12'),
 ('260004750001', NULL, 87, 'Direccion Provincial Agropecuaria De Bolivar', 'Guaranda, Av. Circunvalacion S/N Y Ambato', '03-2981818', NULL, NULL, NULL, '2013-10-02 03:13:45');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compra`
+--
+
+CREATE TABLE IF NOT EXISTS `compra` (
+  `id_compra` smallint(5) unsigned NOT NULL,
+  `id_inventario` smallint(5) unsigned NOT NULL,
+  `id_proveedor` varchar(13) NOT NULL,
+  `nro_factura` varchar(12) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `cantidad` smallint(5) unsigned NOT NULL,
+  `costo` decimal(5,2) DEFAULT NULL COMMENT 'costo por unidad',
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_compra`),
+  KEY `fk_compra_inventario` (`id_inventario`),
+  KEY `fk_compra_proveedor` (`id_proveedor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de manejar la entrada de stock al inventario\n				las unidades de los productos son las mimas que el detalle del inventario';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacto`
+--
+
+CREATE TABLE IF NOT EXISTS `contacto` (
+  `id_contacto` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_contacto`),
+  KEY `fk_contacto_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar los contactos de la base de datos\n		Estos contactos son luego referenciados a las entidades que lo requieran,\n		debe tener un registro cero' AUTO_INCREMENT=6 ;
+
 --
 -- Dumping data for table `contacto`
 --
@@ -270,6 +362,62 @@ INSERT INTO `contacto` (`id_contacto`, `id_ciudad`, `nombre`, `telefono`, `celul
 (3, 82, 'ING. Javier Moya', '03-2812808', '0969050433', 'jmoya@magap.gob.ec', NULL, '2013-10-21 23:21:01'),
 (4, 92, 'Dr. Jorge Cifuentes Carrión', '03-2827383', NULL, 'jcifuentes@magap.gob.ec', 'Ext 108', '2013-10-19 02:02:03'),
 (5, 102, 'Ing. Bolivar Garrido', '03-2610035', NULL, NULL, 'Ext: ', '2013-10-21 23:29:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `factura`
+--
+
+CREATE TABLE IF NOT EXISTS `factura` (
+  `id_factura` int(11) NOT NULL,
+  `id_cliente` char(13) NOT NULL,
+  `id_contacto` smallint(5) unsigned DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `fecha_envio` date NOT NULL,
+  `guia_envio` varchar(50) DEFAULT NULL,
+  `servicio_envio` varchar(80) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `archivo` varchar(200) DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_factura`),
+  KEY `fk_factura_cliente` (`id_cliente`),
+  KEY `fk_factura_contacto` (`id_contacto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar las facturación, se implementa una ruta\n		al archivo del escaneado de la factura';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `factura_detalle`
+--
+
+CREATE TABLE IF NOT EXISTS `factura_detalle` (
+  `id_factura` int(11) NOT NULL,
+  `id_mantenimiento` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `id_reparacion` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_factura`,`id_mantenimiento`,`id_reparacion`),
+  KEY `fk_factura_detalle_mantenimiento` (`id_mantenimiento`),
+  KEY `fk_factura_detalle_reparacion` (`id_reparacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad que registra los detalles de la facturacio se entiende por detalle\n				los vehiculos a los que se le realizaron mantenimiento, un mantenimiento no\n				se factura más de una vez, para poder controlar esto se obliga a que un campo de la clave\n				primaria sea cero los dos campos no deben tener un valor diferente de cero los dos a la\n				vez ya que la restriccion registra un mantenimiento o una reparación';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gastos_viaje`
+--
+
+CREATE TABLE IF NOT EXISTS `gastos_viaje` (
+  `id_viaje` smallint(5) unsigned NOT NULL,
+  `nro_factura` varchar(20) NOT NULL,
+  `fecha` date NOT NULL,
+  `detalle` varchar(300) NOT NULL,
+  `valor` decimal(4,2) NOT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_viaje`,`nro_factura`,`valor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Se registran los gastos de los viajes, en esta entidad se graban los \n		gastos realizados para cada viaje, se registran los datos de las facturas de acuerdo\n		al formato que se tiene en gastos de viajes en la carpeta polaris de dropbox';
 
 --
 -- Dumping data for table `gastos_viaje`
@@ -452,6 +600,29 @@ INSERT INTO `gastos_viaje` (`id_viaje`, `nro_factura`, `fecha`, `detalle`, `valo
 (10, '691715', '2013-10-22', 'Peaje', 1.00, 'Peaje', '2013-10-26 02:11:52'),
 (10, 'S/N', '2013-10-22', 'Gasolina Super', 18.00, 'Conbustible', '2013-10-26 02:11:52');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inspeccion`
+--
+
+CREATE TABLE IF NOT EXISTS `inspeccion` (
+  `id_inspeccion` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_vehiculo` varchar(17) NOT NULL,
+  `id_tecnico` varchar(10) NOT NULL,
+  `id_contacto` smallint(5) unsigned NOT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `periodo` smallint(5) unsigned NOT NULL,
+  `fecha` date NOT NULL,
+  `notas` text,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_inspeccion`),
+  KEY `fk_inspeccion_vehiculo` (`id_vehiculo`),
+  KEY `fk_inspeccion_tecnico` (`id_tecnico`),
+  KEY `fk_inspeccion_contacto` (`id_contacto`),
+  KEY `fk_inspeccion_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='De momento es solo un formulario de inspeccion' AUTO_INCREMENT=5 ;
+
 --
 -- Dumping data for table `inspeccion`
 --
@@ -461,6 +632,26 @@ INSERT INTO `inspeccion` (`id_inspeccion`, `id_vehiculo`, `id_tecnico`, `id_cont
 (2, '4XATH76A4D2290761', '0803550466', 3, 81, 0, '2013-09-19', '\r\nInforme Inspección Vehículo\r\n\r\nCotopaxi, La Mana, 19 de Septiembre de 2013\r\n\r\nSe procede con la inspección del vehículo con número de VIN  4XATH76A4D2290761,  a cargo del Ing. Henry Peñaherrera, mismo que presenta un golpe en la parte frontal derecha producto del golpe presenta el guarda choque doblado hacia dentro, se realiza una inspección completa de acuerdo al siguiente detalle:\r\n\r\nInspección Observaciones\r\nCarrocería Tiene roto el guarda fango derecho\r\nPuertas Funcionando correctamente.\r\nCajón abatible  Funcionando correctamente\r\nEstructura Cabina  No presenta golpes\r\nTerminales Suspensión Funcionando correctamente.\r\nAmortiguadores  Funcionando correctamente.\r\nTerminales de dirección Funcionando correctamente.\r\nBrazos de Suspensión  Funcionando correctamente.\r\nGuardachoque  Presenta doblamiento en la parte izquierda.\r\nBatería  Funcionando correctamente\r\nCableado eléctrico Funcionando correctamente..\r\nLimpia-brizas  Funcionando correctamente.\r\nCaja engranaje delantera  Funcionando correctamente.\r\nCajas engranaje posterior Funcionando correctamente.\r\nAceite Motor  Cambiado\r\nAceite Caja Posterior Cambiado\r\nAceite Caja Delantera Cambiado\r\nLiquido de Frenos Llenado completo\r\nRefrigerante  Cambiado\r\nÁcido batería Funcionando perfectamente\r\nFiltro aire  Funcionando correctamente\r\nFiltro Aceite  Cambiado\r\nImágenes vehículo:\r\n\r\n\r\n\r\n\r\n\r\nObservaciones:\r\n• Presenta doblamiento en la parte izquierda del guarda choque.\r\n•  Presentar rotura en la parte superior izquierda de la mascarilla.\r\n•  Se derramo el líquido de freno en un 70% a 80% estimado quedándose con el porcentaje mínimo de liquido para ser frenado.\r\n\r\n\r\nNota: Se realiza el mantenimiento completo del vehículo.\r\n\r\n\r\nResponsabe zonal: Ing. Xavier Moya (03-2812 986), Dirección Provincial Agropecuaria de Cotopaxi Latacunga Av Atahualpa y zamora\r\n\r\n\r\n\r\n\r\n\r\nAtentamente:\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n\r\n\r\n', '2013-10-02 06:06:54'),
 (3, '4XATH76AXD2290828', '1711938025', 4, 217, 0, '2013-09-18', 'Informe Inspección Vehículo\r\nTungurahua, Quinchicoto 18 de septiembre del 2013\r\nEn la zona de Quinchicoto provincia de Tungurahua se procede con la inspección del vehículo con VIN  4XATH76AXD220828 a cargo del Ing. Luis Soliz, este vehículo presenta un sonido en la caja de cambios posterior, el sonido se produce, en el momento que se cambia de marcha, cuando inicia el recorrido,se realiza una inspección completa de acuerdo al siguiente detalle:\r\nInspección Observaciones\r\nCarrocería Funcionando correctamente.\r\nPuertas Funcionando correctamente.\r\nCajón abatible  Funcionando correctamente\r\nEstructura Cabina  Funcionando correctamente.\r\nTerminales Suspensión Funcionando correctamente.\r\nAmortiguadores  Funcionando correctamente.\r\nTerminales de dirección Funcionando correctamente.\r\nBrazos de Suspensión  Funcionando correctamente.\r\nGuardachoque  Funcionando correctamente.\r\nBatería Funcionando correctamente\r\nCableado eléctrico Funcionando correctamente..\r\nLimpia-brizas  Funcionando correctamente.\r\nCaja engranaje delantera  Funcionando correctamente.\r\nCajas engranaje posterior Funcionando correctamente.\r\nAceite Motor  Completo\r\nAceite Caja Posterior Completo\r\nAceite Caja Delantera Completo\r\nLiquido de Frenos Completo\r\nRefrigerante  Completo\r\nÁcido batería Funcionando perfectamente\r\nFiltro aire  Funcionando correctamente\r\nFiltro Aceite  Completo\r\nNotas: Se realizó el chequeo respectivo  del vehículo , analizando las siguiente , piezas  que verificó , las cruceta , los ejes trasero , o algún tornillo flojos , estas piezas estaban bien, y el sonido seguía  presente en el vehículo\r\nEl vehículo apenas cumple 6 horas de trabajo motivo por el cual no se puede hacer el cambio de aceites respectivos.\r\nEl encargado zonal solicita de manera cordial se realice el traslado a Quito inmediatamente para el arreglo del vehículo.\r\nConclusión:  Desarmar la caja de cambio para revisar los engranajes.\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\nAtentamente:\r\n\r\nEduardo Villota\r\n172291972-5\r\n', '2013-10-02 06:10:03'),
 (4, '4XATH76A6D2291121', '0803550466', 4, 92, 0, '2013-08-01', '\r\nInforme Vehículo Polaris Volcado\r\n\r\n\r\nAmbato, 01 de Agosto del 2013\r\n\r\n\r\nEl vehículo Polaris con numero de VIN 4XATH76A6D2291121 sufrió un volcamiento por la parte delantera izquierda, resultado de una posible perdida de pista, presenta un golpe en la parte superior izquierda del parabrisas provocando la ruptura del vidrio, la cabina se encuentra desviada hacia atrás en la dirección del golpe aproximadamente 3cm.\r\n\r\nGráfico del golpe visto desde la parte frontal de la cabina\r\n\r\n\r\nSe realizó un chequeo completo de los sistemas, encontrando las siguientes novedades:\r\n\r\nInspección  Observaciones\r\nCarrocería Presenta golpes en el lugar del impacto, pero no presenta ningún daño\r\nPuertas  Funcionando correctamente.\r\nCajón abatible  Funcionando, presenta una torcedura en el mango derecho\r\nEstructura Cabina  Presenta una desviación en dirección al golpe de unos 3cm\r\nTerminales Suspensión  Funcionando correctamente.\r\nAmortiguadores  Funcionando correctamente.\r\nTerminales de dirección Funcionando correctamente.\r\nBrazos de Suspensión  Funcionando correctamente.\r\nWincha  Funcionando correctamente.\r\nBatería Funcionando correctamente, presenta un baja en la carga por perdida de ácido.\r\nCableado eléctrico Funcionando correctamente.\r\nLimpia-brizas Funcionando correctamente.\r\nCaja engranaje delantera  Funcionando correctamente.\r\nCajas engranaje posterior Funcionando correctamente.\r\nAceite Motor  Cambiar\r\nAceite Caja Posterior  Correcto\r\nAceite Caja Delantera Correcto\r\nLiquido de Frenos Vacío\r\nRefrigerante Vacío\r\nÁcido batería  Por completar\r\nFiltro aire  Cambiar, se encuentra cubierto de aceite\r\nFiltro Aceite Cambiar\r\n\r\n\r\nObservaciones Adicionales:\r\n\r\n1. El aceite del motor se derramó en un 30% a 40 % encontrándose principalmente en los ductos de entrada de aire al motor.\r\n2. Se chequea la alineación de las llantas sin encontrar ninguna novedad.\r\n\r\n\r\nResponsable Zonal: Dr. Jorge Cifuentes Carrión  (03-2827383) Dirección Provincial Agropecuaria del Tungurahua Av. 12 de noviembre cc. Ambato Bloque No.2 Segundo Piso.\r\n\r\nAtentamente:\r\n\r\n\r\n\r\n\r\nTec. Eduardo Villota\r\nCI: 172291972-5\r\n', '2013-10-02 06:15:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventario`
+--
+
+CREATE TABLE IF NOT EXISTS `inventario` (
+  `id_inventario` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `fecha` datetime NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
+  `unidad` varchar(25) DEFAULT NULL,
+  `stok_min` smallint(5) unsigned NOT NULL COMMENT '12 filtros,12 aceite, 4 refirgerante 1 liquido de frenos',
+  `marca` varchar(45) DEFAULT NULL,
+  `ubicacion` varchar(100) NOT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_inventario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Entidad que lleva un detalle de los productos en bodega\n		Todos los materiales están en litros y unidades, se setablece un standar para los \n		condigos del inventario, cada producto ingresado al inventario empieza con el mail\n		1000,1001,1002. la columna unidad debe contener, litros, unidades, galones, etc' AUTO_INCREMENT=1031 ;
 
 --
 -- Dumping data for table `inventario`
@@ -498,6 +689,28 @@ INSERT INTO `inventario` (`id_inventario`, `fecha`, `nombre`, `descripcion`, `un
 (1028, '2013-10-01 00:00:00', 'Aceite De La Transmisión', 'Revisión', 'Unidad', 0, 'Polaris', 'Servicio', NULL, '2013-10-18 23:40:28'),
 (1029, '2013-10-01 00:00:00', 'Tensión Del Cable De Freno De Parqueo', 'Revisión', 'Unidad', 0, 'Polaris', 'Servicio', NULL, '2013-10-18 23:40:28'),
 (1030, '2013-10-01 00:00:00', 'Juntas', 'Revisión', 'Unidad', 0, 'Polaris', 'Servicio', NULL, '2013-10-18 23:40:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mantenimiento`
+--
+
+CREATE TABLE IF NOT EXISTS `mantenimiento` (
+  `id_mantenimiento` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_viaje` smallint(5) unsigned NOT NULL,
+  `id_vehiculo` char(17) NOT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `periodo` smallint(5) unsigned NOT NULL,
+  `fecha` date NOT NULL,
+  `kilometros` varchar(10) NOT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_mantenimiento`),
+  KEY `fk_mantenimiento_vehiculo` (`id_vehiculo`),
+  KEY `fk_mantenimiento_viaje` (`id_viaje`),
+  KEY `fk_mantenimiento_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Registra los mantenimientos realizados aun vehiculo, los insumos usados para el mantenimiento\n				se registran en mantenimiento_detalle' AUTO_INCREMENT=118 ;
 
 --
 -- Dumping data for table `mantenimiento`
@@ -559,7 +772,7 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `id_viaje`, `id_vehiculo`, `id_
 (59, 9, '4XATH76A8D2290729', 213, 71, '2013-10-17', '1077', 'El vehiculo estaba sin las dos tapas transparentes de las puertas', '2013-11-02 03:05:53'),
 (60, 9, '4XATH76A5D4317664', 205, 53, '2013-10-16', '1140.7', 'Se ajusta tuerca del volante por que estaba floja', '2013-11-02 03:05:53'),
 (61, 7, '4XATH76A9D4315562', 219, 167, '2013-10-04', '3011', 'Tiene doblado el caucho que protege el motor, Desgaste de ruedas en un 70%', '2013-11-02 03:05:53'),
-(62, 7, '4XATH76A1D221043', 219, 52, '2013-10-04', '1017', 'No tiene cinturones de seguridad', '2013-11-02 03:05:53'),
+(62, 7, '4XATH76A1D2291043', 219, 52, '2013-10-04', '1017', 'No tiene cinturones de seguridad', '2013-11-02 03:05:53'),
 (63, 7, '4XATH76A2D4315598', 220, 180, '2013-10-02', '4437', 'Ruedas traseras en un desgaste del 70%, Segundo cambio', '2013-11-02 03:05:53'),
 (64, 7, '4XATH76A7D4315592', 221, 83, '2013-10-02', '15544', 'Llantas desgastadas en un 70%', '2013-11-02 03:05:53'),
 (65, 7, '4XATH76AXD4315568', 221, 135, '2013-10-02', '2569', 'Se pone liquido de frenos, Segundo Cambio (Por traspapelamiento no se facturo este cambio se lo reemplazo por otro realizado en el segundo viaje viaje 7)', '2013-11-05 02:08:28'),
@@ -600,7 +813,41 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `id_viaje`, `id_vehiculo`, `id_
 (100, 10, '4XATH76A0D2291079', 92, 49, '2013-10-22', '885', 'Se puso refrigerante al vehiculo', '2013-11-02 03:08:41'),
 (101, 10, '4XATH76A7D2291077', 102, 52, '2013-10-22', '1052', 'Se puso refrigerante, \r\nel vehiculo tiene un desgaste del vosin del derecho la rueda esta a un lado del vehiculo.', '2013-11-02 03:08:41'),
 (102, 11, '4XATH76A3D2290802', 202, 50, '2013-10-30', '606', 'Mantenimiento completo', '2013-11-02 03:08:41'),
-(103, 1, '4XATH76AXD4315568', 218, 135, '2013-10-02', '2569', 'Mantenimiento facturado en la primera factura por confucion en la facturacion de la primera ronda correspondiente al porimer viaje', '2013-11-05 02:07:38');
+(103, 1, '4XATH76AXD4315568', 218, 135, '2013-10-02', '2569', 'Mantenimiento facturado en la primera factura por confucion en la facturacion de la primera ronda correspondiente al porimer viaje', '2013-11-05 02:07:38'),
+(104, 12, '4XATH76AXD2291039', 224, 50, '2013-11-04', '1177', 'Se puso refrigerante', '2013-11-26 20:17:41'),
+(105, 12, '4XATH76A1D2290765', 225, 50, '2013-11-05', '1221', 'Se puso refrigerante', '2013-11-26 20:23:44'),
+(106, 12, '4XATH76A0D2293222', 227, 49, '2013-11-05', '741', 'El vehiculo anteriormente tenia roto el parabrisas y la mascarilla superior del faro izquierdo.\r\nEn el momento que nos dirigimos a realizar los cambios de aceite no dimos cuenta que ya estaban completamente arreglado por cuenta de ellos.\r\nTambien presentaba el filtro del aire lleno de aceite por lo que recomienda cambiar el filtro.', '2013-11-26 20:28:19'),
+(107, 12, '4XATH76A4D2290713', 228, 164, '2013-11-05', '3471', 'Segundo cambio de aceite.\r\nEl tapon de llenado del aceite de la caja frontal se encontraba da;ado por lo cual se recomienda cambiarlo.\r\nTambien se recomienda cambiar el filtro de aceite.', '2013-11-26 20:32:34'),
+(108, 12, '4XATH76A2D2290757', 226, 106, '2013-11-05', '1358', 'Segundo cambio de aceite.\r\nSe puso refrigerante al vehiculo.', '2013-11-26 20:35:08'),
+(109, 12, '4XATH76A7D2291063', 212, 160, '2013-11-05', '4260', 'Se puso refrigerante.\r\nSegundo cambio de aceite.\r\nCambiar filtro de aire.', '2013-11-26 20:40:06'),
+(110, 13, '4XATH76A4D2290792', 110, 47, '2013-11-22', '1176', 'Reparación Caucho del Eje trasero', '2013-12-02 16:44:04'),
+(111, 13, '4XATH76A8D2290813', 102, 70, '2013-11-21', '1265', NULL, '2013-12-02 16:58:41'),
+(112, 13, '4XATH76A4D4317638', 102, 51, '2013-11-21', '1190', NULL, '2013-12-02 17:00:30'),
+(113, 13, '4XATH76A2D4317668', 102, 161, '2013-11-21', '1281', NULL, '2013-12-02 17:04:55'),
+(114, 13, '4XATH76A4D2290825', 108, 148, '2013-11-21', '3257', 'El Vehículo tiene instalado retrovisores, y guías delanteras', '2013-12-02 17:07:38'),
+(115, 13, '4XATH76A9D2291114', 108, 154, '2013-11-21', '3330', NULL, '2013-12-02 17:09:44'),
+(116, 13, '4XATH76A6D2290759', 108, 154, '2013-11-21', '4852', 'Las llantas se encuentran desgastadas en un 80%, ademas presenta el filtro principal lleno de aceite.', '2013-12-02 17:12:18'),
+(117, 12, '4XATH76A6D4317687', 209, 118, '2013-11-05', '1046', 'Tiene encendida la alerta del check engine , se completa el aceite de motor colocandolde un octavo', '2013-12-02 18:09:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mantenimiento_detalle`
+--
+
+CREATE TABLE IF NOT EXISTS `mantenimiento_detalle` (
+  `id_mantenimiento_detalle` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_mantenimiento` smallint(5) unsigned NOT NULL,
+  `id_inventario` smallint(5) unsigned NOT NULL,
+  `fecha` time NOT NULL,
+  `estado` varchar(25) DEFAULT NULL COMMENT 'cambio,reparacio,correccion',
+  `cantidad` float unsigned NOT NULL,
+  `notas` varchar(600) DEFAULT NULL,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_mantenimiento`,`id_inventario`),
+  UNIQUE KEY `id_mantenimiento_detalle` (`id_mantenimiento_detalle`),
+  KEY `fk_mantenimiento_detalle_inventario` (`id_inventario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Registra los detalles del mantenimiento y los costos de los insumos' AUTO_INCREMENT=3597 ;
 
 --
 -- Dumping data for table `mantenimiento_detalle`
@@ -1371,7 +1618,8 @@ INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimien
 (824, 28, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (825, 28, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (826, 28, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
-(827, 28, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
+(827, 28, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04');
+INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `notas`, `registro`) VALUES
 (828, 28, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (829, 28, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (830, 28, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
@@ -2121,7 +2369,8 @@ INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimien
 (1636, 55, 1023, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (1637, 55, 1024, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (1638, 55, 1025, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
-(1639, 55, 1026, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
+(1639, 55, 1026, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04');
+INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `notas`, `registro`) VALUES
 (1640, 55, 1027, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (1641, 55, 1028, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (1642, 55, 1029, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
@@ -2869,7 +3118,8 @@ INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimien
 (2384, 79, 1027, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (2385, 79, 1028, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
 (2386, 79, 1029, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
-(2387, 79, 1030, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04'),
+(2387, 79, 1030, '14:00:00', NULL, 0, NULL, '2013-10-30 01:44:04');
+INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `notas`, `registro`) VALUES
 (2388, 80, 1000, '14:00:00', 'Sucio', 2, NULL, '2013-10-30 01:44:43'),
 (2389, 80, 1001, '14:00:00', 'Sucio', 1, NULL, '2013-10-30 01:44:43'),
 (2390, 80, 1002, '14:00:00', 'Sucio', 0.275, NULL, '2013-10-30 01:44:43'),
@@ -3613,7 +3863,464 @@ INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimien
 (3128, 103, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
 (3129, 103, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
 (3130, 103, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
-(3131, 103, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04');
+(3131, 103, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3318, 104, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3319, 104, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3320, 104, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43');
+INSERT INTO `mantenimiento_detalle` (`id_mantenimiento_detalle`, `id_mantenimiento`, `id_inventario`, `fecha`, `estado`, `cantidad`, `notas`, `registro`) VALUES
+(3321, 104, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3322, 104, 1004, '00:00:00', NULL, 0.8, NULL, '2013-11-02 06:28:06'),
+(3323, 104, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3324, 104, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3325, 104, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3326, 104, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3327, 104, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3328, 104, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3329, 104, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3330, 104, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3331, 104, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3332, 104, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3333, 104, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3334, 104, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3335, 104, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3336, 104, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3337, 104, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3338, 104, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3339, 104, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3340, 104, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3341, 104, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3342, 104, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3343, 104, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3344, 104, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3345, 104, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3346, 104, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3347, 104, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3348, 104, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3163, 105, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3164, 105, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3165, 105, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3166, 105, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3167, 105, 1004, '00:00:00', NULL, 0.8, NULL, '2013-11-02 06:28:06'),
+(3168, 105, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3169, 105, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3170, 105, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3171, 105, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3172, 105, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3173, 105, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3174, 105, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3175, 105, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3176, 105, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3177, 105, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3178, 105, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3179, 105, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3180, 105, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3181, 105, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3182, 105, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3183, 105, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3184, 105, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3185, 105, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3186, 105, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3187, 105, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3188, 105, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3189, 105, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3190, 105, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3191, 105, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3192, 105, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3193, 105, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3194, 106, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3195, 106, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3196, 106, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3197, 106, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3198, 106, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3199, 106, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3200, 106, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3201, 106, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3202, 106, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3203, 106, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3204, 106, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3205, 106, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3206, 106, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3207, 106, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3208, 106, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3209, 106, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3210, 106, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3211, 106, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3212, 106, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3213, 106, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3214, 106, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3215, 106, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3216, 106, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3217, 106, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3218, 106, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3219, 106, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3220, 106, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3221, 106, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3222, 106, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3223, 106, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3224, 106, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3225, 107, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3226, 107, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3227, 107, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3228, 107, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3229, 107, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3230, 107, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3231, 107, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3232, 107, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3233, 107, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3234, 107, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3235, 107, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3236, 107, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3237, 107, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3238, 107, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3239, 107, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3240, 107, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3241, 107, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3242, 107, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3243, 107, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3244, 107, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3245, 107, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3246, 107, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3247, 107, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3248, 107, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3249, 107, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3250, 107, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3251, 107, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3252, 107, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3253, 107, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3254, 107, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3255, 107, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3256, 108, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3257, 108, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3258, 108, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3259, 108, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3260, 108, 1004, '00:00:00', NULL, 0.8, NULL, '2013-11-02 06:28:06'),
+(3261, 108, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3262, 108, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3263, 108, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3264, 108, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3265, 108, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3266, 108, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3267, 108, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3268, 108, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3269, 108, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3270, 108, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3271, 108, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3272, 108, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3273, 108, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3274, 108, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3275, 108, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3276, 108, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3277, 108, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3278, 108, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3279, 108, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3280, 108, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3281, 108, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3282, 108, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3283, 108, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3284, 108, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3285, 108, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3286, 108, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3287, 109, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3288, 109, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3289, 109, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3290, 109, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3291, 109, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3292, 109, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3293, 109, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3294, 109, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3295, 109, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3296, 109, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3297, 109, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3298, 109, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3299, 109, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3300, 109, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3301, 109, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3302, 109, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3303, 109, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3304, 109, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3305, 109, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3306, 109, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3307, 109, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3308, 109, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3309, 109, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3310, 109, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3311, 109, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3312, 109, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3313, 109, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3314, 109, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3315, 109, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3316, 109, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3317, 109, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3349, 110, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3350, 110, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3351, 110, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3352, 110, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3353, 110, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3354, 110, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3355, 110, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3356, 110, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3357, 110, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3358, 110, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3359, 110, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3360, 110, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3361, 110, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3362, 110, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3363, 110, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3364, 110, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3365, 110, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3366, 110, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3367, 110, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3368, 110, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3369, 110, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3370, 110, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3371, 110, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3372, 110, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3373, 110, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3374, 110, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3375, 110, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3376, 110, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3377, 110, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3378, 110, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3379, 110, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3380, 111, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3381, 111, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3382, 111, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3383, 111, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3384, 111, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3385, 111, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3386, 111, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3387, 111, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3388, 111, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3389, 111, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3390, 111, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3391, 111, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3392, 111, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3393, 111, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3394, 111, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3395, 111, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3396, 111, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3397, 111, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3398, 111, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3399, 111, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3400, 111, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3401, 111, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3402, 111, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3403, 111, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3404, 111, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3405, 111, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3406, 111, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3407, 111, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3408, 111, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3409, 111, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3410, 111, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3411, 112, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3412, 112, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3413, 112, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3414, 112, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3415, 112, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3416, 112, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3417, 112, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3418, 112, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3419, 112, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3420, 112, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3421, 112, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3422, 112, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3423, 112, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3424, 112, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3425, 112, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3426, 112, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3427, 112, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3428, 112, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3429, 112, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3430, 112, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3431, 112, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3432, 112, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3433, 112, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3434, 112, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3435, 112, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3436, 112, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3437, 112, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3438, 112, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3439, 112, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3440, 112, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3441, 112, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3442, 113, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3443, 113, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3444, 113, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3445, 113, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3446, 113, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3447, 113, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3448, 113, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3449, 113, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3450, 113, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3451, 113, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3452, 113, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3453, 113, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3454, 113, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3455, 113, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3456, 113, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3457, 113, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3458, 113, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3459, 113, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3460, 113, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3461, 113, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3462, 113, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3463, 113, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3464, 113, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3465, 113, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3466, 113, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3467, 113, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3468, 113, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3469, 113, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3470, 113, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3471, 113, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3472, 113, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3473, 114, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3474, 114, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3475, 114, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3476, 114, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3477, 114, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3478, 114, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3479, 114, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3480, 114, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3481, 114, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3482, 114, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3483, 114, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3484, 114, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3485, 114, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3486, 114, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3487, 114, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3488, 114, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3489, 114, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3490, 114, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3491, 114, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3492, 114, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3493, 114, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3494, 114, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3495, 114, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3496, 114, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3497, 114, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3498, 114, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3499, 114, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3500, 114, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3501, 114, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3502, 114, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3503, 114, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3504, 115, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3505, 115, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3506, 115, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3507, 115, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3508, 115, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3509, 115, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3510, 115, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3511, 115, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3512, 115, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3513, 115, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3514, 115, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3515, 115, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3516, 115, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3517, 115, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3518, 115, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3519, 115, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3520, 115, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3521, 115, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3522, 115, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3523, 115, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3524, 115, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3525, 115, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3526, 115, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3527, 115, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3528, 115, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3529, 115, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3530, 115, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3531, 115, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3532, 115, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3533, 115, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3534, 115, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3535, 116, 1000, '00:00:00', 'Sucio', 2, NULL, '2013-10-30 06:44:43'),
+(3536, 116, 1001, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3537, 116, 1002, '00:00:00', 'Sucio', 0.275, NULL, '2013-10-30 06:44:43'),
+(3538, 116, 1003, '00:00:00', 'Sucio', 1, NULL, '2013-10-30 06:44:43'),
+(3539, 116, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3540, 116, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3541, 116, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3542, 116, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3543, 116, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3544, 116, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3545, 116, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3546, 116, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3547, 116, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3548, 116, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3549, 116, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3550, 116, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3551, 116, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3552, 116, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3553, 116, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3554, 116, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3555, 116, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3556, 116, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3557, 116, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3558, 116, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3559, 116, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3560, 116, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3561, 116, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3562, 116, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3563, 116, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3564, 116, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3565, 116, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3566, 117, 1000, '00:00:00', 'Falto', 0.125, NULL, '2013-10-30 06:44:43'),
+(3567, 117, 1001, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:43'),
+(3568, 117, 1002, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:43'),
+(3569, 117, 1003, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:43'),
+(3570, 117, 1004, '00:00:00', NULL, 0, NULL, '2013-11-02 06:28:06'),
+(3571, 117, 1005, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3572, 117, 1006, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3573, 117, 1007, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3574, 117, 1008, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3575, 117, 1009, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3576, 117, 1010, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3577, 117, 1011, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3578, 117, 1012, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3579, 117, 1013, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3580, 117, 1014, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3581, 117, 1015, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3582, 117, 1016, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3583, 117, 1017, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3584, 117, 1018, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3585, 117, 1019, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3586, 117, 1020, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3587, 117, 1021, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3588, 117, 1022, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3589, 117, 1023, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3590, 117, 1024, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3591, 117, 1025, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3592, 117, 1026, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3593, 117, 1027, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3594, 117, 1028, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3595, 117, 1029, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04'),
+(3596, 117, 1030, '00:00:00', NULL, 0, NULL, '2013-10-30 06:44:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proveedor`
+--
+
+CREATE TABLE IF NOT EXISTS `proveedor` (
+  `id_proveedor` varchar(13) NOT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `id_contacto` smallint(5) unsigned DEFAULT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `direccion` varchar(500) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `credito` tinyint(1) DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_proveedor`),
+  KEY `fk_proveedor_contacto` (`id_contacto`),
+  KEY `fk_proveedor_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar los datos básicos de proeedor de materiales \n		y repuestos de vehículos';
 
 --
 -- Dumping data for table `proveedor`
@@ -3623,6 +4330,18 @@ INSERT INTO `proveedor` (`id_proveedor`, `id_ciudad`, `id_contacto`, `nombre`, `
 ('099001865001', 53, NULL, 'ConAuto', 'Av. 10 De Agosto N 4012 Y Av. Gaspar De Villarroel', '2241555-2269208', NULL, NULL, 'Aceites 5w90', '2013-10-03 02:41:12'),
 ('1711093169001', 53, NULL, 'Filtro Mundo', 'El Inca 1813 e Isla Seymar', '2446828', '2447757', 0, 'Exijir descuento', '2013-10-18 23:50:10'),
 ('1790202321001', 53, NULL, 'Erco Tires', 'Av.10 De Agosto Y Rafael Bustamante', '6036205 - 2403-', 'pgavilanez@tire-experts.com.ec', NULL, 'Aceites 2w50 ', '2013-10-03 02:38:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `provincia`
+--
+
+CREATE TABLE IF NOT EXISTS `provincia` (
+  `id_provincia` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_provincia`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar, las provincias del Ecuador' AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `provincia`
@@ -3654,20 +4373,87 @@ INSERT INTO `provincia` (`id_provincia`, `nombre`) VALUES
 (23, 'Tungurahua'),
 (24, 'Zamora Chinchipe');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reparacion`
+--
+
+CREATE TABLE IF NOT EXISTS `reparacion` (
+  `id_reparacion` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_viaje` smallint(5) unsigned NOT NULL,
+  `id_vehiculo` char(17) NOT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `periodo` smallint(5) unsigned NOT NULL,
+  `fecha_entrada` datetime NOT NULL,
+  `fecha_salida` datetime DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `kilometros` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_reparacion`),
+  KEY `fk_reparacion_vehiculo` (`id_vehiculo`),
+  KEY `fk_reparacion_viaje` (`id_viaje`),
+  KEY `fk_reparacion_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar las reparaciones realizadas a los vehiculos polaris,\n		cada reparacion al vehiculo se registra en reparacion_detalle' AUTO_INCREMENT=17 ;
+
 --
 -- Dumping data for table `reparacion`
 --
 
-INSERT INTO `reparacion` (`id_reparacion`, `id_viaje`, `id_vehiculo`, `id_ciudad`, `periodo`, `fecha_entrada`, `fecha_salida`, `notas`, `registro`) VALUES
-(1, 10, '4XATH76A4D2290792', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Cambio del caucho guardagrasa del eje trasero izquierdo del vehiculo.\r\nNo se realizo el cambio de aceite recpectivo. ', '2013-10-26 00:22:45'),
-(2, 10, '4XATH76A1D2290751', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Cambio del caucho guardagrasa del eje trasero izquierdo del vehiculo.\r\nNo se realizo el cambio respectivo del aceite al vehiculo.', '2013-10-26 00:26:30'),
-(3, 10, '4XATH76A7D4317665', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Se cambio el caucho guardagrasa del eje izquierdo del vehiculo,\r\nSe repara el eje que estaba fuera de lugar.\r\nNOTA: EL EJE SE RECALIENTA MUCHO', '2013-10-26 00:32:38'),
-(4, 1, '4XATH76A5D4315591', NULL, 0, '2013-07-23 00:00:00', '2013-07-23 00:00:00', 'Se Remplaza la abrazadera del eje trasero izquierdo del vehiculo.', '2013-10-26 00:49:16'),
-(5, 7, '4XATH76A7D4315592', NULL, 0, '2013-10-02 00:00:00', '2013-10-02 00:00:00', 'Reparacion del caucho del eje trasero izquierdo del vehiculo.', '2013-10-26 00:51:45'),
-(6, 7, '4XATH76A5D4315591', NULL, 0, '2013-10-04 00:00:00', '2013-10-04 00:00:00', 'Se cambio el caucho guardagrasa de eje izquierdo del vehiculo.', '2013-10-26 00:53:35'),
-(7, 11, '4XATH76A7D4317665', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio nuevamente el caucho guardagrasa de eje trasero del vehiculo porque el que se abia colocado anteriormente no soporto y se puso un nuevo.este vehiculo se le retiro el eje derecho para probarlo en el vehiculo con numero de vin 4XATH76A7D437665 para verificar el calentamiento del lado izquierdo trasero este carro esta embancado para reparación de ejes.', '2013-11-01 00:44:16'),
-(8, 11, '4XATH76A4D2290792', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio por segunda ves el caucho guardagrase del eje trasero del vehiculo porque el que estaba instalado anteriormente no soporto y se rompio.', '2013-11-01 00:45:48'),
-(9, 11, '4XATH76A1D2290751', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio por segunda ves el caucho guardagrase del eje trasero del vehiculo porque el que estaba instalado anteriormente no soporto y se rompio.', '2013-11-01 00:46:57');
+INSERT INTO `reparacion` (`id_reparacion`, `id_viaje`, `id_vehiculo`, `id_ciudad`, `periodo`, `fecha_entrada`, `fecha_salida`, `notas`, `registro`, `kilometros`) VALUES
+(1, 10, '4XATH76A4D2290792', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Cambio del caucho guardagrasa del eje trasero izquierdo del vehiculo.\r\nNo se realizo el cambio de aceite recpectivo. ', '2013-10-26 00:22:45', ''),
+(2, 10, '4XATH76A1D2290751', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Cambio del caucho guardagrasa del eje trasero izquierdo del vehiculo.\r\nNo se realizo el cambio respectivo del aceite al vehiculo.', '2013-10-26 00:26:30', ''),
+(3, 10, '4XATH76A7D4317665', NULL, 0, '2013-10-22 00:00:00', '2013-10-22 00:00:00', 'Se cambio el caucho guardagrasa del eje izquierdo del vehiculo,\r\nSe repara el eje que estaba fuera de lugar.\r\nNOTA: EL EJE SE RECALIENTA MUCHO', '2013-10-26 00:32:38', ''),
+(4, 1, '4XATH76A5D4315591', NULL, 0, '2013-07-23 00:00:00', '2013-07-23 00:00:00', 'Se Remplaza la abrazadera del eje trasero izquierdo del vehiculo.', '2013-10-26 00:49:16', ''),
+(5, 7, '4XATH76A7D4315592', NULL, 0, '2013-10-02 00:00:00', '2013-10-02 00:00:00', 'Reparacion del caucho del eje trasero izquierdo del vehiculo.', '2013-10-26 00:51:45', ''),
+(6, 7, '4XATH76A5D4315591', NULL, 0, '2013-10-04 00:00:00', '2013-10-04 00:00:00', 'Se cambio el caucho guardagrasa de eje izquierdo del vehiculo.', '2013-10-26 00:53:35', ''),
+(7, 11, '4XATH76A7D4317665', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio nuevamente el caucho guardagrasa de eje trasero del vehiculo porque el que se abia colocado anteriormente no soporto y se puso un nuevo.este vehiculo se le retiro el eje derecho para probarlo en el vehiculo con numero de vin 4XATH76A7D437665 para verificar el calentamiento del lado izquierdo trasero este carro esta embancado para reparación de ejes.', '2013-11-01 00:44:16', ''),
+(8, 11, '4XATH76A4D2290792', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio por segunda ves el caucho guardagrase del eje trasero del vehiculo porque el que estaba instalado anteriormente no soporto y se rompio.', '2013-11-01 00:45:48', ''),
+(9, 11, '4XATH76A1D2290751', NULL, 0, '2013-10-30 00:00:00', '2013-10-30 00:00:00', 'Se cambio por segunda ves el caucho guardagrase del eje trasero del vehiculo porque el que estaba instalado anteriormente no soporto y se rompio.', '2013-11-01 00:46:57', ''),
+(10, 12, '4XATH76AXD229831', 223, 31, '2013-11-04 00:00:00', '2013-11-05 00:00:00', 'Se reviso el vehiculo con el problema mensionado que no encendia razones por las cuales nos pudimos dar cuenta que el carro no encendia por la razon que en tanque dispensador de gasolina tenia puesto agua la cual realizamos el proceso de limpiado sacado de la bomba, limpiado de bujias, luejo de esto conectamos nuevamente la bomba y pudimos darnos cuenta que funciono correctamente.', '2013-11-26 20:15:00', ''),
+(11, 12, '4XATH76A6D4317687', 209, 118, '2013-11-05 00:00:00', '2013-11-05 00:00:00', 'El vehiculo presentaba el check engine del vehiculo encendido por lo que se reviso sin presentar ningun problema se completo 18 de aceite.\r\n\r\nrevisado para facturacion', '2013-12-02 17:23:58', ''),
+(12, 13, '4XATH76A1D2291043', NULL, 80, '2013-11-22 00:00:00', '2013-11-22 00:00:00', 'Se procede con la inspección del vehículo con número de VIN  4XATH76AXD2291043,  a cargo del Ing. JAIME ÑIETO.\r\n\r\nObservaciones:\r\nEl tanque  de gasolina contenía  agua\r\nSe limpió el tanque  de gasolina por completo\r\nSe realizó los respectivos  chequeos  al vehículos \r\nY se limpió las bujías  del  vehículos', '2013-12-02 16:36:12', '0'),
+(13, 13, '4XATH76A4D2290792', 110, 47, '2013-11-22 00:00:00', '2013-11-22 00:00:00', 'Cambio de caucho Eje Trasero lado izquierdo, se cambia el eje trasero por uno nuevo ya que el anterior se encontraba quemado.', '2013-12-02 16:45:40', '1176'),
+(14, 13, '4XATH76A5D2293197', 102, 23, '2013-11-21 00:00:00', '2013-11-21 00:00:00', 'Se le coloca los dos Ejes, Este carro está envancado, con la colocación de los ejes queda habilitado para funcionar.', '2013-12-02 16:51:01', '700'),
+(15, 13, '4XATH76A1D2290751', 104, 40, '2013-11-21 00:00:00', '2013-12-21 00:00:00', 'Se repara El eje trasero del lado izquiero, se lo reemplaza por un eje nuevo, se realiza pruebas al vehículo y éste sigue recalentando el eje despues de 15 min de pruebas.', '2013-12-02 16:56:45', '1167'),
+(16, 13, '4XATH76A7D4317665', 229, 52, '2013-11-21 00:00:00', '2013-11-21 00:00:00', 'Se reemplaza el caucho del eje trasero', '2013-12-02 17:03:37', '1164');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reparacion_detalle`
+--
+
+CREATE TABLE IF NOT EXISTS `reparacion_detalle` (
+  `id_reparacion_detalle` smallint(5) unsigned NOT NULL,
+  `id_reparacion` smallint(5) unsigned NOT NULL,
+  `id_inventario` smallint(5) unsigned NOT NULL,
+  `fecha` time NOT NULL,
+  `estado` varchar(25) DEFAULT NULL COMMENT 'bueno, exelente,reparar,dañado,necesita cambio',
+  `cantidad` smallint(5) unsigned NOT NULL,
+  `notas` varchar(600) DEFAULT NULL,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_reparacion_detalle`),
+  KEY `fk_reparacion_detalle_reparacion` (`id_reparacion`),
+  KEY `fk_reparacion_detalle_inventario` (`id_inventario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar los detalles de las reparaciones cada detalle puede \n				contener una salida de inventario';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tecnico`
+--
+
+CREATE TABLE IF NOT EXISTS `tecnico` (
+  `id_tecnico` varchar(10) NOT NULL,
+  `nombres` varchar(200) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_tecnico`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar los tecnicos';
 
 --
 -- Dumping data for table `tecnico`
@@ -3678,6 +4464,20 @@ INSERT INTO `tecnico` (`id_tecnico`, `nombres`, `telefono`, `celular`, `email`, 
 ('1234567890', 'Richard Catagña', '022226906', NULL, NULL, NULL, '2013-11-14 15:18:51'),
 ('1711938025', 'Marco Llumiquinga', NULL, NULL, NULL, NULL, '2013-10-18 23:51:50'),
 ('1722919725', 'Eduardo Villota', '025119785', '0992936569', 'eduardouio7@gmail.com', NULL, '2013-10-20 01:11:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tecnico_viaje`
+--
+
+CREATE TABLE IF NOT EXISTS `tecnico_viaje` (
+  `id_tecnico` varchar(10) NOT NULL,
+  `id_viaje` smallint(5) unsigned NOT NULL,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_tecnico`,`id_viaje`),
+  KEY `fk_tecnico_viaje` (`id_viaje`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Registra a los técnicos en los mantenimientos para cada viaje';
 
 --
 -- Dumping data for table `tecnico_viaje`
@@ -3709,6 +4509,29 @@ INSERT INTO `tecnico_viaje` (`id_tecnico`, `id_viaje`, `registro`) VALUES
 ('1722919725', 9, '2013-11-14 15:20:28'),
 ('1722919725', 11, '2013-11-14 15:20:29');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehiculo`
+--
+
+CREATE TABLE IF NOT EXISTS `vehiculo` (
+  `id_vehiculo` char(17) NOT NULL,
+  `id_cliente` char(13) NOT NULL,
+  `id_contacto` smallint(5) unsigned DEFAULT NULL,
+  `id_ciudad` smallint(5) unsigned DEFAULT NULL,
+  `modelo` varchar(45) DEFAULT NULL,
+  `nro_motor` varchar(25) DEFAULT NULL,
+  `ingreso` datetime DEFAULT NULL,
+  `notas` mediumtext,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_vehiculo`),
+  KEY `idx_vehiculo` (`id_vehiculo`),
+  KEY `fk_vehiculo_cliente` (`id_cliente`),
+  KEY `fk_vehiculo_contacto` (`id_contacto`),
+  KEY `fk_vehiculo_ciudad` (`id_ciudad`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Entidad encargada de registrar los vehículos el ingreso es la fecha\n				en la que el vehiculo fue entregado al MAGAP';
+
 --
 -- Dumping data for table `vehiculo`
 --
@@ -3730,10 +4553,12 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `id_cliente`, `id_contacto`, `id_ciudad`,
 ('4XATH76A0D4315563', '260004750001', NULL, 90, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A0D4317667', '0660819660001', NULL, 110, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A0D4317684', '0560022430001', NULL, 199, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
-('4XATH76A1D221043', '0360015690001', NULL, 200, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
-('4XATH76A1D2290751', '0660819660001', NULL, 104, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76A1D2290751', '0660819660001', NULL, 102, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-12-02 16:54:55'),
+('4XATH76A1D2290765', '0560022430001', NULL, 225, NULL, NULL, NULL, NULL, '2013-11-26 19:51:41'),
 ('4XATH76A1D2290779', '0660819660001', NULL, 101, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76A1D2291043', '0360015690001', NULL, 200, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-12-02 16:32:32'),
 ('4XATH76A1D2293262', '0360015690001', NULL, 151, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76A2D2290757', '0560022430001', NULL, 226, NULL, NULL, NULL, 'Segundo cambio de aceite el primer cambio no esta registrado.', '2013-11-26 20:00:17'),
 ('4XATH76A2D2291049', '260004750001', NULL, 201, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A2D2293206', '0360015690001', NULL, 152, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A2D4315550', '0360015690001', NULL, 149, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
@@ -3761,6 +4586,7 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `id_cliente`, `id_contacto`, `id_ciudad`,
 ('4XATH76A4D4315565', '260004750001', NULL, 87, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A4D4315579', '260004750001', NULL, 87, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A4D4315601', '260004750001', NULL, 87, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76A4D4317638', '0660819660001', NULL, 102, NULL, NULL, NULL, NULL, '2013-11-26 22:08:42'),
 ('4XATH76A4D4317641', '0560022430001', NULL, 83, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A5D2291045', '1865012760001', NULL, 96, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A5D2291112', '260004750001', NULL, 90, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
@@ -3795,6 +4621,7 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `id_cliente`, `id_contacto`, `id_ciudad`,
 ('4XATH76A8D2290763', '0560022430001', NULL, 198, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A8D2290777', '1865012760001', NULL, 93, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A8D2290794', '0560022430001', NULL, 198, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76A8D2290813', '0660819660001', NULL, 102, NULL, NULL, NULL, NULL, '2013-11-26 22:09:22'),
 ('4XATH76A8D2290830', '1865012760001', NULL, 96, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A8D2291069', '260004750001', NULL, 207, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A9D2290755', '1865012760001', NULL, 215, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
@@ -3804,10 +4631,32 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `id_cliente`, `id_contacto`, `id_ciudad`,
 ('4XATH76A9D2293204', '1865012760001', NULL, 216, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76A9D4315562', '0360015690001', NULL, 149, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76AXD2290828', '1865012760001', NULL, 217, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76AXD2291039', '0560022430001', NULL, 224, NULL, NULL, NULL, NULL, '2013-11-26 19:47:41'),
 ('4XATH76AXD2291073', '0560022430001', NULL, 82, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76AXD2292062', '260004750001', NULL, 87, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
 ('4XATH76AXD2293213', '260004750001', NULL, 207, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-10-26 01:38:35'),
+('4XATH76AXD2298231', '1865012760001', NULL, 223, NULL, NULL, NULL, NULL, '2013-11-26 19:43:45'),
+('4XATH76AXD229831', '1865012760001', NULL, 223, NULL, NULL, NULL, NULL, '2013-11-26 20:10:46'),
 ('4XATH76AXD4315568', '0360015690001', NULL, 218, 'Ranger 800 4X4 Of Road', NULL, NULL, NULL, '2013-11-05 02:02:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `viaje`
+--
+
+CREATE TABLE IF NOT EXISTS `viaje` (
+  `id_viaje` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `fecha_salida` date DEFAULT NULL,
+  `fecha_regreso` date DEFAULT NULL,
+  `nro_vehiculos` smallint(5) unsigned NOT NULL COMMENT 'Cuantos veiculos se piensa reparar',
+  `provincias_destino` varchar(500) NOT NULL COMMENT 'Nmbre de las provincias que se quiere visitar, separadas por comas',
+  `varlor_caja` decimal(5,2) DEFAULT NULL,
+  `informe` text,
+  `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_viaje`),
+  UNIQUE KEY `fecha_salida` (`fecha_salida`,`fecha_regreso`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Registra los viajes realizados por los técincos, los mantenimientos dependen de los \n		viajes para existir, ya que los mantenimientos se los realiza con un viaje, se necesita\n		ingresar un viaje a Quito para los mantenimientos y reparaciones realizados en Quito' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `viaje`
@@ -3825,17 +4674,153 @@ INSERT INTO `viaje` (`id_viaje`, `fecha_salida`, `fecha_regreso`, `nro_vehiculos
 (9, '2013-10-16', '2013-10-17', 7, 'Cotopaxi, Pichincha', 100.00, 'Informe Viaje Mantenimiento\nInforme No: IV-2013-09\nQuito, 18 de Octubre del 2013\nFecha Salida: 16 de Octubre del 2013\nFecha Retorno: 17 de Octubre del 2013\nTécnicos: Eduardo Villota, Richard Catagña\nProvincias de Destino: Cotopaxi, Pichincha\nNro. De Vehículos: 7 vehículos\nValor de Caja: 100,00\nHistorial de Mantenimientos:\n16 de Octubre del 2013 (Cotopaxi)\nSalida de Quito a las 06:30am con destino a Latacunga realizando manteamiento sin novedades a cinco vehículos, mantenimientos realizados en los siguientes lugares:\nÍtem\nlugar 		Cantidad\n1\nJosé Guango Bajo\n1\n2\nMulliquindil\n1\n3\nMulalillo\n1\n4\nSaquisili\n1\n5\nCusubamba\n1\nSalida de Latacunga con destino a Machachi para pasar la noche.\n17 de Octubre del 2013 (Pichincha)\nSalida de Machachi a las 7:00am  con destino a Tandapi (Santo Domingo) realizando manteamiento sin novedades a cinco vehículos, mantenimientos realizados en los siguientes lugares:\nÍtem\nLugar\nCantidad\n1\nTandapi\n2\nNovedades:\nS/N\nAtentamente:\nEduardo Villota', '2013-10-19 00:40:54'),
 (10, '2013-10-22', '2013-10-22', 6, 'Chimborazo, Tungurahua', 60.00, '                                 POLARIS INFORME 22 OCTUBRE\n  Salidad de Quitó a las 6 am y nos dirigimos a Riobamba a realizar el mantenimiento \n 6 vehículo . 1 cambio de aceite en Ambato  .5 en Riobamba  reparación del  caucho de eje trasero.\n\nRIOBAMBA \nEste vehiculo 4XAT76A7D221077 tiene un degastes de los bocines de la cruceta de la rueda derecha, esto causa que la rueda se ubique a un lado vertical\n\n 4XATH76A4D2290792 reparación del caucho  no se realizó el cambio de aceite.\nEste caucho fue reparado  y cómo podemos  observar en la imagen.\n4XATH76AD4317665 Este vehículo se le reparo el caucho \nEste caucho del lado, izquierdo fue reparado, y se probó el vehículo  para ver sí el caucho resistía, este lado estaba más caliente que el otro .esto podría ser las consecuencia que los caucho se rompan, (tenía la punta fuera  de la caja de cambio)\n.\nEste 4XATH76A1D2290751  Reparación del caucho y no se realizó el cambio de aceite.\n                                   VEHÍCULO DAÑADO \n4XATH76A5D2293197 Este vehículo tenía salido el eje de la  rueda trasera. Y procedimos  a la reparación del daño, los rulimanes  estaban con fisuras. \nComo podemos observar el desgaste de pieza de este el vehículo hay que sustituir totalmente la pieza  .', '2013-10-25 22:49:49'),
 (11, '2013-10-30', '2013-10-30', 4, 'Riobamba, Tungurahua', 80.00, 'Informe Viaje Mantenimiento\n\nInforme No: IV-2013-11\nQuito, 31 de Octubre del 2013\n\nFecha Salida: 30 de Octubre del 2013\nFecha Retorno: 30 de Octubre del 2013\nTécnicos: Eduardo Villota, Marco Llumiquinga\nProvincias de Destino: Riobamba\nNro. De Vehículos: 3 vehículos\nValor de Caja: 80\n\n\nHistorial de Mantenimientos:\n\n30 de Octubre del 2013 (Riobamba)\nSalida de Quito a las 06 00 con destino a Riobamba, y  3  cambios  del caucho o  guarda grasa  del eje trasero izquierdo de los vehículos que anteriormente se los habían cambiado realizando en cambio en los siguientes lugares:\nÍtem	Lugar	Cantidad\n1	MAPAG Riobamba la quinta Macagi	3\n\n3 de Octubre del 2013 (Riobamba)\nLuego nos dirigimos al Triunfo pasando por Baños pasadas las 4 de la tarde para realizar el mantenimiento al vehiculo en los  siguientes lugares:\n\nÍtem	Lugar	Cantidad\n1	El Triunfo	1\n\n\nNovedades:\n•	El vehiculo con numero de vin  4XATH76A1D2290751 este vehiculo presentaba la punta del  eje desgastada se le remplazo con el eje del vehiculo 4XATH76A7D437665 para déjalo en un buen funcionamiento \n•	El vehiculo con numero de vin 4XATH76A5D2293197 este vehiculo se le retiro el eje derecho para probarlo en el vehiculo con numero de vin 4XATH76A7D437665 para verificar el calentamiento del lado izquierdo trasero este carro esta embancado para reparación de ejes.\n\n•	El vehiculo con numero de vin  4XATH76A3D2290802  a este vehiculo solo se le hizo el cambio de aceites respectivos del primer cambio.\n\n\n\nAtentamente: \n\n\n\nMarco Llumiquinga\n', '2013-11-01 00:30:12'),
-(12, '2013-11-04', '2013-11-05', 8, 'Cotopaxi, Tungurahua', 120.00, '\nInforme Viaje Mantenimiento\n\nInforme No: 12-2013-12\nQuito, 06 de noviembre del 2013\n\n\nFecha Salida: 04 NOVIEMBRE DEL 2013\nFecha Retorno: 05 NOVIEMBRE DEL2013\nTécnicos:, Marco Llumiquinga, Richard Catagña\nProvincias de Destino: Ambato   Latacunga\nNro. De Vehículos: 8 vehículos\nValor de Caja: 120\n\nHistorial de Mantenimientos:\n\n04 de noviembre de 2013 (Ambato Latacunga)\nSalida de Quito a las 10 45 con destino  Ambato,  parroquia Montalvo  4XATH76AXD229831 este vehículo estaba dañado  tenia  agua en el tanque de gasolina procedimos a  sacar el agua del tanque  de gasolina, limpiar y secar y calibrar las bujías,  limpiar  el agua que había en la bomba de gasolina  comprobamos q el vehículo  encendía  correctamente. Luego  nos dirigimos alaquez  Latacunga\nÍtem\nLugar\nCantidad\n1\nMontalvo   \n1\n2\nalaquez\n1\n\n04 de noviembre del 2013 (Latacunga)\nLuego nos dirigimos a pilalo que  está a 2 horas de Latacunga a pasar la noche  para empezar en la mañana  realizamos mantenimiento  en  los siguientes lugares:\n05 de noviembre de 2013\nÍtem\nLugar\nCantidad\n1\nPilalo\n1\n2\nAngamarca\n1\n3\nLa victoria\n1\n4\nBelisario Quevedo\n1\n5\nLasso\n1\n6\nTanicuchi      \n1\n\n\nNovedades:\nTanicuchi el  vehículo con numero de vin  4XATH76A6D4317687 este vehículo se le encendía el chec engine y perdía fuerza se le completo el aceite de motor.  llamar  para saber si está trabajando bien el vehículo\n\n\nAtentamente:\n\nTec : Marco Llumiquinga\n', '2013-11-14 15:23:04');
+(12, '2013-11-04', '2013-11-05', 8, 'Cotopaxi, Tungurahua', 120.00, '\nInforme Viaje Mantenimiento\n\nInforme No: 12-2013-12\nQuito, 06 de noviembre del 2013\n\n\nFecha Salida: 04 NOVIEMBRE DEL 2013\nFecha Retorno: 05 NOVIEMBRE DEL2013\nTécnicos:, Marco Llumiquinga, Richard Catagña\nProvincias de Destino: Ambato   Latacunga\nNro. De Vehículos: 8 vehículos\nValor de Caja: 120\n\nHistorial de Mantenimientos:\n\n04 de noviembre de 2013 (Ambato Latacunga)\nSalida de Quito a las 10 45 con destino  Ambato,  parroquia Montalvo  4XATH76AXD229831 este vehículo estaba dañado  tenia  agua en el tanque de gasolina procedimos a  sacar el agua del tanque  de gasolina, limpiar y secar y calibrar las bujías,  limpiar  el agua que había en la bomba de gasolina  comprobamos q el vehículo  encendía  correctamente. Luego  nos dirigimos alaquez  Latacunga\nÍtem\nLugar\nCantidad\n1\nMontalvo   \n1\n2\nalaquez\n1\n\n04 de noviembre del 2013 (Latacunga)\nLuego nos dirigimos a pilalo que  está a 2 horas de Latacunga a pasar la noche  para empezar en la mañana  realizamos mantenimiento  en  los siguientes lugares:\n05 de noviembre de 2013\nÍtem\nLugar\nCantidad\n1\nPilalo\n1\n2\nAngamarca\n1\n3\nLa victoria\n1\n4\nBelisario Quevedo\n1\n5\nLasso\n1\n6\nTanicuchi      \n1\n\n\nNovedades:\nTanicuchi el  vehículo con numero de vin  4XATH76A6D4317687 este vehículo se le encendía el chec engine y perdía fuerza se le completo el aceite de motor.  llamar  para saber si está trabajando bien el vehículo\n\n\nAtentamente:\n\nTec : Marco Llumiquinga\n', '2013-11-14 15:23:04'),
+(13, '2013-11-20', '2013-11-22', 12, 'Riobamba, Azoguez', 120.00, 'Informe Viaje Mantenimiento\r\n\r\nInforme No: IV-2013-13\r\nQuito,  24 de noviembre del 2013\r\n\r\n\r\nFecha Salida: 20 NOVIEMBRE DEL 2013\r\nFecha Retorno: 22 NOVIEMBRE DEL2013\r\nTécnicos:, Marco Llumiquinga, Galo Sinchiguano\r\nProvincias de Destino: Riobamba, Azoguez\r\nNro. De Vehículos: 12 vehículos\r\nValor de Caja: 120\r\n\r\nHistorial de Mantenimientos:\r\n\r\n20 de noviembre de 2013 (Riobamba)\r\nSalida de Quito a las 16:00 con destino a Riobamba para pasar la noche ahi y en la mañana del siguiente dia realizar el mantenimiento en los siguientes lugares.\r\n\r\nAl siguiente vehículo se le hizo el cambio de aceite el 21 de Noviembre del 2013:\r\n\r\nÍtem\r\nLugar\r\nCantidad\r\n1\r\nRiobamba\r\n3\r\n2\r\nAlausi\r\n3\r\n\r\nNovedades:\r\nAl vehiculo ubicado en Riobamba con numero de vin 4XATH76A5D2293197 este vehiculo era el que anteriormente estaba enbamcado por lo cual rectifico  de los ejes traseros y se cambio loas homosineticos y los cauchos respectivos del guardagrasa.\r\n Al vehiculo ubicado en Riobamba con el numero de vin 4XATH76A1D2290751 a este vehiculo se cambio el eje trasero izquierdo completo. Se le iso las pruebas correspondientes y nos pudimos dar cuenta que el homosinetico seguia calenteandose un poco.\r\nAl vehiculo ubicado en Tizan/Riobamba con numero de vin 4XATH76A7D4317665 a este vehiculo se le iso el cambio del caucho guardagrasa trasero izquierdo.\r\n\r\n\r\n\r\nLuego nos dirigimos a Chunchi para poder pasar la noche\r\n\r\n22 de noviembre de 2013\r\nAl siguiente vehiculo se le iso el cambio de aceite.\r\n\r\nÍtem\r\nLugar\r\nCantidad\r\n1\r\nChunchi/ Riobamba\r\n1\r\n\r\n\r\nNovedades:\r\nAl vehiculo ubicado en Chunchi / Riobamba con numero de vin 4XATH76A4D2290792 a este vehiculo ademas de acerle el cambio de aceites respectivos tambien se le iso el cambio del homosinetico y caucho respectivo.\r\nLuego de esto no dirigimos a Azoguez para acer las revisiones.\r\nAl vehiculo ubicado en Suscal / Azoguez con el numero de vin 4XATH76A1D2291043 a este vehiculo se le reviso la bomba de gasolina y podimos encontrar que estaba oxidada motivo por la cual el tanque de gasolina se encontraba con agua. LA BOMBA SE ENCUENTRA EN QUITO.\r\nAl vehiculo ubicado en Biblian / Azoguez con el numero de vin 4XATH76AXD4315568 este vehiculo tenia un golpe en la rueda delantera izquierda por lo que esta doblado los brasos de la mesa y el chasis. \r\n\r\n\r\nAtentamente:\r\n\r\nTec: Marco Llumiquinga', '2013-11-26 22:10:35');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_mantenimientos`
+--
+CREATE TABLE IF NOT EXISTS `v_mantenimientos` (
+`id_mantenimiento` smallint(5) unsigned
+,`id_viaje` smallint(5) unsigned
+,`id_vehiculo` char(17)
+,`periodo` smallint(5) unsigned
+,`fecha` date
+,`kilometros` varchar(10)
+,`nombre` varchar(100)
+);
+-- --------------------------------------------------------
+
+--
+-- Structure for view `ciudades`
+--
+DROP TABLE IF EXISTS `ciudades`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ciudades` AS select `b`.`nombre` AS `Cuidad`,`a`.`nombre` AS `Provincia` from (`ciudad` `a` join `provincia` `b` on((`a`.`id_provincia` = `b`.`id_provincia`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_mantenimientos`
+--
+DROP TABLE IF EXISTS `v_mantenimientos`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_mantenimientos` AS select `a`.`id_mantenimiento` AS `id_mantenimiento`,`a`.`id_viaje` AS `id_viaje`,`a`.`id_vehiculo` AS `id_vehiculo`,`a`.`periodo` AS `periodo`,`a`.`fecha` AS `fecha`,`a`.`kilometros` AS `kilometros`,`b`.`nombre` AS `nombre` from (`mantenimiento` `a` join `ciudad` `b` on((`a`.`id_ciudad` = `b`.`id_ciudad`)));
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ciudad`
+--
+ALTER TABLE `ciudad`
+  ADD CONSTRAINT `fk_ciudad_provincia` FOREIGN KEY (`id_provincia`) REFERENCES `provincia` (`id_provincia`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `fk_cliente_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_cliente_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `contacto` (`id_contacto`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `compra`
+--
+ALTER TABLE `compra`
+  ADD CONSTRAINT `fk_compra_inventario` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_compra_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `contacto`
+--
+ALTER TABLE `contacto`
+  ADD CONSTRAINT `fk_contacto_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `fk_factura_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_factura_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `contacto` (`id_contacto`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `factura_detalle`
+--
+ALTER TABLE `factura_detalle`
+  ADD CONSTRAINT `fk_factura_detalle_factura` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_factura_detalle_mantenimiento` FOREIGN KEY (`id_mantenimiento`) REFERENCES `mantenimiento` (`id_mantenimiento`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_factura_detalle_reparacion` FOREIGN KEY (`id_reparacion`) REFERENCES `reparacion` (`id_reparacion`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `gastos_viaje`
+--
+ALTER TABLE `gastos_viaje`
+  ADD CONSTRAINT `fk_gastos_viaje_viaje` FOREIGN KEY (`id_viaje`) REFERENCES `viaje` (`id_viaje`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inspeccion`
+--
+ALTER TABLE `inspeccion`
+  ADD CONSTRAINT `fk_inspeccion_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_inspeccion_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `contacto` (`id_contacto`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_inspeccion_tecnico` FOREIGN KEY (`id_tecnico`) REFERENCES `tecnico` (`id_tecnico`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_inspeccion_vehiculo` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculo` (`id_vehiculo`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mantenimiento`
+--
+ALTER TABLE `mantenimiento`
+  ADD CONSTRAINT `fk_mantenimiento_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mantenimiento_vehiculo` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculo` (`id_vehiculo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mantenimiento_viaje` FOREIGN KEY (`id_viaje`) REFERENCES `viaje` (`id_viaje`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mantenimiento_detalle`
+--
+ALTER TABLE `mantenimiento_detalle`
+  ADD CONSTRAINT `fk_mantenimiento_detalle_inventario` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mantenimiento_detalle_mantenimiento` FOREIGN KEY (`id_mantenimiento`) REFERENCES `mantenimiento` (`id_mantenimiento`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD CONSTRAINT `fk_proveedor_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_proveedor_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `contacto` (`id_contacto`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `reparacion`
+--
+ALTER TABLE `reparacion`
+  ADD CONSTRAINT `fk_reparacion_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_reparacion_vehiculo` FOREIGN KEY (`id_vehiculo`) REFERENCES `vehiculo` (`id_vehiculo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_reparacion_viaje` FOREIGN KEY (`id_viaje`) REFERENCES `viaje` (`id_viaje`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `reparacion_detalle`
+--
+ALTER TABLE `reparacion_detalle`
+  ADD CONSTRAINT `fk_reparacion_detalle_inventario` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_reparacion_detalle_reparacion` FOREIGN KEY (`id_reparacion`) REFERENCES `reparacion` (`id_reparacion`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tecnico_viaje`
+--
+ALTER TABLE `tecnico_viaje`
+  ADD CONSTRAINT `fk_tecnico_viaje` FOREIGN KEY (`id_viaje`) REFERENCES `viaje` (`id_viaje`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tecnico_viaje_tecnico` FOREIGN KEY (`id_tecnico`) REFERENCES `tecnico` (`id_tecnico`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  ADD CONSTRAINT `fk_vehiculo_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudad` (`id_ciudad`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_vehiculo_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_vehiculo_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `contacto` (`id_contacto`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
---
--- Consulta de consumibles
---
-select a.id_inventario, b.nombre, sum(a.cantidad)
-from mantenimiento_detalle as a
-    join inventario as b using(id_inventario)
-    where id_inventario < 1006 
-    group by a.id_inventario
-    limit 5000;
