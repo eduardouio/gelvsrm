@@ -10,9 +10,9 @@
 import sys
 sys.path.append('..')
 from PyQt4 import QtCore, QtSql
-import conn
 
-class Modelo(object):
+
+class DB(object):
 	''' Modelo de datos, lo errores ocurridos en la capa son mostrados por lastError()
 	si un metodo no puede efectuar una accion retorna falso.
 	Los tipos de error a soportar son errores de conexión y errores en consultas sql'''
@@ -87,7 +87,7 @@ class Modelo(object):
 		modelo.select()
 		return modelo
 
-	def selectQuery(self, table, columns ,condition, like, limit):
+	def selectQuery(self, table, columns ,condition = False, like = False, limit = 0):
 		'''Ejecuta una consulta tipo SELECT en la BD
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Columnas a mostrar
@@ -113,7 +113,7 @@ class Modelo(object):
 		#analizamos la condicion
 		query = query + ' WHERE ' 
 
-		if not condition and not Like:
+		if  condition and Like:
 			query = query + '1=1'
 		elif condition and like :
 			query = query + condition + ' ' + like
@@ -130,6 +130,7 @@ class Modelo(object):
 
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
+		print(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
 		result = self.__consultDb(sql)
 
