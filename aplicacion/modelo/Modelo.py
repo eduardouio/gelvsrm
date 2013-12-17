@@ -3,13 +3,14 @@
 # Version		1.0
 # Autor			Eduardo Villota <eduardouio@hotmail.com> <@eduardouio>
 # Package		Conexion a la base de datos
-# File			Modelo.py
-# Ubicacion		aplicacion/basedatos/Modelo.py
+# File			modelo.py
+# Ubicacion		aplicacion/modelo/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 
 import sys
 sys.path.append('..')
 from PyQt4 import QtCore, QtSql
+from modelo import conn
 
 
 class DB(object):
@@ -87,10 +88,10 @@ class DB(object):
 		modelo.select()
 		return modelo
 
-	def selectQuery(self, table, columns ,condition = False, like = False, limit = 0):
+	def selectQuery(self, table, columns ,condition=False, like=False, limit=False):
 		'''Ejecuta una consulta tipo SELECT en la BD
 		(str)	table 		=>	nombre de la tabla a consultar
-		(list)	columns 	=>	Columnas a mostrar
+		(list)	columns 	=>	Listado de columnas a mostrar
 		(str)	condition 	=> 	condicion si no existe "1=1"
 		(str)	like		=>	para filtras busquedas de no existir es False (columna = valor)
 		(int)	limit		=>	limite de registros si se desa la tabla completa vale 0
@@ -113,7 +114,7 @@ class DB(object):
 		#analizamos la condicion
 		query = query + ' WHERE ' 
 
-		if  condition and Like:
+		if  not condition and not Like:
 			query = query + '1=1'
 		elif condition and like :
 			query = query + condition + ' ' + like
@@ -241,3 +242,13 @@ class DB(object):
 	def lastError(self):
 		'''Retorna en ultimo error producido en la base de datos'''
 		return conn.lastError()		
+
+#probamos las consultas:
+MyDb = DB()
+a = MyDb.listTables()
+
+while a.isValid():
+	record = [self.query.value(index).toString() for index in range (len(header))]
+	results.append(record)
+	print(dir(record))
+	sefl.a.next()
