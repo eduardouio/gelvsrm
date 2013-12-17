@@ -18,7 +18,6 @@ class Viaje(QtGui.QMainWindow):
 			ventana = uic.loadUi('plantillas/frm_vehiculo.ui',self)
 			ventana.show()
 
-if __name__ == '__main__':
-	app = QtGui.QApplication(sys.argv)
-	window = Viaje()
-	sys.exit(app.exec_())
+app = QtGui.QApplication(sys.argv)
+window = Viaje()
+sys.exit(app.exec_())
