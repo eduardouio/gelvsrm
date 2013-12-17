@@ -22,7 +22,7 @@ class Main(QtGui.QMainWindow):
     def __init__(self, parent=None):
         super(Main, self).__init__(parent)
         self.ui = uic.loadUi('plantillas/main_window.ui')
-        self.connect(self.ui.btn_vehiculos,
+        QtCore.QObject.connect(self.ui.btn_vehiculos,
                                QtCore.SIGNAL('clicked()'),
                                self.on_btn_vehiculosClicked)
         self.ui.show()
