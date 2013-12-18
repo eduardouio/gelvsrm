@@ -35,12 +35,24 @@ class ciudadClass(object):
 		'''Crea una ciudad'''
 		return DB.insertQuery(self.tabla, values)
 		
-	def listarCuidadProvincia(self, columnas = ['*'], id_provincia = 0):
-		'''Lista todas las ciudades de una id_provincia
-			si no se especifica ningun id_provincia se
-			listan todos los registros de la tabla'''
-		return DB.selectQuery(self.tabla, columnas)
+	def listarCuidadesProvincia(self, columnas='', id_provincia=''):
+		'''Lista las ciudades de una tabla'''
+		result = object
 
+		if columnas and id_provincia:
+			result = DB.selectQuery(self.tabla, columnas, 'id_provincia = ' + str(id_provincia)
+
+		if columnas and not id_provincia:
+			result = DB.selectQuery(self.tabla, columnas)
+
+		if not columnas and id_provincia:
+			result = DB.selectQuery(self.tabla,'', 'id_provincia = ' + str(id_provincia)
+
+		if not columnas and not id_provincia:
+			print('ultimo')
+			result = DB.selectQuery(self.tabla)
+
+		return result
 
 	def actualizarCuidad(self,id_ciudad):
 		'''Actualiza una ciudad en la base de datos'''
@@ -50,5 +62,8 @@ class ciudadClass(object):
 		'''Elimina una ciudad de la base de datos'''
 		pass
 
+	def obtenerCiudad(self, id_ciudad):
+		'''Obtiene los datos de una ciudad'''
+
 a = ciudadClass()
-a.listarCuidadProvincia()
+a.listarCuidadesProvincia('',3)

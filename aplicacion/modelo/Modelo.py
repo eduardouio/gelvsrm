@@ -9,7 +9,7 @@
 
 import sys
 sys.path.append('..')
-from PyQt4 import QtCore, QtSql
+from PyQt4 import QtCore, QtSql, QtGui
 from modelo import conn
 
 
@@ -22,7 +22,7 @@ class DB(object):
 		'''Inicia la conexión al servidor'''
 		self.Conn = conn.conectar()				
 
-	def __consultDb(self,sql):
+	def consultDb(self,sql):
 		'''Ejecuta una consulta en la base de datos, las consultas son preparadas por el metodo
 		que invoca a este metodo'''
 		if (self.Conn):			
@@ -88,7 +88,7 @@ class DB(object):
 		modelo.select()
 		return modelo
 
-	def selectQuery(self, table, columns ,condition=False, like=False, limit=False):
+	def selectQuery(self, table, columns = '' ,condition='', like= '', limit=''):
 		'''Ejecuta una consulta tipo SELECT en la BD
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Listado de columnas a mostrar
@@ -104,37 +104,30 @@ class DB(object):
 		# x(desde) i(hasta)
 		x = 1 
 		i = len(columns)
-		for item in columns:
-			if x < i:
-				query = query + item + ','
-			if x == i:
-				query = query + item + ' FROM ' + table
-			x+=1
-
-		#analizamos la condicion
-		query = query + ' WHERE ' 
-
-		if  not condition and not Like:
-			query = query + '1=1'
-		elif condition and like :
-			query = query + condition + ' ' + like
-		elif not condition and like:
-			query = query + like
-		elif not like and condition:
-			query = query + condition
-
-		#terminamos de armar la consulta
-		if limit == 0:
-			query = query + ';'
+		if columns:
+			for item in columns:
+				if x < i:
+					query += item + ','
+				if x == i:
+					query += item + ' FROM ' + table
+				x+=1
 		else:
-			query = query + ' LIMIT ' + limit + ';'
-
+			query += '* FROM ' + table
+		#armamos la consulta
+		query = query + ' WHERE ' 
+		if condition:
+			query += condition
+		else:
+			query += '1=1'
+		#adjuntamos el like
+		if like:
+			query += like[0] + ' LIKE \'' + like[1] + '\''
+		if limit:
+			query += ' LIMIT ' + str(limit)
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
-		print(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
-		result = self.__consultDb(sql)
-
+		result = self.consultDb(sql)
 		if not result:			
 			return False
 
@@ -242,13 +235,3 @@ class DB(object):
 	def lastError(self):
 		'''Retorna en ultimo error producido en la base de datos'''
 		return conn.lastError()		
-
-#probamos las consultas:
-MyDb = DB()
-a = MyDb.listTables()
-
-while a.isValid():
-	record = [self.query.value(index).toString() for index in range (len(header))]
-	results.append(record)
-	print(dir(record))
-	sefl.a.next()
