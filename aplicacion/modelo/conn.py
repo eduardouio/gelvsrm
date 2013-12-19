@@ -24,7 +24,6 @@ def conectar():
 		QtGui.QMessageBox.critical(None,QtGui.qApp.tr('No se puede conectar a la Base de Datos!...'),
 			QtGui.qApp.tr('Hubo un problema al conectarse con la base de datos \n'
 				'El servidor dice... \n' + conn.lastError().databaseText()),
-				QtGui.QMessageBox.Cancel,QtGui.QMessageBox.Ok)
-				
+				QtGui.QMessageBox.Cancel,QtGui.QMessageBox.Ok)				
 		return False
 	return True

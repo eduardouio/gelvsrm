@@ -41,7 +41,7 @@ class DB(object):
 		'''	Lista todas las tablas de la base de datos '''		
 		sql = QtSql.QSqlQuery()			
 		sql.prepare('SHOW TABLES FROM gelvsrm_polaris;')
-		result = self.__consultDb(sql)
+		result = self.consultDb(sql)
 		if not result:			
 			return False
 		return result
@@ -50,7 +50,7 @@ class DB(object):
 		''' Lista las columnas de una tabla	'''
 		sql = QtSql.QSqlQuery()		
 		sql.prepare("SHOW COLUMNS FROM " + tabla + " ;")
-		result = self.__consultDb(sql)
+		result = self.consultDb(sql)
 		if not result:			
 			return False
 		return result
@@ -125,6 +125,7 @@ class DB(object):
 		if limit:
 			query += ' LIMIT ' + str(limit)
 		sql = QtSql.QSqlQuery()
+		print(query)
 		sql.prepare(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
 		result = self.consultDb(sql)
@@ -161,7 +162,7 @@ class DB(object):
 			i +=1
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
-		result = self.__consultDb(sql)
+		result = self.consultDb(sql)
 		if not result:
 			return False
 		return result
@@ -189,7 +190,7 @@ class DB(object):
 		query = query  + ' ' + condition + ';'
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
-		result = self.__consultDb(sql)
+		result = self.consultDb(sql)
 		if not result:
 			return False
 		return result
@@ -202,7 +203,7 @@ class DB(object):
 		WHERE condition'''
 		sql = QtSql.QSqlQuery()		
 		sql.prepare('DELETE FROM ' + table + ' WHERE ' + condition + ';')
-		result = sefl.__consultDb(sql)
+		result = sefl.consultDb(sql)
 		if not result:
 			return False
 		return result
@@ -234,4 +235,4 @@ class DB(object):
 
 	def lastError(self):
 		'''Retorna en ultimo error producido en la base de datos'''
-		return conn.lastError()		
+		return conn.lastError()	

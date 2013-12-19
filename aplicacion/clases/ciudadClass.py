@@ -22,48 +22,80 @@ sys.path.append('..')
 from modelo import conn
 #modelo a la base de datos
 from modelo.Modelo import DB
+from PyQt4 import QtSql
 
-class ciudadClass(object):
+class cityClass(object):
 	"""Representa a la entidad ciudad del modelo"""
-	
+
 	def __init__(self):
-		'''Instancializacion de la clase'''
-		super(ciudadClass, self).__init__()
-		self.tabla = 'ciudad'
-		
-	def crearCiudad(self,values):
-		'''Crea una ciudad'''
-		return DB.insertQuery(self.tabla, values)
-		
-	def listarCuidadesProvincia(self, columnas='', id_provincia=''):
-		'''Lista las ciudades de una tabla'''
-		result = object
+		'''Instancializacion de la clase creamos el objeto MyDB 
+		creamos la variable con el nombre de la tabla
+		'''
+		super(cityClass, self).__init__()
+		self.table = 'ciudad'
+		self.MyDB = DB()
 
-		if columnas and id_provincia:
-			result = DB.selectQuery(self.tabla, columnas, 'id_provincia = ' + str(id_provincia)
+	def listCitiesPro(self,colums='',id_provincia=''):
+		'''Lista las ciudaes de una provincia o todas las ciudades
+		@param (list) colums
+		@param (int) id_provincia
+		@return QtSql.QSqlQuery | False
+		'''
+		result = QtSql.QSqlQuery()
 
-		if columnas and not id_provincia:
-			result = DB.selectQuery(self.tabla, columnas)
+		if colums and id_provincia:
+			result = self.MyDB.selectQuery(self.table, colums, 'id_provincia = ' + str(id_provincia))
 
-		if not columnas and id_provincia:
-			result = DB.selectQuery(self.tabla,'', 'id_provincia = ' + str(id_provincia)
+		if colums and not id_provincia:
+			result = self.MyDB.selectQuery(self.table, colums)
 
-		if not columnas and not id_provincia:
-			print('ultimo')
-			result = DB.selectQuery(self.tabla)
+		if not colums and id_provincia:
+			result = self.MyDB.selectQuery(self.table,'', 'id_provincia = ' + str(id_provincia))
+
+		if not colums and not id_provincia:
+			result = self.MyDB.selectQuery(self.table)
 
 		return result
+			
+	def createCity(self,values):
+		'''Crea una ciudad en la tabla
+		@param (dict) values
+		@return QtSql.QSqlQuery | False'''
+		return self.MyDB.insertQuery(self.table, values)
 
-	def actualizarCuidad(self,id_ciudad):
-		'''Actualiza una ciudad en la base de datos'''
-		pass
+	def updateCity(self,values,id_ciudad):
+		'''Actualiza una ciudad en la base de datos
+		@param (dict) values
+		@param (int) id_ciudad
+		@return QtSql.QSqlQuery | False
+		'''
+		return self.MyDB.updateQuery(self.table,values,id_ciudad)
+		
+	def deleteCity(self,id_ciudad,columna,valor):
+		'''Elimina una ciudad de la base de datos
+		@param (str) ciudad
+		@param (str) columna
+		@valor (str) valor
+		@return bool
+		'''
+		condition = str(columna) + ' = \'' + str(valor) + '\''
+		return self.MyDB.deleteQuery(self.table,condition)
 
-	def borrarCiudad(self,id_ciudad):
-		'''Elimina una ciudad de la base de datos'''
-		pass
+	def getCity(self, id_ciudad):
+		'''Obtiene los datos de una ciudad
+		@param (int) id_ciudad
+		@return QtSql.QSqlQuery | False'''
+		return self.MyDB.selectQuery(self.table,'',' id_ciudad = ' + str(id_ciudad))
 
-	def obtenerCiudad(self, id_ciudad):
-		'''Obtiene los datos de una ciudad'''
-
-a = ciudadClass()
-a.listarCuidadesProvincia('',3)
+	def findCity(self, columns,condition, valor):
+		'''Busca un ciudad en la tabla
+		@param (list) columns si no se tiene columnas envia espacio en blanco
+		@param (str) condition ejem [=;like;!=;<;>;>=;<=]
+		@param (str) valor
+		@return QtSql.QSqlQuery | False	
+		a = cityClass()
+		a.findCity('nombre like',"%a")'''		
+		if columns:
+			return self.MyDB.selectQuery(self.table,columns, condition + ' \'' + str(valor) + '\'')
+		else:
+			return self.MyDB.selectQuery(self.table,'', condition + ' \'' + str(valor) + '\'')
