@@ -93,7 +93,7 @@ class DB(object):
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Listado de columnas a mostrar
 		(str)	condition 	=> 	condicion si no existe "1=1"
-		(str)	like		=>	para filtras busquedas de no existir es False (columna = valor)
+		(list)	like		=>	para filtras busquedas de no existir es False (columna  valor)
 		(int)	limit		=>	limite de registros si se desa la tabla completa vale 0
 
 		SELECT columns FROM table
@@ -125,7 +125,7 @@ class DB(object):
 		if limit:
 			query += ' LIMIT ' + str(limit)
 		sql = QtSql.QSqlQuery()
-		print(query)
+		#print(query)
 		sql.prepare(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
 		result = self.consultDb(sql)
