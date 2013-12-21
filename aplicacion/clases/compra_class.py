@@ -6,3 +6,8 @@
 # File			compra_class.py
 # Ubicacion		aplicacion/clases/compra_class.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
+
+import stateClass
+
+a  = stateClass.State()
+print(type(a))

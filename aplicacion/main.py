@@ -11,7 +11,6 @@ import sys
 
 sys.path.append('..')
 from PyQt4 import QtGui, QtCore, uic
-import frm_vehiculo
 from plantillas import polaris_rc
 
 class Main(QtGui.QMainWindow):

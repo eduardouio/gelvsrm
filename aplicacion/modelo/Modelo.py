@@ -10,7 +10,7 @@
 import sys
 sys.path.append('..')
 from PyQt4 import QtCore, QtSql, QtGui
-from modelo import conn
+from modelo.conn import conectar
 
 
 class DB(object):
@@ -19,8 +19,9 @@ class DB(object):
 	Los tipos de error a soportar son errores de conexión y errores en consultas sql'''
 
 	def __init__(self):
-		'''Inicia la conexión al servidor'''
-		self.Conn = conn.conectar()				
+		'''Inicia la conexión al servidor'''		
+		super(DB, self).__init__()			
+		self.Conn = conectar()
 
 	def consultDb(self,sql):
 		'''Ejecuta una consulta en la base de datos, las consultas son preparadas por el metodo
@@ -125,7 +126,7 @@ class DB(object):
 		if limit:
 			query += ' LIMIT ' + str(limit)
 		sql = QtSql.QSqlQuery()
-		#print(query)
+		print(query)
 		sql.prepare(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
 		result = self.consultDb(sql)
@@ -187,7 +188,7 @@ class DB(object):
 				query = query + item + ' = ' + values[item]	+ ','
 			if i == x :
 				query = query + item + ' = ' + values[item]
-		query = query  + ' ' + condition + ';'
+		query = query  + ' WHERE ' + condition + ';'
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
 		result = self.consultDb(sql)
@@ -220,19 +221,19 @@ class DB(object):
 
 	def beginTransaction(self):
 		'''Inicia una transaccion'''
-		conn = QtSql.QSqlDatabase.database()
-		conn.transaction()
+		self.Conn = QtSql.QSqlDatabase.database()
+		self.Conn.transaction()
 
 	def commitTransaction(self):
 		'''Confirma una transaccion'''
-		conn = QtSql.QSqlDatabase.database()
-		conn.commit()
+		self.Conn = QtSql.QSqlDatabase.database()
+		self.Conn.commit()
 
 	def rollBack(self):
 		'''Cancela y revierte los cambios de una transaccion'''
-		conn = QtSql.QSqlDatabase.database()
-		conn.rollback()
+		self.Conn = QtSql.QSqlDatabase.database()
+		self.Conn.rollback()
 
 	def lastError(self):
 		'''Retorna en ultimo error producido en la base de datos'''
-		return conn.lastError()	
+		return self.Conn.lastError()	

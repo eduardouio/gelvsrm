@@ -18,15 +18,15 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from stateCatalog import State
+import stateClass
 
 class City(object):
 	"""Objeto que representa la estructura una ciudad"""
 	def __init__(self, id_provincia='',id_ciudad='',nombre=''):
 		'''Inizializacion de las propiedades de la clase'''
 		super(City, self).__init__()
-		self.state = State()
 		self.id_ciudad = id_ciudad
+		self.id_provincia = id_provincia
 		self.nombre = nombre
 
 		
@@ -44,28 +44,36 @@ class cityCatalog(object):
 	def getCities(self,state=''):
 		'''Lista Las ciudades
 		@param (obj) tipo city
-		@param (bbj) tipo state
-		@return (list(obj)) tipo city'''
-		cities = []
-		result
-		if state
-			condition = 'id_provincia = ' + str(state.id_provincia)
+		@param (str) tipo state
+		@return (list(obj) | obj) tipo city'''
+		if state:
+			mycity = City()
+			condition = 'id_provincia = ' + str(state)
 			result = self.MyDB.selectQuery(self.table,'',condition)
+			while result.next():
+				mycity.id_ciudad = (str(result.value(0)))
+				mycity.id_provincia = (str(result.value(1)))
+				mycity.nombre = (str(result.value(2)))									
+			return mycity()
+
 		else:
 			result = self.MyDB.selectQuery(self.table)
+			cities = []
 
-		while result.next():
-			mycity = City()
-			mycity.id_ciudad = (str(result.value(0)))
-			mycity.id_provincia = (str(result.value(1)))
-			mycity.nombre = (str(result.value(2)))
-			cities.append(mycity)		
-		return cities		
+			while result.next():
+				mycity = City()
+				mycity.id_ciudad = (str(result.value(0)))
+				mycity.id_provincia = (str(result.value(1)))
+				mycity.nombre = (str(result.value(2)))						
+				cities.append(mycity)	
+
+			return cities
+		
 						
 	def createCity(self,city):
 		'''crea una ciudad
 		@param (obj) tipo city
-		@return (bool)'''
+		@return (bool)|int'''
 		values = {
 				'id_provincia' : city.id_provincia,
 				'nombre' : city.nombre
@@ -81,25 +89,37 @@ class cityCatalog(object):
 		@param (obj) oldcity tipo city
 		@param (obj) city tipo city
 		@return (bool)'''
-		values = []
-		values.append(str(city.id_provincia))
-		values.append(str(city.nombre))
 		condition = 'id_ciudad = ' + oldcity.id_ciudad()
-		return self.MyDB.updateQuery(self.table,values,condition)
+		values = {
+				'id_provincia' : city.id_provincia,
+				'nombre' : city.nombre
+				}
+
+		result =  self.MyDB.updateQuery(self.table,values,condition)
+
+		if (result.numRowsAffected() > 0):
+			return True
+		else:
+			return False
 		
 	def deleteCity(self,city):
 		'''Elimina una ciudad
 		@param (obj) tipo city
 		@return (bool)'''
-		condition = 'id_ciudad = ' + str(city.id_ciudad())
-		return self.MyDB.deleteQuery(self.table, condition)
+		condition = 'id_ciudad = ' + str(city.id_ciudad)
+		result = self.MyDB.deleteQuery(self.table, condition)
+
+		if (result.numRowsAffected() > 0):
+			return True
+		else:
+			return False
 	
 	def getCity(self, city):
 		'''Obtiene los datos de una ciudad el objeto ciudad recibido solo administra en id_ciudad
-		@param (obj) tipo city
+		@param (str) tipo city
 		@return (obj) tipo cityad 
 		'''
-		condition = 'id_ciudad = ' + str(city.id_ciudad)
+		condition = 'id_ciudad = ' + str(city)
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		mycity = City()
 		while result.next():
@@ -123,20 +143,13 @@ class cityCatalog(object):
 		return mystate
 
 	
-	def findCity(self,state = '', content):
+	def findCity(self,column, value):
 		'''Busca una ciudad
 		@param (str) columna estado (id_provincia = state)
-		@param (list) content like ()
-		@param (str) tipo city
 		@return list(obj) tipo city'''
-		result
-
-		if state:
-			result = MyDB.selectQuery(self.table,'','id_provincia = ' + state, content)
-		else:
-			result = MyDB.selectQuery(self.table,'','',content)
-		
 		cities = []
+		content = [str(column),str(value)]
+		result = self.MyDB.selectQuery(self.table,'','',content)
 		while result.next():
 			mycity = City()
 			mycity.id_ciudad = (str(result.value(0)))
