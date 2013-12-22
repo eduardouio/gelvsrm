@@ -135,7 +135,7 @@ class DB(object):
 
 		return result
 
-	def findQuery(self, table,condition='', like= '', orderby='', offset = '', limit=''):
+	def findQuery(self, table,condition='', and_or = '',like= '', orderby='', offset = '', limit=''):
 		'''Ejecuta una consulta tipo SELECT en la BD
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Listado de columnas a mostrar

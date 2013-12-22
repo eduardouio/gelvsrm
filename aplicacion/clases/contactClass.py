@@ -87,20 +87,20 @@ class contactCatalog(object):
 		'''Crea un contacto
 		@param (obj) contact
 		@return (bool)'''
-		values = {
-			'id_contacto': contact.id_contacto
-			'id_ciudad': contact.id_ciudad
-			'nombre': contact.nombre
-			'telefono': contact.telefono
-			'celular': contact.celular
-			'email': contact.email
-			'notas': contact.notas
+		values = {			
+			'id_ciudad': contact.id_ciudad,
+			'nombre': contact.nombre,
+			'telefono': contact.telefono,
+			'celular': contact.celular,
+			'email': contact.email,
+			'notas': contact.notas,
 			'registro': contact.registro		
 		}
 		result = self.MyDb.createQuery(self.table,value)
+		
 		if(result.numRowsAffected()>0):
 			return str(result.lastInsertId())
-		else
+		else:
 			return False
 
 	def updateContact(self,oldContact, contact):
@@ -110,16 +110,16 @@ class contactCatalog(object):
 		@return bool
 		'''
 		condition = ' id_contacto = ' + str(oldContact.id_contacto)
-		values = [
-			'id_contacto': contact.id_contacto
-			'id_ciudad': contact.id_ciudad
-			'nombre': contact.nombre
-			'telefono': contact.telefono
-			'celular': contact.celular
-			'email': contact.email
-			'notas': contact.notas
-				]
+		values = {			
+			'id_ciudad': contact.id_ciudad,
+			'nombre': contact.nombre,
+			'telefono': contact.telefono,
+			'celular': contact.celular,
+			'email': contact.email,
+			'notas': contact.notas,
+				}
 		result = self.MyDb.updateQuery(self.table,values,condition)
+		
 		if (result.numRowsAffected() > 0):
 			return True
 		else:
@@ -139,3 +139,4 @@ class contactCatalog(object):
 
 	def findContact(self,contact,content):
 		'''Busca uno o unos con'''
+		pass
