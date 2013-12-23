@@ -131,3 +131,25 @@ class tecnicoCatalog(object):
 	def findTechnical(self,technical):
 		'''Busca un técnico en la base de datos'''
 		pass
+
+# +------------+--------------+------+-----+-------------------+-----------------------------+
+# 							Funcionalidades para la tabla hija viajes_tecnico
+#								Implementacion de tecnico para viajes
+# +------------+--------------+------+-----+-------------------+-----------------------------+
+
+	def getTechnicalsTravel(self,travel=''):
+		'''Obtiene un tecnico o listado de ellos
+		@param (str) id_tecnico'''		
+		#primero recuperamos los identificadores de los tecnicos
+		technicals = []
+		condition = ' id_viaje = ' + str(travel)
+		result = self.MyDb.selectQuery(' tecnico_viaje ','',condition)
+		while result.next():
+			technicals.append(str(result.value(0)))				
+
+		mytechnicals = []			
+		# armamos los objetos tecnicos que pertenecen a un viaje
+		for x in technicals:
+			mytechnicals.append(self.getTechnical(str(x)))
+
+		return mytechnicals

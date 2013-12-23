@@ -145,3 +145,25 @@ class travelCatalog(object):
 	def findTravel(self,condition):
 		'''Busca un viaje'''
 		pass
+
+# +------------+--------------+------+-----+-------------------+-----------------------------+
+# 							Funcionalidades para la tabla hija viajes_tecnico
+#								Implementacion de viajes para tecnico
+# +------------+--------------+------+-----+-------------------+-----------------------------+
+
+	def getTravelTechnicals(self,technical=''):
+		'''Obtiene un tecnico o listado de ellos
+		@param (str) id_tecnico'''		
+		#primero recuperamos los identificadores de los tecnicos
+		idtravels = []
+		condition = ' id_tecnico = ' + str(technical)
+		result = self.MyDb.selectQuery(' tecnico_viaje = ','',condition)
+		while result.next():
+			idtravels.append(str(result.value(1)))				
+
+		mytravels = []			
+		# armamos los objetos tecnicos que pertenecen a un viaje
+		for x in idtravels:
+			idtravels.append(self.getTravels(str(x)))
+
+		return mytravels
