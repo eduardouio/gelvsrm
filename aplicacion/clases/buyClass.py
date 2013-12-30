@@ -15,16 +15,20 @@
 # | id_inventario | smallint(5) unsigned | NO   | MUL | NULL              |                             |
 # | id_proveedor  | varchar(13)          | NO   | MUL | NULL              |                             |
 # | nro_factura   | varchar(12)          | NO   |     | NULL              |                             |
-# | fecha         | datetime             | NO   |     | NULL              |                             |
+# | fecha         | date  			     | NO   |     | NULL              |                             |
 # | cantidad      | smallint(5) unsigned | NO   |     | NULL              |                             |
 # | costo         | decimal(5,2)         | YES  |     | NULL              |                             |
 # | notas         | mediumtext           | YES  |     | NULL              |                             |
 # | registro      | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
 # +---------------+----------------------+------+-----+-------------------+-----------------------------+
+# mysql = fecha32.toString('yyyy-MM-dd hh:mm:ss')
 
 import sys
 sys.path.append('..')
+from PyQt4.QtCore import QDateTime, QDate, QTime
 from modelo.Modelo import DB
+from inventaryClass import Inventary
+from techClass import Technical
 
 class Buy(object):
 	"""Estructura para compra"""
@@ -32,10 +36,11 @@ class Buy(object):
 					cantidad='',costo='',notas='',registro=''):
 		super(Buy, self).__init__()
 		self.id_compra = id_compra
-		self.id_inventario = id_inventario
+		self.invetario = Inventary()		
 		self.id_proveedor = id_proveedor
-		self.nro_factura = nro_factura
-		self.fecha = fecha
+		self.tecnico = Technical()
+		self.nro_factura = nro_factura		
+		self.fecha = QDate()		
 		self.cantidad = cantidad
 		self.costo = costo
 		self.notas = notas

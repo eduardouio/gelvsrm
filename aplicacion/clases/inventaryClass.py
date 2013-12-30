@@ -26,6 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime
 
 class Inventary(object):
 	"""descripcion de la clase Inventario"""
@@ -41,7 +42,8 @@ class Inventary(object):
 		self.marca = marca
 		self.ubicacion = ubicacion
 		self.notas = notas
-		self.registro = registro
+		#se pone la hora actual en el nuevo objeto
+		self.registro = QDateTime().currentDateTime()
 
 class inventaryCatalog(object):
 	"""acciones sobre Inventary"""
@@ -116,7 +118,7 @@ class inventaryCatalog(object):
 	def updateInventary(self,oldInventary, inventary):
 		'''Actualiza un inventario
 		@param'''
-		condition = ' id_inventario =' + str(oldInventary..id_inventario)
+		condition = ' id_inventario =' + str(oldInventary.id_inventario)
 		values = {
 			'fecha' : str(inventary.fecha),
 			'nombre' : str(inventary.nombre),

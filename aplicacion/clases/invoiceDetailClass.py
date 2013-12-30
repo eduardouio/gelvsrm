@@ -39,9 +39,44 @@ class invoiceDetailCatalog(object):
 		self.MyDb = DB()
 		self.table = 'factura_detalle'
 
-	def getInvoiceDetail(self,invoiceDetail=''):
+	def getInvoicesDetails(self,invoiceDetail=''):
 		'''Obtiene un invoiceDetail o listado de ellos
 		@param(str) id_factura_detalle
 		@return (obj) lst(obj)'''
+		if invoiceDetail:
+			myinvoiceDetail = InvoiceDetail()
+			condition = ' id_factura_detalle = ' + str(invoiceDetail)
+			result = self.MyDb.selectQuery(self.table,'',condition)
+
+			while result.next():
+				myinvoiceDetail.id_factura_detalle = str(result.value(0))
+				myinvoiceDetail.id_factura = str(result.value(1))
+				myinvoiceDetail.id_mantenimiento = str(result.value(2))
+				myinvoiceDetail.id_reparacion = str(result.value(3))
+				myinvoiceDetail.registro = str(result.value(4))
+
+			return myinvoiceDetail
+
+		else:
+
+			invoiceDetails = []
+			result = self.MyDb.selectQuery(self.table)
+
+			while result.next():
+				myinvoiceDetail = InvoiceDetail()
+				myinvoiceDetail.id_factura_detalle = str(result.value(0))
+				myinvoiceDetail.id_factura = str(result.value(1))
+				myinvoiceDetail.id_mantenimiento = str(result.value(2))
+				myinvoiceDetail.id_reparacion = str(result.value(3))
+				myinvoiceDetail.registro = str(result.value(4))
+				invoiceDetails.append(myinvoiceDetail)
+
+			return invoiceDetails
+
+
+	def createInvoiceDetail(self,invoiceDetail):
+		'''Ingresa el detalle de una factura
+		@param (obj) invoiceDetail 
+		@return (bool) | (int)'''
 		
-		
+

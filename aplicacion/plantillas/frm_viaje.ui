@@ -829,6 +829,9 @@ que realiza el viaje</string>
               <property name="text">
                <string>Columna:</string>
               </property>
+              <property name="buddy">
+               <cstring>cmb_columna</cstring>
+              </property>
              </widget>
             </item>
             <item>
@@ -852,6 +855,9 @@ que realiza el viaje</string>
               <property name="text">
                <string>Operador:</string>
               </property>
+              <property name="buddy">
+               <cstring>cmb_operador</cstring>
+              </property>
              </widget>
             </item>
             <item>
@@ -874,6 +880,9 @@ que realiza el viaje</string>
              <widget class="QLabel" name="label_11">
               <property name="text">
                <string>Criterio:</string>
+              </property>
+              <property name="buddy">
+               <cstring>txt_criterio</cstring>
               </property>
              </widget>
             </item>
@@ -1212,8 +1221,29 @@ que realiza el viaje</string>
  <tabstops>
   <tabstop>cmb_fecha_salida</tabstop>
   <tabstop>cmb_fecha_llegada</tabstop>
-  <tabstop>cmb_vehiculos_planificados</tabstop>
   <tabstop>cmb_presupuesto</tabstop>
+  <tabstop>cmb_vehiculos_planificados</tabstop>
+  <tabstop>rtxt_informe</tabstop>
+  <tabstop>btn_nuevo</tabstop>
+  <tabstop>btn_copiar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+  <tabstop>btn_guardar</tabstop>
+  <tabstop>btn_eliminar</tabstop>
+  <tabstop>btn_primero_3</tabstop>
+  <tabstop>btn_anterior</tabstop>
+  <tabstop>btn_recargar</tabstop>
+  <tabstop>btn_siguiente</tabstop>
+  <tabstop>btn_ultimo</tabstop>
+  <tabstop>btn_detalle_gastos</tabstop>
+  <tabstop>btn_mantenimientos</tabstop>
+  <tabstop>btn_home</tabstop>
+  <tabstop>tab_viaje</tabstop>
+  <tabstop>cmb_columna</tabstop>
+  <tabstop>cmb_operador</tabstop>
+  <tabstop>txt_criterio</tabstop>
+  <tabstop>btn_buscar</tabstop>
+  <tabstop>btn_monstrar</tabstop>
+  <tabstop>tbl_resultados</tabstop>
  </tabstops>
  <resources>
   <include location="polaris.qrc"/>

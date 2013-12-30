@@ -22,6 +22,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime
 
 class Technical(object):
 	'''Estrucntura de un objecto tecnico'''
@@ -35,7 +36,8 @@ class Technical(object):
 		self.celular = celular
 		self.email  = email
 		self.notas = notas
-		self.registro = registro
+		#objeto vacio con la fecha actual
+		self.registro = QDateTime().currentDateTime()
 
 class tecnicoCatalog(object):
 	"""Acciones sobre catalogo"""

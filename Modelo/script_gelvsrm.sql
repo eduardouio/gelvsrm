@@ -430,8 +430,9 @@ create database gelvsrm_polaris;
 		id_compra smallint unsigned NOT NULL, 
 		id_inventario smallint unsigned  NOT NULL,
 		id_proveedor varchar(13) NOT NULL ,
+		id_tecnico varchar(10) NOT NULL,
 		nro_factura varchar(12) NOT NULL ,
-		fecha datetime NOT NULL, 
+		fecha date NOT NULL, 
 		cantidad smallint unsigned NOT NULL,
 		costo decimal(5,2) COMMENT 'costo por unidad',
 		notas MEDIUMTEXT DEFAULT NULL,
@@ -447,6 +448,11 @@ create database gelvsrm_polaris;
 		CONSTRAINT fk_compra_proveedor
       	FOREIGN KEY (id_proveedor)
       	REFERENCES proveedor(id_proveedor)
+      	ON DELETE RESTRICT ON UPDATE CASCADE
+
+      	CONSTRAINT fk_compra_tecnico
+      	FOREIGN KEY (id_tecnico)
+      	REFERENCES tecnico(id_tecnico)
       	ON DELETE RESTRICT ON UPDATE CASCADE
 
 		)engine=innodb
