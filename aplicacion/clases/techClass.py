@@ -39,7 +39,11 @@ class Technical(object):
 		#objeto vacio con la fecha actual
 		self.registro = QDateTime().currentDateTime()
 
-class tecnicoCatalog(object):
+
+
+##### Se Escribe un clase para manipular al objeto tecnico
+
+class techCatalog(object):
 	"""Acciones sobre catalogo"""
 	def __init__(self):
 		super(tecnicoCatalog, self).__init__()
@@ -50,7 +54,7 @@ class tecnicoCatalog(object):
 		'''Obtiene un tecnico o listado de ellos
 		@param (str) id_tecnico'''
 		if technical:
-			mytechnical = Technical()
+			mytechnigetcal = Technical()
 			condition = ' id_tecnico = ' + str(technical)
 			result = self.MyDb.selectQuery(self.table,'',condition)
 			while result.next():
@@ -134,24 +138,8 @@ class tecnicoCatalog(object):
 		'''Busca un técnico en la base de datos'''
 		pass
 
-# +------------+--------------+------+-----+-------------------+-----------------------------+
-# 							Funcionalidades para la tabla hija viajes_tecnico
-#								Implementacion de tecnico para viajes
-# +------------+--------------+------+-----+-------------------+-----------------------------+
+	def lastTecnical(self,technical):
+		pass
 
-	def getTechnicalsTravel(self,travel=''):
-		'''Obtiene un tecnico o listado de ellos
-		@param (str) id_tecnico'''		
-		#primero recuperamos los identificadores de los tecnicos
-		technicals = []
-		condition = ' id_viaje = ' + str(travel)
-		result = self.MyDb.selectQuery(' tecnico_viaje ','',condition)
-		while result.next():
-			technicals.append(str(result.value(0)))				
-
-		mytechnicals = []			
-		# armamos los objetos tecnicos que pertenecen a un viaje
-		for x in technicals:
-			mytechnicals.append(self.getTechnical(str(x)))
-
-		return mytechnicals
+	def coutTechnical(self):
+		pass

@@ -135,51 +135,6 @@ class DB(object):
 
 		return result
 
-	def findQuery(self, table,condition='', and_or = '',like= '', orderby='', offset = '', limit=''):
-		'''Ejecuta una consulta tipo SELECT en la BD
-		(str)	table 		=>	nombre de la tabla a consultar
-		(list)	columns 	=>	Listado de columnas a mostrar
-		(str)	condition 	=> 	condicion si no existe "1=1"
-		(list)	like		=>	para filtras busquedas de no existir es False (columna  valor)
-		(int)	limit		=>	limite de registros si se desa la tabla completa vale 0
-
-		SELECT columns FROM table
-		WHERE conditions | like | 1=1
-		LIMIT limit | nothing
-		'''		
-		query = 'SELECT '
-		# x(desde) i(hasta)
-		x = 1 
-		i = len(columns)
-		if columns:
-			for item in columns:
-				if x < i:
-					query += item + ','
-				if x == i:
-					query += item + ' FROM ' + table
-				x+=1
-		else:
-			query += '* FROM ' + table
-		#armamos la consulta
-		query = query + ' WHERE ' 
-		if condition:
-			query += condition
-		else:
-			query += '1=1'
-		#adjuntamos el like
-		if like:
-			query += like[0] + ' LIKE \'' + like[1] + '\''
-		if limit:
-			query += ' LIMIT ' + str(limit)
-		sql = QtSql.QSqlQuery()
-		print(query)
-		sql.prepare(query)
-		#ejecutamos la consulta, si hay un error acudir a last error
-		result = self.consultDb(sql)
-		if not result:			
-			return False
-
-		return result
 
 	def insertQuery(self,table,values):
 		'''Ejecuta una consulta tipo INSERT en la BD, si se manda una columna sin valor se reemplaza por NULL
