@@ -165,14 +165,24 @@ class techCatalog(object):
 		'''Retorna el numero de tecnicos registrados en la DB
 		@return int'''
 		return len(self.listTechnicals())
+
+	def listColumns(self):
+		'''Retorna una lista con la lista de las columnas
+		@return (lst)'''
+		result = self.MyDb.listColumns(self.table)
+		colums = []
+		while result.next():
+			colums.append(str(result.value(0)))
+
+		return colums
 		
 
-	def findTechnical(self,columna, condition):
+	def findTechnical(self,condition):
 		'''Busca un técnico en la base de datos
 		@return lst(obj)'''
+		#condition = {'id_tecnico like ' : '%4%'} 		
 		technicals = []
-		mycondition = {str(columna):str(condition)}		
-		result = self.MyDb.selectQuery(self.table,'',mycondition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			technicals.append(self.__setObj(result))
 
@@ -195,14 +205,16 @@ class techCatalog(object):
 		#verificamos los nulos devueltos por la consulta
 		if not (isinstance(mytechnical.telefono,str)):
 			mytechnical.telefono = ''
+
 		if not (isinstance(mytechnical.celular,str)):
 			mytechnical.celular = ''
+
 		if not (isinstance(mytechnical.email,str)):
 			mytechnical.email = ''
+
 		if not (isinstance(mytechnical.notas,str)):
 			mytechnical.notas = ''
-		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
-		return mytechnical
 
-a = techCatalog()
-a.findTechnical('nombres','like %a%')
+		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
+		
+		return mytechnical
