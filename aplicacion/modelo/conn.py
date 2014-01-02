@@ -21,9 +21,12 @@ def conectar():
 	conn.setPassword('elian')
 	
 	if not conn.open():
+		QtCore.qDebug('[Debug] no se puede establecer coneccion con la base de datos problema => %s'% str(conn.lastError()))
 		QtGui.QMessageBox.critical(None,QtGui.qApp.tr('No se puede conectar a la Base de Datos!...'),
 			QtGui.qApp.tr('Hubo un problema al conectarse con la base de datos \n'
 				'El servidor dice... \n' + conn.lastError().databaseText()),
 				QtGui.QMessageBox.Cancel,QtGui.QMessageBox.Ok)				
 		return False
+	QtCore.qDebug('[Debug] Conexion a la DB Ok >> [%s]'% 
+						QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss::zzz'))
 	return True

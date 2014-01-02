@@ -10,6 +10,7 @@
 import sys
 sys.path.append('..')
 from PyQt4 import QtCore, QtSql, QtGui
+from PyQt4.QtCore import qDebug
 from modelo.conn import conectar
 
 
@@ -20,6 +21,7 @@ class DB(object):
 
 	def __init__(self):
 		'''Inicia la conexión al servidor'''		
+		qDebug('[Debug] Se inicia el modelo de la base de datos' )
 		super(DB, self).__init__()			
 		self.Conn = conectar()
 
@@ -36,12 +38,15 @@ class DB(object):
 									'\n\nSi el problema continúa comuníquese con eduardouio7@gmail.com' + str(sql.lastQuery())),					
 					QtGui.QMessageBox.Ok)		
 				return False
+			qDebug('[Debug] Se ejecuta una consulta en la DB >> [%s]'%
+						QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss::zzz'))
 			return sql
 
 	def listTables(self):
 		'''	Lista todas las tablas de la base de datos '''		
 		sql = QtSql.QSqlQuery()			
 		sql.prepare('SHOW TABLES FROM gelvsrm_polaris;')
+		qDebug('[Debug] Consulta => %s'% sql.lastQuery())
 		result = self.consultDb(sql)
 		if not result:			
 			return False
@@ -51,6 +56,7 @@ class DB(object):
 		''' Lista las columnas de una tabla	'''
 		sql = QtSql.QSqlQuery()		
 		sql.prepare("SHOW COLUMNS FROM " + tabla + " ;")
+		qDebug('[Debug] Consulta => %s'% sql.lastQuery())
 		result = self.consultDb(sql)
 		if not result:			
 			return False
@@ -73,6 +79,7 @@ class DB(object):
 			if ( i == x ):
 				query = query + item + ' AS ' + columns[item] + ' FROM ' + table
 			i += 1
+		qDebug('[Debug] Consulta => %s'% query)
 		modelo = QtSql.QSqlQueryModel()
 		modelo.setQuery(query)
 		return modelo
@@ -86,6 +93,7 @@ class DB(object):
 		#cuando llamemos al metodo modelo.submitAll(), se tiene la posibilada de revertir
 		modelo.setEditStrategy(QtSql.QSqlTableModel.OnManualSubmit)
 		modelo.setFilter(condition)
+		qDebug('[Debug] se crea un table model de la tabla %s'% table)
 		modelo.select()
 		return modelo
 
@@ -93,7 +101,7 @@ class DB(object):
 		'''Ejecuta una consulta tipo SELECT en la BD
 		(str)	table 		=>	nombre de la tabla a consultar
 		(list)	columns 	=>	Listado de columnas a mostrar
-		(str)	condition 	=> 	condicion si no existe "1=1"
+		(dic)	condition 	=> 	condicion si no existe "1=1"
 		(list)	like		=>	para filtras busquedas de no existir es False (columna  valor)
 		(int)	limit		=>	limite de registros si se desa la tabla completa vale 0
 
@@ -117,7 +125,8 @@ class DB(object):
 		#armamos la consulta
 		query = query + ' WHERE ' 
 		if condition:
-			query += condition
+			for column in condition:
+				query += column + '\'' + condition[column] + '\' '			
 		else:
 			query += '1=1'
 		#adjuntamos el like
@@ -126,7 +135,7 @@ class DB(object):
 		if limit:
 			query += ' LIMIT ' + str(limit)
 		sql = QtSql.QSqlQuery()
-		print(query)
+		qDebug('[Debug] Consulta => %s'% query)
 		sql.prepare(query)
 		#ejecutamos la consulta, si hay un error acudir a last error
 		result = self.consultDb(sql)
@@ -143,25 +152,31 @@ class DB(object):
 		INSERT INTO table (values[columns]) 
 		VALUES( values[value]);'''		
 		query = 'INSERT INTO ' + table +'('
+		#columnas
 		i = 1
 		x = len(values)
 		for item in values:
-			if i<x:
-				query = query + item + ','
-			if i==x:
-				query = query + item + ')'
-			i+=1
-		query = query + 'VALUES('
+			if i< x :
+				query += item + ','
+			else:
+				query += item + ')Values('
+			i += 1
+		#valores
 		i = 1
 		for item in values:
-			if values[item] == '':
-				#si el valor esta vacio se escribe NULL
-				values[item] = 'NULL'
-			if i < x:
-				query = query + values[item] + ','
-			if i == x:
-				query = query + values[item] + ');'
-			i +=1
+			if i<x:
+				if values[item] == '':
+					query += 'NULL,'
+				else:
+					query += '\'' + values[item] + '\','
+			else:
+				if values[item] == '':
+					query +=  'NULL);'
+				else:
+					query +=  '\'' + values[item] + '\');'
+			i += 1
+
+		qDebug('[Debug] Consulta => %s'% query)
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
 		result = self.consultDb(sql)
@@ -173,23 +188,37 @@ class DB(object):
 		'''Ejecuta una Sentencia tipo update en la BD
 		(str)	table 	=> nombre de la tabla 
 		(dic)	values 	=> diccionario clave valor para update
-		(srt)	condition => condicion SQL
+		(dic)	condition => condicion SQL
 		UPDATE table 
 		SET
 		values[columns] = values[value]'''
+		
 		query = 'UPDATE ' + table + ' SET '
+		#columna valor
 		i = 1
 		x = len(values)
-		#armamos la consulta
-		for item in values:
+		for item in values:			
+			query += item + ' = '
 			if values[item] == '':
-				#si el valor esta vacio se escribe NULL
-				values[item] = 'NULL'
-			if i < x :
-				query = query + item + ' = ' + values[item]	+ ','
-			if i == x :
-				query = query + item + ' = ' + values[item]
-		query = query  + ' WHERE ' + condition + ';'
+				if (i==x):
+					query += 'NULL'
+				else:
+					query += 'NULL,'
+			else:
+				if (i == x):
+					query += '\'' + values[item] + '\''
+				else:
+					query += '\'' + values[item] + '\','
+
+			i+=1
+
+		query += ' WHERE '
+
+		for column in condition:
+			query += column + '\'' + condition[column] + '\';'
+
+		qDebug('[Debug] Consulta => %s'% query) 
+		
 		sql = QtSql.QSqlQuery()
 		sql.prepare(query)
 		result = self.consultDb(sql)
@@ -204,8 +233,13 @@ class DB(object):
 		DELETE FOM table
 		WHERE condition'''
 		sql = QtSql.QSqlQuery()		
-		sql.prepare('DELETE FROM ' + table + ' WHERE ' + condition + ';')
-		result = sefl.consultDb(sql)
+		query = 'DELETE FROM ' + table + ' WHERE '		
+		for column in condition:
+			query += column + '\'' + condition[column] + '\';'
+
+		qDebug('[Debug] Consulta => %s'% sql.lastQuery())
+		sql.prepare(query)
+		result = self.consultDb(sql)
 		if not result:
 			return False
 		return result
@@ -213,28 +247,34 @@ class DB(object):
 	def lastInsertId(self):
 		'''Ultimo Id ingresado en la BD'''
 		sql = QtSql.QSqlQuery()
+		qDebug('[Debug] se retorna el ultimo id de la base de datos %s'% str(sql.lastInsertId()))
 		return sql.lastInsertId()
 
 	def lastQuery(self):
 		'''	retorna el Sql de la última consulta'''
 		sql = QtSql.QSqlQuery()
+		qDebug('[Debug] se retorna la ultima consulta Consulta => %s'% sql.lastQuery())
 		return sql.lastQuery()
 
 	def beginTransaction(self):
 		'''Inicia una transaccion'''
 		self.Conn = QtSql.QSqlDatabase.database()
+		qDebug('[Debug] inicia una transaccion')
 		self.Conn.transaction()
 
 	def commitTransaction(self):
 		'''Confirma una transaccion'''
 		self.Conn = QtSql.QSqlDatabase.database()
+		qDebug('[Debug] termina una transaccion una transaccion')
 		self.Conn.commit()
 
 	def rollBack(self):
 		'''Cancela y revierte los cambios de una transaccion'''
 		self.Conn = QtSql.QSqlDatabase.database()
+		qDebug('[Debug] cancela una transaccion una transaccion')
 		self.Conn.rollback()
 
 	def lastError(self):
 		'''Retorna en ultimo error producido en la base de datos'''
+		qDebug('[Debug] retorna el ultimo error => %s'% str(self.Conn.lastError()))
 		return self.Conn.lastError()	
