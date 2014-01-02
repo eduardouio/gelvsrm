@@ -106,6 +106,7 @@ class techCatalog(object):
 			return self.__setObj(result)
 		else:
 			qDebug('[Debug] Problemas para tomar el ultimo tecnico de la lista')		
+			return False
 
 			
 	def createTechnical(self, technical):
@@ -187,6 +188,7 @@ class techCatalog(object):
 			technicals.append(self.__setObj(result))
 
 		return technicals
+
 
 	def __setObj(self, result):
 		'''crea un objeto tipo tecnicos
