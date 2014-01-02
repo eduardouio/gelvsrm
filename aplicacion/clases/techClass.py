@@ -180,8 +180,8 @@ class techCatalog(object):
 
 	def findTechnical(self,condition):
 		'''Busca un técnico en la base de datos
+		condition = {'id_tecnico like ' : '%4%'} 		
 		@return lst(obj)'''
-		#condition = {'id_tecnico like ' : '%4%'} 		
 		technicals = []
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
@@ -206,16 +206,16 @@ class techCatalog(object):
 
 		#verificamos los nulos devueltos por la consulta
 		if not (isinstance(mytechnical.telefono,str)):
-			mytechnical.telefono = ''
+			mytechnical.telefono=''
 
 		if not (isinstance(mytechnical.celular,str)):
-			mytechnical.celular = ''
+			mytechnical.celular=''
 
 		if not (isinstance(mytechnical.email,str)):
-			mytechnical.email = ''
+			mytechnical.email=''
 
 		if not (isinstance(mytechnical.notas,str)):
-			mytechnical.notas = ''
+			mytechnical.notas=''
 
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
 		

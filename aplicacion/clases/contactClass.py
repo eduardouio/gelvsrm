@@ -24,6 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Contact(object):
 	"""Objeto que representa la estructura de la clase contacto"""
@@ -37,7 +38,8 @@ class Contact(object):
 		self.celular = celular
 		self.email = email
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
+		qDebug('[Debug] clase Conctact Instanciada')
 
 class contactCatalog(object):
 	'''Opercaciones con la clase Contact'''
@@ -46,26 +48,32 @@ class contactCatalog(object):
 		super(contactCatalog,self).__init__()
 		self.MyDb = DB()
 		self.table = 'contacto'
+		qDebug('[Debug] clase conctactCatalog Instanciada')
+
 
 	def getContacts(self,contact = ''):
-		'''Obtiene un listado de contactos o un contacto
+		'''Obtiene un contacto de la base de datos
 		@param (str) tipo contact solo con el id_contacto
-		@return (lis(obj))|(obj) '''
-		if contact:
-			mycontact = Contact()
-			condition = 'id_contacto = ' + str(contact)
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				mycontact.id_contacto = str(result.value(0))
-				mycontact.id_ciudad = str(result.value(1))
-				mycontact.nombre = str(result.value(2))
-				mycontact.telefono = str(result.value(3))
-				mycontact.celular = str(result.value(4))
-				mycontact.email = str(result.value(5))
-				mycontact.notas = str(result.value(6))
-				mycontact.registro = str(result.value(7))
-			
-			return mycontact
+		@return(obj) '''	
+		mycontact = Contact()
+		condition = {'id_contacto = ' : str(contact)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		while result.next():
+			mycontact.id_contacto = str(result.value(0))
+			mycontact.id_ciudad = str(result.value(1))
+			mycontact.nombre = str(result.value(2))
+			mycontact.telefono = str(result.value(3))
+			mycontact.celular = str(result.value(4))
+			mycontact.email = str(result.value(5))
+			mycontact.notas = str(result.value(6))
+			mycontact.registro = str(result.value(7))
+		
+		return mycontact
+	
+
+	def getContacts(self):
+		'''Retona un listado de los contactos
+		@return list(oibj) contact'''
 		else:
 			result = self.MyDb.selectQuery(self.table)
 			contacts = []
@@ -140,3 +148,13 @@ class contactCatalog(object):
 	def findContact(self,contact,content):
 		'''Busca uno o unos con'''
 		pass
+
+	def __setObj(self, result):
+		mycontact = Contact()
+		mycontact.
+		mycontact
+		mycontact
+		mycontact
+		mycontact
+		mycontact
+		mycontact

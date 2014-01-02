@@ -17,6 +17,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import qDebug
 
 class State(object):
 	"""Objeto que representa la estructura una provincia"""
@@ -24,7 +25,8 @@ class State(object):
 		'''Inizializacion de las propiedades de la clase'''
 		super(State, self).__init__()
 		self.id_provincia = id_provincia
-		self.nombre = nombre		
+		self.nombre = nombre
+		qDebug('[Debug] se instancia la clase State')
 
 class stateCatalog(object):
 	"""Representa las operaciones sobre provincia"""
@@ -36,31 +38,35 @@ class stateCatalog(object):
 		super(stateCatalog, self).__init__()		
 		self.table = 'provincia'
 		self.MyDB = DB()
+		qDebug('[Debug] se instancia la clase stateCatalog')
 		
 
-	def getStates(self,state=''):
+	def getState(self,state=''):
 		'''Lista Las provinciaes		
 		@param (str) identificador del estado
-		@return (list(obj) | obj) tipo city'''
-		result = object
-		if state:
-			result = self.MyDB.selectQuery(self.table,'','id_provincia = ' + str(state))
-			mystate = State()
-			while result.next():
-				mystate.id_provincia = (str(result.value(0)))
-				mystate.nombre = (str(result.value(1)))		
-			return mystate		
-
+		@return (obj) tipo stateC'''		
+		condition = {'id_provincia':str(state)}
+		result = self.MyDB.selectQuery(self.table,'',condition)		
+		if result.next():			
+			return self.__setObj(result)
+			qDebug('[Debug] se retorna %s registros'% result.size())
 		else:
-			result = self.MyDB.selectQuery(self.table)
-		
-			state = []
-			while result.next():
-				mystate = State()
-				mystate.id_provincia = (str(result.value(0)))
-				mystate.nombre = (str(result.value(1)))
-				state.append(mystate)		
-			return state		
+			qDebug('[Debug] no se retorna ningun registro')
+			
+			return False			
+
+	
+	def listStates(self):
+		'''Lista todos los estados de la table
+		@return list(obj) state'''	
+		states = []
+		result = self.MyDB.selectQuery(self.table)	
+		qDebug('[Debug] se retorna %s registros'% result.size())
+		while result.next():
+			state.append(self.__setObj(result))		
+
+		return states
+	
 
 	def createState(self,state):
 		'''Crea una provincia en el sistema
@@ -116,3 +122,13 @@ class stateCatalog(object):
 			mystate.nombre = (str(result.value(1)))
 			states.append(mystate)
 		return states
+
+	def __setObj(self,result):
+		'''coloca las propiedades de un estado
+		@return (obj) estado'''
+		mystate = State()
+		mystate.id_provincia = str(result.value(0))
+		mystate.nombre = str(result.value(1))
+		qDebug('[Debug] se crea un objeto tipo estado')
+		return mystate
+		
