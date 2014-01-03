@@ -45,7 +45,7 @@ class stateCatalog(object):
 		'''Lista Las provinciaes		
 		@param (str) identificador del estado
 		@return (obj) tipo stateC'''		
-		condition = {'id_provincia':str(state)}
+		condition = {'id_provincia = ':str(state)}
 		result = self.MyDB.selectQuery(self.table,'',condition)		
 		if result.next():			
 			return self.__setObj(result)
@@ -63,10 +63,42 @@ class stateCatalog(object):
 		result = self.MyDB.selectQuery(self.table)	
 		qDebug('[Debug] se retorna %s registros'% result.size())
 		while result.next():
-			state.append(self.__setObj(result))		
+			states.append(self.__setObj(result))		
 
 		return states
+
+
+	def firstState(self):
+		'''retorna el primer estado de la Lista
+		@return (obj) state'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el primer estado de la lista')
+		if result.first():
+			return self.__setObj(result)
+
+
+	def lastState(self):
+		'''retorna el ultimo estado de la Lista
+		@return (obj) state'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el ultimo estado de la lista')
+		if result.last():
+			return self.__setObj(result)
+
 	
+	def findState(self, condition):
+		'''Busca una provincia
+		@param (dic) condicion de la consulta
+		condition = {'id_tecnico like ' : '%4%'}
+		@retun list((obj)) state'''
+		states = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la busqueda retorno %s registros'% result.size())
+		while result.next():
+			states.append(self.__setObj(result))
+		
+		return states
+
 
 	def createState(self,state):
 		'''Crea una provincia en el sistema
@@ -76,9 +108,12 @@ class stateCatalog(object):
 		values = {'nombre': str(state.nombre)}
 		result = self.MyDB.insertQuery(self.table,values)
 		if (result.numRowsAffected() > 0):
-			return str(result.lastInsertId())
+			qDebug('[Debug] Se inserta correctamente %d registrs' % result.numRowsAffected())
+			return int(result.lastInsertId())
 		else:
+			qDebug('[Debug] no se inserto ningun valor')
 			return False
+
 
 	def updateState(self, oldState, state):
 		'''Actualiza un Estado
@@ -86,42 +121,48 @@ class stateCatalog(object):
 		@param (obj) representa nuevos datos
 		@return (bool) 
 		'''
-		condition = 'id_provincia = ' + str(oldState.id_provincia)
+		condition = {'id_provincia = ' : str(oldState.id_provincia)}
 		values = {'nombre': str(state.nombre)}
-		result = self.MyDB.updateQuery(self.table,condition)
+		result = self.MyDB.updateQuery(self.table,values,condition)
 		
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] Se modifica correctamente %d registrs' % result.numRowsAffected())
 			return True
 		else:
+			qDebug('[Debug] no se actualizo ningun valor')
 			return False
+
 
 	def deleteState(self, state):
 		'''Elima una ciudad
 		@param (obj) tipo state
 		@return (bool)
 		'''
-		condition = 'id_provincia = ' + str(state.id_provincia)
+		condition = {'id_provincia = ' : str(state.id_provincia)}
 		result = self.MyDB.deleteQuery(self.table, condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Elimina un Estado')
 			return True
 		else:
+			qDebug('[Debug] problemas para Eliminar un Estado')
 			return False
 
-	def findState(self, column, value):
-		'''Busca una provincia
-		@param (str) nombre de la columna
-		@param (str) el valor para la columna
-		@retun list((obj)) state'''
-		states = []
-		content = [str(column),str(value)]
-		result = self.MyDB.selectQuery(self.table,'','',content)
+
+	def countStates(self):
+		'''Cuenta las privincias registradas
+		@return (int)'''
+		return len(self.listStates())
+
+
+	def listColumns(self):
+		result = self.MyDB.listColumns(self.table)
+		colums = []
 		while result.next():
-			mystate = State()
-			mystate.id_provincia = (str(result.value(0)))
-			mystate.nombre = (str(result.value(1)))
-			states.append(mystate)
-		return states
+			colums.append(str(result.value(0)))
+
+		return colums
+
 
 	def __setObj(self,result):
 		'''coloca las propiedades de un estado
@@ -131,4 +172,3 @@ class stateCatalog(object):
 		mystate.nombre = str(result.value(1))
 		qDebug('[Debug] se crea un objeto tipo estado')
 		return mystate
-		

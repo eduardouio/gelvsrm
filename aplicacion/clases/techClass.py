@@ -108,7 +108,19 @@ class techCatalog(object):
 			qDebug('[Debug] Problemas para tomar el ultimo tecnico de la lista')		
 			return False
 
+
+	def findTechnical(self,condition):
+		'''Busca un técnico en la base de datos
+		condition = {'id_tecnico like ' : '%4%'} 		
+		@return lst(obj)'''
+		technicals = []
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		while result.next():
+			technicals.append(self.__setObj(result))
+
+		return technicals
 			
+
 	def createTechnical(self, technical):
 		'''Crea un tecnico en la base de datos
 		@param (obj) tipo tecnico
@@ -122,8 +134,8 @@ class techCatalog(object):
 			'notas' : technical.notas			
 		}
 		result =  self.MyDb.insertQuery(self.table,values)
-		if (result.numRowsAffected() > 0):
-			return True
+		if (result.numRowsAffected() > 0):			
+			return str(result.lastInsertId())
 		else:
 			return False
 
@@ -177,18 +189,6 @@ class techCatalog(object):
 
 		return colums
 		
-
-	def findTechnical(self,condition):
-		'''Busca un técnico en la base de datos
-		condition = {'id_tecnico like ' : '%4%'} 		
-		@return lst(obj)'''
-		technicals = []
-		result = self.MyDb.selectQuery(self.table,'',condition)
-		while result.next():
-			technicals.append(self.__setObj(result))
-
-		return technicals
-
 
 	def __setObj(self, result):
 		'''crea un objeto tipo tecnicos
