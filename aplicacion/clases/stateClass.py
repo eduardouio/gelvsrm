@@ -12,7 +12,7 @@
 # | Field        | Type                 | Null | Key | Default | Extra          |
 # +--------------+----------------------+------+-----+---------+----------------+
 # | id_provincia | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
-# | nombre       | varchar(100)         | YES  |     | NULL    |                |
+# | nombre       | varchar(100)         | NO   |     | NULL    |                |
 # +--------------+----------------------+------+-----+---------+----------------+
 import sys
 sys.path.append('..')
@@ -151,24 +151,4 @@ class stateCatalog(object):
 
 	def countStates(self):
 		'''Cuenta las privincias registradas
-		@return (int)'''
-		return len(self.listStates())
-
-
-	def listColumns(self):
-		result = self.MyDB.listColumns(self.table)
-		colums = []
-		while result.next():
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
-	def __setObj(self,result):
-		'''coloca las propiedades de un estado
-		@return (obj) estado'''
-		mystate = State()
-		mystate.id_provincia = str(result.value(0))
-		mystate.nombre = str(result.value(1))
-		qDebug('[Debug] se crea un objeto tipo estado')
-		return mystate
+		@return (int)'''     

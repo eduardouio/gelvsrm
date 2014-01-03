@@ -18,7 +18,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-import stateClass
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class City(object):
 	"""Objeto que representa la estructura una ciudad"""
@@ -56,6 +56,11 @@ class cityCatalog(object):
 				mycity.nombre = (str(result.value(2)))									
 			return mycity()
 
+		
+	
+	def listCities(self):
+		'''Lista todas ciudades 
+		@return lst(obj) tipo city'''
 		else:
 			result = self.MyDB.selectQuery(self.table)
 			cities = []
@@ -68,7 +73,7 @@ class cityCatalog(object):
 				cities.append(mycity)	
 
 			return cities
-		
+
 						
 	def createCity(self,city):
 		'''crea una ciudad
@@ -158,3 +163,6 @@ class cityCatalog(object):
 			cities.append(mycity)
 
 		return cities
+
+	def __setObj(self,result):
+		'''Crea un objeto tipo '''
