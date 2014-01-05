@@ -26,6 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Coustomer(object):
 	"""Estrcutura del objeto cliente"""
@@ -42,6 +43,7 @@ class Coustomer(object):
 		self.mail = mail
 		self.notas = notas
 		self.registro = registro
+		qDebug('[Debug] se crea un objeto tipo coustomer')
 
 
 class coustomerCatalog(object):
@@ -50,49 +52,65 @@ class coustomerCatalog(object):
 		super(coustomerCatalog, self).__init__()
 		self.table = 'cliente'
 		self.MyDb = DB()
+		qDebug('[Debug] se crea un objeto tipo coustomerCatalog')
+
 
 	def getCoustomer(self, coustomer=''):
-		'''Obtiene un cliente o un listado
+		'''Obtiene un cliente 
 		@param (str) id_cliente
-		@return (obj) | list(obj)
-		'''
-		if coustomer:
-			condition = ' id_cliente =' + str(coustomer)
-			mycoustomer = Coustomer()
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				mycoustomer.id_cliente = str(result.value(0))
-				mycoustomer.id_contacto = str(result.value(1))
-				mycoustomer.id_ciudad = str(result.value(2))
-				mycoustomer.nombre = str(result.value(3))
-				mycoustomer.direccion = str(result.value(4))
-				mycoustomer.telefono = str(result.value(5))
-				mycoustomer.fax = str(result.value(5))
-				mycoustomer.mail = str(result.value(6))
-				mycoustomer.notas = str(result.value(7))
-				mycoustomer.registro = str(result.value(8))
-
-			return mycoustomer
-
+		@return (obj) coustomer
+		'''	
+		condition = {' id_cliente =' : str(coustomer)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la consulta retorna %s valores'% result.size())
+		if result.next():
+			return self.__setObj(result)
 		else:
+			qDebug('[Debug] no se puede retornar ningun valor ')
+			return False
 
-			coustomers = []
-			result = self.selectQuery(self.table)
-			while result.next():
-				mycoustomer = Coustomer
-				mycoustomer.id_cliente = str(result.value(0))
-				mycoustomer.id_contacto = str(result.value(1))
-				mycoustomer.id_ciudad = str(result.value(2))
-				mycoustomer.nombre = str(result.value(3))
-				mycoustomer.direccion = str(result.value(4))
-				mycoustomer.telefono = str(result.value(5))
-				mycoustomer.fax = str(result.value(5))
-				mycoustomer.mail = str(result.value(6))
-				mycoustomer.notas = str(result.value(7))
-				mycoustomer.registro = str(result.value(8))
-				coustomers.append(mycoustomer)
 
-			return coustomers
+	def listCoustomers(self):
+		'''Retorna un listado completo de clienteClass
+		@return lst(obj) Coustomer'''
+		coustomers = []
+		result = self.selectQuery(self.table)
+		qDebug('[Debug] la consulta retorna %s valores'% result.size())
+		while result.next():				
+			coustomers.append(self.__setObj(result))
+		
+		return coustomers
+
+
+	def firstCoustomer(self):
+		'''retorna el primer cliente de la tabla
+		@return (obj) Coustomer'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el primer cliente de la lista')
+		if result.first():
+			return self.__setObj(result)
+
+
+	def lastCoustomer(self):
+		'''retorna la ultima cliente de la Lista
+		@return (obj) Coustomer'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma la ultimo cliente de la lista')
+		if result.last():
+			return self.__setObj(result)
+	
+
+	def findCoustomer(self,condition):
+		'''Busca una ciudad
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo Coustomer'''
+		coustomers = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			coustomers.append(self.__setObj(result))
+
+		return coustomers
+
 
 	def createCoustomer(self,coustomer):
 		'''Crea un cliente
@@ -108,16 +126,18 @@ class coustomerCatalog(object):
 			'telefono' : coustomer.telefono,
 			'fax' : coustomer.fax,
 			'mail' : coustomer.mail,
-			'notas' : coustomer.notas,
-			'registro' : coustomer.registro
+			'notas' : coustomer.notas			
 		}
 
 		result = self.MyDb.insertQuery(self.table,values)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] cliete ingresado a la base de datos')
 			return True
 		else:
+			qDebug('[Debug] problemas para guaradar cliente a la base de datos')
 			return False
+
 
 	def updateCoustomer(self,oldCoustomer,coustomer):
 		'''Actualiza un cliente
@@ -125,7 +145,7 @@ class coustomerCatalog(object):
 		@param (obj) coustomer
 		@return (bool)
 		'''
-		condition = ' id_cliente = ' + str(oldCoustomer.id_cliente)
+		condition = {' id_cliente = ' : str(oldCoustomer.id_cliente)}
 		values = {
 			'id_cliente' : coustomer.cliente,
 			'id_contacto' : coustomer.id_contacto,
@@ -135,29 +155,63 @@ class coustomerCatalog(object):
 			'telefono' : coustomer.telefono,
 			'fax' : coustomer.fax,
 			'mail' : coustomer.mail,
-			'notas' : coustomer.notas,
-			'registro' : coustomer.registro
+			'notas' : coustomer.notas			
 		}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] cliete editado en la base de datos')
 			return True
 		else:
+			qDebug('[Debug] problemas para editar cliente en la base de datos')
 			return False
+
 
 	def deleteCoustomer(self,coustomer):
 		'''Elimina un cliente
 		@param (obj) coustomer
 		@return (bool)'''
-		condition = ' id_cliente= ' + str(coustomer.id_cliente)
+		condition = {' id_cliente= ' : str(coustomer.id_cliente)}
 		result = self.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se elimina cliente en la base de datos')
 			return True
 		else:
+			qDebug('[Debug] problemas para eliminar cliente en la base de datos')
 			return False
 
-	def finCoustomer(self,condition=''):
-		'''Busca un cliente'''
-		pass
+
+	def countCoustomer(self):
+		'''Cuenta las ciudades registradas
+		@return (int)'''
+		qDebug('[Debug] se cuentan los registros de la tabla ciudad')
+		return len(self.listCoustomers())
+
+
+	def listColumns(self):
+		colums = []
+		result = self.MyDB.listColumns(self.table)
+		while result.next():
+			qDebug('[Debug] se lista las columnas de la tabla ciudad')
+			colums.append(str(result.value(0)))
+
+		return colums
+
+
+	def __setObj(self,result):
+		'''Crea un objeto tipo city
+		@return (obj) city'''
+		mycoustomer = Coustomer()
+		mycoustomer.id_cliente = str(result.value(0))
+		mycoustomer.id_ciudad = str(result.value(1))
+		mycoustomer.nombre = str(result.value(2))
+		mycoustomer.direccion = str(result.value(3))
+		mycoustomer.telefono = str(result.value(4))
+		mycoustomer.fax = str(result.value(5))
+		mycoustomer.mail = str(result.value(6))
+		mycoustomer.notas = str(result.value(7))
+		mycoustomer.registro = str(result.value(8))		
+		qDebug('[Debug] se crea un cliente')
+		return mycoustomer
