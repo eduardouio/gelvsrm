@@ -75,6 +75,8 @@ class stateCatalog(object):
 		qDebug('[Debug] Se toma el primer estado de la lista')
 		if result.first():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def lastState(self):
@@ -84,6 +86,8 @@ class stateCatalog(object):
 		qDebug('[Debug] Se toma el ultimo estado de la lista')
 		if result.last():
 			return self.__setObj(result)
+		else:
+			return False
 
 	
 	def findState(self, condition):

@@ -89,6 +89,8 @@ class coustomerCatalog(object):
 		qDebug('[Debug] Se toma el primer cliente de la lista')
 		if result.first():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def lastCoustomer(self):
@@ -98,6 +100,8 @@ class coustomerCatalog(object):
 		qDebug('[Debug] Se toma la ultimo cliente de la lista')
 		if result.last():
 			return self.__setObj(result)
+		else:
+			return False
 	
 
 	def findCoustomer(self,condition):

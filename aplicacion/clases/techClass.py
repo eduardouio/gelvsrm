@@ -93,6 +93,7 @@ class techCatalog(object):
 			return self.__setObj(result)
 		else:
 			qDebug('[Debug] Problemas para tomar el primer tecnico de la lista')
+			return False
 
 
 	def lastTecnical(self):

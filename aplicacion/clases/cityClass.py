@@ -85,6 +85,8 @@ class cityCatalog(object):
 		qDebug('[Debug] Se toma la primera ciudad de la lista')
 		if result.first():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def lastCity(self):
@@ -94,6 +96,8 @@ class cityCatalog(object):
 		qDebug('[Debug] Se toma la ultima ciudad de la lista')
 		if result.last():
 			return self.__setObj(result)
+		else:
+			return False
 	
 
 	def findCity(self,condition):

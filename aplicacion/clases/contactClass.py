@@ -39,7 +39,8 @@ class Contact(object):
 		self.email = email
 		self.notas = notas
 		self.registro = QDateTime().currentDateTime()
-		qDebug('[Debug] clase Conctact Instanciada')
+		qDebug('[Debug] se incia la clase contact')
+
 
 class contactCatalog(object):
 	'''Opercaciones con la clase Contact'''
@@ -84,6 +85,8 @@ class contactCatalog(object):
 		qDebug('[Debug] Se toma el primer contacto de la lista')
 		if result.first():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def lastContact(self):
@@ -93,6 +96,8 @@ class contactCatalog(object):
 		qDebug('[Debug] Se toma ultimo contacto de la lista')
 		if result.last():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def findContact(self,condition):
@@ -176,6 +181,8 @@ class contactCatalog(object):
 
 
 	def listColumns(self):
+		'''Retorna un listado de las tablas
+		@return (lstt)'''
 		colums = []
 		result = self.MyDB.listColumns(self.table)
 		while result.next():
