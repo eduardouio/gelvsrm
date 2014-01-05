@@ -148,7 +148,28 @@ class stateCatalog(object):
 			qDebug('[Debug] problemas para Eliminar un Estado')
 			return False
 
+	 def countStates(self):
+        '''Cuenta las privincias registradas
+        @return (int)'''
+        qDebug('[Debug] se cuentan los registros de la tabla estados')
+        return len(self.listStates())
 
-	def countStates(self):
-		'''Cuenta las privincias registradas
-		@return (int)'''     
+
+    def listColumns(self):
+        colums = []
+        result = self.MyDB.listColumns(self.table)
+        while result.next():
+        	qDebug('[Debug] se lista las columnas de la tabla')
+            colums.append(str(result.value(0)))
+
+        return colums
+
+
+    def __setObj(self,result):
+        '''coloca las propiedades de un estado
+        @return (obj) estado'''
+        mystate = State()
+        mystate.id_provincia = str(result.value(0))
+        mystate.nombre = str(result.value(1))
+        qDebug('[Debug] se crea un objeto tipo estado')
+        return mystate

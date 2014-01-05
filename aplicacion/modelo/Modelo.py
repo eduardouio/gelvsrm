@@ -37,7 +37,7 @@ class DB(object):
 									'El servidor dice... \n' + sql.lastError().databaseText() + 
 									'\n\nSi el problema continúa comuníquese con eduardouio7@gmail.com' + str(sql.lastQuery())),					
 					QtGui.QMessageBox.Ok)		
-				return False
+				return self.lastError()
 			qDebug('[Debug] Se ejecuta una consulta en la DB >> [%s]'%
 						QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss::zzz'))
 			return sql
@@ -237,7 +237,7 @@ class DB(object):
 		for column in condition:
 			query += column + '\'' + condition[column] + '\';'
 
-		qDebug('[Debug] Consulta => %s'% sql.lastQuery())
+		qDebug('[Debug] Consulta => %s'% query)
 		sql.prepare(query)
 		result = self.consultDb(sql)
 		if not result:

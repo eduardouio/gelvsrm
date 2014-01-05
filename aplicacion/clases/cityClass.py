@@ -41,38 +41,71 @@ class cityCatalog(object):
 		self.table = 'ciudad'
 		self.MyDB = DB()
 
-	def getCities(self,state=''):
-		'''Lista Las ciudades
-		@param (obj) tipo city
-		@param (str) tipo state
-		@return (list(obj) | obj) tipo city'''
-		if state:
-			mycity = City()
-			condition = 'id_provincia = ' + str(state)
-			result = self.MyDB.selectQuery(self.table,'',condition)
-			while result.next():
-				mycity.id_ciudad = (str(result.value(0)))
-				mycity.id_provincia = (str(result.value(1)))
-				mycity.nombre = (str(result.value(2)))									
-			return mycity()
 
-		
-	
+	def getCity(self,city=''):
+		'''Lista Las ciudades		
+		@param (str) id_ciudad
+		@return (obj) tipo city'''	
+		condition = {'id_ciudad = ' : str(city)}
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		qDebug('[Debug] get city la consulta retorno %s regitros'% result.size())
+		while result.next():
+			return self.__setObj(result)
+
+
 	def listCities(self):
 		'''Lista todas ciudades 
 		@return lst(obj) tipo city'''
-		else:
-			result = self.MyDB.selectQuery(self.table)
-			cities = []
+		cities = []
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] list cityes la consulta retorno %s regitros'% result.size())
+		while result.next():			
+			cities.append(self.__setObj(result))
 
-			while result.next():
-				mycity = City()
-				mycity.id_ciudad = (str(result.value(0)))
-				mycity.id_provincia = (str(result.value(1)))
-				mycity.nombre = (str(result.value(2)))						
-				cities.append(mycity)	
+		return cities
 
-			return cities
+
+	def listCitiesState(self,id_state):
+		'''Lista todas ciudades de una provincia
+		@return lst(obj) tipo city'''
+		cities = []
+		condition = {'id_provincia = ' : str(id_state)}
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		qDebug('[Debug] list cityesstatela consulta retorno %s regitros'% result.size())
+		while result.next():			
+			cities.append(self.__setObj(result))	
+
+		return cities
+	
+
+	def firstCity(self):
+		'''retorna la primera ciudad de la Lista
+		@return (obj) city'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma la primera ciudad de la lista')
+		if result.first():
+			return self.__setObj(result)
+
+
+	def lastCity(self):
+		'''retorna la ultima ciudad de la Lista
+		@return (obj) state'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma la ultima ciudad de la lista')
+		if result.last():
+			return self.__setObj(result)
+	
+
+	def findCity(self,condition):
+		'''Busca una ciudad
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo city'''
+		cities = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			cities.append(self.__setObj(result))
+
+		return cities
 
 						
 	def createCity(self,city):
@@ -85,84 +118,74 @@ class cityCatalog(object):
 				}
 		result = self.MyDB.insertQuery(self.table,values)
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se inserto correctamente una ciudad')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug] problemas para insertar una ciudad')
 			return False
+
 			
 	def updateCity(self,oldcity, city):
 		'''Actualiza una ciudad el identificador de la ciudad no cambia
 		@param (obj) oldcity tipo city
 		@param (obj) city tipo city
 		@return (bool)'''
-		condition = 'id_ciudad = ' + oldcity.id_ciudad()
+		condition = {'id_ciudad = ' : str(oldcity.id_ciudad)}
 		values = {
 				'id_provincia' : city.id_provincia,
 				'nombre' : city.nombre
 				}
-
 		result =  self.MyDB.updateQuery(self.table,values,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Actualiza correctamente una ciudad')
 			return True
 		else:
+			qDebug('[Debug] problemas para Actualizar correctamente una ciudad')
 			return False
+
 		
 	def deleteCity(self,city):
 		'''Elimina una ciudad
 		@param (obj) tipo city
-		@return (bool)'''
-		condition = 'id_ciudad = ' + str(city.id_ciudad)
+		@return (bool)'''				
+		print(city.id_ciudad)
+		condition = {'id_ciudad = ' : city.id_ciudad}
+		print(condition)
 		result = self.MyDB.deleteQuery(self.table, condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Elimina correctamente una ciudad')
 			return True
 		else:
+			qDebug('[Debug] No se Elimina correctamente una ciudad')			
 			return False
-	
-	def getCity(self, city):
-		'''Obtiene los datos de una ciudad el objeto ciudad recibido solo administra en id_ciudad
-		@param (str) tipo city
-		@return (obj) tipo cityad 
-		'''
-		condition = 'id_ciudad = ' + str(city)
-		result = self.MyDB.selectQuery(self.table,'',condition)
-		mycity = City()
+
+
+	def countCities(self):
+		'''Cuenta las ciudades registradas
+		@return (int)'''
+		qDebug('[Debug] se cuentan los registros de la tabla ciudad')
+		return len(self.listCities())
+
+
+	def listColumns(self):
+		colums = []
+		result = self.MyDB.listColumns(self.table)
 		while result.next():
-			mycity.id_ciudad = (str(result.value(0)))
-			mycity.id_provincia = (str(result.value(1)))
-			mycity.nombre = (str(result.value(2)))
-		
-		return mycity
+			qDebug('[Debug] se lista las columnas de la tabla ciudad')
+			colums.append(str(result.value(0)))
 
-	def getStateCity(self,city):
-		'''Obtiene al estado-provincua al que pertence una ciudad
-		@param (obj) tipo city
-		@return (obj) tipo state'''
-		condition = 'id_ciudad = ' + str(city.id_ciudad())
-		result = self.MyDB.selectQuery(self.table,'',condition)
-		mystate = State()
-		while result.next():
-			mystate.id_provincia = str(result.value(0))
-			mystate.nombre = str(result.value(1))
+		return colums
 
-		return mystate
-
-	
-	def findCity(self,column, value):
-		'''Busca una ciudad
-		@param (str) columna estado (id_provincia = state)
-		@return list(obj) tipo city'''
-		cities = []
-		content = [str(column),str(value)]
-		result = self.MyDB.selectQuery(self.table,'','',content)
-		while result.next():
-			mycity = City()
-			mycity.id_ciudad = (str(result.value(0)))
-			mycity.id_provincia = (str(result.value(1)))
-			mycity.nombre = (str(result.value(2)))
-			cities.append(mycity)
-
-		return cities
 
 	def __setObj(self,result):
-		'''Crea un objeto tipo '''
+		'''Crea un objeto tipo city
+		@return (obj) city'''
+		mycity = City()
+		mycity.id_ciudad = str(result.value(0))
+		mycity.id_provincia = str(result.value(1)) 
+		mycity.nombre = str(result.value(2))
+		qDebug('[Debug] se crea una ciudad')
+
+		return mycity
