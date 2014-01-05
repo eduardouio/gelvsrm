@@ -89,7 +89,7 @@ class cityCatalog(object):
 
 	def lastCity(self):
 		'''retorna la ultima ciudad de la Lista
-		@return (obj) state'''
+		@return (obj) city'''
 		result = self.MyDB.selectQuery(self.table)
 		qDebug('[Debug] Se toma la ultima ciudad de la lista')
 		if result.last():

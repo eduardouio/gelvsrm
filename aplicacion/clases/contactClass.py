@@ -51,45 +51,61 @@ class contactCatalog(object):
 		qDebug('[Debug] clase conctactCatalog Instanciada')
 
 
-	def getContacts(self,contact = ''):
+	def getContact(self,contact = ''):
 		'''Obtiene un contacto de la base de datos
 		@param (str) tipo contact solo con el id_contacto
-		@return(obj) '''	
-		mycontact = Contact()
+		@return(obj) '''			
 		condition = {'id_contacto = ' : str(contact)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
-		while result.next():
-			mycontact.id_contacto = str(result.value(0))
-			mycontact.id_ciudad = str(result.value(1))
-			mycontact.nombre = str(result.value(2))
-			mycontact.telefono = str(result.value(3))
-			mycontact.celular = str(result.value(4))
-			mycontact.email = str(result.value(5))
-			mycontact.notas = str(result.value(6))
-			mycontact.registro = str(result.value(7))
-		
-		return mycontact
+		qDebug('[Debug] la consulta retorno %s objetos'% str(result.size()))
+		if result.next():
+			return self.__setObj(result)
+		else:
+			qDebug('[Debug] no se encontro ningun valor')
+			return False
 	
 
-	def getContacts(self):
+	def listContacts(self):
 		'''Retona un listado de los contactos
 		@return list(oibj) contact'''
-		else:
-			result = self.MyDb.selectQuery(self.table)
-			contacts = []
-			while result.next():
-				mycontact = Contact()
-				mycontact.id_contacto = str(result.value(0))
-				mycontact.id_ciudad = str(result.value(1))
-				mycontact.nombre = str(result.value(2))
-				mycontact.telefono = str(result.value(3))
-				mycontact.celular = str(result.value(4))
-				mycontact.email = str(result.value(5))
-				mycontact.notas = str(result.value(6))
-				mycontact.registro = str(result.value(7))
-				contacts.append(mycontact)
+		contacts = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('[Debug] la consulta retorno %s objetos'% str(result.size()))
+		while result.next():			
+			contacts.append(self.__setObj(result))
 
-			return contacts
+		return contacts
+
+
+	def firstContact(self):
+		'''retorna el primer contacto de la lista
+		@return (obj) Contact'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el primer contacto de la lista')
+		if result.first():
+			return self.__setObj(result)
+
+
+	def lastContact(self):
+		'''retorna el ultimo contacto de la Lista
+		@return (obj) contacto'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma ultimo contacto de la lista')
+		if result.last():
+			return self.__setObj(result)
+
+
+	def findContact(self,condition):
+		'''Busca un contacto
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo Contact'''
+		contacts = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			contacts.append(self.__setObj(result))
+
+		return contacts
+
 
 	def createContact(self,contact):
 		'''Crea un contacto
@@ -101,14 +117,16 @@ class contactCatalog(object):
 			'telefono': contact.telefono,
 			'celular': contact.celular,
 			'email': contact.email,
-			'notas': contact.notas,
-			'registro': contact.registro		
+			'notas': contact.notas					
 		}
+
 		result = self.MyDb.createQuery(self.table,value)
 		
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se inserto un contacto')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug] problemas insertando un contacto')
 			return False
 
 	def updateContact(self,oldContact, contact):
@@ -117,7 +135,7 @@ class contactCatalog(object):
 		@param (obj) tipo Contact
 		@return bool
 		'''
-		condition = ' id_contacto = ' + str(oldContact.id_contacto)
+		condition = {' id_contacto = ' : str(oldContact.id_contacto)}
 		values = {			
 			'id_ciudad': contact.id_ciudad,
 			'nombre': contact.nombre,
@@ -126,35 +144,59 @@ class contactCatalog(object):
 			'email': contact.email,
 			'notas': contact.notas,
 				}
+
 		result = self.MyDb.updateQuery(self.table,values,condition)
 		
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Actualiza un contacto')
 			return True
 		else:
+			qDebug('[Debug] problemas Actualizando un contacto')
 			return False
 
 	def deleteContact(self,contact):
 		'''Elimina un contacto
 		@param (obj) tipo contact
 		@return (bool)'''
-		condition = ' id_contacto = ' + str(contact.id_contacto)
+		condition = {' id_contacto = ' : str(contact.id_contacto)}
 		result = self.MyDb.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se elimino un contacto %s' % contact.nombre)
 			return True
 		else:
+			qDebug('[Debug] problemas Eliminando un contacto')
 			return False
 
-	def findContact(self,contact,content):
-		'''Busca uno o unos con'''
-		pass
+	def countContacts(self):
+		'''Cuenta los contactos registrados
+		@return (int)'''
+		qDebug('[Debug] se cuentan los registros de la tabla contactos')
+		return len(self.listContacts())
+
+
+	def listColumns(self):
+		colums = []
+		result = self.MyDB.listColumns(self.table)
+		while result.next():
+			qDebug('[Debug] se lista las columnas de la tabla contactos')
+			colums.append(str(result.value(0)))
+
+		return colums
+
 
 	def __setObj(self, result):
+		'''Crea un objeto tipo Conctact y lo retorna
+		@param (obj) result
+		@return (obj) contact'''
 		mycontact = Contact()
-		mycontact.
-		mycontact
-		mycontact
-		mycontact
-		mycontact
-		mycontact
-		mycontact
+		mycontact.id_contacto = str(result.value(0))
+		mycontact.id_ciudad = str(result.value(0))
+		mycontact.nombre = str(result.value(0))
+		mycontact.telefono = str(result.value(0))
+		mycontact.celular = str(result.value(0))
+		mycontact.email = str(result.value(0))
+		mycontact.notas = str(result.value(0))
+		mycontact.registro = str(result.value(0))
+
+		return mycontact
