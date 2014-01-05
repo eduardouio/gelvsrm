@@ -214,5 +214,5 @@ class inventaryCatalog(object):
 		myinventary.ubicacion = str(result.value(7))
 		myinventary.notas = str(result.value(8))
 		myinventary.registro = str(result.value(9))
-
+		qDebug('[Debug] se crea un objeto inventario')
 		return myinventary
