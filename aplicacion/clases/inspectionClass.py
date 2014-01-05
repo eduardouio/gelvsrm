@@ -25,6 +25,8 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+
 
 class Inspection(object):
 	"""estructura para Inspection"""
@@ -40,36 +42,33 @@ class Inspection(object):
 		self.fecha = fecha
 		self.notas = notas
 		self.registro = registro
+		qDebug('[Debug] se inicia la clase inspection')
 
-class inspectionClass(object):
+
+class inspectionCatalog(object):
 	"""operaciones sobre el objeto Inspection"""
 	def __init__(self):
-		super(inspectionClass, self).__init__()
+		super(inspectionCatalog, self).__init__()
 		self.table = 'inspeccion'
 		self.MyDb = DB()
+		qDebug('[Debug] se inicia la clase inspectionCatalog')
 
-	def getInspections(self,inspection=''):
+
+	def getInspection(self,inspection=''):
 		'''Obtiene una inspeccion o listado de ellas
 		@param (str) id_inspeccion
-		@return (obj) | list(obj) inspeccion
-		'''
-		if inspection:
-			myinspection = Inspection()
-			condition = ' id_inspeccion = ' + str(inspection)
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				myinspection.id_inspeccion = str(result.value(0))
-				myinspection.id_vehiculo = str(result.value(1))
-				myinspection.id_tecnico = str(result.value(2))
-				myinspection.id_contacto = str(result.value(3))
-				myinspection.id_ciudad = str(result.value(4))
-				myinspection.periodo = str(result.value(5))
-				myinspection.fecha = str(result.value(6))
-				myinspection.notas = str(result.value(7))
-				myinspection.registro = str(result.value(8))
+		@return (obj) inspeccion
+		'''	
+		condition = {' id_inspeccion = ' : str(inspection)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('la consulta retono %s registros'% result.size())
+		if result.next():
+			return self.__setObj(result)
 
-			return myinspection
 
+	def listInstections(self):
+		'''Lista las inspecciones 
+		@return lst(inspections)'''
 		else:
 
 			inspections = []
@@ -89,20 +88,54 @@ class inspectionClass(object):
 
 			return inspections
 
+
+	def firstContact(self):
+		'''retorna el primer contacto de la lista
+		@return (obj) Contact'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el primer contacto de la lista')
+		if result.first():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def lastContact(self):
+		'''retorna el ultimo contacto de la Lista
+		@return (obj) contacto'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma ultimo contacto de la lista')
+		if result.last():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def findContact(self,condition):
+		'''Busca un contacto
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo Contact'''
+		contacts = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			contacts.append(self.__setObj(result))
+
+		return contacts
+
+
+
 	def createInspection(self,inspection):
 		'''Crea una inspeccion
 		@param (obj) inspection 
 		@return (bool) | (int)'''
-		values = {
-			'id_inspeccion': inspection.id_inspeccion,
+		values = {			
 			'id_vehiculo': inspection.id_vehiculo,
 			'id_tecnico': inspection.id_tecnico,
 			'id_contacto': inspection.id_contacto,
 			'id_ciudad': inspection.id_ciudad,
 			'periodo': inspection.periodo,
 			'fecha': inspection.fecha,
-			'notas': inspection.notas,
-			'registro': inspection.registro
+			'notas': inspection.notas			
 		}
 		result = self.MyDb.createQuery(self.table,values)
 
@@ -125,8 +158,7 @@ class inspectionClass(object):
 			'id_ciudad': inspection.id_ciudad,
 			'periodo': inspection.periodo,
 			'fecha': inspection.fecha,
-			'notas': inspection.notas,
-			'registro': inspection.registro
+			'notas': inspection.notas			
 		}
 		result = self.MyDb.updateQuery(self.table, values)
 
@@ -146,8 +178,37 @@ class inspectionClass(object):
 			return True
 		else:
 			return False
+	def countContacts(self):
+		'''Cuenta los contactos registrados
+		@return (int)'''
+		qDebug('[Debug] se cuentan los registros de la tabla contactos')
+		return len(self.listContacts())
 
-	def findInspection(self,condition=''):
-		'''Busca una condicion
-		'''
-		pass
+
+	def listColumns(self):
+		'''Retorna un listado de las tablas
+		@return (lstt)'''
+		colums = []
+		result = self.MyDB.listColumns(self.table)
+		while result.next():
+			qDebug('[Debug] se lista las columnas de la tabla contactos')
+			colums.append(str(result.value(0)))
+
+		return colums
+
+
+	def __setObj(self, result):
+		'''Crea un objeto tipo Conctact y lo retorna
+		@param (obj) result
+		@return (obj) contact'''
+		mycontact = Contact()
+		mycontact.id_contacto = str(result.value(0))
+		mycontact.id_ciudad = str(result.value(0))
+		mycontact.nombre = str(result.value(0))
+		mycontact.telefono = str(result.value(0))
+		mycontact.celular = str(result.value(0))
+		mycontact.email = str(result.value(0))
+		mycontact.notas = str(result.value(0))
+		mycontact.registro = str(result.value(0))
+
+		return mycontact

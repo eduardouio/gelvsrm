@@ -181,7 +181,7 @@ class contactCatalog(object):
 
 
 	def listColumns(self):
-		'''Retorna un listado de las tablas
+		'''Retorna un listado de las columnas de la tabla
 		@return (lstt)'''
 		colums = []
 		result = self.MyDB.listColumns(self.table)
@@ -198,12 +198,12 @@ class contactCatalog(object):
 		@return (obj) contact'''
 		mycontact = Contact()
 		mycontact.id_contacto = str(result.value(0))
-		mycontact.id_ciudad = str(result.value(0))
-		mycontact.nombre = str(result.value(0))
-		mycontact.telefono = str(result.value(0))
-		mycontact.celular = str(result.value(0))
-		mycontact.email = str(result.value(0))
-		mycontact.notas = str(result.value(0))
-		mycontact.registro = str(result.value(0))
+		mycontact.id_ciudad = str(result.value(1))
+		mycontact.nombre = str(result.value(2))
+		mycontact.telefono = str(result.value(3))
+		mycontact.celular = str(result.value(4))
+		mycontact.email = str(result.value(5))
+		mycontact.notas = str(result.value(6))
+		mycontact.registro = str(result.value(7))
 
 		return mycontact
