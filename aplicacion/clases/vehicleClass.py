@@ -25,6 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Vehicle(object):
 	"""Estructura de la clse  Vehicle"""
@@ -37,55 +38,82 @@ class Vehicle(object):
 		self.id_ciudad = id_ciudad
 		self.modelo = modelo
 		self.nro_motor = nro_motor
-		self.ingreso = ingreso
+		self.ingreso = QDate.currentDate()
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime().currentDatetime()
+		qDebug('[Debug] se inicia la clase vehicle')
 		
 
 class vehicleCatalog(object):
 	"""operaciones sobre vehicleCatalog"""
+
 	def __init__(self):
 		super(vehicleCatalog, self).__init__()
 		self.table = 'vehiculo'
 		self.MyDb = DB()
+		qDebug('[Debug] se inicia la clase vehicleCatalog')
 
-	def getVehicles(self, vehicle = ''):
+
+	def getVehicle(self, vehicle = ''):
 		'''Obtiene un vehiculo o listado de ellos
 		@param (str) id_vehiculo
-		@return (obj) list(obj)
-		'''
-		if vehicle:
-			myvehicle = Vehicle()
-			condition = ' id_vehiculo = ' + str(vehicle)
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				myvehicle.id_vehiculo = str(result.value(0))
-				myvehicle.id_cliente = str(result.value(1))
-				myvehicle.id_contacto = str(result.value(2))
-				myvehicle.id_ciudad = str(result.value(3))
-				myvehicle.modelo = str(result.value(4)
-				myvehicle.nro_motor = str(result.value(5))
-				myvehicle.ingreso = str(result.value(6))
-				myvehicle.notas = str(result.value(7))
-				myvehicle.registro = str(result.value(8))
-
-			return myvehicle
+		@return (obj) vehicle
+		'''	
+		condition = {' id_vehiculo = ' : str(vehicle)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la consulta retorna %s registros' % result.size())
+		if result.next():
+			return self.__setObj(result)
 		else:
-			vehicles = []
-			result = self.MyDb.selectQuery(self.table)
-			while result.next():
-				myvehicle = Vehicle()
-				myvehicle.id_vehiculo = str(result.value(0))
-				myvehicle.id_cliente = str(result.value(1))
-				myvehicle.id_contacto = str(result.value(2))
-				myvehicle.id_ciudad = str(result.value(3))
-				myvehicle.modelo = str(result.value(4)
-				myvehicle.nro_motor = str(result.value(5))
-				myvehicle.ingreso = str(result.value(6))
-				myvehicle.notas = str(result.value(7))
-				myvehicle.registro = str(result.value(8))
+			qDebug('[Debug] problemas para retornar un vehiculo')
+			return False
 
-			return vehicles
+	
+	def listVehicles(self):
+		'''Retona un listado de los vehiculos
+		@return lst(vehicle))'''
+		vehicles = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('[Debug] la consulta retorna %s registros' % result.size())
+		while result.next():
+			vehicles.append(self.__setObj(result))
+
+		return vehicles
+
+
+	def firstVehicle(self):
+		'''retorna el primer Vehicle de la lista
+		@return (obj) Vehicle'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el primer Vehicle de la lista')
+		if result.first():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def lastVehicle(self):
+		'''retorna el ultimo Vehicle de la Lista
+		@return (obj) Vehicle'''
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma ultimo Vehicle de la lista')
+		if result.last():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def findVehicle(self,condition):
+		'''Busca un Vehicleo
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo Vehicle'''
+		vehicles = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			vehicles.append(self.__setObj(result))
+
+		return vehicles
+
 
 	def createVehicle(self,vehicle):
 		'''Crea un vehiclo
@@ -99,16 +127,18 @@ class vehicleCatalog(object):
 			'modelo' : vehicle.modelo,
 			'nro_motor' : vehicle.nro_motor,
 			'ingreso' : vehicle.ingreso,
-			'notas' : vehicle.notas,
-			'registro' : vehicle.registro
+			'notas' : vehicle.notas			
 		}
 
 		result = self.MyDb.createQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se ingresa un vehiculo a la tabla')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug] problemas para ingresar un vehiculo a la tabla')
 			return False
+
 
 	def updateVehicle(self,old_vehicle,vehicle):
 		'''Actualiza un vehiculo
@@ -116,7 +146,7 @@ class vehicleCatalog(object):
 		@param (obj) vehicle
 		@return (boo)
 		'''
-		condition = ' id_vehiculo = ' + str(old_vehicle.id_vehiculo)
+		condition = {' id_vehiculo = ' : str(old_vehicle.id_vehiculo)}
 		values = {
 			'id_vehiculo' : vehicle.id_vehiculo,
 			'id_cliente' : vehicle.id_cliente,
@@ -125,30 +155,67 @@ class vehicleCatalog(object):
 			'modelo' : vehicle.modelo,
 			'nro_motor' : vehicle.nro_motor,
 			'ingreso' : vehicle.ingreso,
-			'notas' : vehicle.notas,
-			'registro' : vehicle.registro
+			'notas' : vehicle.notas			
 		}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Actualiza un vehiculo a la tabla')
 			return True
 		else:
+			qDebug('[Debug] problemas para actualizar un vehiculo a la tabla')
 			return False
+
 
 	def deleteVehicle(self,vehicle):
 		'''Elimina un vehiculo
 		@param (obj) vehicle
 		@return bool
 		'''
-		condition = ' id_vehiculo =' + str(vehicle.id_vehiculo)
+		condition = {' id_vehiculo =' : str(vehicle.id_vehiculo)}
 		result = self.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se elimina un vehiculo a la tabla')
 			return True
 		else:
+			qDebug('[Debug] priblemas para eliminar un vehiculo a la tabla')
 			return False
 
-	def finVehicle(self,condition=''):
-		'''Busca un vehiculo'''
-		pass
+
+	def countVehicles(self):
+		'''Cuenta los vehiculos registrados
+		@return (int)'''
+		qDebug('[Debug] se cuentan los registros de la tabla vehiculos')
+		return len(self.listVehicles())
+
+
+	def listColumns(self):
+		'''Retorna un listado de las tablas
+		@return (lstt)'''
+		colums = []
+		result = self.MyDB.listColumns(self.table)
+		while result.next():
+			qDebug('[Debug] se lista las columnas de la tabla vehiculos')
+			colums.append(str(result.value(0)))
+
+		return colums
+
+
+	def __setObj(self, result):
+		'''Crea un objeto tipo vehicle y lo retorna
+		@param (obj) result
+		@return (obj) vehicle'''
+		myvehicle = Vehicle()
+		myvehicle.id_vehiculo = str(result.value(0))
+		myvehicle.id_cliente = str(result.value(1))
+		myvehicle.id_contacto = str(result.value(2))
+		myvehicle.id_ciudad = str(result.value(3))
+		myvehicle.modelo = str(result.value(4))
+		myvehicle.nro_motor = str(result.value(5))
+		myvehicle.ingreso = str(result.value(6))
+		myvehicle.notas = str(result.value(7))
+		myvehicle.registro = str(result.value(8))
+		qDebug('[Debug] se crea un objeto vehiculo')
+		return myvehicle
