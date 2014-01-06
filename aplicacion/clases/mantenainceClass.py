@@ -84,7 +84,7 @@ class mantenainceCatalog(object):
 		'''retorna el primer Mantenainceo de la lista
 		@return (obj) Mantenaince'''		
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma el primer Mantenainceo de la lista')
+		qDebug('[Debug] Se toma el primer Mantenaince de la lista')
 		if result.first():
 			return self.__setObj(result)
 		else:
@@ -92,10 +92,10 @@ class mantenainceCatalog(object):
 
 
 	def lastMantenaince(self):
-		'''retorna el ultimo Mantenainceo de la Lista
-		@return (obj) Mantenainceo'''
+		'''retorna el ultimo Mantenaince de la Lista
+		@return (obj) Mantenaince'''
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma ultimo Mantenainceo de la lista')
+		qDebug('[Debug] Se toma ultimo Mantenaince de la lista')
 		if result.last():
 			return self.__setObj(result)
 		else:
@@ -125,16 +125,18 @@ class mantenainceCatalog(object):
 		'periodo': str(mantenaince.periodo),
 		'fecha': str(mantenaince.fecha),
 		'kilometros': str(mantenaince.kilometros),
-		'notas': str(mantenaince.notas),
-		'registro': str(mantenaince.registro)
+		'notas': str(mantenaince.notas)		
 		}
 
 		result = self.createQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se crea un mantenimiento en la base')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug] No se crea un mantenimiento en la base')
 			return False
+
 
 	def updateMantenaince(self,oldMantenaince, mantenaince):
 		'''Actualiza un mantenimiento
@@ -148,33 +150,38 @@ class mantenainceCatalog(object):
 		'periodo': str(mantenaince.periodo),
 		'fecha': str(mantenaince.fecha),
 		'kilometros': str(mantenaince.kilometros),
-		'notas': str(mantenaince.notas),
-		'registro': str(mantenaince.registro)
+		'notas': str(mantenaince.notas)		
 		}
-		condition = ' id_mantenimiento = ' + str(oldMantenaince.id_mantenimiento)
+		
+		condition = {' id_mantenimiento = ' : str(oldMantenaince.id_mantenimiento)}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] Se actualiza un mantenimiento en la base')
 			return True
 		else:
+			qDebug('[Debug] No se Actualiza un mantenimiento en la base')
 			return False
+
 
 	def deleteMantenaince(self,mantenaince):
 		'''Elimina un mantenimiento'''
-		condition = ' id_mantenimiento = ' + str(mantenaince.id_mantenimiento)
+		condition = {' id_mantenimiento = ' : str(mantenaince.id_mantenimiento)}
 		result = self.MyDb.dleteQuery(self.table,condition)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] Se Elimina un mantenimiento en la base')
 			return True
 		else:
+			qDebug('[Debug] No se puede eliminar un mantenimiento en la base')
 			return False
 
 
 	def countMantenainces(self):
 		'''Cuenta los Mantenainceos registrados
 		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla Mantenainceos')
+		qDebug('[Debug] se cuentan los registros de la tabla Mantenainces')
 		return len(self.listMantenainces())
 
 
