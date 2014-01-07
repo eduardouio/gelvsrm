@@ -178,24 +178,7 @@ class inspectionCatalog(object):
 			return True
 		else:
 			return False
-	def countContacts(self):
-		'''Cuenta los contactos registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla contactos')
-		return len(self.listContacts())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las tablas
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla contactos')
-			colums.append(str(result.value(0)))
-
-		return colums
-
+	
 
 	def __setObj(self, result):
 		'''Crea un objeto tipo Conctact y lo retorna

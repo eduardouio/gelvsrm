@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Version		1.0
@@ -133,7 +134,7 @@ class contactCatalog(object):
 		else:
 			qDebug('[Debug] problemas insertando un contacto')
 			return False
-			
+
 
 	def updateContact(self,oldContact, contact):
 		'''Actualiza un contacto
@@ -160,6 +161,7 @@ class contactCatalog(object):
 			qDebug('[Debug] problemas Actualizando un contacto')
 			return False
 
+
 	def deleteContact(self,contact):
 		'''Elimina un contacto
 		@param (obj) tipo contact
@@ -173,25 +175,7 @@ class contactCatalog(object):
 		else:
 			qDebug('[Debug] problemas Eliminando un contacto')
 			return False
-
-	def countContacts(self):
-		'''Cuenta los contactos registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla contactos')
-		return len(self.listContacts())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las columnas de la tabla
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla contactos')
-			colums.append(str(result.value(0)))
-
-		return colums
-
+			
 
 	def __setObj(self, result):
 		'''Crea un objeto tipo Conctact y lo retorna

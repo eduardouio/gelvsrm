@@ -200,23 +200,6 @@ class invoiceCatalog(object):
 			return False
 
 
-	def coutInvoices(self):
-		'''Retorna el numero de facturas registrados en la DB
-		@return int'''
-		return len(self.listInvoices())
-		
-
-	def listColumns(self):
-		'''Retorna una lista con la lista de las columnas
-		@return (lst)'''
-		colums = []
-		result = self.MyDb.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] Retorna las columnas de la tabla')
-			colums.append(str(result.value(0)))
-
-		return colums
-	
 
 	def __setObj(self, result):
 		'''crea un objeto tipo facturas

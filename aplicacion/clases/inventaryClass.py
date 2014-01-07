@@ -180,25 +180,6 @@ class inventaryCatalog(object):
 			return False
 
 
-	def countInventary(self):
-		'''Cuenta los items de inentario registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla Inventario')
-		return len(self.listInventary())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las columnas de la tabla inventary
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla Inventario')
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
 	def __setObj(self, result):
 		'''Crea un objeto tipo inventary y lo retorna
 		@param (obj) result

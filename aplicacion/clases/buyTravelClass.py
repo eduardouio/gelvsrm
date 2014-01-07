@@ -24,6 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class buyTravel(object):
 	"""estructura para los gastos viajes"""
@@ -33,11 +34,11 @@ class buyTravel(object):
 		self.id_gasto_viaje = id_gasto_viaje
 		self.id_viaje = id_viaje
 		self.nro_factura = nro_factura
-		self.fecha = fecha
+		self.fecha = QDate()
 		self.detalle = detalle
 		self.valor = valor
 		self.tipo = tipo
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
 		qDebug('[Debug] se instancia la clase buyTravel')
 		
 
@@ -187,25 +188,6 @@ class buyTravelCatalog(object):
 		else:
 			qDebug('[Debug] No se Elimina un buyTravel en la base de datos')		
 			return False
-
-	
-	def countbuyTravels(self):
-		'''Cuenta los buyTravelos registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla compras_viaje')
-		return len(self.listbuyTravels())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las columnas de la tabla
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla buyTravelos')
-			colums.append(str(result.value(0)))
-
-		return colums
 
 
 	def __setObj(self, result):

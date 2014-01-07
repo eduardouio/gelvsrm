@@ -187,23 +187,6 @@ class coustomerCatalog(object):
 			return False
 
 
-	def countCoustomer(self):
-		'''Cuenta las ciudades registradas
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla ciudad')
-		return len(self.listCoustomers())
-
-
-	def listColumns(self):
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla ciudad')
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
 	def __setObj(self,result):
 		'''Crea un objeto tipo city
 		@return (obj) city'''

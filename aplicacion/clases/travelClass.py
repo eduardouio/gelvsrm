@@ -162,24 +162,6 @@ class travelCatalog(object):
 			return False
 
 
-	def countTravels(self):
-		'''Cuenta los Travels registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla Travels')
-		return len(self.listTravels())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las columnas de la tabla
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla Travelos')
-			colums.append(str(result.value(0)))
-
-		return colums
-
 
 	def __setObj(self, result):
 		'''Crea un objeto tipo travel y lo retorna

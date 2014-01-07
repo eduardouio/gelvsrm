@@ -178,25 +178,6 @@ class mantenainceCatalog(object):
 			return False
 
 
-	def countMantenainces(self):
-		'''Cuenta los Mantenainceos registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla Mantenainces')
-		return len(self.listMantenainces())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las columnas de la tabla
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla Mantenainceos')
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
 	def __setObj(self, result):
 		'''Crea un objeto tipo Mantenaince y lo retorna
 		@param (obj) result

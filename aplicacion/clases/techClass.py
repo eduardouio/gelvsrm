@@ -175,23 +175,6 @@ class techCatalog(object):
 			return False
 
 
-	def coutTechnicals(self):
-		'''Retorna el numero de tecnicos registrados en la DB
-		@return int'''
-		return len(self.listTechnicals())
-		
-
-	def listColumns(self):
-		'''Retorna una lista con la lista de las columnas
-		@return (lst)'''
-		result = self.MyDb.listColumns(self.table)
-		colums = []
-		while result.next():
-			colums.append(str(result.value(0)))
-
-		return colums
-		
-
 	def __setObj(self, result):
 		'''crea un objeto tipo tecnicos
 		 @param result 

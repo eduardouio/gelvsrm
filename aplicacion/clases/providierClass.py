@@ -191,25 +191,6 @@ class providierCatalog(object):
 			return False
 
 
-	def countProvideirs(self):
-		'''Cuenta los proveedores registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla proveedores')
-		return len(self.listProvidiers())
-
-
-	def listColumns(self):
-		'''retorna un listado de columnas de la tabla
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla proveedores')
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
 	def __setObj(self, result):
 		'''Crea un objeto tipo Conctact y lo retorna
 		@param (obj) result

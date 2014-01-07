@@ -184,25 +184,6 @@ class vehicleCatalog(object):
 			return False
 
 
-	def countVehicles(self):
-		'''Cuenta los vehiculos registrados
-		@return (int)'''
-		qDebug('[Debug] se cuentan los registros de la tabla vehiculos')
-		return len(self.listVehicles())
-
-
-	def listColumns(self):
-		'''Retorna un listado de las tablas
-		@return (lstt)'''
-		colums = []
-		result = self.MyDB.listColumns(self.table)
-		while result.next():
-			qDebug('[Debug] se lista las columnas de la tabla vehiculos')
-			colums.append(str(result.value(0)))
-
-		return colums
-
-
 	def __setObj(self, result):
 		'''Crea un objeto tipo vehicle y lo retorna
 		@param (obj) result
