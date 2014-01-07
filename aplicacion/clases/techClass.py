@@ -179,6 +179,7 @@ class techCatalog(object):
 		'''Retorna el numero de tecnicos registrados en la DB
 		@return int'''
 		return len(self.listTechnicals())
+		
 
 	def listColumns(self):
 		'''Retorna una lista con la lista de las columnas

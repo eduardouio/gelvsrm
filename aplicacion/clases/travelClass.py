@@ -111,7 +111,7 @@ class travelCatalog(object):
 			'informe' :travel.informe			
 		}
 
-		result = self.MyDb.createQuery(self.table,value)
+		result = self.MyDb.insertQuery(self.table,value)
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se crea un viaje en la tabla')
 			return str(result.lastInsertId())

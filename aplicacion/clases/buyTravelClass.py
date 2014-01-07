@@ -138,7 +138,7 @@ class buyTravelCatalog(object):
 			'tipo' : str(buyTravel.tipo)			
 		}
 
-		result = self.MyDb.createQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] Se crea un buyTravel en la base de datos')		

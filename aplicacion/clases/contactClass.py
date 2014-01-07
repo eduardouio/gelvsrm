@@ -125,7 +125,7 @@ class contactCatalog(object):
 			'notas': contact.notas					
 		}
 
-		result = self.MyDb.createQuery(self.table,value)
+		result = self.MyDb.insertQuery(self.table,value)
 		
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se inserto un contacto')
@@ -133,6 +133,7 @@ class contactCatalog(object):
 		else:
 			qDebug('[Debug] problemas insertando un contacto')
 			return False
+			
 
 	def updateContact(self,oldContact, contact):
 		'''Actualiza un contacto

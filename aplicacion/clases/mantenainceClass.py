@@ -128,7 +128,7 @@ class mantenainceCatalog(object):
 		'notas': str(mantenaince.notas)		
 		}
 
-		result = self.createQuery(self.table,values)
+		result = self.insertQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se crea un mantenimiento en la base')

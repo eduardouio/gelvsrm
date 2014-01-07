@@ -112,7 +112,7 @@ class repairCatalog(object):
 			'registro' : repair.registro
 		}
 
-		result = self.MyDb.createQuery(self.table, values)
+		result = self.MyDb.insertQuery(self.table, values)
 
 		if(result.numRowsAffected()>0):
 			return str(result.lastInsertId())

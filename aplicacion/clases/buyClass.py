@@ -132,7 +132,7 @@ class buyCatalog(object):
 			'notas': buy.notas			
 		}
 
-		result = self.MyDb.createQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se inserto una compra')

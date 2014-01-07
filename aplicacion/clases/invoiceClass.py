@@ -27,6 +27,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Invoice(object):
 	"""estructura de la Invoice"""
@@ -36,63 +37,89 @@ class Invoice(object):
 		self.id_factura = id_factura
 		self.id_cliente = id_cliente
 		self.id_contacto = id_contacto
-		self.fecha = fecha
-		self.fecha_envio = fecha_envio
+		self.fecha = QDate()
+		self.fecha_envio = QDate()
 		self.guia_envio = guia_envio
 		self.servicio_envio = servicio_envio
 		self.estado = estado
 		self.archivo = archivo
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
+		qDebug('Se inicia la clase factura')
 
 
 class invoiceCatalog(object):
 	"""acciones sobre invoiceCatalog"""
+
 	def __init__(self):
 		super(invoiceCatalog, self).__init__()
 		self.table = 'factura'
 		self.MyDb = DB()
+		qDebug('Se inicia la clase invoiceCatalog')
 
-	def getInvoices(self, invoice=''):
-		'''Obtiene una factura o listado'''
-		if invoice:
-			myinvoice = Invoice()
-			condition = ' id_factura = ' + str(invoice)
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				myinvoice.id_factura = str(result.value(0))
-				myinvoice.id_cliente = str(result.value(1))
-				myinvoice.id_contacto = str(result.value(2))
-				myinvoice.fecha = str(result.value(3))
-				myinvoice.fecha_envio = str(result.value(4))
-				myinvoice.guia_envio = str(result.value(5))
-				myinvoice.servicio_envio = str(result.value(6))
-				myinvoice.estado = str(result.value(7))
-				myinvoice.archivo = str(result.value(8))
-				myinvoice.notas = str(result.value(9))
-				myinvoice.registro = str(result.value(10))
 
-			return myinvoice
-
+	def getInvoice(self, invoice=''):
+		'''Obtiene una factura o listado'''		
+		condition = {' id_factura = ' : str(invoice)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('La consulta retorno %s registros'% result.size())
+		if result.next():
+			return self.__setObj(result)
 		else:
-			invoices = []
-			result = self.MyDb.selectQuery(self.table)
-			while result.next():
-				myinvoice = Invoice()
-				myinvoice.id_factura = str(result.value(0))
-				myinvoice.id_cliente = str(result.value(1))
-				myinvoice.id_contacto = str(result.value(2))
-				myinvoice.fecha = str(result.value(3))
-				myinvoice.fecha_envio = str(result.value(4))
-				myinvoice.guia_envio = str(result.value(5))
-				myinvoice.servicio_envio = str(result.value(6))
-				myinvoice.estado = str(result.value(7))
-				myinvoice.archivo = str(result.value(8))
-				myinvoice.notas = str(result.value(9))
-				myinvoice.registro = str(result.value(10))
-				invoices.append(myinvoice)
+			qDebug('[Debug] no se retorna niguna factura')
+			return False
 
-			return invoices
+
+	def listInvoices(self):
+		'''Retorna un listado completo de facturas
+		@return lst(Invoice)'''		
+		invoices = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('La consulta retorno %s registros'% result.size())
+		while result.next():			
+			invoices.append(self.__setObj(result))
+
+		return invoices
+
+		
+	def firstInvoice(self):
+		'''retorna el primer factura
+		@return (obj) Invoice'''
+		myInvoice = Invoice()
+		result = self.MyDb.selectQuery(self.table)		
+		qDebug('[Debug] Se toma el primer factura de la lista')
+		
+		if result.first():			
+			return self.__setObj(result)
+		else:
+			qDebug('[Debug] Problemas para tomar el primer factura de la lista')
+			return False
+
+
+	def lastInvoice(self):
+		'''retorna ultima factura
+		@return (obj) Invoice'''		
+		result = self.MyDb.selectQuery(self.table)		
+		qDebug('[Debug] Se toma el ultimo factura de la lista')
+		
+		if result.last():			
+			return self.__setObj(result)
+		else:
+			qDebug('[Debug] Problemas para tomar el ultimo factura de la lista')		
+			return False
+
+
+	def findInvoice(self,condition):
+		'''Busca un técnico en la base de datos
+		condition = {'id_factura like ' : '%4%'} 		
+		@return lst(obj)'''
+		Invoices = []
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		while result.next():
+			Invoices.append(self.__setObj(result))
+
+		return Invoices
+			
 
 	def createInvoice(self,invoice):
 		'''Crea una factura
@@ -109,16 +136,18 @@ class invoiceCatalog(object):
 			'servicio_envio' : invoice.servicio_envio,
 			'estado' : invoice.estado,
 			'archivo' : invoice.archivo,
-			'notas' : invoice.notas,
-			'registro' : invoice.registro
+			'notas' : invoice.notas			
 		}
 
-		result = self.MyDb.createQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Crea una factura')
 			return result.lastInsertId()
 		else:
+			qDebug('[Debug] No se Crea una factura')
 			return False
+
 
 	def updateInvoice(self,oldInvoice,invoice):
 		'''Actualiza una factura
@@ -126,7 +155,7 @@ class invoiceCatalog(object):
 		@param (obj) invoice
 		@return (bool)
 		'''
-		condition = ' id_factura = ' + str(oldInvoice.id_factura)
+		condition = {' id_factura = ' : str(oldInvoice.id_factura)}
 		values = {
 			'id_factura' : invoice.id_factura,
 			'id_cliente' : invoice.id_cliente,
@@ -137,31 +166,88 @@ class invoiceCatalog(object):
 			'servicio_envio' : invoice.servicio_envio,
 			'estado' : invoice.estado,
 			'archivo' : invoice.archivo,
-			'notas' : invoice.notas,
-			'registro' : invoice.registro
+			'notas' : invoice.notas			
 		}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 		
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] Se actualiza una factura')
 			return True
 		else:
+			qDebug('[Debug] No se actualiza una factura')
 			return False
+
 
 	def deleteInvoice(self,invoice):
 		'''Elimina una factura
 		@param (obj) invoice
-		@return (bool)'''
-		condition = ' id_factura = ' + str(invoice.id_factura)
-		result = self.MyDb.deleteQuery(self.table,condition)
+		@return (bool)'''		
+		from invoiceItemClass import invoiceItemCatalog
+		myInvoiceItemCatalog = invoiceItemCatalog()
+		if(myInvoiceItemCatalog.deleteInvoiceItems(invoice.id_factura)):
+			condition = {' id_factura = ' : str(invoice.id_factura)}
+			result = self.MyDb.deleteQuery(self.table,condition)
 
-		if (result.numRowsAffected() > 0):
-			return True
+			if (result.numRowsAffected() > 0):
+				qDebug('[Debug] No se Elimina una factura')
+				return True
+			else:
+				qDebug('[Debug] No se Elimina una factura')
+				return False
 		else:
+			qDebug('No se puede eliminar los items de la factura')
 			return False
 
-	def findInvoice(self,condition=''):
-		'''Busca una factura
-		@param (obj)
-		'''
-		pass
+
+	def coutInvoices(self):
+		'''Retorna el numero de facturas registrados en la DB
+		@return int'''
+		return len(self.listInvoices())
+		
+
+	def listColumns(self):
+		'''Retorna una lista con la lista de las columnas
+		@return (lst)'''
+		colums = []
+		result = self.MyDb.listColumns(self.table)
+		while result.next():
+			qDebug('[Debug] Retorna las columnas de la tabla')
+			colums.append(str(result.value(0)))
+
+		return colums
+	
+
+	def __setObj(self, result):
+		'''crea un objeto tipo facturas
+		 @param result 
+		 @return objeto tipo Invoice'''		 
+		myinvoice = Invoice()
+		myinvoice.id_factura = str(result.value(0))
+		myinvoice.id_cliente = str(result.value(1))
+		myinvoice.id_contacto = str(result.value(2))
+		myinvoice.fecha = str(result.value(3))
+		myinvoice.fecha_envio = str(result.value(4))
+		myinvoice.guia_envio = str(result.value(5))
+		myinvoice.servicio_envio = str(result.value(6))
+		myinvoice.estado = str(result.value(7))
+		myinvoice.archivo = str(result.value(8))
+		myinvoice.notas = str(result.value(9))
+		myinvoice.registro = str(result.value(10))
+
+		#verificamos los nulos devueltos por la consulta
+		if not (isinstance(myinvoice.id_contacto,str)):
+			myinvoice.id_contacto=''
+
+		if not (isinstance(myinvoice.guia_envio,str)):
+			myinvoice.guia_envio=''
+
+		if not (isinstance(myinvoice.archivo,str)):
+			myinvoice.archivo=''
+
+		if not (isinstance(myinvoice.notas,str)):
+			myinvoice.notas=''
+
+		qDebug('[Debug] Se crea un objeto typo factura validando los campos tipo null ')
+		
+		return myinvoice

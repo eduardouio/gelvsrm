@@ -19,62 +19,121 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+
 
 class TechnicalTravel(object):
 	"""Estructura de tecnico viajes TechnicalTravel"""
+
 	def __init__(self, id_tecnico = '',id_viaje='',registro=''):
 		super(TechnicalTravel, self).__init__()
 		self.id_tecnico = id_tecnico
 		self.id_viaje = id_viaje
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
+		qDebug('[Debug] se inicia la clase TechnicalTravel')
+
 
 class technicalTravelCatalog(object):
 	"""acciones para el objeto technicalTravel"""
+
 	def __init__(self, arg):
 		super(technicalTravelCatalog, self).__init__()
 		self.MyDb = DB()
 		self.table = 'tecnico_viaje'
+		qDebug('[Debug] se inicia la clase technicalTravelCatalog')
 
-	def createTechnicalTravel(self,technicalTravel):
-		'''Vincula un tecnico a un viaje'''
+
+	def getTechnicalsTravel(self, idTravel):
+		'''Lista los tecnicos de un viaje
+		@return lst(technicalTravel)'''
+		listtTechincals = []		
+		condition = {' id_viaje = ': str(idTravel) }
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la consulta retorno %s registros'% result.size())
+		while (result.next()):
+			listtTechincals.append(self.__setObj(result))
+
+		return listtTechincals
+			
+
+	def getTravelsTechical(self, idTechnical):
+		'''Lista los viajes de un tecnico
+		@return lst(technicalTravel)'''
+		listtTechincals = []		
+		condition = {' id_tecnico = ': str(idTravel) }
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la consulta retorno %s registros'% result.size())
+		while (result.next()):
+			listtTechincals.append(self.__setObj(result))
+
+		return listtTechincals
+
+	
+	def createTavelTechnical(self, travelTechnical):
 		values = {
-			'id_tecnico' : technicalTravel.id_tecnico,
-			'id_viaje' : technicalTravel.id_viaje,
-			'registro' : technicalTravel.registro
+			'id_tecnico': travelTechnical.id_tecnico
+			'id_viaje': travelTechnical.id_viaje
 		}
 
-		result = self.MyDb.selectQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se inserto una relacion tecnico viaje')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug]  No se inserto una relacion tecnico viaje')
 			return False
+		
 
-	def updateTechnicalTravel(self,oldTechnicalTravel,technicalTravel):
-		'''Actualiza la asigancion de un tecnico a un viaje'''
-		condition = ' id_tecnico = ' + str(oldTechnicalTravel.id_tecnico) + 
-					' AND id_viaje = ' + str(oldTechnicalTravel.id_viaje)
+	def updateTavelTechnical(self, oldtravelTechnical, travelTechnical):
+		'''Actualiza una relacion viaje tecnico
+		@return'''
+
+		condition{
+				'id_tecnico = ' : oldtravelTechnical.id_tecnico,
+				'AND id_viaje = ' : oldtravelTechnical.id_viaje
+					}
+
 		values = {
-			'id_tecnico' : technicalTravel.id_tecnico,
-			'id_viaje' : technicalTravel.id_viaje,
-			'registro' : technicalTravel.registro
+			'id_tecnico': travelTechnical.id_tecnico
+			'id_viaje': travelTechnical.id_viaje
 		}
 
-		result = self.MyDb.updateQuery(self.table,values,condition)
+		result = self.MyDb.updateQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
-			return True
+			qDebug('[Debug] se Modifico una relacion tecnico viaje')
+			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug]  No se Modifico  una relacion tecnico viaje')
 			return False
 
-	def deleteTechnicalTravel(self, technicalTravel):
-		'''Eliman una relacion tec viaje'''
-		condition = ' id_tecnico = ' + str(oldTechnicalTravel.id_tecnico) + 
-					' AND id_viaje = ' + str(oldTechnicalTravel.id_viaje)
 
-		result = self.MyDb.deleteQuery(self.table,condition)
+	def deleteTravelTechical(self, travelTechnical):
+		'''Elimian una relacion tecnico viaje de la tabla
+		@return Bool'''
+		condition{
+				'id_tecnico = ' : travelTechnical.id_tecnico,
+				'AND id_viaje = ' : travelTechnical.id_viaje
+				}
 
-		if(result.numRowsAffected()>0):
+		result = self.MyDb.deleteQuery(self.table, condition)
+
+		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] Se elimina una relacion cliente viaje')
 			return True
 		else:
+			qDebug('[Debug] problemas Eliminando una relacion cliente viaje')
 			return False
+
+
+	def __setObj(self, result):
+		'''crea un objeto tipo tecnicos
+		 @param result 
+		 @return objeto tipo technical'''		 
+		mytechnical = technicalTravel()
+		mytechnical.id_tecnico = str(result.value(0))
+		mytechnical.id_viaje = str(result.value(1))
+		mytechnical.registro = str(result.value(2))
+		qDebug('[Debug] se arama un objeto tipo TravetlTechical')		
+		return mytechnical

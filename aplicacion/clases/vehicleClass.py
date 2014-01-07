@@ -130,7 +130,7 @@ class vehicleCatalog(object):
 			'notas' : vehicle.notas			
 		}
 
-		result = self.MyDb.createQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se ingresa un vehiculo a la tabla')

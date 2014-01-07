@@ -122,7 +122,7 @@ class mantenainceDetailCatalog(object):
 			'registro' :  mantenainceDetail.registro
 		}
 
-		result = self.MyDb.createQuery(self.table, values)
+		result = self.MyDb.insertQuery(self.table, values)
 
 		if(result.numRowsAffected()>0):
 			return str(result.lastInsertId())
