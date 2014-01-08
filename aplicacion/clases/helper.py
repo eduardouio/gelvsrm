@@ -28,3 +28,11 @@ def countIntemsTable(table):
 	'''Retorna el numero de registros de la tabla'''
 	result = MyDb.selectQuery(table)
 	return result.size()
+
+def selectTable(objeto):
+	'''Verifica la instacia de la clase y reconoce la tabla a la 
+	que pertenece para que las funciones anteriores puedan hacer su trabajo
+	@return (str)'''
+	instacia = ''
+	if not(isinstance()
+	pass

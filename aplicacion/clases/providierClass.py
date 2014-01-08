@@ -206,5 +206,21 @@ class providierCatalog(object):
 		myprovidier.credito = str(result.value(7))
 		myprovidier.notas = str(result.value(8))
 		myprovidier.registro = str(result.value(9))
+		#validamos los campos nulos
+
+		if not (isinstance(myprovidier.id_ciudad,str)):
+			myprovidier.id_ciudad=''
+
+		if not (isinstance(myprovidier.id_contacto,str)):
+			myprovidier.id_contacto=''
+
+		if not (isinstance(myprovidier.email,str)):
+			myprovidier.email=''
+
+		if not (isinstance(myprovidier.credito,str)):
+			myprovidier.credito=''
+
+		if not (isinstance(myprovidier.notas,str)):
+			myprovidier.notas=''
 
 		return myprovidier

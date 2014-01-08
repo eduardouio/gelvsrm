@@ -14,8 +14,8 @@
 # | id_inventario | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment              |
 # | fecha         | datetime             | NO   |     | NULL              |                             |
 # | nombre        | varchar(100)         | NO   |     | NULL              |                             |
-# | descripcion   | varchar(200)         | YES  |     | NULL              |                             |
-# | unidad        | varchar(25)          | YES  |     | NULL              |                             |
+# | descripcion   | varchar(200)         | NO   |     | NULL              |                             |
+# | unidad        | varchar(25)          | NO   |     | NULL              |                             |
 # | stok_min      | smallint(5) unsigned | NO   |     | NULL              |                             |
 # | marca         | varchar(45)          | YES  |     | NULL              |                             |
 # | ubicacion     | varchar(100)         | NO   |     | NULL              |                             |
@@ -195,5 +195,13 @@ class inventaryCatalog(object):
 		myinventary.ubicacion = str(result.value(7))
 		myinventary.notas = str(result.value(8))
 		myinventary.registro = str(result.value(9))
-		qDebug('[Debug] se crea un objeto inventario')
+		#verificamos los nulos devueltos por la consulta
+		if not(isinstance(myinventary.marca,str)):
+			myinventary.marca=''
+
+		if not(isinstance(myinventary.notas,str)):
+			myinventary.notas=''
+
+		qDebug('[Debug] se crea un objeto inventario validado')
+
 		return myinventary

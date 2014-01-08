@@ -192,5 +192,12 @@ class mantenainceCatalog(object):
 		mymantenaince.kilometros = str(result.value(6))
 		mymantenaince.notas = str(result.value(7))
 		mymantenaince.registro = str(result.value(8))
+
+		if not (isinstance(mymantenaince.id_ciudad,str)):
+			mymantenaince.id_ciudad=''
+
+		if not (isinstance(mymantenaince.notas,str)):
+			mymantenaince.notas=''
+
 		qDebug('[Debug] se crea un objeto Mantenaince')
 		return mymantenaince

@@ -12,12 +12,12 @@
 # | Field              | Type                 | Null | Key | Default           | Extra          |
 # +--------------------+----------------------+------+-----+-------------------+----------------+
 # | id_viaje           | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment |
-# | fecha_salida       | date                 | YES  | MUL | NULL              |                |
-# | fecha_regreso      | date                 | YES  |     | NULL              |                |
+# | fecha_salida       | date                 | NO   | MUL | NULL              |                |
+# | fecha_regreso      | date                 | NO   |     | NULL              |                |
 # | nro_vehiculos      | smallint(5) unsigned | NO   |     | NULL              |                |
 # | provincias_destino | varchar(500)         | NO   |     | NULL              |                |
-# | varlor_caja        | decimal(5,2)         | YES  |     | NULL              |                |
-# | informe            | text                 | YES  |     | NULL              |                |
+# | varlor_caja        | decimal(5,2)         | NO   |     | NULL              |                |
+# | informe            | text                 | NO   |     | NULL              |                |
 # | registro           | timestamp            | NO   |     | CURRENT_TIMESTAMP |                |
 # +--------------------+----------------------+------+-----+-------------------+----------------+
 import sys
@@ -176,5 +176,6 @@ class travelCatalog(object):
 		mytravel.varlor_caja = str(result.value(5))
 		mytravel.informe = str(result.value(6))
 		mytravel.registro = str(result.value(7))
+
 		qDebug('[Debug] se crea un objeto viaje')
 		return mytravel

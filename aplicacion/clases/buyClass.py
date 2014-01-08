@@ -196,3 +196,7 @@ class buyCatalog(object):
 		mybuy.registro = str(result.value(9))
 		qDebug('[Debug] se crea una venta')
 		return mybuy
+		
+		#verificamos los nulos devueltos por la consulta
+		if not (isinstance(mybuy.notas,str)):
+			mybuy.notas = ''

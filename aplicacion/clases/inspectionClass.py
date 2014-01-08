@@ -184,14 +184,22 @@ class inspectionCatalog(object):
 		'''Crea un objeto tipo Conctact y lo retorna
 		@param (obj) result
 		@return (obj) contact'''
-		mycontact = Contact()
-		mycontact.id_contacto = str(result.value(0))
-		mycontact.id_ciudad = str(result.value(0))
-		mycontact.nombre = str(result.value(0))
-		mycontact.telefono = str(result.value(0))
-		mycontact.celular = str(result.value(0))
-		mycontact.email = str(result.value(0))
-		mycontact.notas = str(result.value(0))
-		mycontact.registro = str(result.value(0))
+		myinspection = Inspection()
+		myinspection.id_inspeccion = str(result.value(1))
+		myinspection.id_vehiculo = str(result.value(2))
+		myinspection.id_contacto = str(result.value(3))
+		myinspection.id_ciudad = str(result.value(4))
+		myinspection.periodo = str(result.value(5))
+		myinspection.fecha = str(result.value(6))
+		myinspection.notas = str(result.value(7))
+		myinspection.registro = str(result.value(8))
+		#verificamos los nulos devueltos por la consulta
 
-		return mycontact
+		if not(isinstance(myinspection.id_ciudad,str)):
+			myinspection.id_ciudad=''
+
+		if not(isinstance(myinspection.notas,str)):
+			myinspection.notas=''
+
+
+		return myinspection

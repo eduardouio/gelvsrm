@@ -15,7 +15,7 @@
 # | id_cliente  | char(13)             | NO   | MUL | NULL              |                             |
 # | id_contacto | smallint(5) unsigned | YES  | MUL | NULL              |                             |
 # | id_ciudad   | smallint(5) unsigned | YES  | MUL | NULL              |                             |
-# | modelo      | varchar(45)          | YES  |     | NULL              |                             |
+# | modelo      | varchar(45)          | NO   |     | NULL              |                             |
 # | nro_motor   | varchar(25)          | YES  |     | NULL              |                             |
 # | ingreso     | datetime             | YES  |     | NULL              |                             |
 # | notas       | mediumtext           | YES  |     | NULL              |                             |
@@ -198,5 +198,27 @@ class vehicleCatalog(object):
 		myvehicle.ingreso = str(result.value(6))
 		myvehicle.notas = str(result.value(7))
 		myvehicle.registro = str(result.value(8))
+
+		if not(isinstance(myvehicle.id_contacto,str)):
+			myvehicle.id_contacto=''
+
+		if not(isinstance(myvehicle.id_ciudad,str)):
+			myvehicle.id_ciudad=''
+
+		if not(isinstance(myvehicle.nro_motor,str)):
+			myvehicle.nro_motor=''
+
+		if not(isinstance(myvehicle.ingreso,str)):
+			myvehicle.ingreso=''
+
+		if not(isinstance(myvehicle.notas,str)):
+			myvehicle.notas=''
+
 		qDebug('[Debug] se crea un objeto vehiculo')
 		return myvehicle
+
+# | id_contacto | smallint(5) unsigned | YES  | MUL | NULL              |                             |
+# | id_ciudad   | smallint(5) unsigned | YES  | MUL | NULL              |                             |
+# | nro_motor   | varchar(25)          | YES  |     | NULL              |                             |
+# | ingreso     | datetime             | YES  |     | NULL              |                             |
+# | notas       | mediumtext           | YES  |     | NULL              |                             |

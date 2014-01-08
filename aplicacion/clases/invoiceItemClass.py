@@ -209,7 +209,12 @@ class invoiceItemCatalog(object):
 		myinvoiceItem.id_reparacion = str(result.value(3))
 		myinvoiceItem.registro = str(result.value(4))		
 
+		if not(isinstance(myinvoiceItem.id_mantenimiento,str)):
+			myinvoiceItem.id_mantenimiento=''
+
+		if not(isinstance(myinvoiceItem.id_reparacion,str)):
+			myinvoiceItem.id_reparacion=''
+
 		qDebug('[Debug] Se crea un objeto typo item factura validando los campos tipo null ')
 		
 		return myinvoiceItem
-		

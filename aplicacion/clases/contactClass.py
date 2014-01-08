@@ -190,5 +190,22 @@ class contactCatalog(object):
 		mycontact.email = str(result.value(5))
 		mycontact.notas = str(result.value(6))
 		mycontact.registro = str(result.value(7))
+		#verificamos los nulos devueltos por la consulta
+		if not(isinstance(mycontact.id_ciudad, str)):
+			mycontact.id_ciudad=''
 
+		if not(isinstance(mycontact.telefono, str)):
+			mycontact.telefono=''
+
+		if not(isinstance(mycontact.celular,str)):
+			mycontact.celular=''
+
+		if not(isinstance(mycontact.email, str)):
+			mycontact.email=''
+
+		if not(isinstance(mycontact.notas,str)):
+			mycontact.notas=''
+
+		qDebug('[Se crea un objeto contacto validando los campos NULL]')
+		
 		return mycontact
