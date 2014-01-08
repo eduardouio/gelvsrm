@@ -45,6 +45,7 @@ class Contact(object):
 
 class contactCatalog(object):
 	'''Opercaciones con la clase Contact'''
+	
 	def __init__():
 		'''inicializamos la clase'''
 		super(contactCatalog,self).__init__()

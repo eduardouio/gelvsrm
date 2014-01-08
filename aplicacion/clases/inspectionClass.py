@@ -47,6 +47,7 @@ class Inspection(object):
 
 class inspectionCatalog(object):
 	"""operaciones sobre el objeto Inspection"""
+
 	def __init__(self):
 		super(inspectionCatalog, self).__init__()
 		self.table = 'inspeccion'
@@ -66,62 +67,50 @@ class inspectionCatalog(object):
 			return self.__setObj(result)
 
 
-	def listInstections(self):
+	def listInspections(self):
 		'''Lista las inspecciones 
 		@return lst(inspections)'''
-		else:
+		inspections = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('la consulta retono %s registros'% result.size())
+		while result.next():			
+			inspections.append(self.__setObj(result))
 
-			inspections = []
-			result = self.MyDb.selectQuery(self.table)
-			while result.next():
-				myinspection = Inspection()
-				myinspection.id_inspeccion = str(result.value(0))
-				myinspection.id_vehiculo = str(result.value(1))
-				myinspection.id_tecnico = str(result.value(2))
-				myinspection.id_contacto = str(result.value(3))
-				myinspection.id_ciudad = str(result.value(4))
-				myinspection.periodo = str(result.value(5))
-				myinspection.fecha = str(result.value(6))
-				myinspection.notas = str(result.value(7))
-				myinspection.registro = str(result.value(8))
-				inspections.append(myinspection)
-
-			return inspections
+		return inspections
 
 
-	def firstContact(self):
-		'''retorna el primer contacto de la lista
-		@return (obj) Contact'''		
+	def firstInspection(self):
+		'''retorna el primer Inspection de la lista
+		@return (obj) Inspection'''		
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma el primer contacto de la lista')
+		qDebug('[Debug] Se toma el primer Inspection de la lista')
 		if result.first():
 			return self.__setObj(result)
 		else:
 			return False
 
 
-	def lastContact(self):
-		'''retorna el ultimo contacto de la Lista
-		@return (obj) contacto'''
+	def lastInspection(self):
+		'''retorna el ultimo Inspection de la Lista
+		@return (obj) Inspection'''
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma ultimo contacto de la lista')
+		qDebug('[Debug] Se toma ultimo Inspection de la lista')
 		if result.last():
 			return self.__setObj(result)
 		else:
 			return False
 
 
-	def findContact(self,condition):
-		'''Busca un contacto
+	def findInspection(self,condition):
+		'''Busca un Inspection
 		@param condition = {'id_tecnico like ' : '%4%'}
-		@return list(obj) tipo Contact'''
-		contacts = []
+		@return list(obj) tipo Inspection'''
+		Inspections = []
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		while result.next():
 			contacts.append(self.__setObj(result))
 
 		return contacts
-
 
 
 	def createInspection(self,inspection):
@@ -140,9 +129,12 @@ class inspectionCatalog(object):
 		result = self.MyDb.insertQuery(self.table,values)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se crea una inspection en la base')
 			return True
 		else:
+			qDebug('[Debug] no se puede crear una inspection en la base')
 			return False
+
 
 	def updateInspection(self,oldInspection,inspection):
 		'''Actualiza una inspeccion
@@ -163,9 +155,12 @@ class inspectionCatalog(object):
 		result = self.MyDb.updateQuery(self.table, values)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Actualiza una inspection en la base')
 			return True
 		else:
+			qDebug('[Debug] No se Actualiza una inspection en la base')
 			return False
+
 
 	def deleteInspection(self,inspection):
 		'''Elimina una inspection
@@ -175,8 +170,10 @@ class inspectionCatalog(object):
 		result = self.MyDb.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] se Elimina una inspection en la base')
 			return True
 		else:
+			qDebug('[Debug] No se Elimina una inspection en la base')
 			return False
 	
 

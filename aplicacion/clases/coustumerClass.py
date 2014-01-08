@@ -48,6 +48,7 @@ class Coustomer(object):
 
 class coustomerCatalog(object):
 	"""acciones sobre el objeto Coustomer"""
+	
 	def __init__(self):
 		super(coustomerCatalog, self).__init__()
 		self.table = 'cliente'

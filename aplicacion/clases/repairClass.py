@@ -26,9 +26,12 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+
 
 class Repair(object):
 	"""estructura para Repair"""
+
 	def __init__(self, id_reparacion='',id_viaje='',id_vehiculo='',id_ciudad='', periodo='',
 					kilometros='',fecha_salida='',fecha_entrada='',notas='',registro=''):
 		super(Repair, self).__init__()
@@ -38,60 +41,82 @@ class Repair(object):
 		self.id_ciudad = id_ciudad
 		self.periodo = periodo
 		self.kilometros = kilometros
-		self.fecha_salida = fecha_salida
-		self.fecha_entrada = fecha_entrada
+		self.fecha_salida = QDate()
+		self.fecha_entrada = QDate()
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
+		qDebug('[Debug] se instancia la clas Repair')
 
 
 class repairCatalog(object):
 	"""acciones para la clase Catalog"""
+
 	def __init__(self):
 		super(repairCatalog, self).__init__()
 		self.MyDb = DB()
 		self.table = 'reparacion'
+		qDebug('[Debug] se instancia la clase repairCatalog')
 
-	def getRepairs(self, repair=''):
+
+	def getRepair(self, repair=''):
 		'''Obtiene un listado de reparacion
 		@param (str) repair
 		@return (obj) | list(obj)
 		'''
-		if repair:
-			myrepair = Repair()
-			condition = ' id_reparacion = ' + str(repair)
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			while result.next():
-				myrepair.id_reparacion = str(result.value(0))
-				myrepair.id_viaje = str(result.value(1))
-				myrepair.id_vehiculo = str(result.value(2))
-				myrepair.id_ciudad = str(result.value(3))
-				myrepair.periodo = str(result.value(4))
-				myrepair.kilometros = str(result.value(5))
-				myrepair.fecha_salida = str(result.value(6))
-				myrepair.fecha_entrada = str(result.value(7))
-				myrepair.notas = str(result.value(8))
-				myrepair.registro = str(result.value(9))
-
-			return myrepair
-
+		myrepair = Repair()
+		condition = {' id_reparacion = ' : str(repair)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] La consulta retorno %s registros'% result.size())
+		if result.next():
+			return self.__setObj(result)
 		else:
+			return False
+		
+
+	def listRepairs(self):
+		'''Retorna un listado de reparaciones
+		@return lst(repair)'''
 			repairs = []
 			result = self.MyDb.selectQuery(self.table)
-			while result.next():
-				myrepair = Repair()
-				myrepair.id_reparacion = str(result.value(0))
-				myrepair.id_viaje = str(result.value(1))
-				myrepair.id_vehiculo = str(result.value(2))
-				myrepair.id_ciudad = str(result.value(3))
-				myrepair.periodo = str(result.value(4))
-				myrepair.kilometros = str(result.value(5))
-				myrepair.fecha_salida = str(result.value(6))
-				myrepair.fecha_entrada = str(result.value(7))
-				myrepair.notas = str(result.value(8))
-				myrepair.registro = str(result.value(9))
-				repairs.append(myrepair)
+			qDebug('[Debug] La consulta retorno %s registros'% result.size())
+			while result.next():				
+				repairs.append(self.__setObj(result))
 
 			return repairs
+
+
+	def firstInventary(self):
+		'''retorna la primera reparacion
+		@return (obj) Inventary'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el la primera reparacion de la lista')
+		if result.first():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def lastInventary(self):
+		'''retorna el ultimo reparacion
+		@return (obj) Inventary'''		
+		result = self.MyDB.selectQuery(self.table)
+		qDebug('[Debug] Se toma el ultimo reparacion de la lista')
+		if result.last():
+			return self.__setObj(result)
+		else:
+			return False
+
+
+	def findRepair(self,condition):
+		'''Busca un Reparacion
+		@param condition = {'id_tecnico like ' : '%4%'}
+		@return list(obj) tipo myrepair'''
+		myrepairs = []
+		result = self.MyDB.selectQuery(self.table,'',condition)
+		while result.next():
+			myrepairs.append(self.__setObj(result))
+
+		return myrepairs
 
 
 	def createRepair(self, repair):
@@ -108,16 +133,18 @@ class repairCatalog(object):
 			'kilometros' : repair.kilometros,
 			'fecha_salida' : repair.fecha_salida,
 			'fecha_entrada' : repair.fecha_entrada,
-			'notas' : repair.notas,
-			'registro' : repair.registro
+			'notas' : repair.notas			
 		}
 
 		result = self.MyDb.insertQuery(self.table, values)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se crea una reparacion')
 			return str(result.lastInsertId())
 		else:
+			qDebug('[Debug] No se crea una reparacion')
 			return False
+
 
 	def updateRepair(self,oldRepair,repair):
 		'''Actualiza una reparacion
@@ -125,7 +152,7 @@ class repairCatalog(object):
 		@param (obj) repair
 		@return (bool)
 		'''
-		condition = ' id_reparacion = ' + str(oldRepair.id_reparacion)
+		condition = {' id_reparacion = ' : str(oldRepair.id_reparacion)}
 
 		values = {
 			'id_viaje' : repair.id_viaje,
@@ -135,28 +162,62 @@ class repairCatalog(object):
 			'kilometros' : repair.kilometros,
 			'fecha_salida' : repair.fecha_salida,
 			'fecha_entrada' : repair.fecha_entrada,
-			'notas' : repair.notas,
-			'registro' : repair.registro
+			'notas' : repair.notas
+			}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 
 		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se Actualiza una reparacion')
 			return True
 		else:
+			qDebug('[Debug] No se Actualiza una reparacion')
 			return False
+
 
 	def deleteRepair(self,repair):
 		'''Elimina una reparacion
 		@param (obj) repair
-		@return (bool)'''
-		condition = ' id_reparacion = ' + str(repair.id_reparacion)
+		@return (bool)'''		
+		from repairItemClass import repairItemCatalog
+		myrepairitemCatalog = repairItemCatalog()
 
-		result = self.MyDb.deleteQuery(self.table,condition)		
-		if(result.numRowsAffected()>0):
-			return True
+		if(myrepairitemCatalog.deleteRepairItems(repair.id_reparacion)):			
+			condition = {' id_reparacion = ' : str(repair.id_reparacion)}
+			result = self.MyDb.deleteQuery(self.table,condition)		
+			if(result.numRowsAffected()>0):
+				qDebug('[Debug] se Elimina una reparacion')
+				return True
+			else:
+				qDebug('[Debug] No se Elimina una reparacion')
+				return False
 		else:
+			qDebug('No se puede eliminar los items de reparacion')
 			return False
 
-	def findRepair(self,condition=''):
-		'''Busca una reparacion'''
-		pass
+
+	def __setObj(self,result):
+		'''Crea un objeto tipo repair
+		@return (obj) repair '''
+		myrepair = Repair()
+		myrepair.id_reparacion = str(result.value(0))
+		myrepair.id_viaje = str(result.value(1))
+		myrepair.id_vehiculo = str(result.value(2))
+		myrepair.id_ciudad = str(result.value(3))
+		myrepair.periodo = str(result.value(4))
+		myrepair.kilometros = str(result.value(5))
+		myrepair.fecha_entrada = str(result.value(6))
+		myrepair.fecha_salida = str(result.value(7))
+		myrepair.notas = str(result.value(8))
+		myrepair.registro = str(result.value(9))
+
+		#validamos los campos nulos
+		if not(isinstance(myrepair.id_ciudad,str)):
+			myrepair.id_ciudad=''
+
+		if not(isinstance(myrepair.notas,str)):
+			myrepair.notas=''
+
+		qDebug('Se crea una reparacion validados los campos nulos')
+
+		return myrepair
