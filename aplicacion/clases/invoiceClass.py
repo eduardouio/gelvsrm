@@ -31,7 +31,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Invoice(object):
 	"""estructura de la Invoice"""
-	def __init__(self,id_factura='',id_cliente='',id_contacto='',fecha='',fecha_envio='',guia_envio='',
+	def __init__(self,id_factura='',id_cliente='',id_contacto=int(),fecha='',fecha_envio='',guia_envio='',
 					servicio_envio='',estado='',archivo='',notas='',registro=''):
 		super(Invoice, self).__init__()
 		self.id_factura = id_factura
@@ -58,9 +58,9 @@ class invoiceCatalog(object):
 		qDebug('Se inicia la clase invoiceCatalog')
 
 
-	def getInvoice(self, invoice=''):
+	def getInvoice(self, idInvoice):
 		'''Obtiene una factura o listado'''		
-		condition = {' id_factura = ' : str(invoice)}
+		condition = {' id_factura = ' : str(idInvoice)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('La consulta retorno %s registros'% result.size())
 		if result.next():
