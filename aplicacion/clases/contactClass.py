@@ -29,7 +29,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Contact(object):
 	"""Objeto que representa la estructura de la clase contacto"""
-	def __init__(self, id_contacto = '',id_ciudad='',nombre ='',
+	def __init__(self, id_contacto =int(),id_ciudad=int(),nombre ='',
 					telefono='',celular='',	email='',notas='',registro=''):
 		super(Contact, self).__init__()
 		self.id_contacto = id_contacto
@@ -54,11 +54,11 @@ class contactCatalog(object):
 		qDebug('[Debug] clase conctactCatalog Instanciada')
 
 
-	def getContact(self,contact = ''):
+	def getContact(self,idContact):
 		'''Obtiene un contacto de la base de datos
 		@param (str) tipo contact solo con el id_contacto
 		@return(obj) '''			
-		condition = {'id_contacto = ' : str(contact)}
+		condition = {'id_contacto = ' : str(idContact)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s objetos'% str(result.size()))
 		if result.next():
