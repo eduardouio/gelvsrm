@@ -28,13 +28,13 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class buyTravel(object):
 	"""estructura para los gastos viajes"""
-	def __init__(self,id_gasto_viaje= '', id_viaje='',nro_factura='',fecha='',
-					detalle='',valor=0.0,tipo='',registro=''):
+	def __init__(self,id_gasto_viaje=int(), id_viaje=int(),nro_factura='',fecha='',
+					detalle='',valor=float(),tipo='',registro=''):
 		super(buyTravel, self).__init__()
 		self.id_gasto_viaje = id_gasto_viaje
 		self.id_viaje = id_viaje
 		self.nro_factura = nro_factura
-		self.fecha = QDate()
+		self.fecha = QDate().currentDate()
 		self.detalle = detalle
 		self.valor = valor
 		self.tipo = tipo
@@ -52,11 +52,11 @@ class buyTravelCatalog(object):
 		qDebug('[Debug] se inicia la clase buyTravelCatalog')
 
 
-	def getBuyTravel(self, buyTravel=''):
+	def getBuyTravel(self, idBuyTravel):
 		'''Obtiene un gastos 
 		@param (str) id_gasto_viaje
 		@result (buyTravel)'''				
-		condition = {' id_gasto_viaje = ' : str(buyTravel)}
+		condition = {' id_gasto_viaje = ' : str(idBuyTravel)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s resultados' % result.size())		
 		if result.next():
@@ -66,17 +66,17 @@ class buyTravelCatalog(object):
 			return False
 
 		
-	def listBuysTravel(self, id_viaje):
+	def listBuysTravel(self, idTravel):
 		'''Lista las compras de un viaje
 		@return lst(buyTravel) si el viaje no existe retorna una lista vacia'''
-		condition = {' id_viaje = ' : str(id_viaje)}
+		condition = {' id_viaje = ' : str(idTravel)}
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s resultados' % result.size())		
-		mybuyravel = []
+		mybuysTravel = []
 		while result.next:
-			mybuyravel.append(self.__setObj(result))
+			mybuysTravel.append(self.__setObj(result))
 
-		return mybuyravel
+		return mybuysTravel
 			
 
 	def listBuysTravels(self):
@@ -91,7 +91,7 @@ class buyTravelCatalog(object):
 		return buystravel
 
 
-	def firstbuyTravel(self):
+	def firstBuyTravel(self):
 		'''retorna el primer buyTravel de la lista
 		@return (obj) buyTravel'''		
 		result = self.MyDB.selectQuery(self.table)
@@ -102,7 +102,7 @@ class buyTravelCatalog(object):
 			return False
 
 
-	def lastbuyTravel(self):
+	def lastBuyTravel(self):
 		'''retorna el ultimo buyTravel de la Lista
 		@return (obj) buyTravelo'''
 		result = self.MyDB.selectQuery(self.table)
@@ -113,7 +113,7 @@ class buyTravelCatalog(object):
 			return False
 
 
-	def findbuyTravel(self,condition):
+	def findBuyTravel(self,condition):
 		'''Busca un buyTravel
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo buyTravel'''
