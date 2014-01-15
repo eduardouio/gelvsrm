@@ -30,8 +30,8 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Inspection(object):
 	"""estructura para Inspection"""
-	def __init__(self,id_inspeccion='',id_vehiculo='',id_tecnico='',
-				id_contacto='',id_ciudad='',periodo='',fecha='',notas='',registro=''):
+	def __init__(self,id_inspeccion=int(),id_vehiculo='',id_tecnico='',
+				id_contacto=int(),id_ciudad=int(),periodo=int(),fecha='',notas='',registro=''):
 		super(Inspection, self).__init__()
 		self.id_inspeccion = id_inspeccion
 		self.id_vehiculo = id_vehiculo
@@ -39,9 +39,9 @@ class Inspection(object):
 		self.id_contacto = id_contacto
 		self.id_ciudad = id_ciudad
 		self.periodo = periodo
-		self.fecha = fecha
+		self.fecha = QDate().currentDate()
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime.currentDateTime()
 		qDebug('[Debug] se inicia la clase inspection')
 
 
@@ -55,16 +55,18 @@ class inspectionCatalog(object):
 		qDebug('[Debug] se inicia la clase inspectionCatalog')
 
 
-	def getInspection(self,inspection=''):
+	def getInspection(self,idInspection):
 		'''Obtiene una inspeccion o listado de ellas
 		@param (str) id_inspeccion
 		@return (obj) inspeccion
 		'''	
-		condition = {' id_inspeccion = ' : str(inspection)}
+		condition = {' id_inspeccion = ' : str(idInspection)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('la consulta retono %s registros'% result.size())
 		if result.next():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def listInspections(self):
@@ -82,7 +84,7 @@ class inspectionCatalog(object):
 	def firstInspection(self):
 		'''retorna el primer Inspection de la lista
 		@return (obj) Inspection'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Inspection de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -93,7 +95,7 @@ class inspectionCatalog(object):
 	def lastInspection(self):
 		'''retorna el ultimo Inspection de la Lista
 		@return (obj) Inspection'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Inspection de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -105,12 +107,12 @@ class inspectionCatalog(object):
 		'''Busca un Inspection
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Inspection'''
-		Inspections = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		inspections = []
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
-			contacts.append(self.__setObj(result))
+			inspections.append(self.__setObj(result))
 
-		return contacts
+		return inspections
 
 
 	def createInspection(self,inspection):
@@ -130,7 +132,7 @@ class inspectionCatalog(object):
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se crea una inspection en la base')
-			return True
+			return self.MyDb.lastInsertId()
 		else:
 			qDebug('[Debug] no se puede crear una inspection en la base')
 			return False
