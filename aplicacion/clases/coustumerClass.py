@@ -30,7 +30,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Coustomer(object):
 	"""Estrcutura del objeto cliente"""
-	def __init__(self, id_cliente='',id_contacto='',id_ciudad='',nombre='',direccion='',
+	def __init__(self, id_cliente='',id_contacto=int(),id_ciudad=int(),nombre='',direccion='',
 					telefono='',fax='',mail='',notas='',registro=''):
 		super(Coustomer, self).__init__()
 		self.id_cliente = cliente
@@ -42,7 +42,7 @@ class Coustomer(object):
 		self.fax = fax
 		self.mail = mail
 		self.notas = notas
-		self.registro = registro
+		self.registro = QDateTime().currentDateTime()
 		qDebug('[Debug] se crea un objeto tipo coustomer')
 
 
@@ -56,12 +56,12 @@ class coustomerCatalog(object):
 		qDebug('[Debug] se crea un objeto tipo coustomerCatalog')
 
 
-	def getCoustomer(self, coustomer=''):
+	def getCoustomer(self, idCoustomer):
 		'''Obtiene un cliente 
 		@param (str) id_cliente
 		@return (obj) coustomer
 		'''	
-		condition = {' id_cliente =' : str(coustomer)}
+		condition = {' id_cliente =' : str(idCoustomer)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorna %s valores'% result.size())
 		if result.next():
