@@ -22,7 +22,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class City(object):
 	"""Objeto que representa la estructura una ciudad"""
-	def __init__(self, id_provincia='',id_ciudad='',nombre=''):
+	def __init__(self, id_provincia=int(),id_ciudad=int(),nombre=''):
 		'''Inizializacion de las propiedades de la clase'''
 		super(City, self).__init__()
 		self.id_ciudad = id_ciudad
@@ -42,15 +42,17 @@ class cityCatalog(object):
 		self.MyDB = DB()
 
 
-	def getCity(self,city=''):
+	def getCity(self,idCity):
 		'''Lista Las ciudades		
 		@param (str) id_ciudad
 		@return (obj) tipo city'''	
-		condition = {'id_ciudad = ' : str(city)}
+		condition = {'id_ciudad = ' : str(idCity)}
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		qDebug('[Debug] get city la consulta retorno %s regitros'% result.size())
-		while result.next():
+		if result.next():
 			return self.__setObj(result)
+		else:
+			return False
 
 
 	def listCities(self):
@@ -65,11 +67,11 @@ class cityCatalog(object):
 		return cities
 
 
-	def listCitiesState(self,id_state):
+	def listCitiesState(self,idState):
 		'''Lista todas ciudades de una provincia
 		@return lst(obj) tipo city'''
 		cities = []
-		condition = {'id_provincia = ' : str(id_state)}
+		condition = {'id_provincia = ' : str(idState)}
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		qDebug('[Debug] list cityesstatela consulta retorno %s regitros'% result.size())
 		while result.next():			
