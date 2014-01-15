@@ -73,7 +73,7 @@ class buyCatalog(object):
 			return False
 
 
-	def listBuys():
+	def listBuys(self):
 		'''Retorna un listado de compras
 		@return lst(Buy)'''		
 		buys = []
@@ -195,8 +195,10 @@ class buyCatalog(object):
 		mybuy.notas = str(result.value(8))
 		mybuy.registro = str(result.value(9))
 		qDebug('[Debug] se crea una venta')
-		return mybuy
 		
 		#verificamos los nulos devueltos por la consulta
 		if not (isinstance(mybuy.notas,str)):
 			mybuy.notas = ''
+			
+
+		return mybuy

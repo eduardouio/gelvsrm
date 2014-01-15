@@ -39,7 +39,8 @@ class DB(object):
 					QtGui.QMessageBox.Ok)		
 				return self.lastError()
 			qDebug('[Debug] Se ejecuta una consulta en la DB >> [%s]'%
-						QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss::zzz'))
+						QtCore.QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss::zzz'))		
+			
 			return sql
 
 	def listTables(self):

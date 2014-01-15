@@ -76,13 +76,13 @@ class repairCatalog(object):
 	def listRepairs(self):
 		'''Retorna un listado de reparaciones
 		@return lst(repair)'''
-			repairs = []
-			result = self.MyDb.selectQuery(self.table)
-			qDebug('[Debug] La consulta retorno %s registros'% result.size())
-			while result.next():				
-				repairs.append(self.__setObj(result))
+		repairs = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('[Debug] La consulta retorno %s registros'% result.size())
+		while result.next():				
+			repairs.append(self.__setObj(result))
 
-			return repairs
+		return repairs
 
 
 	def firstInventary(self):

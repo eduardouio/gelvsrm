@@ -69,7 +69,7 @@ class buyTravelCatalog(object):
 	def listBuysTravel(self, id_viaje):
 		'''Lista las compras de un viaje
 		@return lst(buyTravel) si el viaje no existe retorna una lista vacia'''
-		condition {' id_viaje = ' : str(id_viaje)}
+		condition = {' id_viaje = ' : str(id_viaje)}
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s resultados' % result.size())		
 		mybuyravel = []
@@ -204,4 +204,4 @@ class buyTravelCatalog(object):
 		mybuyravel.tipo = str(result.value(6))
 		mybuyravel.registro = str(result.value(7))
 		qDebug('[DEbug] Se inicia un objeto compra viaje')
-		return
+		return mybuyravel
