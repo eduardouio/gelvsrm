@@ -30,8 +30,8 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Inventary(object):
 	"""descripcion de la clase Inventario"""
-	def __init__(self, id_inventario = '',fecha='',nombre='',descripcion='',
-				unidad='',stok_min='',marca='',ubicacion='', notas='', registro=''):
+	def __init__(self, id_inventario = int(),fecha='',nombre='',descripcion='',
+				unidad='',stok_min=int(),marca='',ubicacion='', notas='', registro=''):
 		super(Inventario, self).__init__()
 		self.id_inventario = id_inventario
 		self.fecha = QDate().currentDate()
@@ -56,11 +56,11 @@ class inventaryCatalog(object):
 		qDebug('[Debug] se inicia la clase inventaryCatalog')
 
 
-	def getInventary(self,inventary=''):
+	def getInventary(self,idInventary):
 		'''Obtiene un listado de inventario o inventario
 		@param inventary
 		@return (obj) | list(obj)'''
-		condition = {' id_inventario = ' : str(inventary)}
+		condition = {' id_inventario = ' : str(idInventary)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s objetos'% str(result.size()))
 		if result.next():
@@ -84,7 +84,7 @@ class inventaryCatalog(object):
 	def firstInventary(self):
 		'''retorna el primer item del inventary de la lista
 		@return (obj) Inventary'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Inventario de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -95,7 +95,7 @@ class inventaryCatalog(object):
 	def lastInventary(self):
 		'''retorna el ultimo Inventario de la Lista
 		@return (obj) Inventario'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Inventario de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -108,7 +108,7 @@ class inventaryCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Inventary'''
 		Inventary = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			Inventary.append(self.__setObj(result))
 
@@ -159,7 +159,7 @@ class inventaryCatalog(object):
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] Se Actualiza un item de inventario en la tabla invemtario')
-			return str(result.lastInsertId())
+			return True
 		else:
 			qDebug('[Debug] problemas para Actualizar un item de inventario en la tabla invemtario')
 			return False
@@ -174,7 +174,7 @@ class inventaryCatalog(object):
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] Se Elimina un item de inventario en la tabla invemtario')
-			return str(result.lastInsertId())
+			return True
 		else:
 			qDebug('[Debug] no se pude eliminar un item de inventario en la tabla invemtario')
 			return False
