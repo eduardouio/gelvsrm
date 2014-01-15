@@ -23,10 +23,11 @@ sys.path.append('..')
 from modelo.Modelo import DB
 from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
-class InvoiceItem(object):
+class invoiceItem(object):
 	"""estructura de un detalle de id_factura"""
 
-	def __init__(self, id_factura_detalle ='',id_factura='',id_mantenimiento='',id_reparacion='',registro=''):
+	def __init__(self, id_factura_detalle =int(),id_factura='',id_mantenimiento=int(),
+						id_reparacion=int(),registro=''):
 		super(invoiceItem, self).__init__()
 		self.id_factura_detalle = id_factura_detalle
 		self.id_factura = id_factura
@@ -45,11 +46,11 @@ class invoiceItemCatalog(object):
 		qDebug('[Debug] se instancia la clase invoiceItemCatalog')
 
 
-	def getInvoiceItem(self,invoiceItem=''):
+	def getInvoiceItem(self,idInvoiceItem):
 		'''Obtiene un invoiceItem o listado de ellos
 		@param(str) id_factura_detalle
 		@return (obj) lst(obj)'''		
-			condition = {' id_factura_detalle = ' : str(invoiceItem)}
+			condition = {' id_factura_detalle = ' : str(idInvoiceItem)}
 			result = self.MyDb.selectQuery(self.table,'',condition)
 			qDebug('[Debug] la consulta retorna %s registros'% result.size())
 			if result.next():
@@ -83,10 +84,10 @@ class invoiceItemCatalog(object):
 		return invoiceItems
 
 
-	def firstInvoiceItem(self, id_invoice):
+	def firstInvoiceItem(self, idInvoice):
 		'''retorna el primer item del la factura
 		@return (obj) Invoice'''
-		condition = {' id_factura = ' : str(id_invoice)}
+		condition = {' id_factura = ' : str(idInvoice)}
 		myInvoice = Invoice()
 		result = self.MyDb.selectQuery(self.table,'',condition)		
 		qDebug('[Debug] Se toma el primer item del una factura')
@@ -98,10 +99,10 @@ class invoiceItemCatalog(object):
 			return False
 
 
-	def lastInvoiceItem(self, id_invoice):
+	def lastInvoiceItem(self, idInvoice):
 		'''retorna ultima item del la factura
 		@return (obj) Invoice'''		
-		condition = {' id_factura = ' : str(id_invoice)}
+		condition = {' id_factura = ' : str(idInvoice)}
 		result = self.MyDb.selectQuery(self.table)		
 		qDebug('[Debug] Se toma el ultimo item de una factura')
 		
@@ -146,7 +147,7 @@ class invoiceItemCatalog(object):
 			return False
 
 
-	def updateInvoice(self,oldInvoiceItem,invoiceItem):
+	def updateInvoiceItem(self,oldInvoiceItem,invoiceItem):
 		'''Actualiza una factura
 		@param (obj) invoiceItem
 		@param (obj) invoiceItem
@@ -159,13 +160,22 @@ class invoiceItemCatalog(object):
 			'id_mantenimiento' : invoiceItem.id_mantenimiento,
 			'id_reparacion' : invoiceItem.id_reparacion			
 		}
-		
 
-	def deleteInvoiceItem(self,invoice):
+		result = self.MyDb.updateQuery(self.table,values)
+
+		if (result.numRowsAffected() > 0):
+			qDebug('[Debug] Se Actualiza el item de una factura')
+			return True
+		else:
+			qDebug('[Debug] No se Actualiza el item de una factura')			
+			return False
+
+
+	def deleteInvoiceItem(self,idInvoiceItem):
 		'''Elimina un item de una factura
 		@param (obj) invoice
 		@return (bool)'''
-		condition = ' id_factura_detalle = ' + str(invoice.id_factura)
+		condition = ' id_factura_detalle = ' + str(idInvoiceItem)
 		result = self.MyDb.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
@@ -180,7 +190,7 @@ class invoiceItemCatalog(object):
 		'''Elimina los items de una factura
 		@param (obj) invoice
 		@return (bool)'''
-		condition = ' id_factura = ' + str(invoice.idInvoice)
+		condition = ' id_factura = ' + str(invoice.id_factura)
 		result = self.MyDb.deleteQuery(self.table,condition)
 
 		if (result.numRowsAffected() > 0):
