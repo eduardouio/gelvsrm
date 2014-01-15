@@ -32,11 +32,11 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Buy(object):
 	"""Estructura para compra"""
-	def __init__(self, id_compra='',id_inventario='',id_proveedor='', id_tecnico='',
-						nro_factura='',fecha='',cantidad='',costo='',notas='',registro=''):
+	def __init__(self, id_compra=int(),id_inventario=int(),id_proveedor='', id_tecnico='',
+						nro_factura='',fecha='',cantidad=int(),costo=float(),notas='',registro=''):
 		super(Buy, self).__init__()
 		self.id_compra = id_compra
-		self.invetario = id_inventario
+		self.id_invetario = id_inventario
 		self.id_proveedor = id_proveedor
 		self.id_tecnico = id_tecnico
 		self.nro_factura = nro_factura		
@@ -58,12 +58,12 @@ class buyCatalog(object):
 		qDebug('[Debug] se inicia la clase buyCatalog')
 
 
-	def getBuys(self,buy=''):
+	def getBuy(self,idBuy):
 		'''Obtiene una compra o listado
 		@param (str) id_compra
-		@return (obj) | list(obj) buy
+		@return (obj) | list(obj) idBuy
 		'''
-		condition = {' id_compra = ' : str(buy)}
+		condition = {' id_compra = ' : str(idBuy)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s objetos'% str(result.size()))
 		if result.next():
@@ -87,7 +87,7 @@ class buyCatalog(object):
 	def firstBuy(self):
 		'''retorna el primer Buy de la lista
 		@return (obj) Buy'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Buy de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -98,7 +98,7 @@ class buyCatalog(object):
 	def lastBuy(self):
 		'''retorna el ultimo Buyo de la Lista
 		@return (obj) Buy'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Buy de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -111,7 +111,7 @@ class buyCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Buy'''
 		buys = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			buys.append(self.__setObj(result))
 

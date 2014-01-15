@@ -41,11 +41,11 @@ class stateCatalog(object):
 		qDebug('[Debug] se instancia la clase stateCatalog')
 		
 
-	def getState(self,state=''):
+	def getState(self,id_state):
 		'''Lista Las provinciaes		
 		@param (str) identificador del estado
-		@return (obj) tipo stateC'''		
-		condition = {'id_provincia = ':str(state)}
+		@return (obj) tipo state'''		
+		condition = {'id_provincia = ':str(id_state)}
 		result = self.MyDB.selectQuery(self.table,'',condition)		
 		if result.next():			
 			return self.__setObj(result)
@@ -150,14 +150,14 @@ class stateCatalog(object):
 			return True
 		else:
 			qDebug('[Debug] problemas para Eliminar un Estado')
+
 			return False
 
-	
-    def __setObj(self,result):
-        '''coloca las propiedades de un estado
+	def __setObj(self,result):
+		'''coloca las propiedades de un estado
         @return (obj) estado'''
-        mystate = State()
-        mystate.id_provincia = str(result.value(0))
-        mystate.nombre = str(result.value(1))
-        qDebug('[Debug] se crea un objeto tipo estado')
-        return mystate
+		mystate = State()
+		mystate.id_provincia = str(result.value(0))
+		mystate.nombre = str(result.value(1))
+		qDebug('[Debug] se crea un objeto tipo estado')
+		return mystate
