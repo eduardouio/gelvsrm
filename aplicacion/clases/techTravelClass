@@ -25,7 +25,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 class TechnicalTravel(object):
 	"""Estructura de tecnico viajes TechnicalTravel"""
 
-	def __init__(self, id_tecnico = '',id_viaje='',registro=''):
+	def __init__(self, id_tecnico ='',id_viaje=int(),registro=''):
 		super(TechnicalTravel, self).__init__()
 		self.id_tecnico = id_tecnico
 		self.id_viaje = id_viaje
@@ -69,7 +69,7 @@ class technicalTravelCatalog(object):
 		return listtTechincals
 
 	
-	def createTavelTechnical(self, travelTechnical):
+	def createTechnicalTavel(self, travelTechnical):
 		values = {
 			'id_tecnico': travelTechnical.id_tecnico
 			'id_viaje': travelTechnical.id_viaje
@@ -85,14 +85,14 @@ class technicalTravelCatalog(object):
 			return False
 		
 
-	def updateTavelTechnical(self, oldtravelTechnical, travelTechnical):
+	def updateTechnicalTavel(self, oldtravelTechnical, travelTechnical):
 		'''Actualiza una relacion viaje tecnico
 		@return'''
 
 		condition{
 				'id_tecnico = ' : oldtravelTechnical.id_tecnico,
 				'AND id_viaje = ' : oldtravelTechnical.id_viaje
-					}
+				}
 
 		values = {
 			'id_tecnico': travelTechnical.id_tecnico
@@ -103,13 +103,13 @@ class technicalTravelCatalog(object):
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se Modifico una relacion tecnico viaje')
-			return str(result.lastInsertId())
+			return True
 		else:
 			qDebug('[Debug]  No se Modifico  una relacion tecnico viaje')
 			return False
 
 
-	def deleteTravelTechical(self, travelTechnical):
+	def deleteTechicalTavel(self, travelTechnical):
 		'''Elimian una relacion tecnico viaje de la tabla
 		@return Bool'''
 		condition{

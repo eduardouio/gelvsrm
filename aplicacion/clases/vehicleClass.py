@@ -84,7 +84,7 @@ class vehicleCatalog(object):
 	def firstVehicle(self):
 		'''retorna el primer Vehicle de la lista
 		@return (obj) Vehicle'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Vehicle de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -95,7 +95,7 @@ class vehicleCatalog(object):
 	def lastVehicle(self):
 		'''retorna el ultimo Vehicle de la Lista
 		@return (obj) Vehicle'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Vehicle de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -108,7 +108,7 @@ class vehicleCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Vehicle'''
 		vehicles = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			vehicles.append(self.__setObj(result))
 
