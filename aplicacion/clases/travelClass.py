@@ -27,12 +27,12 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Travel(object):
 	"""representa la estructura de un Travel"""
-	def __init__(self, id_viaje='',fecha_salida='',fecha_regreso='',nro_vehiculos='',
-				provincias_destino='',varlor_caja='',informe='',registro=''):
+	def __init__(self, id_viaje=int(),fecha_salida='',fecha_regreso='',nro_vehiculos=int(),
+				provincias_destino='',varlor_caja=float(),informe='',registro=''):
 		super(Travel, self).__init__()
 		self.id_viaje = id_viaje
-		self.fecha_salida = QDate()
-		self.fecha_regreso = QDate()
+		self.fecha_salida = QDate().currentDate()
+		self.fecha_regreso = QDate().currentDate()
 		self.nro_vehiculos = nro_vehiculos
 		self.provincias_destino = provincias_destino
 		self.varlor_caja = varlor_caja
@@ -49,12 +49,11 @@ class travelCatalog(object):
 		self.MyDb = DB()
 		qDebug('[Debug] se inicia la clase travelCatalog')
 
-	def getTravels(self,travel=''):
+	def getTravel(self,idTravel):
 		'''Obtiene un listado viajes
 		@param = (str) id_viaje
-		@return (obj) | list(obj) '''
-		
-		condition = {' id_viaje = ' : str(travel)}
+		@return (obj) | list(obj) '''		
+		condition = {' id_viaje = ' : str(idTravel)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s registros'% result.size())
 		if result.next():
@@ -110,7 +109,6 @@ class travelCatalog(object):
 			'varlor_caja' :travel.varlor_caja,
 			'informe' :travel.informe			
 		}
-
 		result = self.MyDb.insertQuery(self.table,value)
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se crea un viaje en la tabla')
