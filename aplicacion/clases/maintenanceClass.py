@@ -3,8 +3,8 @@
 # Version		1.0
 # Autor			Eduardo Villota <eduardouio@hotmail.com> <@eduardouio>
 # Package		Clases
-# File			mantenainceClass.py
-# Ubicacion		aplicacion/clases/mantenainceClass.py
+# File			maintenanceClass.py
+# Ubicacion		aplicacion/clases/maintenanceClass.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 # +------------------+----------------------+------+-----+-------------------+-----------------------------+
 # 											Data Types
@@ -28,11 +28,11 @@ from modelo.Modelo import DB
 from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 
-class Mantenaince(object):
-	"""Estructura para Mantenaince"""
+class Maintenance(object):
+	"""Estructura para Maintenance"""
 	def __init__(self, id_mantenimiento=int(),id_viaje=int(),id_vehiculo='',id_ciudad=int(),
 					periodo=int(),fecha='',kilometros='',notas='',registro=''):
-		super(Mantenaince, self).__init__()
+		super(Maintenance, self).__init__()
 		self.id_mantenimiento = id_mantenimiento
 		self.id_viaje = id_viaje
 		self.id_vehiculo = id_vehiculo
@@ -45,20 +45,20 @@ class Mantenaince(object):
 		qDebug('[Debug] se inicia la clase mantenimiento')
 
 
-class mantenainceCatalog(object):
-	"""docstring for mantenainceCatalog"""
+class maintenanceCatalog(object):
+	"""docstring for maintenanceCatalog"""
 
 	def __init__(self):
-		super(mantenainceCatalog, self).__init__()
+		super(maintenanceCatalog, self).__init__()
 		self.MyDb = DB()
 		self.table = 'mantenimiento'
-		qDebug('[Debug] se incia la clase mantenainceCatalog')
+		qDebug('[Debug] se incia la clase maintenanceCatalog')
 
 
-	def getMantenaince(self,IdMantenaince):
+	def getMaintenance(self,IdMaintenance):
 		'''Obtiene un listado de mantenimientos o mantenimiento
 		@param = id_mantenimiento'''		
-		condition = [' id_mantenimiento = ' : str(IdMantenaince)]
+		condition = [' id_mantenimiento = ' : str(IdMaintenance)]
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] se encuentran %s registros'% result.size())
 		if result.next():
@@ -68,64 +68,64 @@ class mantenainceCatalog(object):
 			return False
 			
 
-	def listMantenainces(self):
+	def listMaintenances(self):
 		'''Lista todos los mantenimientos
-		@return lst(obj) Mantenaince'''
-		mantenainces = []
+		@return lst(obj) Maintenance'''
+		maintenances = []
 		result = self.selectQuery(self.table)
 		qDebug('[Debug] se encuentran %s registros'% result.size())
 		while result.next():			
-			mantenainces.append(self.__setObj(result))
+			maintenances.append(self.__setObj(result))
 
-		return mantenainces
+		return maintenances
 
 
-	def firstMantenaince(self):
-		'''retorna el primer Mantenainceo de la lista
-		@return (obj) Mantenaince'''		
+	def firstMaintenance(self):
+		'''retorna el primer Maintenanceo de la lista
+		@return (obj) Maintenance'''		
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma el primer Mantenaince de la lista')
+		qDebug('[Debug] Se toma el primer Maintenance de la lista')
 		if result.first():
 			return self.__setObj(result)
 		else:
 			return False
 
 
-	def lastMantenaince(self):
-		'''retorna el ultimo Mantenaince de la Lista
-		@return (obj) Mantenaince'''
+	def lastMaintenance(self):
+		'''retorna el ultimo Maintenance de la Lista
+		@return (obj) Maintenance'''
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma ultimo Mantenaince de la lista')
+		qDebug('[Debug] Se toma ultimo Maintenance de la lista')
 		if result.last():
 			return self.__setObj(result)
 		else:
 			return False
 
 
-	def findMantenaince(self,condition):
-		'''Busca un Mantenainceo
+	def findMaintenance(self,condition):
+		'''Busca un Maintenanceo
 		@param condition = {'id_tecnico like ' : '%4%'}
-		@return list(obj) tipo Mantenaince'''
-		Mantenainces = []
+		@return list(obj) tipo Maintenance'''
+		Maintenances = []
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		while result.next():
-			Mantenainces.append(self.__setObj(result))
+			Maintenances.append(self.__setObj(result))
 
-		return Mantenainces
+		return Maintenances
 
 
-	def createMaintenaince(self,mantenaince):
+	def createMaintenaince(self,maintenance):
 		'''Crea un mantenimiento
-		@param (obj) mantenaince
+		@param (obj) maintenance
 		@return (bool) | (int)'''
 		values = {
-		'id_viaje': str(mantenaince.id_viaje),
-		'id_vehiculo': str(mantenaince.id_vehiculo),
-		'id_ciudad': str(mantenaince.id_ciudad),
-		'periodo': str(mantenaince.periodo),
-		'fecha': str(mantenaince.fecha),
-		'kilometros': str(mantenaince.kilometros),
-		'notas': str(mantenaince.notas)		
+		'id_viaje': str(maintenance.id_viaje),
+		'id_vehiculo': str(maintenance.id_vehiculo),
+		'id_ciudad': str(maintenance.id_ciudad),
+		'periodo': str(maintenance.periodo),
+		'fecha': str(maintenance.fecha),
+		'kilometros': str(maintenance.kilometros),
+		'notas': str(maintenance.notas)		
 		}
 
 		result = self.insertQuery(self.table,values)
@@ -138,22 +138,22 @@ class mantenainceCatalog(object):
 			return False
 
 
-	def updateMantenaince(self,oldMantenaince, mantenaince):
+	def updateMaintenance(self,oldMaintenance, maintenance):
 		'''Actualiza un mantenimiento
-		@param (obj) mantenaince
-		@param (obj) mantenaince 
+		@param (obj) maintenance
+		@param (obj) maintenance 
 		@return (bool)
 		'''
 		values = {
-		'id_vehiculo': str(mantenaince.id_vehiculo),
-		'id_ciudad': str(mantenaince.id_ciudad),
-		'periodo': str(mantenaince.periodo),
-		'fecha': str(mantenaince.fecha),
-		'kilometros': str(mantenaince.kilometros),
-		'notas': str(mantenaince.notas)		
+		'id_vehiculo': str(maintenance.id_vehiculo),
+		'id_ciudad': str(maintenance.id_ciudad),
+		'periodo': str(maintenance.periodo),
+		'fecha': str(maintenance.fecha),
+		'kilometros': str(maintenance.kilometros),
+		'notas': str(maintenance.notas)		
 		}
 		
-		condition = {' id_mantenimiento = ' : str(oldMantenaince.id_mantenimiento)}
+		condition = {' id_mantenimiento = ' : str(oldMaintenance.id_mantenimiento)}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
 
@@ -165,13 +165,13 @@ class mantenainceCatalog(object):
 			return False
 
 
-	def deleteMantenaince(self,mantenaince):
+	def deleteMaintenance(self,maintenance):
 		'''Elimina un mantenimiento completo incluido los items de mantenimiento
-		@para mantenaince obj Mantenaince'''
-		condition = {' id_mantenimiento = ' : str(mantenaince.id_mantenimiento)}
-		from mantenainceItemClass import MantenainceItemCatalog
-		itemsmantenimiento = MantenainceItemCatalog()
-		if (itemsmantenimiento.deleteMantenainceItems(mantenaince.id_mantenimiento)):
+		@para maintenance obj Maintenance'''
+		condition = {' id_mantenimiento = ' : str(maintenance.id_mantenimiento)}
+		from maintenanceItemClass import MaintenanceItemCatalog
+		itemsmantenimiento = MaintenanceItemCatalog()
+		if (itemsmantenimiento.deleteMaintenanceItems(maintenance.id_mantenimiento)):
 			result = self.MyDb.dleteQuery(self.table,condition)
 			if(result.numRowsAffected()>0):
 				qDebug('[Debug] Se Elimina un mantenimiento en la base')
@@ -185,25 +185,25 @@ class mantenainceCatalog(object):
 
 
 	def __setObj(self, result):
-		'''Crea un objeto tipo Mantenaince y lo retorna
+		'''Crea un objeto tipo Maintenance y lo retorna
 		@param (obj) result
-		@return (obj) Mantenaince'''
-		mymantenaince = Mantenaince()
-		mymantenaince.id_mantenimiento = str(result.value(0))
-		mymantenaince.id_viaje = str(result.value(1))
-		mymantenaince.id_vehiculo = str(result.value(2))
-		mymantenaince.id_ciudad = str(result.value(3))
-		mymantenaince.periodo = str(result.value(4))
-		mymantenaince.fecha = str(result.value(5))
-		mymantenaince.kilometros = str(result.value(6))
-		mymantenaince.notas = str(result.value(7))
-		mymantenaince.registro = str(result.value(8))
+		@return (obj) Maintenance'''
+		mymaintenance = Maintenance()
+		mymaintenance.id_mantenimiento = str(result.value(0))
+		mymaintenance.id_viaje = str(result.value(1))
+		mymaintenance.id_vehiculo = str(result.value(2))
+		mymaintenance.id_ciudad = str(result.value(3))
+		mymaintenance.periodo = str(result.value(4))
+		mymaintenance.fecha = str(result.value(5))
+		mymaintenance.kilometros = str(result.value(6))
+		mymaintenance.notas = str(result.value(7))
+		mymaintenance.registro = str(result.value(8))
 
-		if not (isinstance(mymantenaince.id_ciudad,str)):
-			mymantenaince.id_ciudad=''
+		if not (isinstance(mymaintenance.id_ciudad,str)):
+			mymaintenance.id_ciudad=''
 
-		if not (isinstance(mymantenaince.notas,str)):
-			mymantenaince.notas=''
+		if not (isinstance(mymaintenance.notas,str)):
+			mymaintenance.notas=''
 
-		qDebug('[Debug] se crea un objeto Mantenaince')
-		return mymantenaince
+		qDebug('[Debug] se crea un objeto Maintenance')
+		return mymaintenance

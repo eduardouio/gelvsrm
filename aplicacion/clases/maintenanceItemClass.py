@@ -3,8 +3,8 @@
 # Version		1.0
 # Autor			Eduardo Villota <eduardouio@hotmail.com> <@eduardouio>
 # Package		Clases
-# File			MantenainceItemClass.py
-# Ubicacion		aplicacion/clases/MantenainceItemClass.py
+# File			MaintenanceItemClass.py
+# Ubicacion		aplicacion/clases/MaintenanceItemClass.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 # +--------------------------+----------------------+------+-----+-------------------+-----------------------------+
 # 													Data Types
@@ -27,12 +27,12 @@ from modelo.Modelo import DB
 from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 
-class MantenainceItem(object):
+class MaintenanceItem(object):
 	"""Estructura para mantenimiento detalle"""
 
 	def __init__(self, id_mantenimiento_detalle=int(),id_mantenimiento=int(),id_inventario=int(),
 					fecha='',estado='',cantidad=int(),notas='',registro=''):
-		super(MantenainceItem, self).__init__()
+		super(MaintenanceItem, self).__init__()
 		self.id_mantenimiento_detalle = id_mantenimiento_detalle
 		self.id_mantenimiento = id_mantenimiento
 		self.id_inventario = id_inventario
@@ -41,24 +41,24 @@ class MantenainceItem(object):
 		self.cantidad = cantidad
 		self.notas = notas
 		self.registro = QDateTime().currentDateTime()
-		qDebug('[Debug] Se instancia la clase MantenainceItem')
+		qDebug('[Debug] Se instancia la clase MaintenanceItem')
 		
 
-class mantenainceItemCatalog(object):
-	"""Acciones sobre MantenainceItem"""
+class maintenanceItemCatalog(object):
+	"""Acciones sobre MaintenanceItem"""
 
 	def __init__(self):
 		self.MyDb = DB()
 		self.table = 'mantenimiento_detalle'
-		qDebug('[Debug] se instancia la clase MantenainceItemCatalog()')
+		qDebug('[Debug] se instancia la clase MaintenanceItemCatalog()')
 
 
-	def getMantenainceItem(self, IdmantenainceItem):
+	def getMaintenanceItem(self, IdmaintenanceItem):
 		'''Obtiene un mantenimiento o todos los mantenimientos
 		@param (str) id_mantenimiento 
-		@return (obj) mantenainceItem'''
-		if mantenainceItem:
-			condition = {' id_mantenimiento_detalle = ' : str(IdmantenainceItem)}			
+		@return (obj) maintenanceItem'''
+		if maintenanceItem:
+			condition = {' id_mantenimiento_detalle = ' : str(IdmaintenanceItem)}			
 			result = self.MyDb.selectQuery(self.table,'',condition)
 			qDebug('[Debug] la consulta retorna %s registros'% result.size())
 			if result.next():				
@@ -67,36 +67,36 @@ class mantenainceItemCatalog(object):
 				return False
 		
 
-	def listMantenainceItems(self, idMantenaince):
+	def listMaintenanceItems(self, idMaintenance):
 		'''Retona un listado con todos items de un mantenimiento
-		@return lst(MantenainceItem)'''
-			mantenainceItems = []
-			condition = {' id_mantenimiento = ' : idMantenaince}
+		@return lst(MaintenanceItem)'''
+			maintenanceItems = []
+			condition = {' id_mantenimiento = ' : idMaintenance}
 			result = self.MyDb.selectQuery(self.table,'',condition)
 			qDebug('[Debug] la consulta retorna %s registros'% result.size())
 			while result.next():				
-				mantenainceItems.append(self.__setObj(result))
+				maintenanceItems.append(self.__setObj(result))
 
-			return mantenainceItems
+			return maintenanceItems
 
 
-	def listMantenaincesItems(self):
+	def listMaintenancesItems(self):
 		'''Retona un listado con todos items de la tabla mantenimiento_detalle
-		@return lst(MantenainceItem)'''
-			mantenainceItems = []			
+		@return lst(MaintenanceItem)'''
+			maintenanceItems = []			
 			result = self.MyDb.selectQuery(self.table)
 			qDebug('[Debug] la consulta retorna %s registros'% result.size())
 			while result.next():				
-				mantenainceItems.append(self.__setObj(result))
+				maintenanceItems.append(self.__setObj(result))
 
-			return mantenainceItems
+			return maintenanceItems
 
 				
 		
-	def firstMantenainceItem(self, idMantenaince):
+	def firstMaintenanceItem(self, idMaintenance):
 		'''retorna el primer item del mantenimiento
 		@return (obj) technical'''
-		condition = {' id_mantenimiento = ' : idMantenaince }
+		condition = {' id_mantenimiento = ' : idMaintenance }
 		result = self.MyDb.selectQuery(self.table,'',condition)		
 		qDebug('[Debug] Se toma el primer item mantenimiento de la lista')
 		
@@ -107,10 +107,10 @@ class mantenainceItemCatalog(object):
 			return False
 
 
-	def lastMantenainceItem(self, idMantenaince):
+	def lastMaintenanceItem(self, idMaintenance):
 		'''retorna el ultimo item del mantenimiento
 		@return (obj) technical'''
-		condition = {' id_mantenimiento = ' : idMantenaince }
+		condition = {' id_mantenimiento = ' : idMaintenance }
 		result = self.MyDb.selectQuery(self.table,'',condition)		
 		qDebug('[Debug] Se toma el ultimo item mantenimiento de la lista')
 		
@@ -122,29 +122,29 @@ class mantenainceItemCatalog(object):
 
 
 	
-	def findMantenainceItems(self,condition):
+	def findMaintenanceItems(self,condition):
 		'''Busca un técnico en la base de datos
 		condition = {'id_tecnico like ' : '%4%'} 		
 		@return lst(obj)'''
-		myMantenainceItem = []
+		myMaintenanceItem = []
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
-			myMantenainceItem.append(self.__setObj(result))
+			myMaintenanceItem.append(self.__setObj(result))
 
-		return myMantenainceItem
+		return myMaintenanceItem
 			
 
-	def createMantenainceItem(self, MantenainceItem):
+	def createMaintenanceItem(self, MaintenanceItem):
 		'''Crea un mantenimiento detalle
-		@param (obj) MantenainceItem
+		@param (obj) MaintenanceItem
 		@return (bool) | (int)'''
 		values = {			
-			'id_mantenimiento' :  MantenainceItem.id_mantenimiento,
-			'id_inventario' :  MantenainceItem.id_inventario,
-			'fecha' :  MantenainceItem.fecha,
-			'estado' :  MantenainceItem.estado,
-			'cantidad' :  MantenainceItem.cantidad,
-			'notas' :  MantenainceItem.notas			
+			'id_mantenimiento' :  MaintenanceItem.id_mantenimiento,
+			'id_inventario' :  MaintenanceItem.id_inventario,
+			'fecha' :  MaintenanceItem.fecha,
+			'estado' :  MaintenanceItem.estado,
+			'cantidad' :  MaintenanceItem.cantidad,
+			'notas' :  MaintenanceItem.notas			
 		}
 
 		result = self.MyDb.insertQuery(self.table, values)
@@ -158,20 +158,20 @@ class mantenainceItemCatalog(object):
 
 
 
-	def updateMantenainceItem(self, oldMantenainceItem, MantenainceItem):
+	def updateMaintenanceItem(self, oldMaintenanceItem, MaintenanceItem):
 		'''Actualiza un mantenimiento detalle
-		@param (obj) MantenainceItem
-		@param (obj)MantenainceItem
+		@param (obj) MaintenanceItem
+		@param (obj)MaintenanceItem
 		@return (bool)
 		'''
-		condition = {' id_mantenimiento_detalle = ' : str(oldMantenainceItem.id_mantenimiento_detalle)}
+		condition = {' id_mantenimiento_detalle = ' : str(oldMaintenanceItem.id_mantenimiento_detalle)}
 		values = {
-			'id_mantenimiento' :  MantenainceItem.id_mantenimiento,
-			'id_inventario' :  MantenainceItem.id_inventario,
-			'fecha' :  MantenainceItem.fecha,
-			'estado' :  MantenainceItem.estado,
-			'cantidad' :  MantenainceItem.cantidad,
-			'notas' :  MantenainceItem.notas,
+			'id_mantenimiento' :  MaintenanceItem.id_mantenimiento,
+			'id_inventario' :  MaintenanceItem.id_inventario,
+			'fecha' :  MaintenanceItem.fecha,
+			'estado' :  MaintenanceItem.estado,
+			'cantidad' :  MaintenanceItem.cantidad,
+			'notas' :  MaintenanceItem.notas,
 		}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
@@ -184,11 +184,11 @@ class mantenainceItemCatalog(object):
 			return False
 
 
-	def deleteMantenainceItem(self, MantenainceItem):
-		'''Elimina un MantenainceItem
-		@param (obj) MantenainceItem
+	def deleteMaintenanceItem(self, MaintenanceItem):
+		'''Elimina un MaintenanceItem
+		@param (obj) MaintenanceItem
 		@return (bool)''' 
-		condition = {' id_mantenimiento_detalle = ' : str(MantenainceItem.id_mantenimiento_detalle)}
+		condition = {' id_mantenimiento_detalle = ' : str(MaintenanceItem.id_mantenimiento_detalle)}
 		result = self.MyDb.deleteQuery(self.table,condition)
 		
 		if(result.numRowsAffected()>0):
@@ -199,11 +199,11 @@ class mantenainceItemCatalog(object):
 			return False
 
 
-	def deleteMantenainceItems(self, mantenaince):
+	def deleteMaintenanceItems(self, maintenance):
 		'''Elimina todos los items de un mantenimiento
-		@param (obj) MantenainceItem
+		@param (obj) MaintenanceItem
 		@return (bool)''' 
-		condition = {' id_mantenimiento = ' : str(mantenaince.id_mantenimiento)}
+		condition = {' id_mantenimiento = ' : str(maintenance.id_mantenimiento)}
 		result = self.MyDb.deleteQuery(self.table,condition)
 		
 		if(result.numRowsAffected()>0):
@@ -219,19 +219,19 @@ class mantenainceItemCatalog(object):
 		'''crea un objeto tipo tecnicos
 		 @param result 
 		 @return objeto tipo technical'''		 
-		myMantenainceItem = MantenainceItem()
+		myMaintenanceItem = MaintenanceItem()
 
-		myMantenainceItem.id_mantenimiento_detalle = str(result.value(0))
-		myMantenainceItem.id_mantenimiento = str(result.value(1))
-		myMantenainceItem.id_inventario = str(result.value(2))
-		myMantenainceItem.fecha = str(result.value(3))
-		myMantenainceItem.estado = str(result.value(4))
-		myMantenainceItem.cantidad = str(result.value(5))
-		myMantenainceItem.notas = str(result.value(6))
-		myMantenainceItem.registro = str(result.value(7))
+		myMaintenanceItem.id_mantenimiento_detalle = str(result.value(0))
+		myMaintenanceItem.id_mantenimiento = str(result.value(1))
+		myMaintenanceItem.id_inventario = str(result.value(2))
+		myMaintenanceItem.fecha = str(result.value(3))
+		myMaintenanceItem.estado = str(result.value(4))
+		myMaintenanceItem.cantidad = str(result.value(5))
+		myMaintenanceItem.notas = str(result.value(6))
+		myMaintenanceItem.registro = str(result.value(7))
 
 		#verificamos los nulos devueltos por la consulta
-		if not (isinstance(myMantenainceItem.notas,str)):
+		if not (isinstance(myMaintenanceItem.notas,str)):
 			mytechnical.notas=''
 
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')

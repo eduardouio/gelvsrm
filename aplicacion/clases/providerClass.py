@@ -29,11 +29,11 @@ from modelo.Modelo import DB
 from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 
-class Providier(object):
-	"""Estructura del objeto Providier"""
-	def __init__(self, id_proveedor='',id_ciudad='',id_contacto='',nombre='',
+class Provider(object):
+	"""Estructura del objeto Provider"""
+	def __init__(self, id_proveedor='',id_ciudad=int(),id_contacto=int(),nombre='',
 				direccion='',telefono='',email='', credito='',notas='',registro=''):
-		super(Providier, self).__init__()
+		super(Provider, self).__init__()
 		self.id_proveedor = id_proveedor
 		self.id_ciudad = id_ciudad
 		self.id_contacto = id_contacto
@@ -44,24 +44,24 @@ class Providier(object):
 		self.credito = credito
 		self.notas = notas
 		self.registro = QDateTime().currentDateTime()
-		qDebug('[Debug] se inicia la clase providier')
+		qDebug('[Debug] se inicia la clase provider')
 
 
-class providierCatalog(object):
-	"""docstring for providierCatalog"""
+class providerCatalog(object):
+	"""docstring for providerCatalog"""
 
 	def __init__(self):
-		super(providierCatalog, self).__init__()
+		super(providerCatalog, self).__init__()
 		self.table = 'proveedor'
 		self.MyDb = DB()
-		qDebug('[Debug] se inicia la clase providierCatalog')
+		qDebug('[Debug] se inicia la clase providerCatalog')
 
 
-	def getProvidiers(self, providier=''):
+	def getProvider(self, idProvider):
 		'''Obtiene un proveedor un una lista de ellos
 		@param (str) id_proveedor
-		@return (obj) | list(obj) topo Providier'''		
-		condition = [' id_proveedor = ' + str(providier.id_proveedor)]
+		@return (obj) | list(obj) topo Provider'''		
+		condition = [' id_proveedor = ' + str(idProvider)]
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Ddebug] La consulta retorna %s registros'% result.size())
 		if result.next():			
@@ -71,23 +71,23 @@ class providierCatalog(object):
 			return False			
 		
 
-	def listProvidiers(self):
+	def listProviders(self):
 		'''Retorna un listado de proveedores
-		@return lst(obj) providier'''		
-		providiers = []
+		@return lst(obj) provider'''		
+		providers = []
 		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Ddebug] La consulta retorna %s registros'% result.size())
 		while result.next():			
-			providiers.append(self.__setObj(result))
+			providers.append(self.__setObj(result))
 
-		return providiers
+		return providers
 
 
-	def firstProvideier(self):
-		'''retorna el primer Provideier de la lista
-		@return (obj) Provideier'''		
+	def firstProvider(self):
+		'''retorna el primer Provider de la lista
+		@return (obj) Provider'''		
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma el primer providier de la lista')
+		qDebug('[Debug] Se toma el primer provider de la lista')
 		if result.first():
 			return self.__setObj(result)
 		else:
@@ -95,11 +95,11 @@ class providierCatalog(object):
 			return False
 
 
-	def lastProvideier(self):
+	def lastProvider(self):
 		'''retorna el ultimo Provideie de la Lista
 		@return (obj) Provideie'''
 		result = self.MyDB.selectQuery(self.table)
-		qDebug('[Debug] Se toma ultimo Provideiero de la lista')
+		qDebug('[Debug] Se toma ultimo Providero de la lista')
 		if result.last():
 			return self.__setObj(result)
 		else:
@@ -107,33 +107,33 @@ class providierCatalog(object):
 			return False
 
 
-	def findProvideier(self,condition):
-		'''Busca un Provideier
+	def findProvider(self,condition):
+		'''Busca un Provider
 		@param condition = {'id_tecnico like ' : '%4%'}
-		@return list(obj) tipo Provideier'''
-		provideiers = []
+		@return list(obj) tipo Provider'''
+		providers = []
 		result = self.MyDB.selectQuery(self.table,'',condition)
 		while result.next():
-			provideiers.append(self.__setObj(result))
+			providers.append(self.__setObj(result))
 
-		return Provideiers
+		return Providers
 
 
-	def createProvidier(self,providier):
+	def createProvider(self,provider):
 		'''Crea un proveedor
-		@param (obj) providier
+		@param (obj) provider
 		@return (bool) | (int)
 		'''
 		values = {		
-			'id_proveedor' : providier.id_proveedor,
-			'id_ciudad' : providier.id_ciudad,
-			'id_contacto' : providier.id_contacto,
-			'nombre' : providier.nombre,
-			'direccion' : providier.direccion,
-			'telefono' : providier.telefono,
-			'email' : providier.email,
-			'credito' : providier.credito,
-			'notas' : providier.notas			
+			'id_proveedor' : provider.id_proveedor,
+			'id_ciudad' : provider.id_ciudad,
+			'id_contacto' : provider.id_contacto,
+			'nombre' : provider.nombre,
+			'direccion' : provider.direccion,
+			'telefono' : provider.telefono,
+			'email' : provider.email,
+			'credito' : provider.credito,
+			'notas' : provider.notas			
 		}
 
 		result = self.MyDb.insertQuery(self.table,values)
@@ -146,41 +146,41 @@ class providierCatalog(object):
 			return False
 
 
-	def updateProvidier(self, oldProvidier, providier):
+	def updateProvider(self, oldProvider, provider):
 		'''Actualiza un proveedor
 		@param (obj) tipo proveedor
 		@param (obj) tipo proveedor
 		@return (bool)
 		'''
-		condition = {' id_proveedor = ' : str(oldProvidier.id_proveedor)}
+		condition = {' id_proveedor = ' : str(oldProvider.id_proveedor)}
 		values = {				
-			'id_ciudad' : providier.id_ciudad,
-			'id_contacto' : providier.id_contacto,
-			'nombre' : providier.nombre,
-			'direccion' : providier.direccion,
-			'telefono' : providier.telefono,
-			'email' : providier.email,
-			'credito' : providier.credito,
-			'notas' : providier.notas,
-			'registro' : providier.registro
+			'id_ciudad' : provider.id_ciudad,
+			'id_contacto' : provider.id_contacto,
+			'nombre' : provider.nombre,
+			'direccion' : provider.direccion,
+			'telefono' : provider.telefono,
+			'email' : provider.email,
+			'credito' : provider.credito,
+			'notas' : provider.notas,
+			'registro' : provider.registro
 		}
 
 		result = self.MyDb.updateQuery(self.table,values)
 
 		if(result.numRowsAffected()>0):
 			qDebug('[Debug] se Actualiza un priveedor en la base de datos')
-			return str(result.lastInsertId())
+			return True
 		else:
 			qDebug('[Debug] problemas para Actualizar un priveedor en la base de datos')
 			return False
 
 
-	def deleteProvideir(self,providier):
+	def deleteProvideir(self,provider):
 		'''Elimina un proveedor
-		@param (obj) providier
+		@param (obj) provider
 		@return (bool)'''
 
-		condition = {' id_proveedor = ' : str(providier.id_proveedor)}
+		condition = {' id_proveedor = ' : str(provider.id_proveedor)}
 		result = self.MyDb.deleteQuery(self.table,condition)
 
 		if(result.numRowsAffected()>0):
@@ -195,32 +195,32 @@ class providierCatalog(object):
 		'''Crea un objeto tipo Conctact y lo retorna
 		@param (obj) result
 		@return (obj) contact'''
-		myprovidier = Provideier()
-		myprovidier.id_proveedor = str(result.value(0))
-		myprovidier.id_ciudad = str(result.value(1))
-		myprovidier.id_contacto = str(result.value(2))
-		myprovidier.nombre = str(result.value(3))
-		myprovidier.direccion = str(result.value(4))
-		myprovidier.telefono = str(result.value(5))
-		myprovidier.email = str(result.value(6))
-		myprovidier.credito = str(result.value(7))
-		myprovidier.notas = str(result.value(8))
-		myprovidier.registro = str(result.value(9))
+		myprovider = Provider()
+		myprovider.id_proveedor = str(result.value(0))
+		myprovider.id_ciudad = str(result.value(1))
+		myprovider.id_contacto = str(result.value(2))
+		myprovider.nombre = str(result.value(3))
+		myprovider.direccion = str(result.value(4))
+		myprovider.telefono = str(result.value(5))
+		myprovider.email = str(result.value(6))
+		myprovider.credito = str(result.value(7))
+		myprovider.notas = str(result.value(8))
+		myprovider.registro = str(result.value(9))
 		#validamos los campos nulos
 
-		if not (isinstance(myprovidier.id_ciudad,str)):
-			myprovidier.id_ciudad=''
+		if not (isinstance(myprovider.id_ciudad,str)):
+			myprovider.id_ciudad=''
 
-		if not (isinstance(myprovidier.id_contacto,str)):
-			myprovidier.id_contacto=''
+		if not (isinstance(myprovider.id_contacto,str)):
+			myprovider.id_contacto=''
 
-		if not (isinstance(myprovidier.email,str)):
-			myprovidier.email=''
+		if not (isinstance(myprovider.email,str)):
+			myprovider.email=''
 
-		if not (isinstance(myprovidier.credito,str)):
-			myprovidier.credito=''
+		if not (isinstance(myprovider.credito,str)):
+			myprovider.credito=''
 
-		if not (isinstance(myprovidier.notas,str)):
-			myprovidier.notas=''
+		if not (isinstance(myprovider.notas,str)):
+			myprovider.notas=''
 
-		return myprovidier
+		return myprovider
