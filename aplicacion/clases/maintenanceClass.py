@@ -83,7 +83,7 @@ class maintenanceCatalog(object):
 	def firstMaintenance(self):
 		'''retorna el primer Maintenanceo de la lista
 		@return (obj) Maintenance'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Maintenance de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -94,7 +94,7 @@ class maintenanceCatalog(object):
 	def lastMaintenance(self):
 		'''retorna el ultimo Maintenance de la Lista
 		@return (obj) Maintenance'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Maintenance de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -107,7 +107,7 @@ class maintenanceCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Maintenance'''
 		Maintenances = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			Maintenances.append(self.__setObj(result))
 

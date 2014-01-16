@@ -86,7 +86,7 @@ class providerCatalog(object):
 	def firstProvider(self):
 		'''retorna el primer Provider de la lista
 		@return (obj) Provider'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer provider de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -98,7 +98,7 @@ class providerCatalog(object):
 	def lastProvider(self):
 		'''retorna el ultimo Provideie de la Lista
 		@return (obj) Provideie'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Providero de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -112,7 +112,7 @@ class providerCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Provider'''
 		providers = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			providers.append(self.__setObj(result))
 

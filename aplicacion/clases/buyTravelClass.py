@@ -70,7 +70,7 @@ class buyTravelCatalog(object):
 		'''Lista las compras de un viaje
 		@return lst(buyTravel) si el viaje no existe retorna una lista vacia'''
 		condition = {' id_viaje = ' : str(idTravel)}
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorno %s resultados' % result.size())		
 		mybuysTravel = []
 		while result.next:
@@ -94,7 +94,7 @@ class buyTravelCatalog(object):
 	def firstBuyTravel(self):
 		'''retorna el primer buyTravel de la lista
 		@return (obj) buyTravel'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer buyTravel de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -105,7 +105,7 @@ class buyTravelCatalog(object):
 	def lastBuyTravel(self):
 		'''retorna el ultimo buyTravel de la Lista
 		@return (obj) buyTravelo'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo buyTravel de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -118,7 +118,7 @@ class buyTravelCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo buyTravel'''
 		buyTravels = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			buyTravels.append(self.__setObj(result))
 

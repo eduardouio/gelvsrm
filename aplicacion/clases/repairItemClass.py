@@ -99,7 +99,7 @@ class repairItemCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo myrepairItem'''
 		myrepairItem = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			myrepairItem.append(self.__setObj(result))
 

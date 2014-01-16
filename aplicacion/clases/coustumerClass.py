@@ -86,7 +86,7 @@ class coustomerCatalog(object):
 	def firstCoustomer(self):
 		'''retorna el primer cliente de la tabla
 		@return (obj) Coustomer'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer cliente de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -97,7 +97,7 @@ class coustomerCatalog(object):
 	def lastCoustomer(self):
 		'''retorna la ultima cliente de la Lista
 		@return (obj) Coustomer'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma la ultimo cliente de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -110,7 +110,7 @@ class coustomerCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Coustomer'''
 		coustomers = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			coustomers.append(self.__setObj(result))
 

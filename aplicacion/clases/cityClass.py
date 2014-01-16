@@ -34,12 +34,12 @@ class cityCatalog(object):
 	"""Representa las operaciones sobre ciudad"""
 
 	def __init__(self):
-		'''Instancializacion de la clase creamos el objeto MyDB 
+		'''Instancializacion de la clase creamos el objeto MyDb 
 		creamos la variable con el nombre de la tabla
 		'''
 		super(cityCatalog, self).__init__()		
 		self.table = 'ciudad'
-		self.MyDB = DB()
+		self.MyDb = DB()
 
 
 	def getCity(self,idCity):
@@ -47,7 +47,7 @@ class cityCatalog(object):
 		@param (str) id_ciudad
 		@return (obj) tipo city'''	
 		condition = {'id_ciudad = ' : str(idCity)}
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] get city la consulta retorno %s regitros'% result.size())
 		if result.next():
 			return self.__setObj(result)
@@ -59,7 +59,7 @@ class cityCatalog(object):
 		'''Lista todas ciudades 
 		@return lst(obj) tipo city'''
 		cities = []
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] list cityes la consulta retorno %s regitros'% result.size())
 		while result.next():			
 			cities.append(self.__setObj(result))
@@ -72,7 +72,7 @@ class cityCatalog(object):
 		@return lst(obj) tipo city'''
 		cities = []
 		condition = {'id_provincia = ' : str(idState)}
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] list cityesstatela consulta retorno %s regitros'% result.size())
 		while result.next():			
 			cities.append(self.__setObj(result))	
@@ -83,7 +83,7 @@ class cityCatalog(object):
 	def firstCity(self):
 		'''retorna la primera ciudad de la Lista
 		@return (obj) city'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma la primera ciudad de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -94,7 +94,7 @@ class cityCatalog(object):
 	def lastCity(self):
 		'''retorna la ultima ciudad de la Lista
 		@return (obj) city'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma la ultima ciudad de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -107,7 +107,7 @@ class cityCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo city'''
 		cities = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			cities.append(self.__setObj(result))
 
@@ -122,7 +122,7 @@ class cityCatalog(object):
 				'id_provincia' : city.id_provincia,
 				'nombre' : city.nombre
 				}
-		result = self.MyDB.insertQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se inserto correctamente una ciudad')
 			return str(result.lastInsertId())
@@ -141,7 +141,7 @@ class cityCatalog(object):
 				'id_provincia' : city.id_provincia,
 				'nombre' : city.nombre
 				}
-		result =  self.MyDB.updateQuery(self.table,values,condition)
+		result =  self.MyDb.updateQuery(self.table,values,condition)
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se Actualiza correctamente una ciudad')
@@ -158,7 +158,7 @@ class cityCatalog(object):
 		print(city.id_ciudad)
 		condition = {'id_ciudad = ' : city.id_ciudad}
 		print(condition)
-		result = self.MyDB.deleteQuery(self.table, condition)
+		result = self.MyDb.deleteQuery(self.table, condition)
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se Elimina correctamente una ciudad')

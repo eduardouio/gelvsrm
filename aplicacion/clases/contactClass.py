@@ -83,7 +83,7 @@ class contactCatalog(object):
 	def firstContact(self):
 		'''retorna el primer contacto de la lista
 		@return (obj) Contact'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer contacto de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -94,7 +94,7 @@ class contactCatalog(object):
 	def lastContact(self):
 		'''retorna el ultimo contacto de la Lista
 		@return (obj) contacto'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo contacto de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -107,7 +107,7 @@ class contactCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo Contact'''
 		contacts = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			contacts.append(self.__setObj(result))
 

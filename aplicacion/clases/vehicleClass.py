@@ -29,7 +29,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Vehicle(object):
 	"""Estructura de la clse  Vehicle"""
-	def __init__(self, id_vehiculo='',id_cliente='',id_contacto='',id_ciudad='',
+	def __init__(self, id_vehiculo='',id_cliente='',id_contacto=int(),id_ciudad=int(),
 				modelo='',nro_motor='',ingreso='',notas='',registro=''):
 		super(Vehicle, self).__init__()
 		self.id_vehiculo = id_vehiculo
@@ -54,12 +54,12 @@ class vehicleCatalog(object):
 		qDebug('[Debug] se inicia la clase vehicleCatalog')
 
 
-	def getVehicle(self, vehicle = ''):
+	def getVehicle(self, idVehicle):
 		'''Obtiene un vehiculo o listado de ellos
 		@param (str) id_vehiculo
 		@return (obj) vehicle
 		'''	
-		condition = {' id_vehiculo = ' : str(vehicle)}
+		condition = {' id_vehiculo = ' : str(idVehicle)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la consulta retorna %s registros' % result.size())
 		if result.next():

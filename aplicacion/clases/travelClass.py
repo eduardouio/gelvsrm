@@ -78,7 +78,7 @@ class travelCatalog(object):
 	def firstTravel(self):
 		'''retorna el primer Trave de la lista
 		@return (obj) Travel'''		
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer Travel de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -89,7 +89,7 @@ class travelCatalog(object):
 	def lastTravel(self):
 		'''retorna el ultimo Travel de la Lista
 		@return (obj) Travel'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma ultimo Travel de la lista')
 		if result.last():
 			return self.__setObj(result)

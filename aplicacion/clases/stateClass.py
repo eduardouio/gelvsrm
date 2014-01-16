@@ -32,12 +32,12 @@ class stateCatalog(object):
 	"""Representa las operaciones sobre provincia"""
 
 	def __init__(self):
-		'''Instancializacion de la clase creamos el objeto MyDB 
+		'''Instancializacion de la clase creamos el objeto MyDb 
 		creamos la variable con el nombre de la tabla
 		'''
 		super(stateCatalog, self).__init__()		
 		self.table = 'provincia'
-		self.MyDB = DB()
+		self.MyDb = DB()
 		qDebug('[Debug] se instancia la clase stateCatalog')
 		
 
@@ -46,7 +46,7 @@ class stateCatalog(object):
 		@param (str) identificador del estado
 		@return (obj) tipo state'''		
 		condition = {'id_provincia = ':str(id_state)}
-		result = self.MyDB.selectQuery(self.table,'',condition)		
+		result = self.MyDb.selectQuery(self.table,'',condition)		
 		if result.next():			
 			return self.__setObj(result)
 			qDebug('[Debug] se retorna %s registros'% result.size())
@@ -60,7 +60,7 @@ class stateCatalog(object):
 		'''Lista todos los estados de la table
 		@return list(obj) state'''	
 		states = []
-		result = self.MyDB.selectQuery(self.table)	
+		result = self.MyDb.selectQuery(self.table)	
 		qDebug('[Debug] se retorna %s registros'% result.size())
 		while result.next():
 			states.append(self.__setObj(result))		
@@ -71,7 +71,7 @@ class stateCatalog(object):
 	def firstState(self):
 		'''retorna el primer estado de la Lista
 		@return (obj) state'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el primer estado de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -82,7 +82,7 @@ class stateCatalog(object):
 	def lastState(self):
 		'''retorna el ultimo estado de la Lista
 		@return (obj) state'''
-		result = self.MyDB.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el ultimo estado de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -96,7 +96,7 @@ class stateCatalog(object):
 		condition = {'id_tecnico like ' : '%4%'}
 		@retun list((obj)) state'''
 		states = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] la busqueda retorno %s registros'% result.size())
 		while result.next():
 			states.append(self.__setObj(result))
@@ -110,7 +110,7 @@ class stateCatalog(object):
 		@return bool|int
 		'''
 		values = {'nombre': str(state.nombre)}
-		result = self.MyDB.insertQuery(self.table,values)
+		result = self.MyDb.insertQuery(self.table,values)
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] Se inserta correctamente %d registrs' % result.numRowsAffected())
 			return int(result.lastInsertId())
@@ -127,7 +127,7 @@ class stateCatalog(object):
 		'''
 		condition = {'id_provincia = ' : str(oldState.id_provincia)}
 		values = {'nombre': str(state.nombre)}
-		result = self.MyDB.updateQuery(self.table,values,condition)
+		result = self.MyDb.updateQuery(self.table,values,condition)
 		
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] Se modifica correctamente %d registrs' % result.numRowsAffected())
@@ -143,7 +143,7 @@ class stateCatalog(object):
 		@return (bool)
 		'''
 		condition = {'id_provincia = ' : str(state.id_provincia)}
-		result = self.MyDB.deleteQuery(self.table, condition)
+		result = self.MyDb.deleteQuery(self.table, condition)
 
 		if (result.numRowsAffected() > 0):
 			qDebug('[Debug] se Elimina un Estado')
