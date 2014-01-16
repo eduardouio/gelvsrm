@@ -32,7 +32,7 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 class Repair(object):
 	"""estructura para Repair"""
 
-	def __init__(self, id_reparacion='',id_viaje='',id_vehiculo='',id_ciudad='', periodo='',
+	def __init__(self, id_reparacion=int(),id_viaje=int(),id_vehiculo='',id_ciudad=int(), periodo=int(),
 					kilometros='',fecha_salida='',fecha_entrada='',notas='',registro=''):
 		super(Repair, self).__init__()
 		self.id_reparacion = id_reparacion
@@ -41,8 +41,8 @@ class Repair(object):
 		self.id_ciudad = id_ciudad
 		self.periodo = periodo
 		self.kilometros = kilometros
-		self.fecha_salida = QDate()
-		self.fecha_entrada = QDate()
+		self.fecha_salida = QDate().currentDate()
+		self.fecha_entrada = QDate().currentDate()
 		self.notas = notas
 		self.registro = QDateTime().currentDateTime()
 		qDebug('[Debug] se instancia la clas Repair')
@@ -58,13 +58,13 @@ class repairCatalog(object):
 		qDebug('[Debug] se instancia la clase repairCatalog')
 
 
-	def getRepair(self, repair=''):
+	def getRepair(self, idRepair):
 		'''Obtiene un listado de reparacion
 		@param (str) repair
 		@return (obj) | list(obj)
 		'''
 		myrepair = Repair()
-		condition = {' id_reparacion = ' : str(repair)}
+		condition = {' id_reparacion = ' : str(idRepair)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] La consulta retorno %s registros'% result.size())
 		if result.next():
@@ -85,10 +85,10 @@ class repairCatalog(object):
 		return repairs
 
 
-	def firstInventary(self):
+	def firstRepair(self):
 		'''retorna la primera reparacion
-		@return (obj) Inventary'''		
-		result = self.MyDB.selectQuery(self.table)
+		@return (obj) Repair'''		
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el la primera reparacion de la lista')
 		if result.first():
 			return self.__setObj(result)
@@ -96,10 +96,10 @@ class repairCatalog(object):
 			return False
 
 
-	def lastInventary(self):
+	def lastRepair(self):
 		'''retorna el ultimo reparacion
-		@return (obj) Inventary'''		
-		result = self.MyDB.selectQuery(self.table)
+		@return (obj) Repair'''		
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] Se toma el ultimo reparacion de la lista')
 		if result.last():
 			return self.__setObj(result)
@@ -112,7 +112,7 @@ class repairCatalog(object):
 		@param condition = {'id_tecnico like ' : '%4%'}
 		@return list(obj) tipo myrepair'''
 		myrepairs = []
-		result = self.MyDB.selectQuery(self.table,'',condition)
+		result = self.MyDb.selectQuery(self.table,'',condition)
 		while result.next():
 			myrepairs.append(self.__setObj(result))
 

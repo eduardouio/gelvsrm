@@ -30,8 +30,8 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 class repairItem(object):
 	"""Estructura para reparacion detalle"""
 
-	def __init__(self, id_reparacion_detalle='',id_reparacion='',id_inventario='',
-					fecha='',estado='',cantidad='',notas='',registro=''):
+	def __init__(self, id_reparacion_detalle=int(),id_reparacion=int(),id_inventario=int(),
+					fecha='',estado='',cantidad=int(),notas='',registro=''):
 		super(repairItem, self).__init__()
 		self.id_reparacion_detalle = id_reparacion_detalle
 		self.id_reparacion = id_reparacion
@@ -53,44 +53,45 @@ class repairItemCatalog(object):
 		qDebug('[Debug] se instancia la clase repairItemCatalog')
 
 
-	def getRepairItem(self, repairItem=''):
+	def getRepairItem(self, idRepairItem):
 		'''Obtiene un reparacion o todos los reparacions
 		@param (str) id_reparacion 
-		@return (obj) repairItem | list(obj) repairItem'''
-		if repairItem:
-			condition = {' id_reparacion_detalle = ' : str(repairItem)}
-			myrepairItem = repairItem()
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			qDebug('[Debug] La consulta retorna %s registros'% result.size())
-			if result.next():
-				return self.__setObj(result)				
+		@return (obj) repairItem | list(obj) repairItem'''		
+		condition = {' id_reparacion_detalle = ' : str(idRepairItem)}		
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] La consulta retorna %s registros'% result.size())
+		if result.next():
+			return self.__setObj(result)				
+		else:
+			qDebug('[Debug] problemas para retonrar una repairItem')
+			return False
 
 
 	def listRepairItems(self,idRepair):
 		'''Lista los items de reparacion de una reparacion
 		@return lst(obj) repairItem'''
-			repairsItem = []
-			condition ={' id_reparacion = ' : str(idRepair)}
-			result = self.MyDb.selectQuery(self.table,'',condition)
-			qDebug('[Debug] La consulta retorna %s registros'% result.size())
+		repairsItem = []
+		condition ={' id_reparacion = ' : str(idRepair)}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] La consulta retorna %s registros'% result.size())
 
-			while result.next():				
-				repairsItem.append(self.__setObj(result))
+		while result.next():				
+			repairsItem.append(self.__setObj(result))
 
-			return repairsItem
+		return repairsItem
 
 
 	def listRepairsItems():
 		'''Lista todos items de reparacion
 		@return lst(obj) repairItem'''
 		repairsItem = []			
-			result = self.MyDb.selectQuery(self.table)
-			qDebug('[Debug] La consulta retorna %s registros'% result.size())
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('[Debug] La consulta retorna %s registros'% result.size())
 
-			while result.next():				
-				repairsItem.append(self.__setObj(result))
+		while result.next():				
+			repairsItem.append(self.__setObj(result))
 
-			return repairsItem
+		return repairsItem
 
 
 	def findRepairItem(self,condition):
@@ -169,7 +170,7 @@ class repairItemCatalog(object):
 			return False
 		
 
-def deleteRepairItems(self, idRepair):
+	def deleteRepairItems(self, Repair):
 		'''Elimina los items de una reparacion
 		@param (obj) repairItem
 		@return (bool)''' 
