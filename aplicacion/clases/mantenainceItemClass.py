@@ -30,13 +30,13 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 class MantenainceItem(object):
 	"""Estructura para mantenimiento detalle"""
 
-	def __init__(self, id_mantenimiento_detalle='',id_mantenimiento='',id_inventario='',
-					fecha='',estado='',cantidad='',notas='',registro=''):
+	def __init__(self, id_mantenimiento_detalle=int(),id_mantenimiento=int(),id_inventario=int(),
+					fecha='',estado='',cantidad=int(),notas='',registro=''):
 		super(MantenainceItem, self).__init__()
 		self.id_mantenimiento_detalle = id_mantenimiento_detalle
 		self.id_mantenimiento = id_mantenimiento
 		self.id_inventario = id_inventario
-		self.fecha = QDate()
+		self.fecha = QDate().currentDate()
 		self.estado = estado
 		self.cantidad = cantidad
 		self.notas = notas
@@ -44,7 +44,7 @@ class MantenainceItem(object):
 		qDebug('[Debug] Se instancia la clase MantenainceItem')
 		
 
-class MantenainceItemCatalog(object):
+class mantenainceItemCatalog(object):
 	"""Acciones sobre MantenainceItem"""
 
 	def __init__(self):
@@ -53,20 +53,19 @@ class MantenainceItemCatalog(object):
 		qDebug('[Debug] se instancia la clase MantenainceItemCatalog()')
 
 
-	def getMantenainceItem(self, mantenainceItem=''):
+	def getMantenainceItem(self, IdmantenainceItem):
 		'''Obtiene un mantenimiento o todos los mantenimientos
 		@param (str) id_mantenimiento 
 		@return (obj) mantenainceItem'''
 		if mantenainceItem:
-			condition = {' id_mantenimiento_detalle = ' : str(mantenainceItem)}
-			myMantenainceItem = MantenainceItem()
+			condition = {' id_mantenimiento_detalle = ' : str(IdmantenainceItem)}			
 			result = self.MyDb.selectQuery(self.table,'',condition)
 			qDebug('[Debug] la consulta retorna %s registros'% result.size())
-			while result.next():				
-				myMantenainceItem.append(self.__setObj(result))
-			
-			return myMantenainceItem
-
+			if result.next():				
+				return self.__setObj(result)
+			else:
+				return False
+		
 
 	def listMantenainceItems(self, idMantenaince):
 		'''Retona un listado con todos items de un mantenimiento
@@ -199,6 +198,20 @@ class MantenainceItemCatalog(object):
 			qDebug('[Debug] No se Elimina un Item detalle en la base')
 			return False
 
+
+	def deleteMantenainceItems(self, mantenaince):
+		'''Elimina todos los items de un mantenimiento
+		@param (obj) MantenainceItem
+		@return (bool)''' 
+		condition = {' id_mantenimiento = ' : str(mantenaince.id_mantenimiento)}
+		result = self.MyDb.deleteQuery(self.table,condition)
+		
+		if(result.numRowsAffected()>0):
+			qDebug('[Debug] se Elimina un Item detalle en la base')
+			return True
+		else:
+			qDebug('[Debug] No se Elimina un Item detalle en la base')
+			return False
 
 		
 

@@ -30,15 +30,15 @@ from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Mantenaince(object):
 	"""Estructura para Mantenaince"""
-	def __init__(self, id_mantenimiento='',id_viaje='',id_vehiculo='',id_ciudad='',
-					periodo='',fecha='',kilometros='',notas='',registro=''):
+	def __init__(self, id_mantenimiento=int(),id_viaje=int(),id_vehiculo='',id_ciudad=int(),
+					periodo=int(),fecha='',kilometros='',notas='',registro=''):
 		super(Mantenaince, self).__init__()
 		self.id_mantenimiento = id_mantenimiento
 		self.id_viaje = id_viaje
 		self.id_vehiculo = id_vehiculo
 		self.id_ciudad = id_ciudad
 		self.periodo = periodo
-		self.fecha = QDate()
+		self.fecha = QDate().currentDate()
 		self.kilometros = kilometros
 		self.notas = notas
 		self.registro = QDateTime().currentDateTiem()
@@ -55,10 +55,10 @@ class mantenainceCatalog(object):
 		qDebug('[Debug] se incia la clase mantenainceCatalog')
 
 
-	def getMantenaince(self,mantenaince=''):
+	def getMantenaince(self,IdMantenaince):
 		'''Obtiene un listado de mantenimientos o mantenimiento
 		@param = id_mantenimiento'''		
-		condition = [' id_mantenimiento = ' : str(mantenaince)]
+		condition = [' id_mantenimiento = ' : str(IdMantenaince)]
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] se encuentran %s registros'% result.size())
 		if result.next():
@@ -166,15 +166,21 @@ class mantenainceCatalog(object):
 
 
 	def deleteMantenaince(self,mantenaince):
-		'''Elimina un mantenimiento'''
+		'''Elimina un mantenimiento completo incluido los items de mantenimiento
+		@para mantenaince obj Mantenaince'''
 		condition = {' id_mantenimiento = ' : str(mantenaince.id_mantenimiento)}
-		result = self.MyDb.dleteQuery(self.table,condition)
-
-		if(result.numRowsAffected()>0):
-			qDebug('[Debug] Se Elimina un mantenimiento en la base')
-			return True
+		from mantenainceItemClass import MantenainceItemCatalog
+		itemsmantenimiento = MantenainceItemCatalog()
+		if (itemsmantenimiento.deleteMantenainceItems(mantenaince.id_mantenimiento)):
+			result = self.MyDb.dleteQuery(self.table,condition)
+			if(result.numRowsAffected()>0):
+				qDebug('[Debug] Se Elimina un mantenimiento en la base')
+				return True
+			else:
+				qDebug('[Debug] No se puede eliminar un mantenimiento en la base')
+				return False
 		else:
-			qDebug('[Debug] No se puede eliminar un mantenimiento en la base')
+			qDebug('[Debug] no se pudo eliminar los items del mantenimiento')
 			return False
 
 
