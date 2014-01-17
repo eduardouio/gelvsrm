@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>780</width>
-    <height>560</height>
+    <width>782</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -20,6 +20,9 @@
    <iconset resource="polaris.qrc">
     <normaloff>:/Icons/icons/gear.png</normaloff>:/Icons/icons/gear.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <property name="documentMode">
    <bool>false</bool>
   </property>
@@ -30,6 +33,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout_4">
     <item>
      <widget class="QTabWidget" name="tabs_cliente">
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
       <property name="toolTip">
        <string notr="true"/>
       </property>
@@ -40,7 +46,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -49,7 +55,7 @@
        </size>
       </property>
       <property name="documentMode">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -74,7 +80,7 @@
             <item>
              <widget class="QFrame" name="frame">
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">background-color:rgb(130, 186, 0)</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
@@ -205,6 +211,9 @@
              <widget class="QPushButton" name="btn_home">
               <property name="toolTip">
                <string>Regreasar al Panel de Control</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.6, radius:0.9, fx:0.5, fy:0.5, stop:0 rgba(255, 0, 0, 255), stop:0.479904 rgba(130, 186, 0), stop:0.522685 rgba(255, 255, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
               </property>
               <property name="text">
                <string/>
@@ -446,7 +455,7 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>187</width>
+                <width>200</width>
                 <height>20</height>
                </size>
               </property>
@@ -461,19 +470,6 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#015546;&quot;&gt;Clientes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>227</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>
@@ -502,7 +498,10 @@
             <item row="0" column="2">
              <widget class="QLabel" name="lbl_contacto">
               <property name="text">
-               <string>Contacto:</string>
+               <string>Con&amp;tacto:</string>
+              </property>
+              <property name="buddy">
+               <cstring>cmb_contacto</cstring>
               </property>
              </widget>
             </item>
@@ -512,7 +511,7 @@
                <string>B&amp;uscar</string>
               </property>
               <property name="buddy">
-               <cstring>txt_cuidad</cstring>
+               <cstring>btn_buscar_contacto</cstring>
               </property>
              </widget>
             </item>
@@ -859,6 +858,9 @@
                 <height>40</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
               <property name="text">
                <string>Nuevo</string>
               </property>
@@ -931,6 +933,19 @@
                 <height>40</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">#hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+}
+
+#pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+              </property>
               <property name="text">
                <string>Guardar</string>
               </property>
@@ -989,7 +1004,7 @@
        </layout>
        <zorder></zorder>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab_vehiculo">
        <attribute name="icon">
         <iconset>
          <normalon>:/Icons/icons/polaris.png</normalon>
@@ -1172,7 +1187,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tab_facturas">
        <attribute name="icon">
         <iconset>
          <normalon>:/Icons/icons/format_justify_fill.png</normalon>
@@ -1575,8 +1590,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>780</width>
-     <height>25</height>
+     <width>782</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">

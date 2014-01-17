@@ -33,7 +33,7 @@ class Coustomer(object):
 	def __init__(self, id_cliente='',id_contacto=int(),id_ciudad=int(),nombre='',direccion='',
 					telefono='',fax='',mail='',notas='',registro=''):
 		super(Coustomer, self).__init__()
-		self.id_cliente = cliente
+		self.id_cliente = id_cliente
 		self.id_contacto = id_contacto
 		self.id_ciudad = id_ciudad
 		self.nombre = nombre
@@ -193,13 +193,14 @@ class coustomerCatalog(object):
 		@return (obj) city'''
 		mycoustomer = Coustomer()
 		mycoustomer.id_cliente = str(result.value(0))
-		mycoustomer.id_ciudad = str(result.value(1))
-		mycoustomer.nombre = str(result.value(2))
-		mycoustomer.direccion = str(result.value(3))
-		mycoustomer.telefono = str(result.value(4))
-		mycoustomer.fax = str(result.value(5))
-		mycoustomer.mail = str(result.value(6))
-		mycoustomer.notas = str(result.value(7))
-		mycoustomer.registro = str(result.value(8))		
+		mycoustomer.id_contacto = str(result.value(1))
+		mycoustomer.id_ciudad = str(result.value(2))
+		mycoustomer.nombre = str(result.value(3))
+		mycoustomer.direccion = str(result.value(4))
+		mycoustomer.telefono = str(result.value(5))
+		mycoustomer.fax = str(result.value(6))
+		mycoustomer.mail = str(result.value(7))
+		mycoustomer.notas = str(result.value(8))
+		mycoustomer.registro = str(result.value(9))		
 		qDebug('[Debug] se crea un cliente')
 		return mycoustomer
