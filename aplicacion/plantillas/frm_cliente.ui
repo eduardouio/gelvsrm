@@ -535,12 +535,18 @@
               <property name="styleSheet">
                <string notr="true">background-color: rgb(224, 234, 255);</string>
               </property>
+              <property name="maxLength">
+               <number>13</number>
+              </property>
              </widget>
             </item>
             <item row="1" column="1">
              <widget class="QLineEdit" name="txt_nombre">
               <property name="toolTip">
                <string>Ingrese el nombre del cliente</string>
+              </property>
+              <property name="maxLength">
+               <number>200</number>
               </property>
              </widget>
             </item>
@@ -624,6 +630,38 @@
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout_4">
+            <item row="1" column="3">
+             <widget class="QLineEdit" name="txt_cuidad">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ingresar cuidad </string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="txt_fax">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>Ingrese el fax del cliente</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="lbl_telefono">
               <property name="text">
@@ -737,38 +775,6 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="txt_fax">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="toolTip">
-               <string>Ingrese el fax del cliente</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLineEdit" name="txt_cuidad">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="toolTip">
-               <string>Ingresar cuidad </string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="lbl_fax">
               <property name="text">
@@ -789,7 +795,7 @@
                <string>&amp;Observaciones:</string>
               </property>
               <property name="buddy">
-               <cstring>rtxt_observaciones</cstring>
+               <cstring>rtxt_notas</cstring>
               </property>
              </widget>
             </item>
@@ -801,7 +807,7 @@
              </widget>
             </item>
             <item row="1" column="0" rowspan="3">
-             <widget class="QTextEdit" name="rtxt_observaciones">
+             <widget class="QTextEdit" name="rtxt_notas">
               <property name="toolTip">
                <string>Sirve para especificar fecha de entrega de factura entre otras</string>
               </property>
