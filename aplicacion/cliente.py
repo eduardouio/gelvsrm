@@ -6,6 +6,16 @@
 # File			viaje.py
 # Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
+#self.id_cliente = id_cliente
+#self.id_contacto = id_contacto
+#self.id_ciudad = id_ciudad
+#self.nombre = nombre
+#self.direccion = direccion
+#self.telefono = telefono
+#self.fax = fax
+#self.mail = mail
+#self.notas = notas
+#self.registro = QDateTime().currentDateTime()
 
 import sys
 sys.path.append('..')
@@ -13,6 +23,8 @@ from PyQt4 import QtGui, QtCore, uic, Qt
 from plantillas import polaris_rc
 from clases.coustumerClass import Coustomer, coustomerCatalog
 from clases.cityClass import City, cityCatalog
+from clases import helper
+
 
 class Cliente(QtGui.QMainWindow):
 	'''Representa al cliente dentro de la aplicacion final
@@ -22,14 +34,18 @@ class Cliente(QtGui.QMainWindow):
 		''' Se crea los objetos y se realiza las conexiones necesarias para
 		el funcionamiento del formulario
 		'''
-		self.debug = QtCore.qDebug
+		# Si inicializa la clase
 		QtGui.QMainWindow.__init__(self)              
-		#concectamos señales pushbutton
 		self.ui = uic.loadUi('plantillas/frm_cliente.ui',self)
-		self.connect(self.ui.btn_anterior,QtCore.SIGNAL('clicked()'),self.on_firstRow)
+		QtCore.qDebug('[Debug] Se carga la pantalla')		
+		self.mapper = QtGui.QDataWidgetMapper(self)
+		self.load()		
+		#navegador de Registros
+		self.connect(self.ui.btn_anterior,QtCore.SIGNAL('clicked()'),self.mapper.toPrevious)
+		
 		self.connect(self.ui.btn_asignar_vehiculo,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_asignar_vehiculos,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_buscar,QtCore.SIGNAL(c'licked()'),self.on_firstRow)
+		self.connect(self.ui.btn_buscar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_buscar_contacto,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_cancelar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_copiar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
@@ -43,7 +59,7 @@ class Cliente(QtGui.QMainWindow):
 		self.connect(self.ui.btn_nuevo,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_primero,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_recargar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_siguiente,QtCore.SIGNAL('clicked()'),self.on_firstRow)
+		self.connect(self.ui.btn_siguiente,QtCore.SIGNAL('clicked()'),self.mapper.toNext)		
 		self.connect(self.ui.btn_ultimo,QtCore.SIGNAL('clicked()'),self.on_firstRow)	
 		#conecatmos señales qaction
 		self.connect(self.ui.actionAsignar_Polaris,QtCore.SIGNAL('triggered()'),self.on_firstRow)		
@@ -52,49 +68,70 @@ class Cliente(QtGui.QMainWindow):
 		self.connect(self.ui.action_Buscar,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Salir,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Volver	,QtCore.SIGNAL('triggered()'),self.on_firstRow)
+		QtCore.qDebug('Se enlanzan SIGNALS y SLOTS')
+		#self.mapper.currentIndexChanged.connect(self.btn_recargar)
+		#iniciamos el mapper
 		self.ui.show()
 
-		#creamos datamodel		
-		self.model = QtGui.QStandardItemModel()
-		self.mapper = QtGui.QDataWidgetMapper()
-		self.mapper.setOrientation(QtCore.Qt.Horizontal)
-		
+	#se programan todos los slots de programacion
 	@QtCore.pyqtSlot()
 	def on_firstRow(self):
 		'''Coloca la seleccion el el primer registro'''
-		mycliente = coustomerCatalog().firstCoustomer()
-		self.ui.txt_nombre.setText(mycliente.nombre)
-		self.ui.txt_ruc.setText(mycliente.id_cliente)
-		self.ui.txt_direccion.setText(mycliente.direccion)
-
-	def setData(self):
-		'''Coloca los datos en los campos del formulario
-		se establece de donde se llama para que solo se traiga los datos de la prim'''
 		pass
 
-	def __createModel(self,data):
-		'''Crea un modelo para usar con los widgets a partir de '''
-		pass
+	# se programan las funcionalidades de la widget
+	def load(self):
+		'''Se encarga de listar todos los registros'''
+		mycoustomerCatalog = coustomerCatalog()
+		coustomers = mycoustomerCatalog.listCoustomers()
+		#se crea el modelo
+		self.__createModel(len(coustomers),helper.countColumns('cliente'),coustomers)
+		QtCore.qDebug('Se carga la informacion de los clientes')
 
-	def setData(self,data):
-		'''	Coloca los datos en los elementos visuales de la pantalla
-		'''
-		pass
 
-	def createCoustommer(myCity):
-		'''Crea un cliente en la base de datos
-		la fecha de creación es asignada de forma automátia por el contralor'''
-		myCoustomerCatalog = coustomerCatalog()
-		myCoustomer = Coustomer()
-		myCoustomer.id_cliente = self.ui.txt_ruc.text()
-		myCoustomer.id_contacto = self.ui.txt_ruc.text()
-		myCoustomer.id_ciudad = myCity.id_ciudad
-		myCoustomer.nombre = self.ui.txt_nombre.text()
-		myCoustomer.direccion = self.ui.txt_direccion.text()
-		myCoustomer.telefono = self.ui.txt_telefono.text()		
-		myCoustomer.fax = self.ui.txt_fax.text()
-		myCoustomer.mail = self.ui.txt_email.text()
-		myCoustomer.notas = self.ui.rtxt_notas.text()
+	def __createModel(self, x,y,data):
+		'''Se crea un standart model para alamacenar la info antes de asignarla a los widgets '''
+		#se crea el model y carga los datos al model		
+		self.model = QtGui.QStandardItemModel(x,y)						
+		i = 0
+		for x, Mycoustomer in enumerate(data):
+			item = QtGui.QStandardItem(Mycoustomer.id_cliente)  
+			self.model.setItem(x,0,item)
+			item = QtGui.QStandardItem(Mycoustomer.id_contacto)
+			self.model.setItem(x,1,item)
+			item = QtGui.QStandardItem(Mycoustomer.id_ciudad)
+			self.model.setItem(x,2,item)
+			item = QtGui.QStandardItem(Mycoustomer.nombre)
+			self.model.setItem(x,3,item)
+			item = QtGui.QStandardItem(Mycoustomer.direccion)
+			self.model.setItem(x,4,item)
+			item = QtGui.QStandardItem(Mycoustomer.telefono)
+			self.model.setItem(x,5,item)
+			item = QtGui.QStandardItem(Mycoustomer.fax)
+			self.model.setItem(x,6,item)
+			item = QtGui.QStandardItem(Mycoustomer.mail)
+			self.model.setItem(x,7,item)
+			item = QtGui.QStandardItem(Mycoustomer.notas)
+			self.model.setItem(x,8,item)
+			item = QtGui.QStandardItem(Mycoustomer.registro)
+			self.model.setItem(x,9,item)
+			QtCore.qDebug('Se asiga un objeto al model')
+
+		#se mapea los widgets
+		#self.mapper.setOrientation(QtCore.Qt.Horizontal)
+		self.mapper.setModel(self.model)
+		self.mapper.addMapping(self.ui.txt_ruc,0)
+		self.mapper.addMapping(self.ui.cmb_contacto,1)		
+		self.mapper.addMapping(self.ui.txt_cuidad,2)
+		self.mapper.addMapping(self.ui.txt_nombre,3)
+		self.mapper.addMapping(self.ui.txt_direccion,4)
+		self.mapper.addMapping(self.ui.txt_telefono,5)
+		self.mapper.addMapping(self.ui.txt_fax,6)
+		self.mapper.addMapping(self.ui.txt_email,7)
+		self.mapper.addMapping(self.ui.rtxt_notas,8)
+		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9) 
+		QtCore.qDebug('Se crea el Mapping a los widgets')
+
 
 if __name__ == '__main__':
 	app = QtGui.QApplication(sys.argv)

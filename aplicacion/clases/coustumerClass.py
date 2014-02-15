@@ -75,7 +75,7 @@ class coustomerCatalog(object):
 		'''Retorna un listado completo de clienteClass
 		@return lst(obj) Coustomer'''
 		coustomers = []
-		result = self.selectQuery(self.table)
+		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] la consulta retorna %s valores'% result.size())
 		while result.next():				
 			coustomers.append(self.__setObj(result))
