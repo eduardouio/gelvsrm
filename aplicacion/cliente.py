@@ -21,8 +21,10 @@ import sys
 sys.path.append('..')
 from PyQt4 import QtGui, QtCore, uic, Qt
 from plantillas import polaris_rc
-from clases.coustumerClass import Coustomer, coustomerCatalog
-from clases.cityClass import City, cityCatalog
+from clases.coustumerClass import *
+from clases.cityClass import *
+from clases.stateClass import *
+from clases.contactClass import *
 from clases import helper
 
 
@@ -88,6 +90,19 @@ class Cliente(QtGui.QMainWindow):
 		self.__createModel(len(coustomers),helper.countColumns('cliente'),coustomers)
 		QtCore.qDebug('Se carga la informacion de los clientes')
 
+		#se carga el listado de las provincias en el list box
+		myStateCatalog = stateCatalog()
+		states = myStateCatalog.listStates()
+		model = QtGui.QStandardItemModel(len(states),1)
+		for x,state in enumerate(states):					
+			item = QtGui.QStandardItem(state.nombre)
+			model.setItem(x,0,item)
+
+		self.ui.cmb_provincia.clear()
+		self.ui.cmb_provincia.setModel(model)
+		QtCore.qDebug('Se crea un modelo de las provincias y se alimenta el combobox')
+			
+
 
 	def __createModel(self, x,y,data):
 		'''Se crea un standart model para alamacenar la info antes de asignarla a los widgets '''
@@ -129,8 +144,27 @@ class Cliente(QtGui.QMainWindow):
 		self.mapper.addMapping(self.ui.txt_fax,6)
 		self.mapper.addMapping(self.ui.txt_email,7)
 		self.mapper.addMapping(self.ui.rtxt_notas,8)
-		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9) 
+		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9) 		
 		QtCore.qDebug('Se crea el Mapping a los widgets')
+
+
+	def getCity(idCity):
+		'''Obtiene el registro de una ciudad'''
+		myCityCatalog = cityCatalog()
+		return myCityCatalog.getCity(idCity)
+
+
+	def getContact(idContact):
+		'''Obtiene el registro de contacto'''
+		myContactCatalog = contactCatalog()
+		return myContactCatalog.getContact(idContact)	
+
+
+	def getState(idState):
+		'''Obtine la provincia de la ciudad'''
+		myStateCatalog = stateCatalog()
+		return myStateCatalog.getState(idState)
+
 
 
 if __name__ == '__main__':

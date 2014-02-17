@@ -709,51 +709,18 @@
               <property name="toolTip">
                <string>Provincias</string>
               </property>
-              <item>
-               <property name="text">
-                <string>Bolivar</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Cañar</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Chimborazo</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Cotopaxi</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Guayas</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Loja</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Pichincha</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Santo Domingo</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Tungurahua</string>
-               </property>
-              </item>
+              <property name="editable">
+               <bool>true</bool>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>17</height>
+               </size>
+              </property>
+              <property name="duplicatesEnabled">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item row="1" column="0">

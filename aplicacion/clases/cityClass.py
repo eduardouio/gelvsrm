@@ -43,7 +43,7 @@ class cityCatalog(object):
 
 
 	def getCity(self,idCity):
-		'''Lista Las ciudades		
+		'''obtiene una iudad de la lista
 		@param (str) id_ciudad
 		@return (obj) tipo city'''	
 		condition = {'id_ciudad = ' : str(idCity)}
