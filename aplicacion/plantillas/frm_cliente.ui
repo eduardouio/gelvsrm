@@ -446,22 +446,6 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Minimum</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>200</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
              <widget class="QLabel" name="lbl_clientes_gelvs">
               <property name="toolTip">
                <string/>
@@ -1706,6 +1690,44 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>tabs_cliente</tabstop>
+  <tabstop>btn_home</tabstop>
+  <tabstop>btn_primero</tabstop>
+  <tabstop>btn_anterior</tabstop>
+  <tabstop>btn_recargar</tabstop>
+  <tabstop>btn_siguiente</tabstop>
+  <tabstop>btn_ultimo</tabstop>
+  <tabstop>txt_ruc</tabstop>
+  <tabstop>txt_nombre</tabstop>
+  <tabstop>cmb_contacto</tabstop>
+  <tabstop>btn_buscar_contacto</tabstop>
+  <tabstop>txt_direccion</tabstop>
+  <tabstop>txt_email</tabstop>
+  <tabstop>txt_telefono</tabstop>
+  <tabstop>txt_fax</tabstop>
+  <tabstop>cmb_provincia</tabstop>
+  <tabstop>txt_cuidad</tabstop>
+  <tabstop>rtxt_notas</tabstop>
+  <tabstop>btn_asignar_vehiculo</tabstop>
+  <tabstop>btn_nuevo</tabstop>
+  <tabstop>btn_copiar</tabstop>
+  <tabstop>btn_cancelar</tabstop>
+  <tabstop>btn_guardar</tabstop>
+  <tabstop>btn_eliminar</tabstop>
+  <tabstop>tbl_vehiculos</tabstop>
+  <tabstop>btn_asignar_vehiculos</tabstop>
+  <tabstop>btn_monstrar_seleccionados</tabstop>
+  <tabstop>tbl_facturas</tabstop>
+  <tabstop>btn_mantenimientos_4</tabstop>
+  <tabstop>btn_monstrar_3</tabstop>
+  <tabstop>cmb_columna</tabstop>
+  <tabstop>cmb_operador</tabstop>
+  <tabstop>txt_criterio</tabstop>
+  <tabstop>btn_buscar</tabstop>
+  <tabstop>tbl_buscar</tabstop>
+  <tabstop>btn_mostrar</tabstop>
+ </tabstops>
  <resources>
   <include location="polaris.qrc"/>
  </resources>

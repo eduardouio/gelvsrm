@@ -199,8 +199,26 @@ class coustomerCatalog(object):
 		mycoustomer.direccion = str(result.value(4))
 		mycoustomer.telefono = str(result.value(5))
 		mycoustomer.fax = str(result.value(6))
-		mycoustomer.mail = str(result.value(7))
+		mycoustomer.mail = str(result.value(7))		
 		mycoustomer.notas = str(result.value(8))
 		mycoustomer.registro = str(result.value(9))		
 		qDebug('[Debug] se crea un cliente')
+
+		if(mycoustomer.id_contacto.find('PyQt4.QtCore.')):
+			mycoustomer.id_contacto = None
+
+		if(mycoustomer.id_ciudad.find('PyQt4.QtCore.')):
+					mycoustomer.id_ciudad = None
+
+		if(mycoustomer.fax.find('PyQt4.QtCore.')):
+					mycoustomer.fax = None
+
+		if(mycoustomer.mail.find('PyQt4.QtCore.')):
+					mycoustomer.mail = None
+		
+		if(mycoustomer.notas.find('PyQt4.QtCore.')):
+					mycoustomer.notas = None
+
+
+		qDebug('[Debug] se valida los campos NULL')		
 		return mycoustomer
