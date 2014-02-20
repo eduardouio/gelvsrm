@@ -135,5 +135,5 @@ class technicalTravelCatalog(object):
 		mytechnical.id_tecnico = str(result.value(0))
 		mytechnical.id_viaje = str(result.value(1))
 		mytechnical.registro = str(result.value(2))
-		qDebug('[Debug] se arama un objeto tipo TravetlTechical')		
+		qDebug('[Debug] se arama un objeto tipo TravetlTechical validando los campos NULL')		
 		return mytechnical

@@ -159,5 +159,5 @@ class stateCatalog(object):
 		mystate = State()
 		mystate.id_provincia = str(result.value(0))
 		mystate.nombre = str(result.value(1))
-		qDebug('[Debug] se crea un objeto tipo estado')
+		qDebug('[Debug] se crea un objeto tipo estado validando los NULL')
 		return mystate

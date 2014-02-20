@@ -195,13 +195,13 @@ class inventaryCatalog(object):
 		myinventary.ubicacion = str(result.value(7))
 		myinventary.notas = str(result.value(8))
 		myinventary.registro = str(result.value(9))
-		#verificamos los nulos devueltos por la consulta
-		if not(isinstance(myinventary.marca,str)):
-			myinventary.marca=''
 
-		if not(isinstance(myinventary.notas,str)):
-			myinventary.notas=''
+		#se validan los campos con null
+		if(myinventary.marca.find('PyQt4.QtCore.')):
+			myinventary.marca = None
 
-		qDebug('[Debug] se crea un objeto inventario validado')
-
+		if(myinventary.notas.find('PyQt4.QtCore.')):
+			myinventary.notas = None
+		
+		qDebug('[Debug] se crea un objeto inventario validado los campos NULL')
 		return myinventary

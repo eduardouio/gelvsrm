@@ -190,17 +190,18 @@ class techCatalog(object):
 		mytechnical.registro = result.value(6)
 
 		#verificamos los nulos devueltos por la consulta
-		if not (isinstance(mytechnical.telefono,str)):
-			mytechnical.telefono=''
 
-		if not (isinstance(mytechnical.celular,str)):
-			mytechnical.celular=''
-
-		if not (isinstance(mytechnical.email,str)):
-			mytechnical.email=''
-
-		if not (isinstance(mytechnical.notas,str)):
-			mytechnical.notas=''
+		if(mytechnical.telefono.find('PyQt4.QtCore.')):
+			mytechnical.telefono = None
+		
+		if(mytechnical.celular.find('PyQt4.QtCore.')):
+			mytechnical.celular = None
+			
+		if(mytechnical.email.find('PyQt4.QtCore.')):
+			mytechnical.email = None
+			
+		if(mytechnical.notas.find('PyQt4.QtCore.')):
+			mytechnical.notas = None
 
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
 		

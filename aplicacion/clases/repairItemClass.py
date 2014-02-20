@@ -198,10 +198,13 @@ class repairItemCatalog(object):
 		myrepairItem.notas = str(result.value(6))
 		myrepairItem.registro = str(result.value(7))
 		#validamos los campos null
-		if not(isinstance(myrepairItem.estado,str)):
-			myrepairItem.estado=''
 
-		if not(isinstance(myrepairItem.notas,str)):
-			myrepairItem.notas=''
+		if(myrepairItem.estado.find('PyQt4.QtCore.')):
+			myrepairItem.estado = None
+		
+		if(myrepairItem.notas.find('PyQt4.QtCore.')):
+			myrepairItem.notas = None
+
+		qDebug('[Debug] Se crea un item de reparacion validados los campos NULL')
 
 		return myrepairItem

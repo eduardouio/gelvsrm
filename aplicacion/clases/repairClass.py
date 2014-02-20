@@ -212,12 +212,14 @@ class repairCatalog(object):
 		myrepair.registro = str(result.value(9))
 
 		#validamos los campos nulos
-		if not(isinstance(myrepair.id_ciudad,str)):
-			myrepair.id_ciudad=''
 
-		if not(isinstance(myrepair.notas,str)):
-			myrepair.notas=''
 
+		if(myrepair.id_ciudad.find('PyQt4.QtCore.')):
+			myrepair.id_ciudad = None
+		
+		if(myrepair.notas.find('PyQt4.QtCore.')):
+			myrepair.notas = None
+		
 		qDebug('Se crea una reparacion validados los campos nulos')
 
 		return myrepair

@@ -219,18 +219,19 @@ class invoiceCatalog(object):
 		myinvoice.registro = str(result.value(10))
 
 		#verificamos los nulos devueltos por la consulta
-		if not (isinstance(myinvoice.id_contacto,str)):
-			myinvoice.id_contacto=''
 
-		if not (isinstance(myinvoice.guia_envio,str)):
-			myinvoice.guia_envio=''
+		if(myinvoice.id_contacto.find('PyQt4.QtCore.')):
+			myinvoice.id_contacto = None
 
-		if not (isinstance(myinvoice.archivo,str)):
-			myinvoice.archivo=''
+		if(myinvoice.guia_envio.find('PyQt4.QtCore.')):
+			myinvoice.guia_envio = None
 
-		if not (isinstance(myinvoice.notas,str)):
-			myinvoice.notas=''
+		if(myinvoice.archivo.find('PyQt4.QtCore.')):
+			myinvoice.archivo = None
 
+		if(myinvoice.notas.find('PyQt4.QtCore.')):
+			myinvoice.notas = None
+		
 		qDebug('[Debug] Se crea un objeto typo factura validando los campos tipo null ')
 		
 		return myinvoice

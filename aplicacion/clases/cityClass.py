@@ -175,6 +175,6 @@ class cityCatalog(object):
 		mycity.id_ciudad = str(result.value(0))
 		mycity.id_provincia = str(result.value(1)) 
 		mycity.nombre = str(result.value(2))
-		qDebug('[Debug] se crea una ciudad')
 
+		qDebug('[Debug] se crea una ciudad')
 		return mycity

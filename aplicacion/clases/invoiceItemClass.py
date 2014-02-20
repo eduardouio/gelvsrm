@@ -217,14 +217,14 @@ class invoiceItemCatalog(object):
 		myinvoiceItem.id_factura = str(result.value(1))
 		myinvoiceItem.id_mantenimiento = str(result.value(2))
 		myinvoiceItem.id_reparacion = str(result.value(3))
-		myinvoiceItem.registro = str(result.value(4))		
+		myinvoiceItem.registro = str(result.value(4))	
 
-		if not(isinstance(myinvoiceItem.id_mantenimiento,str)):
-			myinvoiceItem.id_mantenimiento=''
+		#se validan los campos nulos
+		if(myinvoiceItem.id_mantenimiento.find('PyQt4.QtCore.')):
+			myinvoiceItem.id_mantenimiento = None
 
-		if not(isinstance(myinvoiceItem.id_reparacion,str)):
-			myinvoiceItem.id_reparacion=''
-
-		qDebug('[Debug] Se crea un objeto typo item factura validando los campos tipo null ')
+		if(myinvoiceItem.id_reparacion.find('PyQt4.QtCore.')):
+			myinvoiceItem.id_reparacion = None
 		
+		qDebug('[Debug] Se crea un objeto typo item factura validando los campos tipo null ')		
 		return myinvoiceItem

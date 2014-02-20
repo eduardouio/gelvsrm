@@ -194,11 +194,11 @@ class inspectionCatalog(object):
 		myinspection.registro = str(result.value(8))
 		#verificamos los nulos devueltos por la consulta
 
-		if not(isinstance(myinspection.id_ciudad,str)):
-			myinspection.id_ciudad=''
-
-		if not(isinstance(myinspection.notas,str)):
-			myinspection.notas=''
-
-
+		if(myinspection.id_ciudad.find('PyQt4.QtCore.')):
+			myinspection.id_ciudad = None
+		
+		if(myinspection.notas.find('PyQt4.QtCore.')):
+			myinspection.notas = None
+			
+		qDebug('[Debug] se crea un objeto tipo inspeccion validando los campos NULL')
 		return myinspection

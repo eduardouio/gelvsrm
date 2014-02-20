@@ -175,5 +175,5 @@ class travelCatalog(object):
 		mytravel.informe = str(result.value(6))
 		mytravel.registro = str(result.value(7))
 
-		qDebug('[Debug] se crea un objeto viaje')
+		qDebug('[Debug] se crea un objeto viaje validando los campos NULL')
 		return mytravel

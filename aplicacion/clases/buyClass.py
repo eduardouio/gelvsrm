@@ -194,11 +194,10 @@ class buyCatalog(object):
 		mybuy.costo = str(result.value(7))
 		mybuy.notas = str(result.value(8))
 		mybuy.registro = str(result.value(9))
-		qDebug('[Debug] se crea una venta')
 		
 		#verificamos los nulos devueltos por la consulta
-		if not (isinstance(mybuy.notas,str)):
-			mybuy.notas = ''
-			
-
+		if(mybuy.notas.find('PyQt4.QtCore.')):
+			mybuy.notas = None
+		
+				qDebug('[Debug] se crea una venta validando los campos NULL')
 		return mybuy

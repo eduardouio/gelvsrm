@@ -191,22 +191,22 @@ class contactCatalog(object):
 		mycontact.email = str(result.value(5))
 		mycontact.notas = str(result.value(6))
 		mycontact.registro = str(result.value(7))
+
 		#verificamos los nulos devueltos por la consulta
-		if not(isinstance(mycontact.id_ciudad, str)):
-			mycontact.id_ciudad=''
+		if(mycontact.id_ciudad.find('PyQt4.QtCore.')):
+			mycontact.id_ciudad = None
 
-		if not(isinstance(mycontact.telefono, str)):
-			mycontact.telefono=''
+		if(mycontact.telefono.find('PyQt4.QtCore.')):
+			mycontact.telefono = None
 
-		if not(isinstance(mycontact.celular,str)):
-			mycontact.celular=''
+		if(mycontact.celular.find('PyQt4.QtCore.')):
+			mycontact.celular = None
 
-		if not(isinstance(mycontact.email, str)):
-			mycontact.email=''
+		if(mycontact.email.find('PyQt4.QtCore.')):
+			mycontact.email = None
 
-		if not(isinstance(mycontact.notas,str)):
-			mycontact.notas=''
+		if(mycontact.notas.find('PyQt4.QtCore.')):
+			mycontact.notas = None
 
-		qDebug('[Se crea un objeto contacto validando los campos NULL]')
-		
+		qDebug('[Se crea un objeto contacto validando los campos NULL]')		
 		return mycontact

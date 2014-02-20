@@ -199,26 +199,21 @@ class vehicleCatalog(object):
 		myvehicle.notas = str(result.value(7))
 		myvehicle.registro = str(result.value(8))
 
-		if not(isinstance(myvehicle.id_contacto,str)):
-			myvehicle.id_contacto=''
+		if(myvehicle.id_contacto.find('PyQt4.QtCore.')):
+			myvehicle.id_contacto = None
 
-		if not(isinstance(myvehicle.id_ciudad,str)):
-			myvehicle.id_ciudad=''
+		if(myvehicle.id_ciudad.find('PyQt4.QtCore.')):
+			myvehicle.id_ciudad = None
 
-		if not(isinstance(myvehicle.nro_motor,str)):
-			myvehicle.nro_motor=''
+		if(myvehicle.nro_motor.find('PyQt4.QtCore.')):
+			myvehicle.nro_motor = None
 
-		if not(isinstance(myvehicle.ingreso,str)):
-			myvehicle.ingreso=''
+		if(myvehicle.ingreso.find('PyQt4.QtCore.')):
+			myvehicle.ingreso = None
 
-		if not(isinstance(myvehicle.notas,str)):
-			myvehicle.notas=''
+		if(myvehicle.notas.find('PyQt4.QtCore.')):
+			myvehicle.notas = None
 
-		qDebug('[Debug] se crea un objeto vehiculo')
+
+		qDebug('[Debug] se crea un objeto vehiculo vaidando los campos NULL')
 		return myvehicle
-
-# | id_contacto | smallint(5) unsigned | YES  | MUL | NULL              |                             |
-# | id_ciudad   | smallint(5) unsigned | YES  | MUL | NULL              |                             |
-# | nro_motor   | varchar(25)          | YES  |     | NULL              |                             |
-# | ingreso     | datetime             | YES  |     | NULL              |                             |
-# | notas       | mediumtext           | YES  |     | NULL              |                             |

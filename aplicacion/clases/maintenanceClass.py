@@ -199,11 +199,12 @@ class maintenanceCatalog(object):
 		mymaintenance.notas = str(result.value(7))
 		mymaintenance.registro = str(result.value(8))
 
-		if not (isinstance(mymaintenance.id_ciudad,str)):
-			mymaintenance.id_ciudad=''
+		#Se validan los campos NULL		
+		if(mymaintenance.id_ciudad.find('PyQt4.QtCore.')):
+			mymaintenance.id_ciudad = None
 
-		if not (isinstance(mymaintenance.notas,str)):
-			mymaintenance.notas=''
-
-		qDebug('[Debug] se crea un objeto Maintenance')
+		if(mymaintenance.notas.find('PyQt4.QtCore.')):
+			mymaintenance.notas = None
+		
+		qDebug('[Debug] se crea un objeto Maintenance validando los campos NULL')
 		return mymaintenance

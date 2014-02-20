@@ -208,19 +208,20 @@ class providerCatalog(object):
 		myprovider.registro = str(result.value(9))
 		#validamos los campos nulos
 
-		if not (isinstance(myprovider.id_ciudad,str)):
-			myprovider.id_ciudad=''
+		if(myprovider.id_ciudad.find('PyQt4.QtCore.')):
+			myprovider.id_ciudad = None
 
-		if not (isinstance(myprovider.id_contacto,str)):
-			myprovider.id_contacto=''
+		if(myprovider.id_contacto.find('PyQt4.QtCore.')):
+			myprovider.id_contacto = None
 
-		if not (isinstance(myprovider.email,str)):
-			myprovider.email=''
+		if(myprovider.email.find('PyQt4.QtCore.')):
+			myprovider.email = None
 
-		if not (isinstance(myprovider.credito,str)):
-			myprovider.credito=''
+		if(myprovider.credito.find('PyQt4.QtCore.')):			
+			myprovider.credito = None
 
-		if not (isinstance(myprovider.notas,str)):
-			myprovider.notas=''
+		if(myprovider.notas.find('PyQt4.QtCore.')):
+			myprovider.notas = None
 
+		qDebug('[Debug] Se crea un objeto proveedor validando los campos NULL')
 		return myprovider

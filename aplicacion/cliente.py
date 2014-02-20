@@ -144,7 +144,7 @@ class Cliente(QtGui.QMainWindow):
 		self.mapper.addMapping(self.ui.txt_fax,6)
 		self.mapper.addMapping(self.ui.txt_email,7)
 		self.mapper.addMapping(self.ui.rtxt_notas,8)
-		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9) 		
+		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9)
 		QtCore.qDebug('Se crea el Mapping a los widgets')
 
 

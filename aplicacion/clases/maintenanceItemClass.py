@@ -231,9 +231,8 @@ class maintenanceItemCatalog(object):
 		myMaintenanceItem.registro = str(result.value(7))
 
 		#verificamos los nulos devueltos por la consulta
-		if not (isinstance(myMaintenanceItem.notas,str)):
-			mytechnical.notas=''
-
-		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
+		if(myMaintenanceItem.notas.find('PyQt4.QtCore.')):
+			myMaintenanceItem.notas = None
 		
+		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')		
 		return mytechnical

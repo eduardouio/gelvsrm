@@ -194,14 +194,19 @@ class buyTravelCatalog(object):
 		'''Crea un objeto tipo Conctact y lo retorna
 		@param (obj) result
 		@return (obj) buyTravel'''
-		mybuyravel = buyTravel()
-		mybuyravel.id_gasto_viaje = str(result.value(0))
-		mybuyravel.id_viaje = str(result.value(1))
-		mybuyravel.nro_factura = str(result.value(2))
-		mybuyravel.fecha = str(result.value(3))
-		mybuyravel.detalle = str(result.value(4))
-		mybuyravel.valor = float(result.value(5))
-		mybuyravel.tipo = str(result.value(6))
-		mybuyravel.registro = str(result.value(7))
-		qDebug('[DEbug] Se inicia un objeto compra viaje')
-		return mybuyravel
+		mybuyTravel = buyTravel()
+		mybuyTravel.id_gasto_viaje = str(result.value(0))
+		mybuyTravel.id_viaje = str(result.value(1))
+		mybuyTravel.nro_factura = str(result.value(2))
+		mybuyTravel.fecha = str(result.value(3))
+		mybuyTravel.detalle = str(result.value(4))
+		mybuyTravel.valor = float(result.value(5))
+		mybuyTravel.tipo = str(result.value(6))
+		mybuyTravel.registro = str(result.value(7))
+
+		#se validan los campos NULL
+		if(mybuyTravel.tipo.find('PyQt4.QtCore.')):
+			mybuyTravel.tipo = None
+		
+		qDebug('[DEbug] Se inicia un objeto compra viaje validado los campos NULL')
+		return mybuyTravel
