@@ -58,7 +58,7 @@ class maintenanceCatalog(object):
 	def getMaintenance(self,IdMaintenance):
 		'''Obtiene un listado de mantenimientos o mantenimiento
 		@param = id_mantenimiento'''		
-		condition = [' id_mantenimiento = ' : str(IdMaintenance)]
+		condition = {' id_mantenimiento = ' : str(IdMaintenance)}
 		result = self.MyDb.selectQuery(self.table,'',condition)
 		qDebug('[Debug] se encuentran %s registros'% result.size())
 		if result.next():

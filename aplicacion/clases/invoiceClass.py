@@ -75,25 +75,25 @@ class invoiceCatalog(object):
 		@return lst(Invoice)'''		
 		invoices = []
 		result = self.MyDb.selectQuery(self.table)
-		qDebug('La consulta retorno %s registros'% result.size())
+		qDebug('[Debug] La consulta retorno %s registros'% result.size())
 		while result.next():			
 			invoices.append(self.__setObj(result))
 
 		return invoices
 
 		
-	def firstInvoice(self):
-		'''retorna el primer factura
-		@return (obj) Invoice'''
-		myInvoice = Invoice()
-		result = self.MyDb.selectQuery(self.table)		
-		qDebug('[Debug] Se toma el primer factura de la lista')
-		
-		if result.first():			
-			return self.__setObj(result)
-		else:
-			qDebug('[Debug] Problemas para tomar el primer factura de la lista')
-			return False
+	def listInvoicesCoustomer(self,idCoustomer):
+		'''retorna las facturas de un cliente
+		@return (obj) Invoice'''		
+		condition = {' id_cliente = ' : str(idCoustomer)}
+		invoices = []
+		result = self.MyDb.selectQuery(self.table,'',condition)		
+		qDebug('La consulta retorno %s registros'% result.size())		
+		while result.next():			
+			invoices.append(self.__setObj(result))
+
+		qDebug('[Debug] se retornan las facturas del cliete %s' % idCoustomer)
+		return invoices				
 
 
 	def lastInvoice(self):

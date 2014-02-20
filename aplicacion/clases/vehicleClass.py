@@ -39,8 +39,8 @@ class Vehicle(object):
 		self.modelo = modelo
 		self.nro_motor = nro_motor
 		self.ingreso = QDate.currentDate()
-		self.notas = notas
-		self.registro = QDateTime().currentDatetime()
+		self.notas = notas		
+		self.registro = QDateTime().currentDateTime()
 		qDebug('[Debug] se inicia la clase vehicle')
 		
 
@@ -80,18 +80,19 @@ class vehicleCatalog(object):
 
 		return vehicles
 
+	def listVehiclesCoustomer(self,idCoustomer):
+		'''Retona un listado de los vehiculos de un cliente
+		@return lst(vehicle))'''
+		vehicles = []
+		condition = {'id_cliente = ' : idCoustomer}
+		result = self.MyDb.selectQuery(self.table,'',condition)
+		qDebug('[Debug] la consulta retorna %s registros' % result.size())
+		while result.next():
+			vehicles.append(self.__setObj(result))
 
-	def firstVehicle(self):
-		'''retorna el primer Vehicle de la lista
-		@return (obj) Vehicle'''		
-		result = self.MyDb.selectQuery(self.table)
-		qDebug('[Debug] Se toma el primer Vehicle de la lista')
-		if result.first():
-			return self.__setObj(result)
-		else:
-			return False
+		return vehicles
 
-
+	
 	def lastVehicle(self):
 		'''retorna el ultimo Vehicle de la Lista
 		@return (obj) Vehicle'''

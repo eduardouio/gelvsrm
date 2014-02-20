@@ -1061,11 +1061,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="tbl_vehiculos">
-            <property name="toolTip">
-             <string>Resultados Búsqueda</string>
-            </property>
-           </widget>
+           <widget class="QTableView" name="tbl_vehiculos"/>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -1244,11 +1240,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="tbl_facturas">
-            <property name="toolTip">
-             <string>Resultados búsqueda de facturas</string>
-            </property>
-           </widget>
+           <widget class="QTableView" name="tbl_facturas"/>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -1283,11 +1275,11 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
                <string>Ver asignacion de vehiculos</string>
               </property>
               <property name="text">
-               <string>Asignar Vehículo</string>
+               <string>Crear Factura</string>
               </property>
               <property name="icon">
                <iconset resource="polaris.qrc">
-                <normaloff>:/Icons/icons/polaris.png</normaloff>:/Icons/icons/polaris.png</iconset>
+                <normaloff>:/Icons/icons/text_block.png</normaloff>:/Icons/icons/text_block.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1487,11 +1479,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
            </layout>
           </item>
           <item>
-           <widget class="QTableWidget" name="tbl_buscar">
-            <property name="toolTip">
-             <string>Resultados Búsqueda</string>
-            </property>
-           </widget>
+           <widget class="QTableView" name="tbl_result"/>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -1715,17 +1703,14 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
   <tabstop>btn_cancelar</tabstop>
   <tabstop>btn_guardar</tabstop>
   <tabstop>btn_eliminar</tabstop>
-  <tabstop>tbl_vehiculos</tabstop>
   <tabstop>btn_asignar_vehiculos</tabstop>
   <tabstop>btn_monstrar_seleccionados</tabstop>
-  <tabstop>tbl_facturas</tabstop>
   <tabstop>btn_mantenimientos_4</tabstop>
   <tabstop>btn_monstrar_3</tabstop>
   <tabstop>cmb_columna</tabstop>
   <tabstop>cmb_operador</tabstop>
   <tabstop>txt_criterio</tabstop>
   <tabstop>btn_buscar</tabstop>
-  <tabstop>tbl_buscar</tabstop>
   <tabstop>btn_mostrar</tabstop>
  </tabstops>
  <resources>
