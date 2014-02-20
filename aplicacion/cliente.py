@@ -27,24 +27,35 @@ from clases.stateClass import *
 from clases.contactClass import *
 from clases import helper
 
+if __name__ == '__main__':
+	app = QtGui.QApplication(sys.argv)
+	window = Cliente()
+	sys.exit(app.exec_())
+
+#Estructura completa del formulario
 
 class Cliente(QtGui.QMainWindow):
 	'''Representa al cliente dentro de la aplicacion final
 	Esta en capacidad de administrar los clientes y sus contactos
 	'''
 	def __init__(self):
-		''' Se crea los objetos y se realiza las conexiones necesarias para
-		el funcionamiento del formulario
-		'''
+		''' Se inicializan las varianbles para el entorno'''
+		#propiedades de la Clase
+		self.mapper = QtGui.QDataWidgetMapper(self)		
+
 		# Si inicializa la clase
 		QtGui.QMainWindow.__init__(self)              
-		self.ui = uic.loadUi('plantillas/frm_cliente.ui',self)
+		#carag la interfaz
+		self.ui = uic.loadUi('plantillas/frm_cliente.ui',self)		
 		QtCore.qDebug('[Debug] Se carga la pantalla')		
-		self.mapper = QtGui.QDataWidgetMapper(self)
-		self.load()		
-		#navegador de Registros
+
+		#conectamos señales y SLOTS navegador de registros
+		self.connect(self.ui.btn_ultimo,QtCore.SIGNAL('clicked()'),self.on_firstRow)	
 		self.connect(self.ui.btn_anterior,QtCore.SIGNAL('clicked()'),self.mapper.toPrevious)
-		
+		self.connect(self.ui.btn_recargar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
+		self.connect(self.ui.btn_siguiente,QtCore.SIGNAL('clicked()'),self.mapper.toNext)		
+		self.connect(self.ui.btn_primero,QtCore.SIGNAL('clicked()'),self.on_firstRow)
+		#conectamos señales y SLOTS de botones formulario
 		self.connect(self.ui.btn_asignar_vehiculo,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_asignar_vehiculos,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_buscar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
@@ -54,25 +65,20 @@ class Cliente(QtGui.QMainWindow):
 		self.connect(self.ui.btn_eliminar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_guardar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_home,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_mantenimientos_4,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_monstrar_3,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_monstrar_seleccionados,QtCore.SIGNAL('clicked()'),self.on_firstRow)
+		self.connect(self.ui.btn_mantenimientos_4,QtCore.SIGNAL('clicked()'),self.on_firstRow)		
 		self.connect(self.ui.btn_mostrar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_nuevo,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_primero,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_recargar,QtCore.SIGNAL('clicked()'),self.on_firstRow)
-		self.connect(self.ui.btn_siguiente,QtCore.SIGNAL('clicked()'),self.mapper.toNext)		
-		self.connect(self.ui.btn_ultimo,QtCore.SIGNAL('clicked()'),self.on_firstRow)	
-		#conecatmos señales qaction
+		#conectamos señales y SLOTS a los qaction
 		self.connect(self.ui.actionAsignar_Polaris,QtCore.SIGNAL('triggered()'),self.on_firstRow)		
 		self.connect(self.ui.actionNuevo,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.actionRecargar,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Buscar,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Salir,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Volver	,QtCore.SIGNAL('triggered()'),self.on_firstRow)
-		QtCore.qDebug('Se enlanzan SIGNALS y SLOTS')
-		#self.mapper.currentIndexChanged.connect(self.btn_recargar)
-		#iniciamos el mapper
+		QtCore.qDebug('Se enlanzan SIGNALS y SLOTS para todos los componenetes completos')
+		#conectamos los signal del mayer
+		self.mapper.currentIndexChanged.connect(self.setData)
+		
 		self.ui.show()
 
 	#se programan todos los slots de programacion
@@ -148,26 +154,46 @@ class Cliente(QtGui.QMainWindow):
 		QtCore.qDebug('Se crea el Mapping a los widgets')
 
 
-	def getCity(idCity):
-		'''Obtiene el registro de una ciudad'''
+
+	#Estructura para la carga de la pagina y valores relacionados 
+	def loadCoustomers():
+		'''Carga el listado completo de los clientes'''
+		pass
+
+	def loadVehicles(idCoustomer):
+		'''retorna un modelo con todos los carros que estan registrados a
+		nombre del cliente'''
+		pass
+
+	def loadInvoices(idCoustomer):
+		'''Retona un modelo con todas las facturas del cliente'''
+		pass
+
+	def loadSates():
+		'''carga el listado de todas las provincias en el modelo'''
+		pass
+
+	def loadCities():
+		'''carga el listado de todas ciudades de la provincia seleccionada
+		y retorna un autocomplatar pata el lineEdit'''
+		pass
+
+	def setData(idCoustomer):
+		'''Ubica los datos en el formulario'''
+		pass
+
+	def __setCity(idCity):
+		'''Obtiene un objeto ciudad y lo retorna'''
 		myCityCatalog = cityCatalog()
 		return myCityCatalog.getCity(idCity)
 
 
-	def getContact(idContact):
-		'''Obtiene el registro de contacto'''
+	def __setContact(idContact):
+		'''Obtiene un objeto tipo contacto y lo retorna'''
 		myContactCatalog = contactCatalog()
 		return myContactCatalog.getContact(idContact)	
 
-
-	def getState(idState):
-		'''Obtine la provincia de la ciudad'''
+	def __setState(idState):
+		'''Obtine un objeto tipo estado y lo retorna'''
 		myStateCatalog = stateCatalog()
 		return myStateCatalog.getState(idState)
-
-
-
-if __name__ == '__main__':
-	app = QtGui.QApplication(sys.argv)
-	window = Cliente()
-	sys.exit(app.exec_())
