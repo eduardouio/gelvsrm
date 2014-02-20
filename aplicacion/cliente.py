@@ -43,7 +43,7 @@ class Cliente(QtGui.QMainWindow):
 		self.connect(self.ui.btn_recargar,QtCore.SIGNAL('clicked()'),self.loadCoustomers)
 		self.connect(self.ui.btn_siguiente,QtCore.SIGNAL('clicked()'),self.mapper.toNext)		
 		self.connect(self.ui.btn_primero,QtCore.SIGNAL('clicked()'),self.mapper.toFirst)
-		#self.mapper.currentIndexChanged.connect(self.setData)
+		self.mapper.currentIndexChanged.connect(self.setData)
 		#conectamos señales y SLOTS de botones formulario
 		self.connect(self.ui.btn_asignar_vehiculo,QtCore.SIGNAL('clicked()'),self.on_firstRow)
 		self.connect(self.ui.btn_asignar_vehiculos,QtCore.SIGNAL('clicked()'),self.on_firstRow)
@@ -75,7 +75,26 @@ class Cliente(QtGui.QMainWindow):
 		'''Coloca la seleccion el el primer registro'''
 		pass
 
-	#Estructura para la carga de la pagina y valores relacionados 
+
+	@QtCore.pyqtSlot()
+	def setData(self):
+		'''Coloca la informacion en los cuadros de texto, cuando el indedel mapper cambia'''
+		print('Estamos en el e¿slot del mapper index')
+		index = self.mapper.currentIndex()
+		QtCore.qDebug('Se toma el el indice %s del modelo del cliente'% str(index))
+		model = self.mapper.model()	
+		#obtengo en id del cliente	
+		idCoustomer = model.item(index,0)		
+		idCity = model.item(index,2)
+		QtCore.qDebug('Se toma el id del cliente RUC nro %s'% str(idCoustomer.text()))
+		QtCore.qDebug('Se toma el id de ciudad nro %s'% str(idCity.text()))
+		modelInvoice = self.loadInvoices(idCoustomer.text())
+		modelVehicles = self.loadVehicles(idCoustomer.text())
+		
+		#asigno a a la plantilla los valores
+
+
+	@QtCore.pyqtSlot()
 	def loadCoustomers(self):
 		'''Carga el listado completo de los clientes retorna un modelo'''	
 		QtCore.qDebug('[Debug] Se llama a la funcion loadCoustomers')
@@ -95,10 +114,7 @@ class Cliente(QtGui.QMainWindow):
 		self.mapper.addMapping(self.ui.rtxt_notas,8)
 		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9)
 		self.mapper.toFirst()
-		QtCore.qDebug('[Debug] Se crea el Mapping a los widgets')
-
-		self.loadInvoices('0560022430001')
-		self.loadVehicles('0560022430001')
+		QtCore.qDebug('[Debug] Se crea el Mapping a los widgets')	
 
 
 	def loadInvoices(self,idCoustomer):
@@ -122,30 +138,15 @@ class Cliente(QtGui.QMainWindow):
 		#se carga el listado de las provincias en el list box
 		myStateCatalog = stateCatalog()
 		model = helper.creaStateModel(myStateCatalog.listStates())
-		
-
+		return model		
 
 	def loadCities(self,idState):
 		'''carga el listado de todas ciudades de la provincia seleccionada
 		y retorna un autocomplatar pata el lineEdit'''
 		myCityCatalog = cityCatalog()
-		model = myCityCatalog.listCitiesState(idState)
+		model = helper.createCityModel(myCityCatalog.listCitiesState(idState))
+		return model
 
-
-	def __setCity(self,City):
-		'''Obtiene un objeto ciudad y lo retorna'''
-		
-
-
-	def __setContact(self,Contact):
-		'''Obtiene un objeto tipo contacto y lo retorna'''
-		
-
-	def __setState(self,State):
-		'''Obtine un objeto tipo estado y lo retorna'''
-		
-
-		
 
 #Inicia el entorno de la aplicacion
 if __name__ == '__main__':
