@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Version		1.0
@@ -25,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
 
 class Contact(object):
 	"""Objeto que representa la estructura de la clase contacto"""
@@ -183,30 +182,32 @@ class contactCatalog(object):
 		@param (obj) result
 		@return (obj) contact'''
 		mycontact = Contact()
-		mycontact.id_contacto = str(result.value(0))
-		mycontact.id_ciudad = str(result.value(1))
-		mycontact.nombre = str(result.value(2))
-		mycontact.telefono = str(result.value(3))
-		mycontact.celular = str(result.value(4))
-		mycontact.email = str(result.value(5))
-		mycontact.notas = str(result.value(6))
-		mycontact.registro = str(result.value(7))
+		mycontact.id_contacto = result.value(0)
+		mycontact.id_ciudad = result.value(1)
+		mycontact.nombre = result.value(2)
+		mycontact.telefono = result.value(3)
+		mycontact.celular = result.value(4)
+		mycontact.email = result.value(5)
+		mycontact.notas = result.value(6)
+		registro = result.value(7)
 
-		#verificamos los nulos devueltos por la consulta
-		if(mycontact.id_ciudad.find('PyQt4.QtCore.')):
+		#Se validan las variables nulas
+		if isinstance(mycontact.id_ciudad,QPyNullVariant):
 			mycontact.id_ciudad = None
 
-		if(mycontact.telefono.find('PyQt4.QtCore.')):
+		if isinstance(mycontact.telefono,QPyNullVariant):
 			mycontact.telefono = None
 
-		if(mycontact.celular.find('PyQt4.QtCore.')):
+		if isinstance(mycontact.celular,QPyNullVariant):
 			mycontact.celular = None
 
-		if(mycontact.email.find('PyQt4.QtCore.')):
+		if isinstance(mycontact.email,QPyNullVariant):
 			mycontact.email = None
 
-		if(mycontact.notas.find('PyQt4.QtCore.')):
+		if isinstance(mycontact.notas,QPyNullVariant):
 			mycontact.notas = None
+
+		mycontact.registro = registro.toString()
 
 		qDebug('[Se crea un objeto contacto validando los campos NULL]')		
 		return mycontact

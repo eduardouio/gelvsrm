@@ -27,7 +27,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
 
 
 class Buy(object):
@@ -184,20 +184,23 @@ class buyCatalog(object):
 		@param (obj) result
 		@return (obj) Buy'''
 		mybuy = Buy()
-		mybuy.id_compra = str(result.value(0))
-		mybuy.id_inventario = str(result.value(1))
-		mybuy.id_proveedor = str(result.value(2))
-		mybuy.id_tecnico = str(result.value(3))
-		mybuy.nro_factura = str(result.value(4))
-		mybuy.fecha = str(result.value(5))
-		mybuy.cantidad = str(result.value(6))
-		mybuy.costo = str(result.value(7))
-		mybuy.notas = str(result.value(8))
-		mybuy.registro = str(result.value(9))
-		
-		#verificamos los nulos devueltos por la consulta
-		if(mybuy.notas.find('PyQt4.QtCore.')):
+		mybuy.id_compra = result.value(0)
+		mybuy.id_inventario = result.value(1)
+		mybuy.id_proveedor = result.value(2)
+		mybuy.id_tecnico = result.value(3)
+		mybuy.nro_factura = result.value(4)
+		fecha = result.value(5)
+		mybuy.cantidad = result.value(6)
+		mybuy.costo = result.value(7)
+		mybuy.notas = result.value(8)
+		registro = result.value(9)
+
+		#Se validan las variables nulas
+		if isinstance(mybuy.notas,QPyNullVariant):
 			mybuy.notas = None
+
+		mybuy.fecha = fecha.toString('dd/MM/yyyy')
+		mybuy.registro = registro.toString()
 		
-				qDebug('[Debug] se crea una venta validando los campos NULL')
+		qDebug('[Debug] se crea una venta validando los campos NULL y Fechas')
 		return mybuy

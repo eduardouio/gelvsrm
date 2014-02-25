@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
 
 class buyTravel(object):
 	"""estructura para los gastos viajes"""
@@ -195,18 +195,20 @@ class buyTravelCatalog(object):
 		@param (obj) result
 		@return (obj) buyTravel'''
 		mybuyTravel = buyTravel()
-		mybuyTravel.id_gasto_viaje = str(result.value(0))
-		mybuyTravel.id_viaje = str(result.value(1))
-		mybuyTravel.nro_factura = str(result.value(2))
-		mybuyTravel.fecha = str(result.value(3))
-		mybuyTravel.detalle = str(result.value(4))
+		mybuyTravel.id_gasto_viaje = result.value(0)
+		mybuyTravel.id_viaje = result.value(1)
+		mybuyTravel.nro_factura = result.value(2)
+		mybuyTravel.fecha = result.value(3)
+		mybuyTravel.detalle = result.value(4)
 		mybuyTravel.valor = float(result.value(5))
-		mybuyTravel.tipo = str(result.value(6))
-		mybuyTravel.registro = str(result.value(7))
+		mybuyTravel.tipo = result.value(6)
+		registro = result.value(7)
 
 		#se validan los campos NULL
-		if(mybuyTravel.tipo.find('PyQt4.QtCore.')):
-			mybuyTravel.tipo = None
-		
+		if isinstance(mybuy.tipo,QPyNullVariant):
+			mybuy.tipo = None
+
+		mybuyTravel.registro = registro.toString()
+
 		qDebug('[DEbug] Se inicia un objeto compra viaje validado los campos NULL')
 		return mybuyTravel

@@ -184,14 +184,14 @@ class inspectionCatalog(object):
 		@param (obj) result
 		@return (obj) contact'''
 		myinspection = Inspection()
-		myinspection.id_inspeccion = str(result.value(1))
-		myinspection.id_vehiculo = str(result.value(2))
-		myinspection.id_contacto = str(result.value(3))
-		myinspection.id_ciudad = str(result.value(4))
-		myinspection.periodo = str(result.value(5))
-		myinspection.fecha = str(result.value(6))
-		myinspection.notas = str(result.value(7))
-		myinspection.registro = str(result.value(8))
+		myinspection.id_inspeccion = result.value(1)
+		myinspection.id_vehiculo = result.value(2)
+		myinspection.id_contacto = result.value(3)
+		myinspection.id_ciudad = result.value(4)
+		myinspection.periodo = result.value(5)
+		myinspection.fecha = result.value(6)
+		myinspection.notas = result.value(7)
+		myinspection.registro = result.value(8)
 		#verificamos los nulos devueltos por la consulta
 
 		if(myinspection.id_ciudad.find('PyQt4.QtCore.')):

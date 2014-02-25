@@ -6,6 +6,10 @@
 # File			viaje.py
 # Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
+#tableview = QtGui.QTableView(self)
+#		tableview.setModel(model)
+#		tableview.resize(940, 380)		
+#		tableview.show()
 
 import sys
 sys.path.append('..')
@@ -35,7 +39,7 @@ class Cliente(QtGui.QMainWindow):
 
 		#carag la interfaz
 		self.ui = uic.loadUi('plantillas/frm_cliente.ui',self)		
-		QtCore.qDebug('[Debug] Se carga la pantalla')		
+		QtCore.qDebug('[Debug][Debug] Se carga la pantalla')		
 
 		#conectamos señales y SLOTS navegador de registros
 		self.connect(self.ui.btn_ultimo,QtCore.SIGNAL('clicked()'),self.mapper.toLast)	
@@ -64,7 +68,7 @@ class Cliente(QtGui.QMainWindow):
 		self.connect(self.ui.action_Buscar,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Salir,QtCore.SIGNAL('triggered()'),self.on_firstRow)
 		self.connect(self.ui.action_Volver	,QtCore.SIGNAL('triggered()'),self.on_firstRow)
-		QtCore.qDebug('[Debug] Se enlanzan SIGNALS y SLOTS para todos los componenetes completos')
+		QtCore.qDebug('[Debug][Debug] Se enlanzan SIGNALS y SLOTS para todos los componenetes completos')
 		#conectamos los signal del mayer
 		self.loadCoustomers()
 		self.ui.show()
@@ -78,48 +82,52 @@ class Cliente(QtGui.QMainWindow):
 
 	@QtCore.pyqtSlot()
 	def setData(self):
-		'''Coloca la informacion en los cuadros de texto, cuando el indedel mapper cambia'''
-		print('Estamos en el e¿slot del mapper index')
+		'''Coloca la informacion en los cuadros de texto, cuando el indedel mapper cambia
+		cambia la informacion oara
+		Los vehiculos => 		Los mantenimientos => 		las facturas
+		Los contactos => 		los estados => 		las ciudades'''		
+		#se detecta el cambio en el indice del mapper
 		index = self.mapper.currentIndex()
-		QtCore.qDebug('Se toma el el indice %s del modelo del cliente'% str(index))
-		model = self.mapper.model()	
+		model = self.mapper.model()					
+		QtCore.qDebug('[Debug]Se toma el el indice %s del modelo del cliente'% str(index))
+		idCoustomer = model.item(index,0)
+		mycoustomerCatalog = coustomerCatalog()		
+		mycoustomer = mycoustomerCatalog.getCoustomer(idCoustomer.text())
+		
 		#obtengo en id del cliente	
-		idCoustomer = model.item(index,0)		
-		idCity = model.item(index,2)
-		QtCore.qDebug('Se toma el id del cliente RUC nro %s'% str(idCoustomer.text()))
-		QtCore.qDebug('Se toma el id de ciudad nro %s'% str(idCity.text()))
 		modelInvoice = self.loadInvoices(idCoustomer.text())
 		modelVehicles = self.loadVehicles(idCoustomer.text())
-		
-		#asigno a a la plantilla los valores
-
+		self.ui.rtxt_notas.clear()
+		self.ui.rtxt_notas.setHtml(mycoustomer.notas)				
+		QtCore.qDebug('[Debug] se carga las notas %s'% mycoustomer.notas)
 
 	@QtCore.pyqtSlot()
 	def loadCoustomers(self):
 		'''Carga el listado completo de los clientes retorna un modelo'''	
-		QtCore.qDebug('[Debug] Se llama a la funcion loadCoustomers')
+		QtCore.qDebug('[Debug][Debug] Se llama a la funcion loadCoustomers')
 		mycoustomerCatalog = coustomerCatalog()
 		#se crea el modelo
 		model = helper.createCoustomerModel(mycoustomerCatalog.listCoustomers())
 		#se mapea los widgets
 		self.mapper.setModel(model)
-		QtCore.qDebug('[Debug] Se hace bindig el mapper con el model')			
+		QtCore.qDebug('[Debug][Debug] Se hace bindig el mapper con el model')			
 		#self.mapper.setOrientation(QtCore.Qt.Horizontal)
 		self.mapper.addMapping(self.ui.txt_ruc,0)				
 		self.mapper.addMapping(self.ui.txt_nombre,3)
 		self.mapper.addMapping(self.ui.txt_direccion,4)
 		self.mapper.addMapping(self.ui.txt_telefono,5)
 		self.mapper.addMapping(self.ui.txt_fax,6)
-		self.mapper.addMapping(self.ui.txt_email,7)
-		self.mapper.addMapping(self.ui.rtxt_notas,8)
-		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9)
+		self.mapper.addMapping(self.ui.txt_email,7)		
+		self.mapper.addMapping(self.ui.rtxt_notas,8)		
+		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9,"text")
+		self.mapper.addMapping(self.ui.lbl_rucb,0,"text")
 		self.mapper.toFirst()
-		QtCore.qDebug('[Debug] Se crea el Mapping a los widgets')	
+		QtCore.qDebug('[Debug][Debug] Se crea el Mapping a los widgets')	
 
 
 	def loadInvoices(self,idCoustomer):
 		'''Retona un modelo con todas las facturas del cliente'''
-		QtCore.qDebug('[Debug] Se cargan las facturas para el cliente %s' %idCoustomer)
+		QtCore.qDebug('[Debug][Debug] Se cargan las facturas para el cliente %s' %idCoustomer)
 		myinvoiceCatalog = invoiceCatalog()		
 		model = helper.createInvoiceModel(myinvoiceCatalog.listInvoicesCoustomer(idCoustomer))
 		self.ui.tbl_facturas.setModel(model)
@@ -128,7 +136,7 @@ class Cliente(QtGui.QMainWindow):
 	def loadVehicles(self,idCoustomer):
 		'''retorna un modelo con todos los carros que estan registrados a
 		nombre del cliente'''
-		QtCore.qDebug('[Debug] Se cargan los vehiculos del cliente %s' %idCoustomer)
+		QtCore.qDebug('[Debug][Debug] Se cargan los vehiculos del cliente %s' %idCoustomer)
 		myVehiclesCatalog = vehicleCatalog()
 		model = helper.createVehicleModel(myVehiclesCatalog.listVehiclesCoustomer(idCoustomer))
 		self.ui.tbl_vehiculos.setModel(model)

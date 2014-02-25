@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
 
 class Coustomer(object):
 	"""Estrcutura del objeto cliente"""
@@ -77,6 +77,8 @@ class coustomerCatalog(object):
 		coustomers = []
 		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] la consulta retorna %s valores'% result.size())
+		print('=================================================================')
+		print(type(result))
 		while result.next():				
 			coustomers.append(self.__setObj(result))
 		
@@ -192,33 +194,35 @@ class coustomerCatalog(object):
 		'''Crea un objeto tipo city
 		@return (obj) city'''
 		mycoustomer = Coustomer()
-		mycoustomer.id_cliente = str(result.value(0))
-		mycoustomer.id_contacto = str(result.value(1))
-		mycoustomer.id_ciudad = str(result.value(2))
-		mycoustomer.nombre = str(result.value(3))
-		mycoustomer.direccion = str(result.value(4))
-		mycoustomer.telefono = str(result.value(5))
-		mycoustomer.fax = str(result.value(6))
-		mycoustomer.mail = str(result.value(7))		
-		mycoustomer.notas = str(result.value(8))
-		mycoustomer.registro = str(result.value(9))		
+		mycoustomer.id_cliente = result.value(0)
+		mycoustomer.id_contacto = result.value(1)
+		mycoustomer.id_ciudad = result.value(2)
+		mycoustomer.nombre = result.value(3)
+		mycoustomer.direccion = result.value(4)
+		mycoustomer.telefono = result.value(5)
+		mycoustomer.fax = result.value(6)
+		mycoustomer.mail = result.value(7)		
+		mycoustomer.notas = result.value(8)
+		registro = result.value(9)		
 		qDebug('[Debug] se crea un cliente')
-
-		if(mycoustomer.id_contacto.find('PyQt4.QtCore.')):
+		qDebug('[Debug] se valida los campos NULL')		
+		
+		if isinstance(mycoustomer.id_contacto,QPyNullVariant):
 			mycoustomer.id_contacto = None
 
-		if(mycoustomer.id_ciudad.find('PyQt4.QtCore.')):
-					mycoustomer.id_ciudad = None
+		if isinstance(mycoustomer.id_ciudad,QPyNullVariant):
+			mycoustomer.id_ciudad = None
 
-		if(mycoustomer.fax.find('PyQt4.QtCore.')):
-					mycoustomer.fax = None
+		if isinstance(mycoustomer.fax,QPyNullVariant):
+			mycoustomer.fax = None
 
-		if(mycoustomer.mail.find('PyQt4.QtCore.')):
-					mycoustomer.mail = None
-		
-		if(mycoustomer.notas.find('PyQt4.QtCore.')):
-					mycoustomer.notas = None
+		if isinstance(mycoustomer.mail,QPyNullVariant):
+			mycoustomer.mail = None
 
+		if isinstance(mycoustomer.notas,QPyNullVariant):
+			mycoustomer.notas = None
 
-		qDebug('[Debug] se valida los campos NULL')		
+		qDebug('Se validan las fechas obligatorias')
+		mycoustomer.registro = registro.toString()		
+
 		return mycoustomer

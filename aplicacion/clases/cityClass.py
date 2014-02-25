@@ -172,9 +172,9 @@ class cityCatalog(object):
 		'''Crea un objeto tipo city
 		@return (obj) city'''
 		mycity = City()
-		mycity.id_ciudad = str(result.value(0))
-		mycity.id_provincia = str(result.value(1)) 
-		mycity.nombre = str(result.value(2))
+		mycity.id_ciudad = result.value(0)
+		mycity.id_provincia = result.value(1)
+		mycity.nombre = result.value(2)
 
 		qDebug('[Debug] se crea una ciudad')
 		return mycity
