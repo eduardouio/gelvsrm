@@ -9,7 +9,7 @@
 
 import sys
 sys.path.append('..')
-from PyQt4 import QtGui, QtCore, uic
+from PyQt5 import QtGui, QtCore, uic
 from plantillas import polaris_rc
 
 class Inventario(QtGui.QMainWindow):

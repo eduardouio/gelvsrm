@@ -8,7 +8,7 @@
 # Ubicacion		reporte/basedatos/DB.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
 
-from PyQt4 import QtCore, QtSql, QtGui
+from PyQt5 import QtCore, QtSql, QtGui
 
 def conectar():
 	'''Conecta a la base de datos, si la conexion falla retorna el lastError

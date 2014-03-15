@@ -25,7 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 
 class Inspection(object):
@@ -194,10 +194,10 @@ class inspectionCatalog(object):
 		myinspection.registro = result.value(8)
 		#verificamos los nulos devueltos por la consulta
 
-		if(myinspection.id_ciudad.find('PyQt4.QtCore.')):
+		if(myinspection.id_ciudad.find('PyQt5.QtCore.')):
 			myinspection.id_ciudad = None
 		
-		if(myinspection.notas.find('PyQt4.QtCore.')):
+		if(myinspection.notas.find('PyQt5.QtCore.')):
 			myinspection.notas = None
 			
 		qDebug('[Debug] se crea un objeto tipo inspeccion validando los campos NULL')

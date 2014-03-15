@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 
 class repairItem(object):
@@ -199,10 +199,10 @@ class repairItemCatalog(object):
 		myrepairItem.registro = str(result.value(7))
 		#validamos los campos null
 
-		if(myrepairItem.estado.find('PyQt4.QtCore.')):
+		if(myrepairItem.estado.find('PyQt5.QtCore.')):
 			myrepairItem.estado = None
 		
-		if(myrepairItem.notas.find('PyQt4.QtCore.')):
+		if(myrepairItem.notas.find('PyQt5.QtCore.')):
 			myrepairItem.notas = None
 
 		qDebug('[Debug] Se crea un item de reparacion validados los campos NULL')

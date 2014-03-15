@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
 
 class Coustomer(object):
 	"""Estrcutura del objeto cliente"""

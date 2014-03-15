@@ -25,7 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Vehicle(object):
 	"""Estructura de la clse  Vehicle"""
@@ -200,19 +200,19 @@ class vehicleCatalog(object):
 		myvehicle.notas = str(result.value(7))
 		myvehicle.registro = str(result.value(8))
 
-		if(myvehicle.id_contacto.find('PyQt4.QtCore.')):
+		if(myvehicle.id_contacto.find('PyQt5.QtCore.')):
 			myvehicle.id_contacto = None
 
-		if(myvehicle.id_ciudad.find('PyQt4.QtCore.')):
+		if(myvehicle.id_ciudad.find('PyQt5.QtCore.')):
 			myvehicle.id_ciudad = None
 
-		if(myvehicle.nro_motor.find('PyQt4.QtCore.')):
+		if(myvehicle.nro_motor.find('PyQt5.QtCore.')):
 			myvehicle.nro_motor = None
 
-		if(myvehicle.ingreso.find('PyQt4.QtCore.')):
+		if(myvehicle.ingreso.find('PyQt5.QtCore.')):
 			myvehicle.ingreso = None
 
-		if(myvehicle.notas.find('PyQt4.QtCore.')):
+		if(myvehicle.notas.find('PyQt5.QtCore.')):
 			myvehicle.notas = None
 
 

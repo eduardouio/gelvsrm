@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Inventary(object):
 	"""descripcion de la clase Inventario"""
@@ -197,10 +197,10 @@ class inventaryCatalog(object):
 		myinventary.registro = str(result.value(9))
 
 		#se validan los campos con null
-		if(myinventary.marca.find('PyQt4.QtCore.')):
+		if(myinventary.marca.find('PyQt5.QtCore.')):
 			myinventary.marca = None
 
-		if(myinventary.notas.find('PyQt4.QtCore.')):
+		if(myinventary.notas.find('PyQt5.QtCore.')):
 			myinventary.notas = None
 		
 		qDebug('[Debug] se crea un objeto inventario validado los campos NULL')

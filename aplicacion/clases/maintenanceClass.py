@@ -25,7 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 
 class Maintenance(object):
@@ -200,10 +200,10 @@ class maintenanceCatalog(object):
 		mymaintenance.registro = str(result.value(8))
 
 		#Se validan los campos NULL		
-		if(mymaintenance.id_ciudad.find('PyQt4.QtCore.')):
+		if(mymaintenance.id_ciudad.find('PyQt5.QtCore.')):
 			mymaintenance.id_ciudad = None
 
-		if(mymaintenance.notas.find('PyQt4.QtCore.')):
+		if(mymaintenance.notas.find('PyQt5.QtCore.')):
 			mymaintenance.notas = None
 		
 		qDebug('[Debug] se crea un objeto Maintenance validando los campos NULL')

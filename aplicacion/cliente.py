@@ -13,7 +13,7 @@
 
 import sys
 sys.path.append('..')
-from PyQt4 import QtGui, QtCore, uic, Qt
+from PyQt5 import QtGui, QtCore, uic, Qt
 from plantillas import polaris_rc
 from clases.coustumerClass import *
 from clases.invoiceClass import *
@@ -37,7 +37,7 @@ class Cliente(QtGui.QMainWindow):
 		#propiedades de la Clase
 		self.mapper = QtGui.QDataWidgetMapper(self)		
 
-		#carag la interfaz
+		#caraga la interfaz
 		self.ui = uic.loadUi('plantillas/frm_cliente.ui',self)		
 		QtCore.qDebug('[Debug][Debug] Se carga la pantalla')		
 
@@ -73,12 +73,11 @@ class Cliente(QtGui.QMainWindow):
 		self.loadCoustomers()
 		self.ui.show()
 
-	#Slot de prueba para conectar los objetos visuals
+	#Slot de prueba para conectar los objetos visuales
 	@QtCore.pyqtSlot()
 	def on_firstRow(self):
 		'''Coloca la seleccion el el primer registro'''
 		pass
-
 
 	@QtCore.pyqtSlot()
 	def setData(self):
@@ -112,20 +111,20 @@ class Cliente(QtGui.QMainWindow):
 		self.mapper.setModel(model)
 		QtCore.qDebug('[Debug][Debug] Se hace bindig el mapper con el model')			
 		#self.mapper.setOrientation(QtCore.Qt.Horizontal)
-		self.mapper.addMapping(self.ui.txt_ruc,0)				
+		self.mapper.addMapping(self.ui.txt_ruc,0)
 		self.mapper.addMapping(self.ui.txt_nombre,3)
 		self.mapper.addMapping(self.ui.txt_direccion,4)
 		self.mapper.addMapping(self.ui.txt_telefono,5)
 		self.mapper.addMapping(self.ui.txt_fax,6)
-		self.mapper.addMapping(self.ui.txt_email,7)		
-		self.mapper.addMapping(self.ui.rtxt_notas,8)		
+		self.mapper.addMapping(self.ui.txt_email,7)	
+		self.mapper.addMapping(self.ui.rtxt_notas,8)
 		self.mapper.addMapping(self.ui.lbl_fecha_registrob,9,"text")
 		self.mapper.addMapping(self.ui.lbl_rucb,0,"text")
 		self.mapper.toFirst()
 		QtCore.qDebug('[Debug][Debug] Se crea el Mapping a los widgets')	
 
 
-	def loadInvoices(self,idCoustomer):
+	def loadInvoices(self,idCoustomer):		
 		'''Retona un modelo con todas las facturas del cliente'''
 		QtCore.qDebug('[Debug][Debug] Se cargan las facturas para el cliente %s' %idCoustomer)
 		myinvoiceCatalog = invoiceCatalog()		
@@ -154,7 +153,6 @@ class Cliente(QtGui.QMainWindow):
 		myCityCatalog = cityCatalog()
 		model = helper.createCityModel(myCityCatalog.listCitiesState(idState))
 		return model
-
 
 #Inicia el entorno de la aplicacion
 if __name__ == '__main__':

@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 
 class MaintenanceItem(object):
@@ -231,7 +231,7 @@ class maintenanceItemCatalog(object):
 		myMaintenanceItem.registro = str(result.value(7))
 
 		#verificamos los nulos devueltos por la consulta
-		if(myMaintenanceItem.notas.find('PyQt4.QtCore.')):
+		if(myMaintenanceItem.notas.find('PyQt5.QtCore.')):
 			myMaintenanceItem.notas = None
 		
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')		

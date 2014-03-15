@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 
 class Provider(object):
@@ -208,19 +208,19 @@ class providerCatalog(object):
 		myprovider.registro = str(result.value(9))
 		#validamos los campos nulos
 
-		if(myprovider.id_ciudad.find('PyQt4.QtCore.')):
+		if(myprovider.id_ciudad.find('PyQt5.QtCore.')):
 			myprovider.id_ciudad = None
 
-		if(myprovider.id_contacto.find('PyQt4.QtCore.')):
+		if(myprovider.id_contacto.find('PyQt5.QtCore.')):
 			myprovider.id_contacto = None
 
-		if(myprovider.email.find('PyQt4.QtCore.')):
+		if(myprovider.email.find('PyQt5.QtCore.')):
 			myprovider.email = None
 
-		if(myprovider.credito.find('PyQt4.QtCore.')):			
+		if(myprovider.credito.find('PyQt5.QtCore.')):			
 			myprovider.credito = None
 
-		if(myprovider.notas.find('PyQt4.QtCore.')):
+		if(myprovider.notas.find('PyQt5.QtCore.')):
 			myprovider.notas = None
 
 		qDebug('[Debug] Se crea un objeto proveedor validando los campos NULL')

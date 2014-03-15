@@ -10,8 +10,8 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
 MyDb = DB()
 

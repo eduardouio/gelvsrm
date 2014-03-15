@@ -9,8 +9,8 @@
 
 import sys
 sys.path.append('..')
-from PyQt4 import QtCore, QtSql, QtGui
-from PyQt4.QtCore import qDebug
+from PyQt5 import QtCore, QtSql, QtGui
+from PyQt5.QtCore import qDebug
 from modelo.conn import conectar
 
 

@@ -17,7 +17,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import qDebug
+from PyQt5.QtCore import qDebug
 
 class State(object):
 	"""Objeto que representa la estructura una provincia"""

@@ -27,7 +27,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt4.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
 
 class Invoice(object):
 	"""estructura de la Invoice"""
@@ -220,16 +220,16 @@ class invoiceCatalog(object):
 
 		#verificamos los nulos devueltos por la consulta
 
-		if(myinvoice.id_contacto.find('PyQt4.QtCore.')):
+		if(myinvoice.id_contacto.find('PyQt5.QtCore.')):
 			myinvoice.id_contacto = None
 
-		if(myinvoice.guia_envio.find('PyQt4.QtCore.')):
+		if(myinvoice.guia_envio.find('PyQt5.QtCore.')):
 			myinvoice.guia_envio = None
 
-		if(myinvoice.archivo.find('PyQt4.QtCore.')):
+		if(myinvoice.archivo.find('PyQt5.QtCore.')):
 			myinvoice.archivo = None
 
-		if(myinvoice.notas.find('PyQt4.QtCore.')):
+		if(myinvoice.notas.find('PyQt5.QtCore.')):
 			myinvoice.notas = None
 		
 		qDebug('[Debug] Se crea un objeto typo factura validando los campos tipo null ')
