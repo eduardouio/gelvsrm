@@ -9,18 +9,19 @@
 
 import sys
 sys.path.append('..')
-from PyQt5 import QtGui, QtCore, uic
+from PyQt5 import QtGui, QtCore, uic, Qt
+from PyQt5 import QtWidgets
 from plantillas import polaris_rc
 
-class Inventario(QtGui.QMainWindow):
+class Inventario(QtWidgets.QMainWindow):
 		def __init__(self): 
-			QtGui.QMainWindow.__init__(self)
+			QtWidgets.QMainWindow.__init__(self)
 			ventana = uic.loadUi('plantillas/frm_inventario.ui',self)
 			ventana.show()
 
 def main():
 	print('Hola munfio')
-	app = QtGui.QApplication(sys.argv)
+	app = QtWidgets.QApplication(sys.argv)
 	window = Inventario()
 	sys.exit(app.exec_())
 	

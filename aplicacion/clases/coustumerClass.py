@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Coustomer(object):
 	"""Estrcutura del objeto cliente"""
@@ -207,19 +207,19 @@ class coustomerCatalog(object):
 		qDebug('[Debug] se crea un cliente')
 		qDebug('[Debug] se valida los campos NULL')		
 		
-		if isinstance(mycoustomer.id_contacto,QPyNullVariant):
+		if isinstance(mycoustomer.id_contacto,QVariant):
 			mycoustomer.id_contacto = None
 
-		if isinstance(mycoustomer.id_ciudad,QPyNullVariant):
+		if isinstance(mycoustomer.id_ciudad,QVariant):
 			mycoustomer.id_ciudad = None
 
-		if isinstance(mycoustomer.fax,QPyNullVariant):
+		if isinstance(mycoustomer.fax,QVariant):
 			mycoustomer.fax = None
 
-		if isinstance(mycoustomer.mail,QPyNullVariant):
+		if isinstance(mycoustomer.mail,QVariant):
 			mycoustomer.mail = None
 
-		if isinstance(mycoustomer.notas,QPyNullVariant):
+		if isinstance(mycoustomer.notas,QVariant):
 			mycoustomer.notas = None
 
 		qDebug('Se validan las fechas obligatorias')

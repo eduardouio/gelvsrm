@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Contact(object):
 	"""Objeto que representa la estructura de la clase contacto"""
@@ -192,19 +192,19 @@ class contactCatalog(object):
 		registro = result.value(7)
 
 		#Se validan las variables nulas
-		if isinstance(mycontact.id_ciudad,QPyNullVariant):
+		if isinstance(mycontact.id_ciudad,QVariant):
 			mycontact.id_ciudad = None
 
-		if isinstance(mycontact.telefono,QPyNullVariant):
+		if isinstance(mycontact.telefono,QVariant):
 			mycontact.telefono = None
 
-		if isinstance(mycontact.celular,QPyNullVariant):
+		if isinstance(mycontact.celular,QVariant):
 			mycontact.celular = None
 
-		if isinstance(mycontact.email,QPyNullVariant):
+		if isinstance(mycontact.email,QVariant):
 			mycontact.email = None
 
-		if isinstance(mycontact.notas,QPyNullVariant):
+		if isinstance(mycontact.notas,QVariant):
 			mycontact.notas = None
 
 		mycontact.registro = registro.toString()

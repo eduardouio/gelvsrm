@@ -10,10 +10,11 @@
 import sys
 
 sys.path.append('..')
-from PyQt5 import QtGui, QtCore, uic
+from PyQt5 import QtGui, QtCore, uic, Qt
+from PyQt5 import QtWidgets
 from plantillas import polaris_rc
 
-class Main(QtGui.QMainWindow):
+class Main(QtWidgets.QMainWindow):
     '''Clase principal de la aplicacion GELVS
     Ventana encargada de gestionar todas las ventanas
     y widgets de la aplicacion '''
@@ -21,9 +22,6 @@ class Main(QtGui.QMainWindow):
     def __init__(self, parent=None):
         super(Main, self).__init__(parent)
         self.ui = uic.loadUi('plantillas/main_window.ui')
-        QtCore.QObject.connect(self.ui.btn_vehiculos,
-                               QtCore.SIGNAL('clicked()'),
-                               self.on_btn_vehiculosClicked)
         self.ui.show()
         
     @QtCore.pyqtSlot()
@@ -31,6 +29,6 @@ class Main(QtGui.QMainWindow):
        print('Se ejecutó la coneccion al evento')
 
 if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     window = Main()
     sys.exit(app.exec_())

@@ -9,13 +9,14 @@
 
 import sys
 sys.path.append('..')
-from PyQt5 import QtGui, QtCore, uic
+from PyQt5 import QtGui, QtCore, uic, Qt
+from PyQt5 import QtWidgets
 from plantillas import polaris_rc
 from clases.travelClass import Travel, travelCatalog
 
-class frmViaje(QtGui.QMainWindow):
+class frmViaje(QtWidgets.QMainWindow):
 	def __init__(self,parent=None): 
-		QtGui.QMainWindow.__init__(self,parent)			
+		QtWidgets.QMainWindow.__init__(self,parent)			
 		self.ventana = uic.loadUi('plantillas/frm_viaje.ui',self)
 		self.ventana.show()
 		self.myTravel = Travel()
@@ -35,7 +36,7 @@ class frmViaje(QtGui.QMainWindow):
 		self.ventana.cmb_fecha_salida.setDateTime(fecha)
 		
 if __name__ == '__main__':
-	app = QtGui.QApplication(sys.argv)
+	app = QtWidgets.QApplication(sys.argv)
 	myapp = frmViaje()	
 	sys.exit(app.exec_())
 

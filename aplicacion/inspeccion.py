@@ -9,16 +9,17 @@
 
 import sys
 sys.path.append('..')
-from PyQt5 import QtGui, QtCore, uic
+from PyQt5 import QtGui, QtCore, uic, Qt
+from PyQt5 import QtWidgets
 from plantillas import polaris_rc
 
-class Viaje(QtGui.QMainWindow):
+class Viaje(QtWidgets.QMainWindow):
 		def __init__(self): 
-			QtGui.QMainWindow.__init__(self)
+			QtWidgets.QMainWindow.__init__(self)
 			ventana = uic.loadUi('plantillas/frm_inspeccion.ui',self)
 			ventana.show()
 
 if __name__ == '__main__':
-	app = QtGui.QApplication(sys.argv)
+	app = QtWidgets.QApplication(sys.argv)
 	window = Viaje()
 	sys.exit(app.exec_())
