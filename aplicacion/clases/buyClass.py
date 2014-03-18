@@ -27,7 +27,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class Buy(object):
@@ -196,9 +196,9 @@ class buyCatalog(object):
 		registro = result.value(9)
 
 		#Se validan las variables nulas
-		if isinstance(mybuy.notas,QPyNullVariant):
+		if isinstance(mybuy.notas,QVariant):
 			mybuy.notas = None
-
+		#se validan las fechas
 		mybuy.fecha = fecha.toString('dd/MM/yyyy')
 		mybuy.registro = registro.toString()
 		

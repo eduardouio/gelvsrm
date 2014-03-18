@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVarinat
 
 
 class Provider(object):
@@ -196,32 +196,36 @@ class providerCatalog(object):
 		@param (obj) result
 		@return (obj) contact'''
 		myprovider = Provider()
-		myprovider.id_proveedor = str(result.value(0))
-		myprovider.id_ciudad = str(result.value(1))
-		myprovider.id_contacto = str(result.value(2))
-		myprovider.nombre = str(result.value(3))
-		myprovider.direccion = str(result.value(4))
-		myprovider.telefono = str(result.value(5))
-		myprovider.email = str(result.value(6))
-		myprovider.credito = str(result.value(7))
-		myprovider.notas = str(result.value(8))
-		myprovider.registro = str(result.value(9))
+		myprovider.id_proveedor = result.value(0)
+		myprovider.id_ciudad = result.value(1)
+		myprovider.id_contacto = result.value(2)
+		myprovider.nombre = result.value(3)
+		myprovider.direccion = result.value(4)
+		myprovider.telefono = result.value(5)
+		myprovider.email = result.value(6)
+		myprovider.credito = result.value(7)
+		myprovider.notas = result.value(8)
+		registro = result.value(9)
 		#validamos los campos nulos
 
-		if(myprovider.id_ciudad.find('PyQt5.QtCore.')):
+		if isinstance(myprovider.id_ciudad, QVarinat):
 			myprovider.id_ciudad = None
 
-		if(myprovider.id_contacto.find('PyQt5.QtCore.')):
+		if isinstance(myprovider.id_contacto, QVarinat):
 			myprovider.id_contacto = None
 
-		if(myprovider.email.find('PyQt5.QtCore.')):
+		if isinstance(myprovider.email, QVarinat):
 			myprovider.email = None
 
-		if(myprovider.credito.find('PyQt5.QtCore.')):			
+		if isinstance(myprovider.credito, QVarinat):
 			myprovider.credito = None
 
-		if(myprovider.notas.find('PyQt5.QtCore.')):
+		if isinstance(myprovider.notas, QVarinat):
 			myprovider.notas = None
+
+		#Validamos las fechas
+
+		myprovider.registro = registro.toString()
 
 		qDebug('[Debug] Se crea un objeto proveedor validando los campos NULL')
 		return myprovider

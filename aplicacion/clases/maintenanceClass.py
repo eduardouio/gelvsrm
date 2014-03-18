@@ -25,7 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class Maintenance(object):
@@ -145,12 +145,12 @@ class maintenanceCatalog(object):
 		@return (bool)
 		'''
 		values = {
-		'id_vehiculo': str(maintenance.id_vehiculo),
-		'id_ciudad': str(maintenance.id_ciudad),
-		'periodo': str(maintenance.periodo),
-		'fecha': str(maintenance.fecha),
-		'kilometros': str(maintenance.kilometros),
-		'notas': str(maintenance.notas)		
+		'id_vehiculo': maintenance.id_vehiculo,
+		'id_ciudad': maintenance.id_ciudad,
+		'periodo': maintenance.periodo,
+		'fecha': maintenance.fecha,
+		'kilometros': maintenance.kilometros,
+		'notas': maintenance.notas	
 		}
 		
 		condition = {' id_mantenimiento = ' : str(oldMaintenance.id_mantenimiento)}
@@ -189,22 +189,26 @@ class maintenanceCatalog(object):
 		@param (obj) result
 		@return (obj) Maintenance'''
 		mymaintenance = Maintenance()
-		mymaintenance.id_mantenimiento = str(result.value(0))
-		mymaintenance.id_viaje = str(result.value(1))
-		mymaintenance.id_vehiculo = str(result.value(2))
-		mymaintenance.id_ciudad = str(result.value(3))
-		mymaintenance.periodo = str(result.value(4))
-		mymaintenance.fecha = str(result.value(5))
-		mymaintenance.kilometros = str(result.value(6))
-		mymaintenance.notas = str(result.value(7))
-		mymaintenance.registro = str(result.value(8))
+		mymaintenance.id_mantenimiento = result.value(0)
+		mymaintenance.id_viaje = result.value(1)
+		mymaintenance.id_vehiculo = result.value(2)
+		mymaintenance.id_ciudad = result.value(3)
+		mymaintenance.periodo = result.value(4)
+		fecha = result.value(5)
+		mymaintenance.kilometros = result.value(6)
+		mymaintenance.notas = result.value(7)
+		registro = result.value(8)
 
-		#Se validan los campos NULL		
-		if(mymaintenance.id_ciudad.find('PyQt5.QtCore.')):
+		#Se validan los campos NULL	
+		if isinstance(mymaintenance.id_ciudad,QVariant):
 			mymaintenance.id_ciudad = None
 
-		if(mymaintenance.notas.find('PyQt5.QtCore.')):
+		if isinstance(mymaintenance.notas,QVariant):
 			mymaintenance.notas = None
-		
+
+		#validamos las fechas
+		mymaintenance.fecha = fecha.toString()
+		mymaintenance.registro = registro.toString()
+
 		qDebug('[Debug] se crea un objeto Maintenance validando los campos NULL')
 		return mymaintenance

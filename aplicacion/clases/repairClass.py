@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class Repair(object):
@@ -200,26 +200,30 @@ class repairCatalog(object):
 		'''Crea un objeto tipo repair
 		@return (obj) repair '''
 		myrepair = Repair()
-		myrepair.id_reparacion = str(result.value(0))
-		myrepair.id_viaje = str(result.value(1))
-		myrepair.id_vehiculo = str(result.value(2))
-		myrepair.id_ciudad = str(result.value(3))
-		myrepair.periodo = str(result.value(4))
-		myrepair.kilometros = str(result.value(5))
-		myrepair.fecha_entrada = str(result.value(6))
-		myrepair.fecha_salida = str(result.value(7))
-		myrepair.notas = str(result.value(8))
-		myrepair.registro = str(result.value(9))
+		myrepair.id_reparacion = result.value(0)
+		myrepair.id_viaje = result.value(1)
+		myrepair.id_vehiculo = result.value(2)
+		myrepair.id_ciudad = result.value(3)
+		myrepair.periodo = result.value(4)
+		myrepair.kilometros = result.value(5)
+		fecha_entrada = result.value(6)
+		fecha_salida = result.value(7)
+		myrepair.notas = result.value(8)
+		registro = result.value(9)
 
 		#validamos los campos nulos
 
-
-		if(myrepair.id_ciudad.find('PyQt5.QtCore.')):
+		if isinstance(myrepair.id_ciudad,QVariant):
 			myrepair.id_ciudad = None
 		
-		if(myrepair.notas.find('PyQt5.QtCore.')):
+		if isinstance(myrepair.notas,QVariant):
 			myrepair.notas = None
-		
+
+		#Se Validan las Fechas
+		myrepair.fecha_entrada = fecha_entrada.toString()
+		myrepair.fecha_salida = fecha_salida.toString()
+		myrepair.registro = registro.toString()
+
 		qDebug('Se crea una reparacion validados los campos nulos')
 
 		return myrepair

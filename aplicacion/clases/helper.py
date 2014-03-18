@@ -122,7 +122,7 @@ def createVehicleModel(vehicles):
 		item = QStandardItem(vehicle.modelo)
 		model.setItem(row,4,item)
 		item = QStandardItem(vehicle.nro_motor)
-		model.setItem(row,5,item)
+		model.setItem(row,5,item)		
 		item = QStandardItem(vehicle.ingreso)
 		model.setItem(row,6,item)
 		item = QStandardItem(vehicle.notas)

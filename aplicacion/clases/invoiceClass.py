@@ -27,7 +27,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Invoice(object):
 	"""estructura de la Invoice"""
@@ -206,32 +206,37 @@ class invoiceCatalog(object):
 		 @param result 
 		 @return objeto tipo Invoice'''		 
 		myinvoice = Invoice()
-		myinvoice.id_factura = str(result.value(0))
-		myinvoice.id_cliente = str(result.value(1))
-		myinvoice.id_contacto = str(result.value(2))
-		myinvoice.fecha = str(result.value(3))
-		myinvoice.fecha_envio = str(result.value(4))
-		myinvoice.guia_envio = str(result.value(5))
-		myinvoice.servicio_envio = str(result.value(6))
-		myinvoice.estado = str(result.value(7))
-		myinvoice.archivo = str(result.value(8))
-		myinvoice.notas = str(result.value(9))
-		myinvoice.registro = str(result.value(10))
+		myinvoice.id_factura = result.value(0)
+		myinvoice.id_cliente = result.value(1)
+		myinvoice.id_contacto = result.value(2)
+		fecha = result.value(3)
+		fecha_envio = result.value(4)
+		myinvoice.guia_envio = result.value(5)
+		myinvoice.servicio_envio = result.value(6)
+		myinvoice.estado = result.value(7)
+		myinvoice.archivo = result.value(8)
+		myinvoice.notas = result.value(9)
+		registro = result.value(10)
 
 		#verificamos los nulos devueltos por la consulta
 
-		if(myinvoice.id_contacto.find('PyQt5.QtCore.')):
+		if isinstance(myinvoice.id_contacto,QVariant):
 			myinvoice.id_contacto = None
 
-		if(myinvoice.guia_envio.find('PyQt5.QtCore.')):
+		if isinstance(myinvoice.guia_envio, QVariant):
 			myinvoice.guia_envio = None
 
-		if(myinvoice.archivo.find('PyQt5.QtCore.')):
+		if isinstance(myinvoice.archivo, QVariant):
 			myinvoice.archivo = None
 
-		if(myinvoice.notas.find('PyQt5.QtCore.')):
+		if isinstance(myinvoice.notas, QVariant):
 			myinvoice.notas = None
-		
+
+		#Validacion de Fechas
+		myinvoice.fecha = fecha.toString()
+		myinvoice.fecha_envio = fecha_envio.toString()
+		myinvoice.registro = registro.toString()
+
 		qDebug('[Debug] Se crea un objeto typo factura validando los campos tipo null ')
 		
 		return myinvoice

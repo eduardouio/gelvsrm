@@ -25,7 +25,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Vehicle(object):
 	"""Estructura de la clse  Vehicle"""
@@ -190,31 +190,34 @@ class vehicleCatalog(object):
 		@param (obj) result
 		@return (obj) vehicle'''
 		myvehicle = Vehicle()
-		myvehicle.id_vehiculo = str(result.value(0))
-		myvehicle.id_cliente = str(result.value(1))
-		myvehicle.id_contacto = str(result.value(2))
-		myvehicle.id_ciudad = str(result.value(3))
-		myvehicle.modelo = str(result.value(4))
-		myvehicle.nro_motor = str(result.value(5))
-		myvehicle.ingreso = str(result.value(6))
-		myvehicle.notas = str(result.value(7))
-		myvehicle.registro = str(result.value(8))
+		myvehicle.id_vehiculo = result.value(0)
+		myvehicle.id_cliente = result.value(1)
+		myvehicle.id_contacto = result.value(2)
+		myvehicle.id_ciudad = result.value(3)
+		myvehicle.modelo = result.value(4)
+		myvehicle.nro_motor = result.value(5)
+		ingreso = result.value(6)
+		myvehicle.notas = result.value(7)
+		registro = result.value(8)
 
-		if(myvehicle.id_contacto.find('PyQt5.QtCore.')):
+		if isinstance(myvehicle.id_contacto,QVariant):		
 			myvehicle.id_contacto = None
 
-		if(myvehicle.id_ciudad.find('PyQt5.QtCore.')):
+		if isinstance(myvehicle.id_ciudad,QVariant):		
 			myvehicle.id_ciudad = None
 
-		if(myvehicle.nro_motor.find('PyQt5.QtCore.')):
+		if isinstance(myvehicle.nro_motor,QVariant):		
 			myvehicle.nro_motor = None
 
-		if(myvehicle.ingreso.find('PyQt5.QtCore.')):
+		if isinstance(myvehicle.ingreso,QVariant):		
 			myvehicle.ingreso = None
 
-		if(myvehicle.notas.find('PyQt5.QtCore.')):
+		if isinstance(myvehicle.notas,QVariant):		
 			myvehicle.notas = None
-
-
+		
+		#se validan las fechas
+		myvehicle.ingreso = ingreso.toString()
+		myvehicle.registro = registro.toString()
+		
 		qDebug('[Debug] se crea un objeto vehiculo vaidando los campos NULL')
 		return myvehicle

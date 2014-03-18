@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QPyNullVariant
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class buyTravel(object):
 	"""estructura para los gastos viajes"""
@@ -131,12 +131,12 @@ class buyTravelCatalog(object):
 		@param (bool) | (int)
 		'''
 		values = {
-			'id_viaje' : str(buyTravel.id_viaje),
-			'nro_factura' : str(buyTravel.nro_factura),
-			'fecha' : str(buyTravel.fecha),
-			'detalle' : str(buyTravel.detalle),
-			'valor' : str(buyTravel.valor),
-			'tipo' : str(buyTravel.tipo)			
+			'id_viaje' : buyTravel.id_viaje,
+			'nro_factura' : buyTravel.nro_factura,
+			'fecha' : buyTravel.fecha,
+			'detalle' : buyTravel.detalle,
+			'valor' : buyTravel.valor,
+			'tipo' : buyTravel.tipo
 		}
 
 		result = self.MyDb.insertQuery(self.table,values)
@@ -157,12 +157,12 @@ class buyTravelCatalog(object):
 		'''
 		condition = {' id_gasto_viaje =  ' : str(oldBuyTravel.id_gasto_viaje)}
 		values = {
-			'id_viaje' : str(buyTravel.id_viaje),
-			'nro_factura' : str(buyTravel.nro_factura),
-			'fecha' : str(buyTravel.fecha),
-			'detalle' : str(buyTravel.detalle),
-			'valor' : str(buyTravel.valor),
-			'tipo' : str(buyTravel.tipo)			
+			'id_viaje' : buyTravel.id_viaje,
+			'nro_factura' : buyTravel.nro_factura,
+			'fecha' : buyTravel.fecha,
+			'detalle' : buyTravel.detalle,
+			'valor' : buyTravel.valor,
+			'tipo' : buyTravel.tipo
 		}
 
 		result = self.MyDb.updateQuery(self.table,values,condition)
@@ -198,16 +198,18 @@ class buyTravelCatalog(object):
 		mybuyTravel.id_gasto_viaje = result.value(0)
 		mybuyTravel.id_viaje = result.value(1)
 		mybuyTravel.nro_factura = result.value(2)
-		mybuyTravel.fecha = result.value(3)
+		fecha = result.value(3)
 		mybuyTravel.detalle = result.value(4)
 		mybuyTravel.valor = float(result.value(5))
 		mybuyTravel.tipo = result.value(6)
 		registro = result.value(7)
 
 		#se validan los campos NULL
-		if isinstance(mybuy.tipo,QPyNullVariant):
+		if isinstance(mybuy.tipo,QVariant):
 			mybuy.tipo = None
 
+		#se validan las fechas
+		mybuyTravel.fecha = fecha.toString()
 		mybuyTravel.registro = registro.toString()
 
 		qDebug('[DEbug] Se inicia un objeto compra viaje validado los campos NULL')

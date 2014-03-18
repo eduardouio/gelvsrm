@@ -19,7 +19,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class TechnicalTravel(object):
@@ -132,8 +132,8 @@ class technicalTravelCatalog(object):
 		 @param result 
 		 @return objeto tipo technical'''		 
 		mytechnical = technicalTravel()
-		mytechnical.id_tecnico = str(result.value(0))
-		mytechnical.id_viaje = str(result.value(1))
-		mytechnical.registro = str(result.value(2))
+		mytechnical.id_tecnico = result.value(0)
+		mytechnical.id_viaje = result.value(1)
+		mytechnical.registro = result.value(2)
 		qDebug('[Debug] se arama un objeto tipo TravetlTechical validando los campos NULL')		
 		return mytechnical

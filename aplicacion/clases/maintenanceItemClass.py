@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class MaintenanceItem(object):
@@ -221,18 +221,23 @@ class maintenanceItemCatalog(object):
 		 @return objeto tipo technical'''		 
 		myMaintenanceItem = MaintenanceItem()
 
-		myMaintenanceItem.id_mantenimiento_detalle = str(result.value(0))
-		myMaintenanceItem.id_mantenimiento = str(result.value(1))
-		myMaintenanceItem.id_inventario = str(result.value(2))
-		myMaintenanceItem.fecha = str(result.value(3))
-		myMaintenanceItem.estado = str(result.value(4))
-		myMaintenanceItem.cantidad = str(result.value(5))
-		myMaintenanceItem.notas = str(result.value(6))
-		myMaintenanceItem.registro = str(result.value(7))
+		myMaintenanceItem.id_mantenimiento_detalle = result.value(0)
+		myMaintenanceItem.id_mantenimiento = result.value(1)
+		myMaintenanceItem.id_inventario = result.value(2)
+		fecha = result.value(3)
+		myMaintenanceItem.estado = result.value(4)
+		myMaintenanceItem.cantidad = result.value(5)
+		myMaintenanceItem.notas = result.value(6)
+		registro = result.value(7)
 
 		#verificamos los nulos devueltos por la consulta
-		if(myMaintenanceItem.notas.find('PyQt5.QtCore.')):
+
+		if isinstance(myMaintenanceItem.notas, QVariant):
 			myMaintenanceItem.notas = None
 		
+		#Validamos las fechas
+		myMaintenanceItem.fecha = fecha.toString() 
+		myMaintenanceItem.registro = registro.toString()
+
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')		
 		return mytechnical

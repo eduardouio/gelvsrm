@@ -23,7 +23,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Travel(object):
 	"""representa la estructura de un Travel"""
@@ -166,14 +166,19 @@ class travelCatalog(object):
 		@param (obj) result
 		@return (obj) Travel'''
 		mytravel = Travel()
-		mytravel.id_viaje = str(result.value(0))
-		mytravel.fecha_salida = str(result.value(1))
-		mytravel.fecha_regreso = str(result.value(2))
-		mytravel.nro_vehiculos = str(result.value(3))
-		mytravel.provincias_destino = str(result.value(4))
-		mytravel.varlor_caja = str(result.value(5))
-		mytravel.informe = str(result.value(6))
-		mytravel.registro = str(result.value(7))
+		mytravel.id_viaje = result.value(0)
+		fecha_salida = result.value(1)
+		fecha_regreso = result.value(2)
+		mytravel.nro_vehiculos = result.value(3)
+		mytravel.provincias_destino = result.value(4)
+		mytravel.varlor_caja = result.value(5)
+		mytravel.informe = result.value(6)
+		registro = result.value(7)
+
+		#validacion de fechas
+		mytravel.fecha_salida  = fecha_salida.toString()
+		mytravel.fecha_regreso  = fecha_regreso.toString()
+		mytravel.registro  = registro.toString()
 
 		qDebug('[Debug] se crea un objeto viaje validando los campos NULL')
 		return mytravel

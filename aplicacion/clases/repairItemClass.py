@@ -24,7 +24,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 
 class repairItem(object):
@@ -189,21 +189,25 @@ class repairItemCatalog(object):
 		'''Crea un objeto tipo repairItem 
 		@return (repairItem)'''
 		myrepairItem = repairItem()
-		myrepairItem.id_reparacion_detalle = str(result.value(0))
-		myrepairItem.id_reparacion = str(result.value(1))
-		myrepairItem.id_inventario = str(result.value(2))
-		myrepairItem.fecha = str(result.value(3))
-		myrepairItem.estado = str(result.value(4))
-		myrepairItem.cantidad = str(result.value(5))
-		myrepairItem.notas = str(result.value(6))
-		myrepairItem.registro = str(result.value(7))
+		myrepairItem.id_reparacion_detalle = result.value(0)
+		myrepairItem.id_reparacion = result.value(1)
+		myrepairItem.id_inventario = result.value(2)
+		fecha = result.value(3)
+		myrepairItem.estado = result.value(4)
+		myrepairItem.cantidad = result.value(5)
+		myrepairItem.notas = result.value(6)
+		registro = result.value(7)
 		#validamos los campos null
 
-		if(myrepairItem.estado.find('PyQt5.QtCore.')):
+		if isinstance(myrepairItem.estado, QVariant):
 			myrepairItem.estado = None
 		
-		if(myrepairItem.notas.find('PyQt5.QtCore.')):
+		if isinstance(myrepairItem.notas, QVariant):
 			myrepairItem.notas = None
+
+		#Validamos las fechas
+		myrepairItem.fecha = fecha.toString()
+		myrepairItem.registro = registro.toString()
 
 		qDebug('[Debug] Se crea un item de reparacion validados los campos NULL')
 

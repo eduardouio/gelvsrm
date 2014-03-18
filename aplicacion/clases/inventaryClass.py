@@ -26,7 +26,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Inventary(object):
 	"""descripcion de la clase Inventario"""
@@ -120,14 +120,14 @@ class inventaryCatalog(object):
 		@param (obj) inventary
 		@return (bool)'''
 		values = {			
-			'fecha' : str(inventary.fecha),
-			'nombre' : str(inventary.nombre),
-			'descripcion' : str(inventary.descripcion),
-			'unidad' : str(inventary.unidad),
-			'stok_min' : str(inventary.stok_min),
-			'marca' : str(inventary.marca),
-			'ubicacion' : str(inventary.ubicacion),
-			'notas' : str(inventary.notas)			
+			'fecha' : inventary.fecha,
+			'nombre' : inventary.nombre,
+			'descripcion' : inventary.descripcion,
+			'unidad' : inventary.unidad,
+			'stok_min' : inventary.stok_min,
+			'marca' : inventary.marca,
+			'ubicacion' : inventary.ubicacion,
+			'notas' : inventary.notas
 		}
 
 		result = self.MyDb.insertQuery(self.table,values)
@@ -185,23 +185,27 @@ class inventaryCatalog(object):
 		@param (obj) result
 		@return (obj) inventary'''
 		myinventary = Inventary()
-		myinventary.id_inventario = str(result.value(0))
-		myinventary.fecha = str(result.value(1))
-		myinventary.nombre = str(result.value(2))
-		myinventary.descripcion = str(result.value(3))
-		myinventary.unidad = str(result.value(4))
-		myinventary.stok_min = str(result.value(5))
-		myinventary.marca = str(result.value(6))
-		myinventary.ubicacion = str(result.value(7))
-		myinventary.notas = str(result.value(8))
-		myinventary.registro = str(result.value(9))
+		myinventary.id_inventario = result.value(0)
+		fecha = result.value(1)
+		myinventary.nombre = result.value(2)
+		myinventary.descripcion = result.value(3)
+		myinventary.unidad = result.value(4)
+		myinventary.stok_min = result.value(5)
+		myinventary.marca = result.value(6)
+		myinventary.ubicacion = result.value(7)
+		myinventary.notas = result.value(8)
+		registro = result.value(9)
 
 		#se validan los campos con null
-		if(myinventary.marca.find('PyQt5.QtCore.')):
+		if isinstance(myinventary.marca, QVariant):
 			myinventary.marca = None
 
-		if(myinventary.notas.find('PyQt5.QtCore.')):
+		if isinstance(myinventary.notas, QVariant):
 			myinventary.notas = None
 		
+		#Se validan las fechas
+		myinventary.fecha = fecha.toString()
+		myinventary.registro = registro.toString()
+
 		qDebug('[Debug] se crea un objeto inventario validado los campos NULL')
 		return myinventary

@@ -77,8 +77,6 @@ class coustomerCatalog(object):
 		coustomers = []
 		result = self.MyDb.selectQuery(self.table)
 		qDebug('[Debug] la consulta retorna %s valores'% result.size())
-		print('=================================================================')
-		print(type(result))
 		while result.next():				
 			coustomers.append(self.__setObj(result))
 		
@@ -222,7 +220,7 @@ class coustomerCatalog(object):
 		if isinstance(mycoustomer.notas,QVariant):
 			mycoustomer.notas = None
 
-		qDebug('Se validan las fechas obligatorias')
 		mycoustomer.registro = registro.toString()		
+		qDebug('Se validan las fechas obligatorias')
 
 		return mycoustomer

@@ -24,7 +24,7 @@ sys.path.append('..')
 #sys.setdefaultencoding('iso-8859-1')
 from codecs import *
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class Technical(object):
 	'''Estrucntura de un objecto tecnico'''
@@ -180,28 +180,30 @@ class techCatalog(object):
 		 @param result 
 		 @return objeto tipo technical'''		 
 		mytechnical = Technical()
-
 		mytechnical.id_tecnico = result.value(0)
 		mytechnical.nombres = result.value(1)
 		mytechnical.telefono = result.value(2)
 		mytechnical.celular = result.value(3)
 		mytechnical.email = result.value(4)
 		mytechnical.notas = result.value(5)
-		mytechnical.registro = result.value(6)
+		registro = result.value(6)
 
 		#verificamos los nulos devueltos por la consulta
 
-		if(mytechnical.telefono.find('PyQt5.QtCore.')):
+		if isinstance(mytechnical.telefono, QVariant):
 			mytechnical.telefono = None
 		
-		if(mytechnical.celular.find('PyQt5.QtCore.')):
+		if isinstance(mytechnical.celular, QVariant):
 			mytechnical.celular = None
 			
-		if(mytechnical.email.find('PyQt5.QtCore.')):
+		if isinstance(mytechnical.email, QVariant):
 			mytechnical.email = None
 			
-		if(mytechnical.notas.find('PyQt5.QtCore.')):
+		if isinstance(mytechnical.notas, QVariant):
 			mytechnical.notas = None
+
+		#se validan las  fechas
+		mytechnical.registro = registro.toString()
 
 		qDebug('[Debug] Se crea un objeto typo tecnico validando los campos tipo null ')
 		

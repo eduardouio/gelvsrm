@@ -21,7 +21,7 @@
 import sys
 sys.path.append('..')
 from modelo.Modelo import DB
-from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug
+from PyQt5.QtCore import QDateTime, QDate, QTime, qDebug, QVariant
 
 class invoiceItem(object):
 	"""estructura de un detalle de id_factura"""
@@ -217,14 +217,16 @@ class invoiceItemCatalog(object):
 		myinvoiceItem.id_factura = str(result.value(1))
 		myinvoiceItem.id_mantenimiento = str(result.value(2))
 		myinvoiceItem.id_reparacion = str(result.value(3))
-		myinvoiceItem.registro = str(result.value(4))	
+		registro = str(result.value(4))	
 
 		#se validan los campos nulos
-		if(myinvoiceItem.id_mantenimiento.find('PyQt5.QtCore.')):
+		if isinstance(myinvoiceItem.id_mantenimiento, QVariant):
 			myinvoiceItem.id_mantenimiento = None
 
-		if(myinvoiceItem.id_reparacion.find('PyQt5.QtCore.')):
+		if isinstance(myinvoiceItem.id_reparacion, QVariant):
 			myinvoiceItem.id_reparacion = None
 		
+		#se validan las fechas
+		myinvoiceItem.registro = registro.toString()
 		qDebug('[Debug] Se crea un objeto typo item factura validando los campos tipo null ')		
 		return myinvoiceItem
