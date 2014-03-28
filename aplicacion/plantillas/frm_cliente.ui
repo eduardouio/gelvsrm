@@ -130,7 +130,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="lbl_vehiculosa_2">
+                <widget class="QLabel" name="lbl_vehiculosb">
                  <property name="toolTip">
                   <string>Numero de vehiculos del cliente</string>
                  </property>
@@ -153,7 +153,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="lbl_facturasa_2">
+                <widget class="QLabel" name="lbl_facturasb">
                  <property name="toolTip">
                   <string>Numero de facturas del cliente</string>
                  </property>
@@ -452,6 +452,17 @@
               </property>
               <property name="text">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#015546;&quot;&gt;Clientes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_editar">
+              <property name="text">
+               <string>Editar</string>
+              </property>
+              <property name="icon">
+               <iconset resource="polaris.qrc">
+                <normaloff>:/Icons/icons/pencil2.png</normaloff>:/Icons/icons/pencil2.png</iconset>
               </property>
              </widget>
             </item>
@@ -836,30 +847,6 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_copiar">
-              <property name="minimumSize">
-               <size>
-                <width>120</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>120</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Copiar</string>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>:/Icons/icons/document_multiple.png</normaloff>
-                <normalon>:/Icons/icons/editpaste.png</normalon>:/Icons/icons/document_multiple.png</iconset>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QPushButton" name="btn_cancelar">
               <property name="minimumSize">
                <size>
@@ -1118,7 +1105,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_monstrar_seleccionados">
+             <widget class="QPushButton" name="btn_mostrar_vehiculo">
               <property name="minimumSize">
                <size>
                 <width>220</width>
@@ -1265,7 +1252,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_mantenimientos_4">
+             <widget class="QPushButton" name="btn_crear_factura">
               <property name="minimumSize">
                <size>
                 <width>220</width>
@@ -1297,7 +1284,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_monstrar_3">
+             <widget class="QPushButton" name="btn_mostrar_factura">
               <property name="minimumSize">
                <size>
                 <width>220</width>
@@ -1486,7 +1473,35 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
            </layout>
           </item>
           <item>
-           <widget class="QTableView" name="tbl_result"/>
+           <widget class="QTableView" name="tbl_result">
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::WinPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="gridStyle">
+             <enum>Qt::CustomDashLine</enum>
+            </property>
+            <attribute name="horizontalHeaderCascadingSectionResizes">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -1504,7 +1519,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_mostrar">
+             <widget class="QPushButton" name="btn_mostrar_cliente">
               <property name="minimumSize">
                <size>
                 <width>220</width>
@@ -1543,7 +1558,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
      <x>0</x>
      <y>0</y>
      <width>782</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -1706,19 +1721,18 @@ radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
   <tabstop>rtxt_notas</tabstop>
   <tabstop>btn_asignar_vehiculo</tabstop>
   <tabstop>btn_nuevo</tabstop>
-  <tabstop>btn_copiar</tabstop>
   <tabstop>btn_cancelar</tabstop>
   <tabstop>btn_guardar</tabstop>
   <tabstop>btn_eliminar</tabstop>
   <tabstop>btn_asignar_vehiculos</tabstop>
-  <tabstop>btn_monstrar_seleccionados</tabstop>
-  <tabstop>btn_mantenimientos_4</tabstop>
-  <tabstop>btn_monstrar_3</tabstop>
+  <tabstop>btn_mostrar_vehiculo</tabstop>
+  <tabstop>btn_crear_factura</tabstop>
+  <tabstop>btn_mostrar_factura</tabstop>
   <tabstop>cmb_columna</tabstop>
   <tabstop>cmb_operador</tabstop>
   <tabstop>txt_criterio</tabstop>
   <tabstop>btn_buscar</tabstop>
-  <tabstop>btn_mostrar</tabstop>
+  <tabstop>btn_mostrar_cliente</tabstop>
  </tabstops>
  <resources>
   <include location="polaris.qrc"/>
