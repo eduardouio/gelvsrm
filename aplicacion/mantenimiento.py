@@ -6,6 +6,7 @@
 # File			viaje.py
 # Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
+#Prioridad para implementar
 
 import sys
 sys.path.append('..')

@@ -6,19 +6,18 @@
 # File			viaje.py
 # Ubicacion		aplicacion/basedatos/Modelo.py
 # Copyright		(c) 2013 gelvsrm <eduardouio7@gmail.com>
-
 import sys
 sys.path.append('..')
 from PyQt5 import QtGui, QtCore, uic, Qt
 from PyQt5 import QtWidgets
 from plantillas import polaris_rc
+from  bottle import *
 
-class Viaje(QtWidgets.QMainWindow):
-		def __init__(self): 
-			QtWidgets.QMainWindow.__init__(self)
-			ventana = uic.loadUi('plantillas/frm_vehiculo.ui',self)
-			ventana.show()
+@route('/hola')
+@route('/')
+def hola():
+	return ('<b> Hola Mundo</b><p>Desde Python3</p>')
 
-app = QtWidgets.QApplication(sys.argv)
-window = Viaje()
-sys.exit(app.exec_())
+if __name__ == '__main__':
+	run(host='192.168.0.150', port=80, debug=True)
+	

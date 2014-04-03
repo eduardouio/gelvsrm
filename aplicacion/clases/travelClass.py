@@ -66,13 +66,13 @@ class travelCatalog(object):
 	def listTravels(self):
 		'''Retorna un listado de todos los viajes
 		@return lst(travel)'''
-			travels = []
-			result = self.MyDb.selectQuery(self.table)
-			qDebug('[Debug] la consulta retorno %s registros'% result.size())
-			while result.next():				
-				travels.append(self.__setObj(result))
+		travels = []
+		result = self.MyDb.selectQuery(self.table)
+		qDebug('[Debug] la consulta retorno %s registros'% result.size())
+		while result.next():				
+			travels.append(self.__setObj(result))
 
-			return travels
+		return travels
 
 
 	def firstTravel(self):
