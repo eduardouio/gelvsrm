@@ -31,10 +31,12 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'gelvs.polaris',
     'django.contrib.staticfiles',
 )
 
@@ -55,16 +57,16 @@ WSGI_APPLICATION = 'gelvs.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'gelvsrm_polaris',
-#        'USER': 'root',
-#        'PASSWORD':'elian',
-#        'HOST': '127.0.0.1',
-#        'PORT':'3306'
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gelvsrm_polaris',
+        'USER': 'root',
+        'PASSWORD':'elian',
+        'HOST': '127.0.0.1',
+        'PORT':'3306'
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
