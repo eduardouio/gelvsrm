@@ -17,7 +17,7 @@ class Ciudad(models.Model):
     nombre = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
-        return self.nombre
+        return self.nombre.econde(encoding='UTF-8')
 
     class Meta:
         managed = False
@@ -37,7 +37,7 @@ class Cliente(models.Model):
     registro = models.DateTimeField()
 
     def __unicode__(self):
-        return str(self.nombre)
+        return self.nombre.econde(encoding='UTF-8')
 
     class Meta:
         managed = False
