@@ -1,6 +1,6 @@
-from django.db import models
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# Create your models here.
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -10,14 +10,17 @@ from django.db import models
 #
 # Also note: You'll have to insert the output of 'django-admin.py sqlcustom [appname]'
 # into your database.
+from __future__ import unicode_literals
+
+from django.db import models
 
 class Ciudad(models.Model):
-    id_ciudad = models.IntegerField(primary_key=True)
+    id_ciudad = models.IntegerField(primary_key=True,blank=True)
     id_provincia = models.ForeignKey('Provincia', db_column='id_provincia')
     nombre = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
-        return self.nombre.econde(encoding='UTF-8')
+        return self.nombre
 
     class Meta:
         managed = False
@@ -34,17 +37,18 @@ class Cliente(models.Model):
     fax = models.CharField(max_length=15, blank=True)
     mail = models.CharField(max_length=100, blank=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return self.nombre.econde(encoding='UTF-8')
+        return self.nombre
 
     class Meta:
         managed = False
         db_table = 'cliente'
 
+
 class Compra(models.Model):
-    id_compra = models.IntegerField(primary_key=True)
+    id_compra = models.IntegerField(primary_key=True, blank=True)
     id_inventario = models.ForeignKey('Inventario', db_column='id_inventario')
     id_proveedor = models.ForeignKey('Proveedor', db_column='id_proveedor')
     id_tecnico = models.ForeignKey('Tecnico', db_column='id_tecnico')
@@ -53,20 +57,28 @@ class Compra(models.Model):
     cantidad = models.IntegerField()
     costo = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return str(self.id_compra).encode('utf-8')
+
     class Meta:
         managed = False
         db_table = 'compra'
 
 class Contacto(models.Model):
-    id_contacto = models.IntegerField(primary_key=True)
+    id_contacto = models.IntegerField(primary_key=True, blank=True)
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
     nombre = models.CharField(max_length=50)
     telefono = models.CharField(max_length=15, blank=True)
     celular = models.CharField(max_length=15, blank=True)
     email = models.CharField(max_length=100, blank=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'contacto'
@@ -82,48 +94,48 @@ class Factura(models.Model):
     estado = models.CharField(max_length=50)
     archivo = models.CharField(max_length=200, blank=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return str(self.id_factura)
+        return str(self.id_factura).encode('utf-8')
 
     class Meta:
         managed = False
         db_table = 'factura'
 
 class FacturaDetalle(models.Model):
-    id_factura_detalle = models.IntegerField(unique=True)
+    id_factura_detalle = models.IntegerField(primary_key=True)
     id_factura = models.ForeignKey(Factura, db_column='id_factura')
     id_mantenimiento = models.IntegerField()
     id_reparacion = models.IntegerField()
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return str(self.id_factura)
+        return str(id_factura_detalle).encode('utf-8')
 
     class Meta:
         managed = False
         db_table = 'factura_detalle'
 
 class GastosViaje(models.Model):
-    id_gasto_viaje = models.IntegerField(unique=True)
+    id_gasto_viaje = models.IntegerField(unique=True, blank=True)
     id_viaje = models.ForeignKey('Viaje', db_column='id_viaje')
     nro_factura = models.CharField(max_length=20)
     fecha = models.DateField()
     detalle = models.CharField(max_length=300)
     valor = models.DecimalField(max_digits=4, decimal_places=2)
     tipo = models.CharField(max_length=45, blank=True)
-    registro = models.DateTimeField()
-    
+    registro = models.DateTimeField(blank=True)
+
     def __unicode__(self):
-        return str(self.id_viaje)
+        return str(self.id_gasto_viaje).encode('utf-8')
 
     class Meta:
         managed = False
         db_table = 'gastos_viaje'
 
 class Inspeccion(models.Model):
-    id_inspeccion = models.IntegerField(primary_key=True)
+    id_inspeccion = models.IntegerField(primary_key=True, blank=True)
     id_vehiculo = models.ForeignKey('Vehiculo', db_column='id_vehiculo')
     id_tecnico = models.ForeignKey('Tecnico', db_column='id_tecnico')
     id_contacto = models.ForeignKey(Contacto, db_column='id_contacto')
@@ -131,18 +143,18 @@ class Inspeccion(models.Model):
     periodo = models.IntegerField()
     fecha = models.DateField()
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
-    def __unicode__(self):
-        cadena = "Inspeccion:%s Cliente %s"%(self.id_inspeccion, self.id_vehiculo)
-        return str(cadena)
+    registro = models.DateTimeField(blank=True)
 
+    def __unicode__(self):
+        myinspeccion = str(self.id_inspeccion).encode('utf-8') + ' => ' + str(self.id_vehiculo).encode('utf-8')
+        return myinspeccion
 
     class Meta:
         managed = False
         db_table = 'inspeccion'
 
 class Inventario(models.Model):
-    id_inventario = models.IntegerField(primary_key=True)
+    id_inventario = models.IntegerField(primary_key=True, blank=True)
     fecha = models.DateTimeField()
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=200)
@@ -151,13 +163,17 @@ class Inventario(models.Model):
     marca = models.CharField(max_length=45, blank=True)
     ubicacion = models.CharField(max_length=100)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'inventario'
 
 class Mantenimiento(models.Model):
-    id_mantenimiento = models.IntegerField(primary_key=True)
+    id_mantenimiento = models.IntegerField(primary_key=True, blank=True)
     id_viaje = models.ForeignKey('Viaje', db_column='id_viaje')
     id_vehiculo = models.ForeignKey('Vehiculo', db_column='id_vehiculo')
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
@@ -165,20 +181,27 @@ class Mantenimiento(models.Model):
     fecha = models.DateField()
     kilometros = models.CharField(max_length=10)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        mymantenimiento = str(self.id_mantenimiento).encode('utf-8') + ' => ' + str(self.id_vehiculo).encode('utf-8')
+        return mymantenimiento
+
     class Meta:
         managed = False
         db_table = 'mantenimiento'
 
 class MantenimientoDetalle(models.Model):
-    id_mantenimiento_detalle = models.IntegerField(unique=True)
+    id_mantenimiento_detalle = models.IntegerField(primary_key=True, blank=True)
     id_mantenimiento = models.ForeignKey(Mantenimiento, db_column='id_mantenimiento')
     id_inventario = models.ForeignKey(Inventario, db_column='id_inventario')
-    fecha = models.TimeField()
     estado = models.CharField(max_length=25, blank=True)
     cantidad = models.FloatField()
     notas = models.CharField(max_length=600, blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return str(self.id_mantenimiento_detalle).encode('utf-8')
     class Meta:
         managed = False
         db_table = 'mantenimiento_detalle'
@@ -193,25 +216,28 @@ class Proveedor(models.Model):
     email = models.CharField(max_length=30, blank=True)
     credito = models.IntegerField(blank=True, null=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
     def __unicode__(self):
-        return str(self.nombre)
+        return self.nombre
 
     class Meta:
         managed = False
         db_table = 'proveedor'
 
 class Provincia(models.Model):
-    id_provincia = models.IntegerField(primary_key=True)
+    id_provincia = models.IntegerField(primary_key=True, blank=True)
     nombre = models.CharField(max_length=100, blank=True)
+
     def __unicode__(self):
-        return str(self.nombre)
+        return self.nombre
+
     class Meta:
         managed = False
         db_table = 'provincia'
 
 class Reparacion(models.Model):
-    id_reparacion = models.IntegerField(primary_key=True)
+    id_reparacion = models.IntegerField(primary_key=True, blank=True)
     id_viaje = models.ForeignKey('Viaje', db_column='id_viaje')
     id_vehiculo = models.ForeignKey('Vehiculo', db_column='id_vehiculo')
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
@@ -220,20 +246,28 @@ class Reparacion(models.Model):
     fecha_entrada = models.DateTimeField()
     fecha_salida = models.DateTimeField()
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        myreparacion = str(self.id_reparacion).encode('utf-8') + ' => ' + str(self.id_vehiculo).encode('utf-8')
+        return myreparacion
     class Meta:
         managed = False
         db_table = 'reparacion'
 
 class ReparacionDetalle(models.Model):
-    id_reparacion_detalle = models.IntegerField(primary_key=True)
+    id_reparacion_detalle = models.IntegerField(primary_key=True, blank=True)
     id_reparacion = models.ForeignKey(Reparacion, db_column='id_reparacion')
     id_inventario = models.ForeignKey(Inventario, db_column='id_inventario')
     fecha = models.TimeField()
     estado = models.CharField(max_length=25, blank=True)
     cantidad = models.IntegerField()
     notas = models.CharField(max_length=600, blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return str(id_reparacion).encode('utf-8')
+
     class Meta:
         managed = False
         db_table = 'reparacion_detalle'
@@ -245,9 +279,11 @@ class Tecnico(models.Model):
     celular = models.CharField(max_length=15, blank=True)
     email = models.CharField(max_length=100, blank=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
     def __unicode__(self):
-        return str(self.nombre)
+        return self.nombres
+
     class Meta:
         managed = False
         db_table = 'tecnico'
@@ -255,13 +291,17 @@ class Tecnico(models.Model):
 class TecnicoViaje(models.Model):
     id_tecnico = models.ForeignKey(Tecnico, db_column='id_tecnico')
     id_viaje = models.ForeignKey('Viaje', db_column='id_viaje')
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return self.id_tecnico
+
     class Meta:
         managed = False
         db_table = 'tecnico_viaje'
 
 class Vehiculo(models.Model):
-    id_vehiculo = models.CharField(max_length=17)
+    id_vehiculo = models.CharField(max_length=17,primary_key=True)
     id_cliente = models.ForeignKey(Cliente, db_column='id_cliente')
     id_contacto = models.ForeignKey(Contacto, db_column='id_contacto', blank=True, null=True)
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
@@ -269,24 +309,28 @@ class Vehiculo(models.Model):
     nro_motor = models.CharField(max_length=25, blank=True)
     ingreso = models.DateField(blank=True, null=True)
     notas = models.TextField(blank=True)
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return str(self.id_vehiculo)
+        return self.id_vehiculo
 
     class Meta:
         managed = False
         db_table = 'vehiculo'
 
 class Viaje(models.Model):
-    id_viaje = models.IntegerField(primary_key=True)
+    id_viaje = models.IntegerField(primary_key=True, blank=True)
     fecha_salida = models.DateField()
     fecha_regreso = models.DateField()
     nro_vehiculos = models.IntegerField()
     provincias_destino = models.CharField(max_length=500)
     varlor_caja = models.DecimalField(max_digits=5, decimal_places=2)
     informe = models.TextField()
-    registro = models.DateTimeField()
+    registro = models.DateTimeField(blank=True)
+
+    def __unicode__(self):
+        return str(self.id_viaje).encode('utf-8')
+
     class Meta:
         managed = False
         db_table = 'viaje'
