@@ -52,7 +52,6 @@ create database gelvsrm_polaris;
 		registro timestamp not null default current_timestamp 
 		on update current_timestamp,
 		primary key(id_contacto),
-
 		CONSTRAINT fk_contacto_ciudad
       	FOREIGN KEY (id_ciudad)
       	REFERENCES ciudad(id_ciudad)

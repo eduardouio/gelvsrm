@@ -7,547 +7,144 @@
 		<li>Modelo Gelvsrm</li>
 		<li>Diagramas de clases</li>
 	</ul>
+<p>
+La apliación cambia de otientacion, ahira será web y se usará con django, vemoas si es posible usar angularjs en la interfaz de usuario
+a trabajar!!!!-.-.
+</p>
+
 </p>
 Árbol de directorios
 <p>
+├── aplicacion
+│   ├── gelvs
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── polaris
+│   │   │   ├── admin.py~
+│   │   │   ├── admin.pyc
+│   │   │   ├── __init__.py
+│   │   │   ├── __init__.pyc
+│   │   │   ├── models.py
+│   │   │   ├── models.pyc
+│   │   │   ├── olds
+│   │   │   │   ├── clases
+│   │   │   │   │   ├── buyClass.py
+│   │   │   │   │   ├── buyTravelClass.py
+│   │   │   │   │   ├── cityClass.py
+│   │   │   │   │   ├── contactClass.py
+│   │   │   │   │   ├── coustumerClass.py
+│   │   │   │   │   ├── coustumerClass.pyc
+│   │   │   │   │   ├── helper.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── __init__.pyc
+│   │   │   │   │   ├── inspectionClass.py
+│   │   │   │   │   ├── inventaryClass.py
+│   │   │   │   │   ├── invoiceClass.py
+│   │   │   │   │   ├── invoiceItemClass.py
+│   │   │   │   │   ├── maintenanceClass.py
+│   │   │   │   │   ├── maintenanceItemClass.py
+│   │   │   │   │   ├── providerClass.py
+│   │   │   │   │   ├── __pycache__
+│   │   │   │   │   │   ├── cityClass.cpython-33.pyc
+│   │   │   │   │   │   ├── contactClass.cpython-33.pyc
+│   │   │   │   │   │   ├── coustumerClass.cpython-33.pyc
+│   │   │   │   │   │   ├── helper.cpython-33.pyc
+│   │   │   │   │   │   ├── __init__.cpython-33.pyc
+│   │   │   │   │   │   ├── invoiceClass.cpython-33.pyc
+│   │   │   │   │   │   ├── maintenanceClass.cpython-33.pyc
+│   │   │   │   │   │   ├── repairClass.cpython-33.pyc
+│   │   │   │   │   │   ├── stateClass.cpython-33.pyc
+│   │   │   │   │   │   └── vehicleClass.cpython-33.pyc
+│   │   │   │   │   ├── repairClass.py
+│   │   │   │   │   ├── repairItemClass.py
+│   │   │   │   │   ├── stateClass.py
+│   │   │   │   │   ├── techClass.py
+│   │   │   │   │   ├── techTravelClass
+│   │   │   │   │   ├── travelClass.py
+│   │   │   │   │   └── vehicleClass.py
+│   │   │   │   ├── modelo
+│   │   │   │   │   ├── conn.py
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── __init__.pyc
+│   │   │   │   │   ├── Modelo.py
+│   │   │   │   │   ├── Modelo.pyc
+│   │   │   │   │   └── __pycache__
+│   │   │   │   │       ├── conn.cpython-33.pyc
+│   │   │   │   │       ├── __init__.cpython-33.pyc
+│   │   │   │   │       └── Modelo.cpython-33.pyc
+│   │   │   │   ├── static_media
+│   │   │   │   │   └── files
+│   │   │   │   │       ├── css
+│   │   │   │   │       │   ├── bootstrap.css.map
+│   │   │   │   │       │   ├── bootstrap.min.css
+│   │   │   │   │       │   ├── bootstrap-theme.css.map
+│   │   │   │   │       │   ├── bootstrap-theme.min.css
+│   │   │   │   │       │   └── dashboard.css
+│   │   │   │   │       ├── fonts
+│   │   │   │   │       │   ├── glyphicons-halflings-regular.eot
+│   │   │   │   │       │   ├── glyphicons-halflings-regular.svg
+│   │   │   │   │       │   ├── glyphicons-halflings-regular.ttf
+│   │   │   │   │       │   └── glyphicons-halflings-regular.woff
+│   │   │   │   │       ├── ico
+│   │   │   │   │       │   ├── apple-touch-icon-144-precomposed.png
+│   │   │   │   │       │   └── favicon.ico
+│   │   │   │   │       ├── img
+│   │   │   │   │       │   ├── cliente.png
+│   │   │   │   │       │   ├── mantenimiento.png
+│   │   │   │   │       │   ├── Ranger.png
+│   │   │   │   │       │   ├── reparacion.png
+│   │   │   │   │       │   └── viaje.png
+│   │   │   │   │       └── js
+│   │   │   │   │           ├── application.js
+│   │   │   │   │           ├── bootstrap.min.js
+│   │   │   │   │           ├── customize.min.js
+│   │   │   │   │           ├── customizer.js
+│   │   │   │   │           ├── docs.min.js
+│   │   │   │   │           ├── ie8-responsive-file-warning.js
+│   │   │   │   │           ├── raw-files.min.js
+│   │   │   │   │           └── vendor
+│   │   │   │   │               ├── blob.js
+│   │   │   │   │               ├── filesaver.js
+│   │   │   │   │               ├── holder.js
+│   │   │   │   │               ├── jszip.min.js
+│   │   │   │   │               ├── less.min.js
+│   │   │   │   │               └── uglify.min.js
+│   │   │   │   └── templates
+│   │   │   │       ├── head.html
+│   │   │   │       └── index.html
+│   │   │   ├── tests.py
+│   │   │   └── views.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-33.pyc
+│   │   │   ├── settings.cpython-33.pyc
+│   │   │   ├── urls.cpython-33.pyc
+│   │   │   └── wsgi.cpython-33.pyc
+│   │   ├── settings.py
+│   │   ├── settings.py~
+│   │   ├── settings.pyc
+│   │   ├── urls.py
+│   │   ├── urls.pyc
+│   │   ├── wsgi.py
+│   │   └── wsgi.pyc
+│   ├── __init__.py
+│   └── manage.py
 ├── Documentacion
+│   ├── DiagramaControlador.png
+│   ├── DiagramaModelo.png
+│   ├── Diagramas.zargo
+│   ├── Diagramas.zargo~
 │   ├── gelvsr.mwb
-│   ├── gelvsr.mwb.bak
-│   └── README.md
+│   ├── Modelo_a.JPG
+│   └── modelo_B.JPG
+├── Modelo
+│   ├── data_gelvs_rm.sql
+│   ├── gelvsrm_polaris.sql
+│   ├── insert_detalle_mantenimiento
+│   ├── procedimientos_triggers_gelvsrm.sql
+│   ├── script_gelvsrm.sql
+│   └── vistas_gelvsrm.sql
+└── README.md
+
 </p>
 
-
-
-objetos de cliente:
-
-['AllowNestedDocks',
- 'AllowTabbedDocks',
- 'AnimatedDocks',
- 'DockOption',
- 'DockOptions',
- 'DrawChildren',
- 'DrawWindowBackground',
- 'ForceTabbedDocks',
- 'IgnoreMask',
- 'PaintDeviceMetric',
- 'PdmDepth',
- 'PdmDpiX',
- 'PdmDpiY',
- 'PdmHeight',
- 'PdmHeightMM',
- 'PdmNumColors',
- 'PdmPhysicalDpiX',
- 'PdmPhysicalDpiY',
- 'PdmWidth',
- 'PdmWidthMM',
- 'RenderFlag',
- 'RenderFlags',
- 'VerticalTabs',
- '__class__',
- '__delattr__',
- '__dict__',
- '__dir__',
- '__doc__',
- '__eq__',
- '__format__',
- '__ge__',
- '__getattr__',
- '__getattribute__',
- '__gt__',
- '__hash__',
- '__init__',
- '__le__',
- '__lt__',
- '__module__',
- '__ne__',
- '__new__',
- '__reduce__',
- '__reduce_ex__',
- '__repr__',
- '__setattr__',
- '__sizeof__',
- '__str__',
- '__subclasshook__',
- '__weakref__',
- 'acceptDrops',
- 'accessibleDescription',
- 'accessibleName',
- 'actionAsignar_Polaris',
- 'actionEvent',
- 'actionNuevo',
- 'actionRecargar',
- 'action_Buscar',
- 'action_Salir',
- 'action_Volver',
- 'actions',
- 'activateWindow',
- 'addAction',
- 'addActions',
- 'addDockWidget',
- 'addToolBar',
- 'addToolBarBreak',
- 'adjustSize',
- 'autoFillBackground',
- 'backgroundRole',
- 'baseSize',
- 'blockSignals',
- 'btn_anterior',
- 'btn_asignar_vehiculo',
- 'btn_asignar_vehiculos',
- 'btn_buscar',
- 'btn_buscar_contacto',
- 'btn_cancelar',
- 'btn_copiar',
- 'btn_eliminar',
- 'btn_guardar',
- 'btn_home',
- 'btn_mantenimientos_4',
- 'btn_monstrar_3',
- 'btn_monstrar_seleccionados',
- 'btn_mostrar',
- 'btn_nuevo',
- 'btn_primero',
- 'btn_recargar',
- 'btn_siguiente',
- 'btn_ultimo',
- 'centralWidget',
- 'centralwidget',
- 'changeEvent',
- 'childAt',
- 'childEvent',
- 'children',
- 'childrenRect',
- 'childrenRegion',
- 'clearFocus',
- 'clearMask',
- 'close',
- 'closeEvent',
- 'cmb_columna',
- 'cmb_contacto',
- 'cmb_operador',
- 'cmb_provincia',
- 'colorCount',
- 'connect',
- 'connectNotify',
- 'contentsMargins',
- 'contentsRect',
- 'contextMenuEvent',
- 'contextMenuPolicy',
- 'corner',
- 'create',
- 'createPopupMenu',
- 'cursor',
- 'customContextMenuRequested',
- 'customEvent',
- 'debug',
- 'deleteLater',
- 'depth',
- 'destroy',
- 'destroyed',
- 'devType',
- 'disconnect',
- 'disconnectNotify',
- 'dockOptions',
- 'dockWidgetArea',
- 'documentMode',
- 'dragEnterEvent',
- 'dragLeaveEvent',
- 'dragMoveEvent',
- 'dropEvent',
- 'dumpObjectInfo',
- 'dumpObjectTree',
- 'dynamicPropertyNames',
- 'effectiveWinId',
- 'emit',
- 'enabledChange',
- 'ensurePolished',
- 'enterEvent',
- 'event',
- 'eventFilter',
- 'find',
- 'findChild',
- 'findChildren',
- 'focusInEvent',
- 'focusNextChild',
- 'focusNextPrevChild',
- 'focusOutEvent',
- 'focusPolicy',
- 'focusPreviousChild',
- 'focusProxy',
- 'focusWidget',
- 'font',
- 'fontChange',
- 'fontInfo',
- 'fontMetrics',
- 'foregroundRole',
- 'formLayout',
- 'frame',
- 'frameGeometry',
- 'frameSize',
- 'frame_3',
- 'frame_4',
- 'geometry',
- 'getContentsMargins',
- 'grabGesture',
- 'grabKeyboard',
- 'grabMouse',
- 'grabShortcut',
- 'graphicsEffect',
- 'graphicsProxyWidget',
- 'gridLayout_2',
- 'gridLayout_4',
- 'gridLayout_5',
- 'gridLayout_6',
- 'handle',
- 'hasFocus',
- 'hasMouseTracking',
- 'height',
- 'heightForWidth',
- 'heightMM',
- 'hide',
- 'hideEvent',
- 'horizontalLayout',
- 'horizontalLayout_10',
- 'horizontalLayout_11',
- 'horizontalLayout_12',
- 'horizontalLayout_2',
- 'horizontalLayout_3',
- 'horizontalLayout_4',
- 'horizontalLayout_5',
- 'horizontalLayout_6',
- 'horizontalLayout_7',
- 'horizontalLayout_8',
- 'horizontalLayout_9',
- 'iconSize',
- 'iconSizeChanged',
- 'inherits',
- 'inputContext',
- 'inputMethodEvent',
- 'inputMethodHints',
- 'inputMethodQuery',
- 'insertAction',
- 'insertActions',
- 'insertToolBar',
- 'insertToolBarBreak',
- 'installEventFilter',
- 'isActiveWindow',
- 'isAncestorOf',
- 'isAnimated',
- 'isDockNestingEnabled',
- 'isEnabled',
- 'isEnabledTo',
- 'isEnabledToTLW',
- 'isFullScreen',
- 'isHidden',
- 'isLeftToRight',
- 'isMaximized',
- 'isMinimized',
- 'isModal',
- 'isRightToLeft',
- 'isSeparator',
- 'isTopLevel',
- 'isVisible',
- 'isVisibleTo',
- 'isWidgetType',
- 'isWindow',
- 'isWindowModified',
- 'keyPressEvent',
- 'keyReleaseEvent',
- 'keyboardGrabber',
- 'killTimer',
- 'label_asignar_vehiculos',
- 'languageChange',
- 'layout',
- 'layoutDirection',
- 'lbl_clientes_gelvs',
- 'lbl_columna',
- 'lbl_contacto',
- 'lbl_contactoa',
- 'lbl_contactob',
- 'lbl_contactooa',
- 'lbl_contactoob',
- 'lbl_criterio',
- 'lbl_cuidad',
- 'lbl_cuidad_3',
- 'lbl_direccion',
- 'lbl_email',
- 'lbl_facturas_emitidasa',
- 'lbl_facturas_emitidasb',
- 'lbl_facturasa',
- 'lbl_facturasa_2',
- 'lbl_fax',
- 'lbl_fecha_registrob',
- 'lbl_mantenimientosa',
- 'lbl_mantenimientosb',
- 'lbl_nombre',
- 'lbl_observaciones',
- 'lbl_operador',
- 'lbl_provincia',
- 'lbl_reparacionesa',
- 'lbl_reparacionesb',
- 'lbl_ruc',
- 'lbl_ruca',
- 'lbl_rucb',
- 'lbl_telefono',
- 'lbl_telefonoa',
- 'lbl_telefonob',
- 'lbl_ultima_facturaa',
- 'lbl_ultima_facturab',
- 'lbl_ultimo_mantenimientoa',
- 'lbl_ultimo_mantenimientob',
- 'lbl_vehiculos_asignadosa',
- 'lbl_vehiculos_asignadosb',
- 'lbl_vehiculosa',
- 'lbl_vehiculosa_2',
- 'leaveEvent',
- 'locale',
- 'logicalDpiX',
- 'logicalDpiY',
- 'lower',
- 'mapFrom',
- 'mapFromGlobal',
- 'mapFromParent',
- 'mapTo',
- 'mapToGlobal',
- 'mapToParent',
- 'mask',
- 'maximumHeight',
- 'maximumSize',
- 'maximumWidth',
- 'menuArchivo',
- 'menuBar',
- 'menuPantalla_Principal',
- 'menuWidget',
- 'menubar',
- 'metaObject',
- 'metric',
- 'minimumHeight',
- 'minimumSize',
- 'minimumSizeHint',
- 'minimumWidth',
- 'mouseDoubleClickEvent',
- 'mouseGrabber',
- 'mouseMoveEvent',
- 'mousePressEvent',
- 'mouseReleaseEvent',
- 'move',
- 'moveEvent',
- 'moveToThread',
- 'nativeParentWidget',
- 'nextInFocusChain',
- 'normalGeometry',
- 'numColors',
- 'objectName',
- 'on_firstRow',
- 'overrideWindowFlags',
- 'overrideWindowState',
- 'paintEngine',
- 'paintEvent',
- 'paintingActive',
- 'palette',
- 'paletteChange',
- 'parent',
- 'parentWidget',
- 'physicalDpiX',
- 'physicalDpiY',
- 'pos',
- 'previousInFocusChain',
- 'property',
- 'pyqtConfigure',
- 'raise_',
- 'receivers',
- 'rect',
- 'releaseKeyboard',
- 'releaseMouse',
- 'releaseShortcut',
- 'removeAction',
- 'removeDockWidget',
- 'removeEventFilter',
- 'removeToolBar',
- 'removeToolBarBreak',
- 'render',
- 'repaint',
- 'resetInputContext',
- 'resize',
- 'resizeEvent',
- 'restoreDockWidget',
- 'restoreGeometry',
- 'restoreState',
- 'rtxt_observaciones',
- 'saveGeometry',
- 'saveState',
- 'scroll',
- 'sender',
- 'senderSignalIndex',
- 'setAcceptDrops',
- 'setAccessibleDescription',
- 'setAccessibleName',
- 'setAnimated',
- 'setAttribute',
- 'setAutoFillBackground',
- 'setBackgroundRole',
- 'setBaseSize',
- 'setCentralWidget',
- 'setContentsMargins',
- 'setContextMenuPolicy',
- 'setCorner',
- 'setCursor',
- 'setDisabled',
- 'setDockNestingEnabled',
- 'setDockOptions',
- 'setDocumentMode',
- 'setEnabled',
- 'setFixedHeight',
- 'setFixedSize',
- 'setFixedWidth',
- 'setFocus',
- 'setFocusPolicy',
- 'setFocusProxy',
- 'setFont',
- 'setForegroundRole',
- 'setGeometry',
- 'setGraphicsEffect',
- 'setHidden',
- 'setIconSize',
- 'setInputContext',
- 'setInputMethodHints',
- 'setLayout',
- 'setLayoutDirection',
- 'setLocale',
- 'setMask',
- 'setMaximumHeight',
- 'setMaximumSize',
- 'setMaximumWidth',
- 'setMenuBar',
- 'setMenuWidget',
- 'setMinimumHeight',
- 'setMinimumSize',
- 'setMinimumWidth',
- 'setMouseTracking',
- 'setObjectName',
- 'setPalette',
- 'setParent',
- 'setProperty',
- 'setShortcutAutoRepeat',
- 'setShortcutEnabled',
- 'setShown',
- 'setSizeIncrement',
- 'setSizePolicy',
- 'setStatusBar',
- 'setStatusTip',
- 'setStyle',
- 'setStyleSheet',
- 'setTabOrder',
- 'setTabPosition',
- 'setTabShape',
- 'setToolButtonStyle',
- 'setToolTip',
- 'setUnifiedTitleAndToolBarOnMac',
- 'setUpdatesEnabled',
- 'setVisible',
- 'setWhatsThis',
- 'setWindowFilePath',
- 'setWindowFlags',
- 'setWindowIcon',
- 'setWindowIconText',
- 'setWindowModality',
- 'setWindowModified',
- 'setWindowOpacity',
- 'setWindowRole',
- 'setWindowState',
- 'setWindowTitle',
- 'show',
- 'showEvent',
- 'showFullScreen',
- 'showMaximized',
- 'showMinimized',
- 'showNormal',
- 'signalsBlocked',
- 'size',
- 'sizeHint',
- 'sizeIncrement',
- 'sizePolicy',
- 'splitDockWidget',
- 'stackUnder',
- 'startTimer',
- 'staticMetaObject',
- 'statusBar',
- 'statusTip',
- 'statusbar',
- 'style',
- 'styleSheet',
- 'tabPosition',
- 'tabShape',
- 'tab_buscar',
- 'tab_facturas',
- 'tab_formulario',
- 'tab_vehiculo',
- 'tabifiedDockWidgets',
- 'tabifyDockWidget',
- 'tabletEvent',
- 'tabs_cliente',
- 'tbl_buscar',
- 'tbl_facturas',
- 'tbl_vehiculos',
- 'testAttribute',
- 'thread',
- 'timerEvent',
- 'toolBar',
- 'toolBarArea',
- 'toolBarBreak',
- 'toolButtonStyle',
- 'toolButtonStyleChanged',
- 'toolTip',
- 'topLevelWidget',
- 'tr',
- 'trUtf8',
- 'txt_criterio',
- 'txt_cuidad',
- 'txt_direccion',
- 'txt_email',
- 'txt_fax',
- 'txt_nombre',
- 'txt_ruc',
- 'txt_telefono',
- 'ui',
- 'underMouse',
- 'ungrabGesture',
- 'unifiedTitleAndToolBarOnMac',
- 'unsetCursor',
- 'unsetLayoutDirection',
- 'unsetLocale',
- 'update',
- 'updateGeometry',
- 'updateMicroFocus',
- 'updatesEnabled',
- 'verticalLayout',
- 'verticalLayout_2',
- 'verticalLayout_3',
- 'verticalLayout_4',
- 'verticalLayout_5',
- 'verticalLayout_6',
- 'verticalLayout_7',
- 'verticalLayout_8',
- 'visibleRegion',
- 'whatsThis',
- 'wheelEvent',
- 'width',
- 'widthMM',
- 'winId',
- 'window',
- 'windowActivationChange',
- 'windowFilePath',
- 'windowFlags',
- 'windowIcon',
- 'windowIconText',
- 'windowModality',
- 'windowOpacity',
- 'windowRole',
- 'windowState',
- 'windowTitle',
- 'windowType',
- 'x',
- 'x11Info',
- 'x11PictureHandle',
- 'y']
 

@@ -141,9 +141,7 @@ class Inspeccion(models.Model):
     id_contacto = models.ForeignKey(Contacto, db_column='id_contacto')
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
     periodo = models.IntegerField()
-    kilometros = models.CharField(max_length=45)
     fecha = models.DateField()
-    importante = models.BooleanField()
     notas = models.TextField(blank=True)
     registro = models.DateTimeField(blank=True)
 
@@ -247,8 +245,7 @@ class Reparacion(models.Model):
     kilometros = models.CharField(max_length=45)
     fecha_entrada = models.DateField()
     fecha_salida = models.DateField()
-    estado = models.CharField(max_length=20)
-    importante = models.BooleanField()
+    estado = models.CharField(max_length=100, blank=True)
     notas = models.TextField(blank=True)
     registro = models.DateTimeField(blank=True)
 
@@ -310,7 +307,7 @@ class Vehiculo(models.Model):
     id_contacto = models.ForeignKey(Contacto, db_column='id_contacto', blank=True, null=True)
     id_ciudad = models.ForeignKey(Ciudad, db_column='id_ciudad', blank=True, null=True)
     modelo = models.CharField(max_length=45)
-    nro_motor = models.CharField(max_length=25, blank=True)
+    nro_motor = models.CharField(max_length=20)
     ingreso = models.DateField(blank=True, null=True)
     notas = models.TextField(blank=True)
     registro = models.DateTimeField(blank=True)

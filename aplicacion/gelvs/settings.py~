@@ -61,9 +61,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gelvscom_polaris',
-        'USER': 'django',
-        'PASSWORD':'django',
-        'HOST': '192.168.0.111',        
+        'USER': 'root',
+        'PASSWORD':'elian',
+        'HOST': 'localhost',        
     }
 }
 
