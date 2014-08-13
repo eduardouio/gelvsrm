@@ -88,16 +88,19 @@ class Factura(models.Model):
     id_cliente = models.ForeignKey(Cliente, db_column='id_cliente')
     id_contacto = models.ForeignKey(Contacto, db_column='id_contacto', blank=True, null=True)
     fecha = models.DateField()
-    fecha_envio = models.DateField()
+    fecha_envio = models.DateField(blank=True)
     guia_envio = models.CharField(max_length=50, blank=True)
-    servicio_envio = models.CharField(max_length=80)
+    servicio_envio = models.CharField(max_length=80, blank=True)
     estado = models.CharField(max_length=50)
     archivo = models.CharField(max_length=200, blank=True)
+    subtotal_0 = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
+    subtotal_12 = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
     notas = models.TextField(blank=True)
     registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return str(self.id_factura).encode('utf-8')
+        myinvoice = '[[[' + str(self.id_factura).encode('utf-8') + ']]] => ' + str(self.fecha).encode('utf-8')+ ' => ' + str(self.subtotal_12).encode('utf-8')+ ' => ' + str(self.estado).encode('utf-8')
+        return myinvoice
 
     class Meta:
         managed = False
@@ -333,7 +336,8 @@ class Viaje(models.Model):
     registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return str(self.id_viaje).encode('utf-8')
+        myviaje = str(self.id_viaje).encode('utf-8') + ' => (S => ' + str(self.fecha_salida).encode('utf-8') + ' R => ' + str(self.fecha_regreso).encode('utf-8') + ')'
+        return myviaje
 
     class Meta:
         managed = False
