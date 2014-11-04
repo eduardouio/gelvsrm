@@ -21,7 +21,7 @@ class Ciudad(models.Model):
 
     def __unicode__(self):
         return self.nombre
-
+        
     class Meta:
         managed = False
         db_table = 'ciudad'
@@ -40,7 +40,8 @@ class Cliente(models.Model):
     registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return self.nombre
+        myclient = self.nombre + '__==>RUC =>' + self.id_cliente + '__==>Tel =>' + self.telefono
+        return myclient
 
     class Meta:
         managed = False
@@ -99,7 +100,7 @@ class Factura(models.Model):
     registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        myinvoice = '[[[' + str(self.id_factura).encode('utf-8') + ']]] => ' + str(self.fecha).encode('utf-8')+ ' => ' + str(self.subtotal_12).encode('utf-8')+ ' => ' + str(self.estado).encode('utf-8')
+        myinvoice = str(self.id_factura).encode('utf-8') + '_____Fecha=>__' + str(self.fecha).encode('utf-8')+ ' __Subtotal__=>[[ ' + str(self.subtotal_12).encode('utf-8')+ ']] __Estado__=> ' + str(self.estado).encode('utf-8')
         return myinvoice
 
     class Meta:
@@ -161,6 +162,7 @@ class Inspeccion(models.Model):
 class Inventario(models.Model):
     id_inventario = models.IntegerField(primary_key=True, blank=True)
     nombre = models.CharField(max_length=100)
+    nro_parte = models.CharField(max_length=45)
     descripcion = models.CharField(max_length=200)
     unidad = models.CharField(max_length=25)
     stok_min = models.IntegerField()
@@ -319,7 +321,8 @@ class Vehiculo(models.Model):
     registro = models.DateTimeField(blank=True)
 
     def __unicode__(self):
-        return self.id_vehiculo
+        myvehiculo = str(self.id_vehiculo).encode('utf-8') + '__Modelo =>' + str(self.modelo).encode('utf-8') + '__Motor => ' + str(self.nro_motor).encode('utf-8')
+        return myvehiculo
 
     class Meta:
         managed = False
